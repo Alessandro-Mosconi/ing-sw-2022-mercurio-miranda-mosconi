@@ -3,7 +3,7 @@ package it.polimi.ingsw.model;
 import java.util.Set;
 
 public class Deck {
-    private Set<AssistantCard> cards;
+    private final Set<AssistantCard> cards;
     private WizardType wizard;
 
     public Deck(Set<AssistantCard> cards)
@@ -23,6 +23,5 @@ public class Deck {
     public void setWizard(WizardType wizard) {
         this.wizard = wizard;
     }
-
 
 }
