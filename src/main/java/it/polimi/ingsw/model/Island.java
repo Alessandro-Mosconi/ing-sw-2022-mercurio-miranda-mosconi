@@ -54,7 +54,6 @@ public class Island {
         }
     }
 
-
     public void setMotherNature(boolean isPresent){
         this.motherNature = isPresent;
     }
@@ -69,12 +68,15 @@ public class Island {
         this.noEntryTile = noEntryTile;
     }
 
+    //We should modify it if there's a 4 player game, as this version does not support it.
     public int calculatePlayerInfluence(SchoolBoard schoolboard){
         int totStudents = 0;
         for (PawnColor color : schoolboard.ProfessorTable.keySet()){
                if (schoolboard.ProfessorTable.get(color))
                    totStudents += getStudentNumber(color);
         }
+        if (schoolboard.TowerColor.equals(this.towerColor))
+            totStudents += getTowersNumber();
         return totStudents;
     }
 
