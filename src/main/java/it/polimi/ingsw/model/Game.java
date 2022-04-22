@@ -96,7 +96,7 @@ public class Game {
             }
         }//controllo che la bag abbia disponibilità di studenti del colore random
         this.bag.replace(rdColor, this.bag.get(rdColor)-1);
-        cloud.Students.replace(rdColor, cloud.Students.get(rdColor)+1);
+        cloud.getStudents().replace(rdColor, cloud.getStudents().get(rdColor)+1);
         //manca implementazione della classe cloudtiles -> l'errore dovrebbe risolversi quando la si implementa.
     }
     public void updateProfessor(PawnColor color){
@@ -121,7 +121,7 @@ public class Game {
             this.setBag(color, 26);
         }//setta la bag ai valori di default
 
-        if(gamemode.equals(GameMode.Expert)){
+        if(gamemode.equals(GameMode.expert)){
             initChosenCharacterCards();
             setBank(20);
         }
