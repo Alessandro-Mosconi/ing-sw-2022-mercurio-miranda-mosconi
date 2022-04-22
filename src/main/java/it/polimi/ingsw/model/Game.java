@@ -1,10 +1,9 @@
 package it.polimi.ingsw.model;
-import java.lang.reflect.Array;
 import java.util.*;
 public class Game {
     //attributes
     private ArrayList<Player> players;
-    private Long numberOfPlayers;
+    private int numberOfPlayers;
     private String gameID;
     private GameMode gameMode;
     private ArrayList<CloudTile> cloudTiles;
@@ -45,6 +44,9 @@ public class Game {
     public IslandManager getIslandManager() {
         return islandManager;
     }
+    public void setBag(Map<PawnColor,Integer> bag){
+        this.bag=bag;
+    }
     public Map<PawnColor, Integer> getBag() {
         return bag;
     }
@@ -69,10 +71,10 @@ public class Game {
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;
     }
-    public Long getNumberOfPlayers() {
+    public int getNumberOfPlayers() {
         return numberOfPlayers;
     }
-    public void setNumberOfPlayers(Long numberOfPlayers) {
+    public void setNumberOfPlayers(int numberOfPlayers) {
         this.numberOfPlayers = numberOfPlayers;
     }
     public void setAllCharacterCards(ArrayList<CharacterCard> allCharacterCards) {
@@ -100,12 +102,22 @@ public class Game {
         //manca implementazione della classe cloudtiles -> l'errore dovrebbe risolversi quando la si implementa.
     }
     public void updateProfessor(PawnColor color){
-        /*int max=-1;
+        int currentMax=-1;
+        SchoolBoard formerMaxSchoolBoard = new SchoolBoard();
+        for(SchoolBoard f : schoolBoards){
+            if(f.getProfessorTable().get(color).equals(true)){
+                formerMaxSchoolBoard=f;
+            }
+        }
+        SchoolBoard newMaxSchoolBoard = new SchoolBoard();
         for (SchoolBoard p : schoolBoards){
-            controllo max player
-        }*/
-        //TODO update prof
-        /*settare professorTable di tutti i player*/
+            if(p.getStudentHall().get(color)>currentMax){
+                currentMax=p.getStudentHall().get(color);
+                newMaxSchoolBoard=p;
+            }
+        }
+        formerMaxSchoolBoard.getProfessorTable().replace(color, false);
+        newMaxSchoolBoard.getProfessorTable().replace(color,true);
     }
     public ArrayList<CharacterCard> shuffleCharacterCards(ArrayList<CharacterCard> allCharacterCards) {
         Collections.shuffle(allCharacterCards);
@@ -138,7 +150,6 @@ public class Game {
     }//genera casualmente il primo giocatore che lancia la carta assistente al primo turno
     public void setBag(PawnColor color, int n){
         this.bag.replace(color,n);
-    //di default setta a 26 ogni color
     }
     public ArrayList<CharacterCard> initChosenCharacterCards() {
         return (ArrayList<CharacterCard>) getAllCharacterCards().subList(0,2);
@@ -148,7 +159,9 @@ public class Game {
     } /* restituisce tutte le charcards in disordine;
      quando si chiama la init si pescano le prime 3 in disordine;
      dopo la init si accede alle chosen tramite la get*/
-
+    public void updatePlayerOrder(){
+        //todo comparator
+    }
 
 
 }
