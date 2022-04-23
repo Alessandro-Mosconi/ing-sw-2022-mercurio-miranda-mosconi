@@ -57,29 +57,20 @@ public class Player {
         if(schoolBoard.getStudentEntrance().get(color)<=0)
             System.out.println(color + "not present in Entrance");
         else {
-            schoolBoard.getStudentEntrance().replace(color, schoolBoard.getStudentEntrance().get(color)-1);
-            schoolBoard.getStudentHall().replace(color, schoolBoard.getStudentHall().get(color)+1);
+            schoolBoard.removeStudentEntrance(color);
+            schoolBoard.addStudentHall(color);
         }
     }
 
 
  //remove all the student from a specific cloud and put them in the entrance
-    public void moveFromCloudToEntrance(CloudTile cloud){
-        int found;
+    public void moveFromCloudToEntrance(CloudTile cloud) {
 
-        do
-        {
-            found=0;
-            for(PawnColor color : PawnColor.values()){
-                if(cloud.getStudents().get(color)!=0)
-                {
-                    cloud.removeStudents(color);
-                    schoolBoard.getStudentEntrance().replace(color, schoolBoard.getStudentEntrance().get(color)+1);
-                    found++;
-                }
-            }
-        }while(found<1);
+        for (PawnColor color : PawnColor.values()) {
+            schoolBoard.addStudentEntrance(color, cloud.getStudents().get(color));
+            cloud.reset(color);
 
+        }
     }
 
     //move a specific student color from the Entrance to a specific island
@@ -87,8 +78,8 @@ public class Player {
         if(schoolBoard.getStudentEntrance().get(color)<=0)
             System.out.println(color + "not present in Entrance");
         else {
-            schoolBoard.getStudentEntrance().replace(color, schoolBoard.getStudentEntrance().get(color)-1);
-            island.getIslandStudents().replace(color, island.getIslandStudents().get(color)+1);
+            schoolBoard.removeStudentEntrance(color);
+            island.addStudent(color);
         }
     }
 

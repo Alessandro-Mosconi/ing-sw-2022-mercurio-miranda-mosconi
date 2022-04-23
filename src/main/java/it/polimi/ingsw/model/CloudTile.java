@@ -10,7 +10,7 @@ public class CloudTile {
     public CloudTile(Map<PawnColor, Integer> students)
     {
         this.students = new HashMap<PawnColor, Integer>();
-        this.students=students;
+        this.students = students;
     }
 
     public CloudTile()
@@ -33,9 +33,15 @@ public class CloudTile {
         this.students.replace(color, this.students.get(color)+1);
     }
 
+    /*
     public void removeStudents(PawnColor color) {
         if(this.students.get(color)>0)
             this.students.replace(color, this.students.get(color)-1);
+    }
+    */
+    
+    public void reset(PawnColor color) {
+        this.students.replace(color, 0);
     }
 
 }
