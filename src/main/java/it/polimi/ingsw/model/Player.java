@@ -1,11 +1,14 @@
 package it.polimi.ingsw.model;
 
+import java.util.*;
+
 public class Player {
     private final char[] nickName;
     private int wallet;
     private final Deck wizardDeck;
     private final int playerNumber;
     private final SchoolBoard schoolBoard;
+    private AssistantCard lastAssistantCard;
 
     public Player(){
         this.nickName = null;
@@ -13,6 +16,7 @@ public class Player {
         this.wizardDeck = null;
         this.playerNumber = 0;
         this.schoolBoard = null;
+        this.lastAssistantCard = null;
     }
 
     public Player(char[] nickName, Deck wizard, int playerNumber, SchoolBoard schoolBoard) {
@@ -21,6 +25,7 @@ public class Player {
         this.wizardDeck = wizard;
         this.playerNumber = playerNumber;
         this.schoolBoard = schoolBoard;
+        this.lastAssistantCard = null;
     }
 
     public SchoolBoard getSchoolBoard(){
@@ -50,6 +55,30 @@ public class Player {
     public void collectCoin(PawnColor color){
         if(schoolBoard.checkForCoin(color))
             setWallet(getWallet()+1);
+    }
+
+    public void useAssistantCard(AssistantCard card)
+    {
+        for(AssistantCard chosenCard:this.wizardDeck.getCards())
+        {
+            if(chosenCard.equals(card) && !chosenCard.isConsumed())
+            {
+                chosenCard.setConsumed(true);
+                this.lastAssistantCard = chosenCard;
+            }
+        }
+    }
+
+    public AssistantCard getLastAssistantCard() {
+        return lastAssistantCard;
+    }
+
+    public int moveMotherNature(AssistantCard card){
+        System.out.println("choose the movement, max "+ card.getMotherMovement());
+        Scanner scanner = new Scanner(System.in);
+        int a = scanner.nextInt();
+        scanner.close();
+        return a;
     }
 
 //move a specific student from the entrance to the hall
