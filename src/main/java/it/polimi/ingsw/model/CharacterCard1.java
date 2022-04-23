@@ -11,7 +11,7 @@ public class CharacterCard1 implements CardBehavior{
     Island island= new Island();
     Game game= new Game();
 
-   public void initCard(){
+    public void initCard(){
        for(int i=0;i<4;i++){
            refill();
        }
@@ -22,7 +22,6 @@ public class CharacterCard1 implements CardBehavior{
         PawnColor color = chooseColor();
         moveToIsland(color, island);
         refill();
-
     }
     //
     public void moveToIsland(PawnColor color, Island destination){
@@ -40,10 +39,10 @@ public class CharacterCard1 implements CardBehavior{
         clonedBag.replace(rdColor, clonedBag.get(rdColor)-1);
         this.students.replace(rdColor,this.students.get(rdColor)+1);
         game.setBag(clonedBag);
-        game.bag.replace(rdColor,clonedBag.get(rdColor));
+        game.getBag().replace(rdColor,clonedBag.get(rdColor));
     }
     public PawnColor chooseColor(){
-       //TODO
-       return chosenColor;
+       return null;
+       //return chosenColor;
     }
 }

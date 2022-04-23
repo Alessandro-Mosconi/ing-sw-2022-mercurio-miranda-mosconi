@@ -9,7 +9,7 @@ public class Game {
     private ArrayList<CloudTile> cloudTiles;
     private ArrayList<SchoolBoard> schoolBoards;
     private IslandManager islandManager;
-    protected Map<PawnColor, Integer> bag; //da vedere perché funziona solo se protected
+    private Map<PawnColor, Integer> bag;
     private ArrayList<CharacterCard> allCharacterCards; /*dare dimensione quando si istanzia
      "new ArrayList<charcards>(..dimensione..)"*/
     private ArrayList<Integer> playerOrder;
@@ -102,44 +102,97 @@ public class Game {
         //manca implementazione della classe cloudtiles -> l'errore dovrebbe risolversi quando la si implementa.
     }
     public void updateProfessor(PawnColor color){
-        int currentMax=-1;
-        SchoolBoard formerMaxSchoolBoard = new SchoolBoard();
-        for(SchoolBoard f : schoolBoards){
-            if(f.getProfessorTable().get(color).equals(true)){
-                formerMaxSchoolBoard=f;
+        int currentMax=0;
+        /*
+        si potrebbe tenere in game una mappa che tenga traccia del numero di studenti che ha il player
+        che possiede già il prof in modo da effettuare la update solo quando serve (?) piuttosto che farlo
+        per ogni studente spostato
+        */
+        for (SchoolBoard s : schoolBoards){
+            if(s.getStudentHall().get(color)>currentMax){
+                currentMax=s.getStudentHall().get(color);
+                for(SchoolBoard f : schoolBoards){
+                    f.getProfessorTable().replace(color,false);
+                }
+                s.getProfessorTable().replace(color,true);
             }
         }
-        SchoolBoard newMaxSchoolBoard = new SchoolBoard();
-        for (SchoolBoard p : schoolBoards){
-            if(p.getStudentHall().get(color)>currentMax){
-                currentMax=p.getStudentHall().get(color);
-                newMaxSchoolBoard=p;
-            }
-        }
-        formerMaxSchoolBoard.getProfessorTable().replace(color, false);
-        newMaxSchoolBoard.getProfessorTable().replace(color,true);
     }
     public ArrayList<CharacterCard> shuffleCharacterCards(ArrayList<CharacterCard> allCharacterCards) {
         Collections.shuffle(allCharacterCards);
         return allCharacterCards;
     }
-    public void SetUpGame(int numberOfPlayers, GameMode gamemode){
+    public void SetUpGame(int numberOfPlayers, GameMode gamemode)/*gamemode e noOfPlayers si prendono dal controller?*/{
+        this.setNumberOfPlayers(numberOfPlayers);
+        this.setGameMode(gamemode);
+        //this.gameID=setGameID(); randomico o scelto?
         ArrayList<CloudTile> cloudTiles = new ArrayList<CloudTile>(numberOfPlayers);
+        {
+            for(int i=0;i<numberOfPlayers;i++){
+                cloudTiles.add(new CloudTile());
+            }
+        }
+        {
+            for(CloudTile c : cloudTiles){
+                for(int i=0;i<3;i++){
+                    moveFromBagToCloud(c);
+                }
+                if(numberOfPlayers==3){
+                    moveFromBagToCloud(c);
+                }
+            }
+        }
         ArrayList<SchoolBoard> schoolBoards= new ArrayList<SchoolBoard>(numberOfPlayers);
+        {
+            for(int i=0;i<numberOfPlayers;i++){
+                schoolBoards.add(new SchoolBoard());
+            }
+        }
+        ArrayList<Island> islands = new ArrayList<Island>(12);
+        {
+            {
+                for(int i=0;i<12;i++){
+                    islands.add(new Island());
+                     if(i!=0&&i!=5){
+                         PawnColor rdColor=PawnColor.randomColor();
+                         islands.get(i).addStudent(rdColor);
+                    }//initializes islands with students
+                     else if(i==0){
+                         islands.get(i).setMotherNature(true);
+                     }//initializes mothernature
+                }
+            }
+        }
         IslandManager islandManager= new IslandManager();
-        Player firstPlayer = new Player();
-        firstPlayer=SelectFirstPlayer();
+        ArrayList<Player> players = new ArrayList<Player>(numberOfPlayers);
+        {
+            for(int i=0;i<numberOfPlayers;i++){
+                players.add(new Player());
+            }
+        }
+        Player firstPlayer = SelectFirstPlayer();
+        /*Iterator iterator = players.iterator();
+        while(iterator.next()!=firstPlayer){
+            iterator.next();
+        }*/ //TODO
+        ArrayList<WizardType> wizards = new ArrayList<WizardType>(numberOfPlayers);{
+            for(Player p : players) {
+                wizards.add(p.getDeck().getWizard());
+            }
+        }
         for(PawnColor color : PawnColor.values()){
             this.setBag(color, 26);
         }//setta la bag ai valori di default
-
         if(gamemode.equals(GameMode.expert)){
-            initChosenCharacterCards();
-            setBank(20);
+            ArrayList<CharacterCard> chosenCharacterCards = initChosenCharacterCards();
+            this.setChosenCharacterCards(chosenCharacterCards);
+            this.setBank(20);
         }
-//TODO 1)allocare parti fisiche del gioco (clouds, islands, bag, schoolboards, decks)
-// 2) scegliere 1st player;
-// 3)riempire cloud e isole;
+/*TODO
+ 1)allocare parti fisiche del gioco (cloudsX, islandsX, bagX, schoolboardsX, decks)
+ 2) scegliere 1st playerX;
+ 3)riempire cloudX e isole;
+ */
     }
     public Player SelectFirstPlayer(){
         int min_val=0;
@@ -162,6 +215,4 @@ public class Game {
     public void updatePlayerOrder(){
         //todo comparator
     }
-
-
 }

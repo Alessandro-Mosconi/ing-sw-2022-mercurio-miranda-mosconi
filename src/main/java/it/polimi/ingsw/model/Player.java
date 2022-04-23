@@ -3,14 +3,14 @@ package it.polimi.ingsw.model;
 public class Player {
     private final char[] nickName;
     private int wallet;
-    private final Deck wizard;
+    private final Deck wizardDeck;
     private final int playerNumber;
     private final SchoolBoard schoolBoard;
 
     public Player(){
         this.nickName = null;
         this.wallet = 0;
-        this.wizard = null;
+        this.wizardDeck = null;
         this.playerNumber = 0;
         this.schoolBoard = null;
     }
@@ -18,7 +18,7 @@ public class Player {
     public Player(char[] nickName, Deck wizard, int playerNumber, SchoolBoard schoolBoard) {
         this.nickName = nickName;
         this.wallet = 0;
-        this.wizard = wizard;
+        this.wizardDeck = wizard;
         this.playerNumber = playerNumber;
         this.schoolBoard = schoolBoard;
     }
@@ -35,8 +35,8 @@ public class Player {
         return wallet;
     }
 
-    public Deck getWizard() {
-        return wizard;
+    public Deck getDeck() {
+        return wizardDeck;
     }
 
     public int getPlayerNumber() {

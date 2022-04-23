@@ -71,11 +71,11 @@ public class Island {
     //We should modify it if there's a 4 player game, as this version does not support it.
     public int calculatePlayerInfluence(SchoolBoard schoolboard){
         int totStudents = 0;
-        for (PawnColor color : schoolboard.ProfessorTable.keySet()){
-               if (schoolboard.ProfessorTable.get(color))
+        for (PawnColor color : schoolboard.getProfessorTable().keySet()){
+               if (schoolboard.getProfessorTable().get(color))
                    totStudents += getStudentNumber(color);
         }
-        if (schoolboard.TowerColor.equals(this.towerColor))
+        if (schoolboard.getTowersColor().equals(this.towerColor))
             totStudents += getTowersNumber();
         return totStudents;
     }
@@ -88,7 +88,7 @@ public class Island {
             int currentInfluence = calculatePlayerInfluence(schoolBoard);
             if (currentInfluence > maxInfluence) {
                 maxInfluence = currentInfluence;
-                influence = schoolBoard.TowerColor;
+                influence = schoolBoard.getTowersColor();
             }
         }
         this.towerColor = influence;
