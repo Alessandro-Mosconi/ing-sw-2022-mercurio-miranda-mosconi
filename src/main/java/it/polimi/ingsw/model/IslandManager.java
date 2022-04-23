@@ -5,13 +5,13 @@ import java.util.ArrayList;
 public class IslandManager {
     private ArrayList<Island> islandList;
 
+    public IslandManager(ArrayList<Island> islandList) {
+        this.islandList = islandList;
+    }
+
     public ArrayList<Island> getIslandList(){
         return  this.islandList;
     }
-
-    //how am I supposed to do this?
-    //TODO - at the end
-    public void setupIslands(){}
 
     //qui devo capire come fare.. la merge deve sommare gli studenti (ed inoltre dovrebbe tenere conto
     //graficamente dell'unione delle due isole. Non mi sembra una buona soluzione.
