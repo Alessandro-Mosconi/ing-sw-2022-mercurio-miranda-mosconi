@@ -99,7 +99,6 @@ public class Game {
         }//controllo che la bag abbia disponibilità di studenti del colore random
         this.bag.replace(rdColor, this.bag.get(rdColor)-1);
         cloud.getStudents().replace(rdColor, cloud.getStudents().get(rdColor)+1);
-        //manca implementazione della classe cloudtiles -> l'errore dovrebbe risolversi quando la si implementa.
     }
     public void updateProfessor(PawnColor color){
         int currentMax=0;
@@ -125,7 +124,7 @@ public class Game {
     public void SetUpGame(int numberOfPlayers, GameMode gamemode)/*gamemode e noOfPlayers si prendono dal controller?*/{
         this.setNumberOfPlayers(numberOfPlayers);
         this.setGameMode(gamemode);
-        //this.gameID=setGameID(); randomico o scelto?
+        //this.gameID=setGameID(); randomico
         ArrayList<CloudTile> cloudTiles = new ArrayList<CloudTile>(numberOfPlayers);
         {
             for(int i=0;i<numberOfPlayers;i++){
@@ -155,6 +154,7 @@ public class Game {
                     islands.add(new Island());
                      if(i!=0&&i!=5){
                          PawnColor rdColor=PawnColor.randomColor();
+                         this.bag.replace(rdColor, this.bag.get(rdColor)-1);
                          islands.get(i).addStudent(rdColor);
                     }//initializes islands with students
                      else if(i==0){
@@ -163,7 +163,7 @@ public class Game {
                 }
             }
         }
-        IslandManager islandManager= new IslandManager();
+        IslandManager islandManager= new IslandManager(islands);
         ArrayList<Player> players = new ArrayList<Player>(numberOfPlayers);
         {
             for(int i=0;i<numberOfPlayers;i++){
@@ -191,7 +191,7 @@ public class Game {
 /*TODO
  1)allocare parti fisiche del gioco (cloudsX, islandsX, bagX, schoolboardsX, decks)
  2) scegliere 1st playerX;
- 3)riempire cloudX e isole;
+ 3)riempire cloudX e isoleX;
  */
     }
     public Player SelectFirstPlayer(){
