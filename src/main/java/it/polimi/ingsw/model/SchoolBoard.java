@@ -67,12 +67,36 @@ public SchoolBoard(int numTower, TowerColor colTower, GameMode gameMode) {
         return studentHall;
     }
 
+    public void setStudentHall(Map<PawnColor, Integer> studentHall) {
+        this.studentHall = studentHall;
+    }
+
     public void setStudentEntrance(Map<PawnColor, Integer> studentEntrance) {
         this.studentEntrance = studentEntrance;
     }
 
-    public void setStudentHall(Map<PawnColor, Integer> studentHall) {
-        this.studentHall = studentHall;
+    public void addStudentEntrance(PawnColor color) {
+        this.studentEntrance.replace(color, this.studentEntrance.get(color)+1);
+    }
+
+    public void addStudentEntrance(PawnColor color, int n) {
+        this.studentEntrance.replace(color, this.studentEntrance.get(color)+n);
+    }
+
+    public void removeStudentEntrance(PawnColor color) {
+        if(this.studentEntrance.get(color)>0)
+        this.studentEntrance.replace(color, this.studentEntrance.get(color)-1);
+        else System.out.println("studente non presente");
+    }
+
+    public void addStudentHall(PawnColor color) {
+        this.studentHall.replace(color, this.studentHall.get(color)+1);
+    }
+
+    public void removeStudentHall(PawnColor color) {
+        if(this.studentHall.get(color)>0)
+            this.studentHall.replace(color, this.studentHall.get(color)-1);
+        else System.out.println("studente non presente");
     }
 
     public void setTowersNumber(int towersNumber) {
@@ -82,6 +106,10 @@ public SchoolBoard(int numTower, TowerColor colTower, GameMode gameMode) {
     public void setProfessorTable(Map<PawnColor, Boolean> professorTable) {
         this.professorTable = professorTable;
     }
+
+    public void addProfessor(PawnColor color){this.professorTable.replace(color, true); }
+
+    public void removeProfessor(PawnColor color){this.professorTable.replace(color, false); }
 
     public boolean checkForCoin(PawnColor color){
         if(getGameMode().equals(expert))

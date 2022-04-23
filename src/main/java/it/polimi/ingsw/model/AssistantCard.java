@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model;
 
 public class AssistantCard {
+
     private final int value;
     private final int motherMovement;
     private boolean consumed;
