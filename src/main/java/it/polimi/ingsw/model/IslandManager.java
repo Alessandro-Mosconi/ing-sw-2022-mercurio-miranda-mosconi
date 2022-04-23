@@ -13,34 +13,40 @@ public class IslandManager {
         return  this.islandList;
     }
 
-    //qui devo capire come fare.. la merge deve sommare gli studenti (ed inoltre dovrebbe tenere conto
-    //graficamente dell'unione delle due isole. Non mi sembra una buona soluzione.
-    //Todo
-    public void checkMergeIslands(int islandPos){
-        if (checkNext(this.islandList.get(islandPos), this.islandList.get(islandPos+1))){
+    public void checkForMerge(int islandPos){
+
+        //this if branch checks the current island with its next
+        if (checkIslands(this.islandList.get(islandPos), this.islandList.get(islandPos+1))){
             mergeIslands(this.islandList.get(islandPos), this.islandList.get(islandPos+1));
             deleteIsland(this.islandList.get(islandPos+1));
         }
-        if (checkPrevious(this.islandList.get(islandPos), this.islandList.get(islandPos-1))){
+
+        //this branch checks the current island with its previous
+        if (checkIslands(this.islandList.get(islandPos), this.islandList.get(islandPos-1))){
             mergeIslands(this.islandList.get(islandPos-1), this.islandList.get(islandPos));
             deleteIsland(this.islandList.get(islandPos));
         }
     }
 
-    //todo
+    //this method merges 2 islands and is supposed to delete the second one.
     public void mergeIslands(Island primaryIsland, Island secondaryIsland){
+
+        for (PawnColor color : PawnColor.values()) {
+            primaryIsland.getIslandStudents().replace(color, primaryIsland.getIslandStudents().get(color) + secondaryIsland.getIslandStudents().get(color));
+        }
+        primaryIsland.setTowersNumber(primaryIsland.getTowersNumber() + secondaryIsland.getTowersNumber());
+        primaryIsland.setNoEntryTile(secondaryIsland.isNoEntryTile());
+        primaryIsland.setMotherNature(true);
+
+        deleteIsland(secondaryIsland);
     }
 
-    //todo
-    public void deleteIsland(Island island){}
+    private void deleteIsland(Island island){
+        this.islandList.remove(island);
+    }
 
-    public boolean checkNext(Island primaryIsland, Island island2){
+    public boolean checkIslands(Island primaryIsland, Island island2){
         //if (this.islandList.get(islandPos).getTowerColor().equals(this.islandList.get(islandPos+1).getTowerColor()))
-        return primaryIsland.getTowerColor().equals(island2.getTowerColor());
-    }
-
-    public boolean checkPrevious(Island primaryIsland, Island island2){
-        //if (this.islandList.get(islandPos).getTowerColor().equals(this.islandList.get(islandPos-1).getTowerColor()))
         return primaryIsland.getTowerColor().equals(island2.getTowerColor());
     }
 
@@ -48,6 +54,4 @@ public class IslandManager {
         this.islandList.get(motherPosition).setMotherNature(false);
         this.islandList.get(motherPosition+cells).setMotherNature(true);
     }
-
-
 }

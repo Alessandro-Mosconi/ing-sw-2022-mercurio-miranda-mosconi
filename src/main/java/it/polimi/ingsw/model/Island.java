@@ -10,6 +10,14 @@ public class Island {
     private boolean noEntryTile;
     private boolean motherNature;
 
+    public Island(Map<PawnColor, Integer> islandStudents, TowerColor towerColor, int towerNumber, boolean noEntryTile, boolean motherNature) {
+        this.islandStudents = islandStudents;
+        this.towerColor = towerColor;
+        this.towerNumber = towerNumber;
+        this.noEntryTile = noEntryTile;
+        this.motherNature = motherNature;
+    }
+
     public void setTowerColor(TowerColor color){
         this.towerColor = color;
     }
@@ -47,13 +55,6 @@ public class Island {
         this.islandStudents.put(color, getStudentNumber(color)+1);
     }
 
-    //Come gestiamo il null? Bisogna fare un try/catch?
-    public void removeStudent(PawnColor color){
-        if (getStudentNumber(color) > 0) {
-            this.islandStudents.put(color, getStudentNumber(color)-1);
-        }
-    }
-
     public void setMotherNature(boolean isPresent){
         this.motherNature = isPresent;
     }
@@ -61,11 +62,11 @@ public class Island {
         return motherNature;
     }
 
-    public boolean isNoEntryTile() {
-        return noEntryTile;
-    }
     public void setNoEntryTile(boolean noEntryTile) {
         this.noEntryTile = noEntryTile;
+    }
+    public boolean isNoEntryTile() {
+        return noEntryTile;
     }
 
     //We should modify it if there's a 4 player game, as this version does not support it.
@@ -83,6 +84,13 @@ public class Island {
     public void assignInfluence(SchoolBoard[] schoolBoardsArray){
         int maxInfluence = 0;
         TowerColor influence = null;
+
+        for (SchoolBoard schoolBoard : schoolBoardsArray) {
+            if (schoolBoard.getTowersColor().equals(this.getTowerColor())){
+                maxInfluence = calculatePlayerInfluence(schoolBoard);
+                influence = schoolBoard.getTowersColor();
+            }
+        }
 
         for (SchoolBoard schoolBoard : schoolBoardsArray) {
             int currentInfluence = calculatePlayerInfluence(schoolBoard);
