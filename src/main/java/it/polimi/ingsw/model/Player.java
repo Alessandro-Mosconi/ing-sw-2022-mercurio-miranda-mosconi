@@ -3,7 +3,7 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 public class Player {
-    private final char[] nickName;
+    private final String nickName;
     private int wallet;
     private final Deck wizardDeck;
     private final int playerNumber;
@@ -19,7 +19,7 @@ public class Player {
         this.lastAssistantCard = null;
     }
 
-    public Player(char[] nickName, Deck wizard, int playerNumber, SchoolBoard schoolBoard) {
+    public Player(String nickName, Deck wizard, int playerNumber, SchoolBoard schoolBoard) {
         this.nickName = nickName;
         this.wallet = 0;
         this.wizardDeck = wizard;
@@ -32,7 +32,7 @@ public class Player {
         return schoolBoard;
     }
 
-    public char[] getNickName() {
+    public String getNickName() {
         return nickName;
     }
 

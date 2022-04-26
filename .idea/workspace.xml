@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="init CharacterCards 1-4 ; update Game methods">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Island.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Island.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/IslandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/IslandManager.java" afterDir="false" />
+    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/deliveries/Communication Protocol.md" beforeDir="false" afterPath="$PROJECT_DIR$/deliveries/Communication Protocol.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +49,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -84,6 +82,7 @@
       <workItem from="1649707300432" duration="3558000" />
       <workItem from="1650621205672" duration="4434000" />
       <workItem from="1650644808035" duration="1792000" />
+      <workItem from="1650974884190" duration="301000" />
     </task>
     <task id="LOCAL-00001" summary="classe di prova">
       <created>1647356869665</created>
@@ -141,7 +140,28 @@
       <option name="project" value="LOCAL" />
       <updated>1650700990641</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Communication Protocol v0">
+      <created>1650974569656</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1650974569656</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Communication Protocol v0">
+      <created>1650974653398</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1650974653398</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Communication Protocol v0">
+      <created>1650975098985</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1650975098985</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +183,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="classe di prova" />
@@ -173,6 +194,7 @@
     <MESSAGE value="CloudTile, Player and Schoolboard completed, GameMode (and Game) modified: from (Easy, Expert) to (easy, expert), &quot;cloud.student...&quot; changed in &quot;cloud.getStudent()...&quot; in Game." />
     <MESSAGE value="init CharacterCards 1-4 ; update Game methods" />
     <MESSAGE value="fix of some classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix of some classes" />
+    <MESSAGE value="Communication Protocol v0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Communication Protocol v0" />
   </component>
 </project>
