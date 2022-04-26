@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="fix of some classes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Player.java" afterDir="false" />
-    </list>
+    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,7 +137,21 @@
       <option name="project" value="LOCAL" />
       <updated>1650700990641</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Communication Protocol v0">
+      <created>1650974569656</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1650974569656</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Communication Protocol v0">
+      <created>1650974653398</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1650974653398</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,6 +184,7 @@
     <MESSAGE value="CloudTile, Player and Schoolboard completed, GameMode (and Game) modified: from (Easy, Expert) to (easy, expert), &quot;cloud.student...&quot; changed in &quot;cloud.getStudent()...&quot; in Game." />
     <MESSAGE value="init CharacterCards 1-4 ; update Game methods" />
     <MESSAGE value="fix of some classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix of some classes" />
+    <MESSAGE value="Communication Protocol v0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Communication Protocol v0" />
   </component>
 </project>

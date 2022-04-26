@@ -21,11 +21,11 @@ When connection is established server and client set a socket timeout. Then clie
 
 ### Player connection with match creation
 
-Example of a login message with new match creation:
+Example of new game creation:
 
 ```json
 {
-   "id": "idPlayer",
+   "id": "idClient",
    "messageType": "CREATE_MATCH",
    "payload": "GameID"
 }
@@ -35,7 +35,7 @@ Example of a message from server asking for number of players:
 
 ```json
 {
-   "id": "idPlayer",
+   "id": "idClient",
    "messageType": "NUMBER_OF_PLAYERS",
    "payload": null
 }
@@ -51,16 +51,6 @@ Example of a message from client to specify the number of players:
 }
 ```
 
-Example of a possible error message during login:
-
-```json
-{
-   "username": null,
-   "messageType": "ERROR",
-   "payload": "INVALID_LOGIN_USERNAME"
-}
-```
-
 
 ### Player connection joining an existing match
 
@@ -68,7 +58,7 @@ Example of a login message to join an existing match:
 
 ```json
 {
-   "id": "idPlayer",
+   "id": "idCLient",
    "messageType": "JOIN_MATCH",
    "payload": "idGame"
 }
@@ -76,7 +66,7 @@ Example of a login message to join an existing match:
 
 ### Ask to perform an action
 
-Example of a request to perform an action to buy a develop card:
+Example of a request to perform an action to use/buy a character card:
 
 ```json
 {
