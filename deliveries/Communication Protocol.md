@@ -45,7 +45,7 @@ Example of a message from client to specify the number of players:
 
 ```json
 {
-   "id": "idPlayer",
+   "id": "idClient",
    "messageType": "NUMBER_OF_PLAYERS",
    "payload": "3"
 }
@@ -58,7 +58,7 @@ Example of a login message to join an existing match:
 
 ```json
 {
-   "id": "idCLient",
+   "id": "idClient",
    "messageType": "JOIN_MATCH",
    "payload": "idGame"
 }
