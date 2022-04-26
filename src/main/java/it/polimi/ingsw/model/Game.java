@@ -133,14 +133,16 @@ public class Game {
         this.setGameID(j); */
         ArrayList<CloudTile> cloudTiles = generateCloudTiles(numberOfPlayers);
         fillCloudTiles(numberOfPlayers, cloudTiles);
+        this.setCloudTiles(cloudTiles);
         ArrayList<Island> islands = generateIslands();
         IslandManager islandManager= new IslandManager(islands);
+        this.setIslandManager(islandManager);
         ArrayList<Player> players = generatePlayers(numberOfPlayers);
-
+        this.setPlayers(players);
             //todo inizializzare i players
-
         ArrayList<SchoolBoard> schoolBoards = generateSchoolBoards(numberOfPlayers);
         initSchoolBoards(schoolBoards);
+        this.setSchoolBoards(schoolBoards);
         Player firstPlayer = SelectFirstPlayer();
         ArrayList<Integer> tmpOrder = new ArrayList<Integer>(numberOfPlayers);
         for(int i=0;i<numberOfPlayers;i++){
@@ -152,6 +154,7 @@ public class Game {
                 wizards.add(p.getDeck().getWizard());
             }
         }
+        this.setWizards(wizards);
         if(gamemode.equals(GameMode.expert)){
             ArrayList<CharacterCard> chosenCharacterCards = initChosenCharacterCards();
             this.setChosenCharacterCards(chosenCharacterCards);
@@ -179,7 +182,7 @@ public class Game {
         {
             {
                 for(int i=0;i<12;i++){
-                    islands.add(new Island());
+                    islands.add(new Island(null,null,0,false,false));
                     if(i!=0&&i!=5){
                         PawnColor rdColor=PawnColor.randomColor();
                         this.bag.replace(rdColor, this.bag.get(rdColor)-1);
@@ -223,7 +226,7 @@ public class Game {
     }
     private void fillBag() {
         for(PawnColor color : PawnColor.values()){
-            this.initBag(color, 26);
+            this.initBag(color,26);
         }//setta la bag ai valori di default
     }
     private ArrayList<Player> generatePlayers(int numberOfPlayers) {
@@ -261,8 +264,8 @@ public class Game {
         int randNum=min_val+rd.nextInt((max_val - min_val) + 1);
         return players.get(randNum);
     }//genera casualmente il primo giocatore che lancia la carta assistente al primo turno
-    private void initBag(PawnColor color, int n){
-        this.bag.replace(color,n);
+    private void initBag(PawnColor color,int n){
+        this.bag.replace(color, n);
     }
     private ArrayList<CharacterCard> initChosenCharacterCards() {
         return (ArrayList<CharacterCard>) getAllCharacterCards().subList(0,2);
