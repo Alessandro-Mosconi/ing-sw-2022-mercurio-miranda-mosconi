@@ -46,7 +46,6 @@ public class IslandManager {
     }
 
     public boolean checkIslands(Island primaryIsland, Island island2){
-        //if (this.islandList.get(islandPos).getTowerColor().equals(this.islandList.get(islandPos+1).getTowerColor()))
         return primaryIsland.getTowerColor().equals(island2.getTowerColor());
     }
 
