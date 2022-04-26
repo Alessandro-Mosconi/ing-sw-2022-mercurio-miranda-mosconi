@@ -42,6 +42,9 @@ public class Game {
     public void setSchoolBoards(ArrayList<SchoolBoard> schoolBoards) {
         this.schoolBoards = schoolBoards;
     }
+    public void setIslandManager(IslandManager islandManager) {
+        this.islandManager = islandManager;
+    }
     public IslandManager getIslandManager() {
         return islandManager;
     }
@@ -80,9 +83,6 @@ public class Game {
     }
     public void setAllCharacterCards(ArrayList<CharacterCard> allCharacterCards) {
         this.allCharacterCards = allCharacterCards;
-    }
-    public void setIslandManager(IslandManager islandManager) {
-        this.islandManager = islandManager;
     }
     public void setChosenCharacterCards(ArrayList<CharacterCard> chosenCharacterCards) {
         this.chosenCharacterCards = chosenCharacterCards;
@@ -158,24 +158,6 @@ public class Game {
             this.setBank(20);
         }
     }
-    public Player SelectFirstPlayer(){
-        int min_val=0;
-        int max_val=players.size();
-        Random rd=new Random();
-        int randNum=min_val+rd.nextInt((max_val - min_val) + 1);
-        return players.get(randNum);
-    }//genera casualmente il primo giocatore che lancia la carta assistente al primo turno
-    public void initBag(PawnColor color, int n){
-        this.bag.replace(color,n);
-    }
-    public ArrayList<CharacterCard> initChosenCharacterCards() {
-        return (ArrayList<CharacterCard>) getAllCharacterCards().subList(0,2);
-    }
-    public ArrayList<CharacterCard> getAllCharacterCards() {
-        return shuffleCharacterCards(allCharacterCards);
-    } /* restituisce tutte le charcards in disordine;
-     quando si chiama la init si pescano le prime 3 in disordine;
-     dopo la init si accede alle chosen tramite la get*/
     public void updatePlayerOrder(){
         ArrayList<Player> clonePlayerArray = this.players;
         clonePlayerArray.sort(new Comparator<Player>() {
@@ -269,6 +251,27 @@ public class Game {
                 this.bag.replace(rdColor, this.bag.get(rdColor)-1);
                 s.addStudentEntrance(rdColor);
             }
+            //manca da settare il colore delle torri
         }
     }
+    private Player SelectFirstPlayer(){
+        int min_val=0;
+        int max_val=players.size();
+        Random rd=new Random();
+        int randNum=min_val+rd.nextInt((max_val - min_val) + 1);
+        return players.get(randNum);
+    }//genera casualmente il primo giocatore che lancia la carta assistente al primo turno
+    private void initBag(PawnColor color, int n){
+        this.bag.replace(color,n);
+    }
+    private ArrayList<CharacterCard> initChosenCharacterCards() {
+        return (ArrayList<CharacterCard>) getAllCharacterCards().subList(0,2);
+    }
+    private ArrayList<CharacterCard> getAllCharacterCards() {
+        return shuffleCharacterCards(allCharacterCards);
+    } /* restituisce tutte le charcards in disordine;
+     quando si chiama la init si pescano le prime 3 in disordine;
+     dopo la init si accede alle chosen tramite la get*/
+
+
 }
