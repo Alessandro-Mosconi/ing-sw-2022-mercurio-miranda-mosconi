@@ -25,8 +25,8 @@ public class CloudTile {
         return students;
     }
 
-    public void setStudents(Map<PawnColor, Integer> students) {
-        this.students = students;
+    public void setStudents(PawnColor color, int n) {
+        this.students.replace(color,n);
     }
 
     public void addStudents(PawnColor color) {

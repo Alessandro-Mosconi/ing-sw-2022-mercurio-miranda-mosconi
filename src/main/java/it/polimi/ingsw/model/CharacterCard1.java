@@ -8,7 +8,7 @@ public class CharacterCard1 implements CardBehavior{
  */
     private Map<PawnColor,Integer> students;
 
-    Island island= new Island();
+    Island island;// = new Island();  NON ESISTE ANCORA UN COSTRUTTORE COSI'
     Game game= new Game();
 
     public void initCard(){
