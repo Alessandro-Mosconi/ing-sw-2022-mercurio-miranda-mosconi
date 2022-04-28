@@ -67,6 +67,7 @@ public SchoolBoard(int numTower, TowerColor colTower, GameMode gameMode) {
         return studentHall;
     }
 
+    /*
     public void setStudentHall(Map<PawnColor, Integer> studentHall) {
         this.studentHall = studentHall;
     }
@@ -74,6 +75,7 @@ public SchoolBoard(int numTower, TowerColor colTower, GameMode gameMode) {
     public void setStudentEntrance(Map<PawnColor, Integer> studentEntrance) {
         this.studentEntrance = studentEntrance;
     }
+*/
 
     public void addStudentEntrance(PawnColor color) {
         this.studentEntrance.replace(color, this.studentEntrance.get(color)+1);
@@ -102,11 +104,11 @@ public SchoolBoard(int numTower, TowerColor colTower, GameMode gameMode) {
     public void setTowersNumber(int towersNumber) {
         this.towersNumber = towersNumber;
     }
-
+/**
     public void setProfessorTable(Map<PawnColor, Boolean> professorTable) {
         this.professorTable = professorTable;
     }
-
+**/
     public void addProfessor(PawnColor color){this.professorTable.replace(color, true); }
 
     public void removeProfessor(PawnColor color){this.professorTable.replace(color, false); }

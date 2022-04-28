@@ -1,8 +1,11 @@
-package it.polimi.ingsw;
+package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 
@@ -10,10 +13,19 @@ public class CloudTileTest {
 
     @Test
     public void testConstructor(){
-        CloudTile cloud = new CloudTile();
+        Map<PawnColor, Integer> map = new HashMap<>();
 
+        for(PawnColor color : PawnColor.values())
+            map.put(color, 0);
+
+        CloudTile cloud = new CloudTile(map);
         for(PawnColor color : PawnColor.values()){
             assertEquals(cloud.getStudents().get(color), Integer.valueOf(0));
+        }
+
+        CloudTile cloud2 = new CloudTile();
+        for(PawnColor color : PawnColor.values()){
+            assertEquals(cloud2.getStudents().get(color), Integer.valueOf(0));
         }
     }
 
