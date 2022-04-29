@@ -6,29 +6,20 @@ public class CharacterCard1 implements CardBehavior{
     all'inizio della partita 4 studenti vengono piazzati sopra questa carta
     Eff: prendi 1 studente e piazzalo su un'isola a scelta; pesca uno studente e mettilo sulla carta
  */
-    private Map<PawnColor,Integer> students;
-
-    Island island;// = new Island();  NON ESISTE ANCORA UN COSTRUTTORE COSI'
-    Game game= new Game();
-
-    public void initCard(){
-       for(int i=0;i<4;i++){
-           refill();
-       }
-   }
+    private Map<PawnColor,Integer> students; //da inizializzare a 4 nel setup game
 
     @Override
-    public void Effect(){
+    public void Effect(Parameter parameter){
         PawnColor color = chooseColor();
-        moveToIsland(color, island);
-        refill();
+        moveToIsland(color, parameter.getIsland());
+        refill(parameter.getGame());
     }
-    //
+
     public void moveToIsland(PawnColor color, Island destination){
         this.students.replace(color, this.students.get(color)-1);
         destination.addStudent(color);
     }
-    public void refill(){
+    public void refill(Game game){
         PawnColor rdColor=PawnColor.randomColor();
         Map<PawnColor, Integer> clonedBag = game.getBag();
         if(clonedBag.get(rdColor)==0){
@@ -42,7 +33,10 @@ public class CharacterCard1 implements CardBehavior{
         game.getBag().replace(rdColor,clonedBag.get(rdColor));
     }
     public PawnColor chooseColor(){
+        //credo vada chiesto al controller il valore del colore da ritornare
        return null;
        //return chosenColor;
     }
+
+
 }
