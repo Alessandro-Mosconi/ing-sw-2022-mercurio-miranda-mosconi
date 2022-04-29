@@ -72,6 +72,7 @@ public class Player {
     public AssistantCard getLastAssistantCard() {
         return lastAssistantCard;
     }
+
 /* VIEW METHODE
     public int moveMotherNature(AssistantCard card){
         System.out.println("choose the movement, max "+ card.getMotherMovement());
@@ -86,7 +87,7 @@ public class Player {
 //move a specific student from the entrance to the hall
     public void moveFromEntranceToHall(PawnColor color){
         if(schoolBoard.getStudentEntrance().get(color)<=0)
-            System.out.println(color + "not present in Entrance");
+            System.out.println(color + " not present in Entrance");
         else {
             schoolBoard.removeStudentEntrance(color);
             schoolBoard.addStudentHall(color);
