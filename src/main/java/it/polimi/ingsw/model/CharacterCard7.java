@@ -1,11 +1,27 @@
 package it.polimi.ingsw.model;
 
-public class CharacterCard7 implements CardBehavior{
+import java.util.Map;
+
+public class CharacterCard7 implements CardBehavior {
 
     // all'inizio della partita peschiamo 6 studenti e li piazziamo qui. Possiamo prendere 3 studenti e scambiarli con 3 studenti
     // nel nostro ingresso
-    @Override
-    public void Effect() {
+    private Map<PawnColor, Integer> students;
 
+    //inizializzare con 6 studenti dalla bag nel setupGame se viene scelta questa carta
+    @Override
+    public void Effect(Parameter parameter) {
+        //da ripetere per max3 volte
+        PawnColor studentToTake = chooseColor();
+        PawnColor studentToGive = chooseColor();//eseguire dei controlli per verificare la presenza delle pedine scelte
+        parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(studentToGive, parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(studentToGive) - 1);
+        this.students.replace(studentToGive, this.students.get(studentToGive) + 1);
+        parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(studentToTake, parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(studentToTake) + 1);
+        this.students.replace(studentToGive, this.students.get(studentToGive) - 1);
+    }
+
+    public PawnColor chooseColor() {
+        //credo vada chiesto al controller il valore del colore da ritornare
+        return null;
     }
 }

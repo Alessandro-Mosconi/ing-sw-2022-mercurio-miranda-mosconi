@@ -4,16 +4,12 @@ public class CharacterCard3 implements CardBehavior{
 /*
     Eff: scegli un'isola e calcola l'infuenza
  */
-    private SchoolBoard[] schoolBoards;
-    private Island island;
-
-    public CharacterCard3(SchoolBoard[] schoolBoards, Island island) {
-        this.schoolBoards = schoolBoards;
-        this.island = island;
-    }//????????
 
     @Override
-    public void Effect(){//devo dargli come input le schoolboard
-        island.assignInfluence(schoolBoards);
+    public void Effect(Parameter parameter){
+        //parameter.getIsland().assignInfluence(parameter.getGame().getSchoolBoards());
+        parameter.getIsland().assignInfluence(parameter.getGame().getSchoolBoards().toArray(new SchoolBoard[0]));
     }
+
+    //perché assignInfluence di Island prende come input un array normale se abbiamo fatto tutto il resto in arraylist?
 }
