@@ -5,7 +5,7 @@ import java.util.*;
 public class Player {
     private final String nickName;
     private int wallet;
-    private final Deck wizardDeck;
+    private final Deck deck;
     private final int playerNumber;
     private final SchoolBoard schoolBoard;
     private AssistantCard lastAssistantCard;
@@ -13,16 +13,16 @@ public class Player {
     public Player(){
         this.nickName = null;
         this.wallet = 0;
-        this.wizardDeck = null;
+        this.deck = null;
         this.playerNumber = 0;
         this.schoolBoard = null;
         this.lastAssistantCard = null;
     }
 
-    public Player(String nickName, Deck wizard, int playerNumber, SchoolBoard schoolBoard) {
+    public Player(String nickName, Deck deck, int playerNumber, SchoolBoard schoolBoard) {
         this.nickName = nickName;
         this.wallet = 0;
-        this.wizardDeck = wizard;
+        this.deck = deck;
         this.playerNumber = playerNumber;
         this.schoolBoard = schoolBoard;
         this.lastAssistantCard = null;
@@ -41,7 +41,7 @@ public class Player {
     }
 
     public Deck getDeck() {
-        return wizardDeck;
+        return deck;
     }
 
     public int getPlayerNumber() {
@@ -54,12 +54,12 @@ public class Player {
 
     public void collectCoin(PawnColor color){
         if(schoolBoard.checkForCoin(color))
-            setWallet(getWallet()+1);
+            this.wallet = wallet +1;
     }
 
     public void useAssistantCard(AssistantCard card)
     {
-        for(AssistantCard chosenCard:this.wizardDeck.getCards())
+        for(AssistantCard chosenCard:this.deck.getCards())
         {
             if(chosenCard.equals(card) && !chosenCard.isConsumed())
             {
@@ -73,6 +73,7 @@ public class Player {
         return lastAssistantCard;
     }
 
+/* VIEW METHODE
     public int moveMotherNature(AssistantCard card){
         System.out.println("choose the movement, max "+ card.getMotherMovement());
         Scanner scanner = new Scanner(System.in);
@@ -80,11 +81,13 @@ public class Player {
         scanner.close();
         return a;
     }
+*/
+
 
 //move a specific student from the entrance to the hall
     public void moveFromEntranceToHall(PawnColor color){
         if(schoolBoard.getStudentEntrance().get(color)<=0)
-            System.out.println(color + "not present in Entrance");
+            System.out.println(color + " not present in Entrance");
         else {
             schoolBoard.removeStudentEntrance(color);
             schoolBoard.addStudentHall(color);
