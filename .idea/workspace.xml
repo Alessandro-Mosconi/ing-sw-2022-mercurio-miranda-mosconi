@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="">
+    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="Strategy pattern update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651152385538</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Strategy pattern update">
+      <created>1651262947277</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1651262947277</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,7 +328,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="classe di prova" />
@@ -337,7 +342,8 @@
     <MESSAGE value="CharacterCard9, 10, 11, 12" />
     <MESSAGE value="TestCloudTile added in test section" />
     <MESSAGE value="PlayerTest and SchoolBoardTest completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="PlayerTest and SchoolBoardTest completed" />
+    <MESSAGE value="Strategy pattern update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Strategy pattern update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -351,11 +357,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_2_more.ic" NAME="CloudTileTest and 2 more Coverage Results" MODIFIED="1651152494282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Eriantys$SchoolBoardTest.ic" NAME="SchoolBoardTest Coverage Results" MODIFIED="1651092700117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$it_polimi_ingsw_model_in_PSP42.ic" NAME="it.polimi.ingsw.model in PSP42 Coverage Results" MODIFIED="1651091091398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$PlayerTest.ic" NAME="PlayerTest Coverage Results" MODIFIED="1651151874996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -364,6 +366,10 @@
     <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest.ic" NAME="CloudTileTest Coverage Results" MODIFIED="1651093128869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$it_polimi_ingsw_model_in_PSP42.ic" NAME="it.polimi.ingsw.model in PSP42 Coverage Results" MODIFIED="1651091091398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_2_more.ic" NAME="CloudTileTest and 2 more Coverage Results" MODIFIED="1651152494282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Eriantys$SchoolBoardTest_and_1_more.ic" NAME="SchoolBoardTest and 1 more Coverage Results" MODIFIED="1651091137245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
