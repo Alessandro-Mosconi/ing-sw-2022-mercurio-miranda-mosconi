@@ -6,6 +6,6 @@ public class CharacterCard4 implements CardBehavior{
  */
     @Override
     public void Effect(Parameter parameter){
-
+//todo
     }
 }

@@ -8,6 +8,7 @@ public class CharacterCard6 implements CardBehavior{
         for(SchoolBoard p : parameter.getGame().getSchoolBoards()){
             if(parameter.getIsland().getTowerColor().equals(p.getTowersColor())){
                 //parameter.getIsland().calculatePlayerInfluence(p) -= parameter.getIsland().getTowersNumber();
+                //credo vada assegnato al player il valore dell'influenza per poter implementare in questo modo la carta
             }
         }
         //??

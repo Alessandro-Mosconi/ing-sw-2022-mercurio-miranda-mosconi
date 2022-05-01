@@ -12,7 +12,7 @@ public class CharacterCard12 implements CardBehavior{
             for(int i=0;i<3;i++) {
                 if(s.getStudentHall().get(chosenColor)>0) {
                     s.getStudentHall().replace(chosenColor, s.getStudentHall().get(chosenColor) - 1);
-                    //rimettere nella game.bag lo studente rimosso
+                    parameter.getGame().getBag().replace(chosenColor, parameter.getGame().getBag().get(chosenColor)+1);
                 }
             }
         }

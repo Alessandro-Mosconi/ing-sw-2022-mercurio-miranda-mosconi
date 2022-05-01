@@ -23,7 +23,7 @@ public class CharacterCard5 implements CardBehavior{
     public void Effect(Parameter parameter) {
         if(this.entryTile>0) {
             parameter.getIsland().setNoEntryTile(true);
-            this.entryTile = this.entryTile - 1;
+            this.setEntryTile( this.entryTile - 1 );
         }
     }
 }

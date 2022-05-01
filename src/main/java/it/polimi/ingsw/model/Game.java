@@ -131,9 +131,6 @@ public class Game {
         int n = 100000 - 0 + 1;
         int j = rn.nextInt() % n;
         this.setGameID(j); */
-        ArrayList<CloudTile> cloudTiles = generateCloudTiles(numberOfPlayers);
-        fillCloudTiles(numberOfPlayers, cloudTiles);
-        this.setCloudTiles(cloudTiles);
         ArrayList<Island> islands = generateIslands();
         IslandManager islandManager= new IslandManager(islands);
         this.setIslandManager(islandManager);
@@ -144,16 +141,19 @@ public class Game {
         initSchoolBoards(schoolBoards);
         this.setSchoolBoards(schoolBoards);
         Player firstPlayer = SelectFirstPlayer();
-        ArrayList<Integer> tmpOrder = new ArrayList<Integer>(numberOfPlayers);
+        ArrayList<Integer> tmpOrder = new ArrayList<>(numberOfPlayers);
         for(int i=0;i<numberOfPlayers;i++){
             tmpOrder.add(firstPlayer.getPlayerNumber()+i);
         }
         this.setPlayerOrder(tmpOrder);
-        ArrayList<WizardType> wizards = new ArrayList<WizardType>(numberOfPlayers);{
+        ArrayList<WizardType> wizards = new ArrayList<>(numberOfPlayers);{
             for(Player p : players) {
                 wizards.add(p.getDeck().getWizard());
             }
         }
+        ArrayList<CloudTile> cloudTiles = generateCloudTiles(numberOfPlayers);
+        fillCloudTiles(numberOfPlayers, cloudTiles);
+        this.setCloudTiles(cloudTiles);
         this.setWizards(wizards);
         if(gamemode.equals(GameMode.expert)){
             ArrayList<CharacterCard> chosenCharacterCards = initChosenCharacterCards();
@@ -169,7 +169,7 @@ public class Game {
                 return i1.getLastAssistantCard().getValue() - i2.getLastAssistantCard().getValue();
             }
         });
-        ArrayList<Integer> tmpOrder = new ArrayList<Integer>(numberOfPlayers);
+        ArrayList<Integer> tmpOrder = new ArrayList<>(numberOfPlayers);
         for(int i=0;i<numberOfPlayers;i++){
             tmpOrder.add(clonePlayerArray.get(i).getPlayerNumber());
         }
@@ -178,14 +178,22 @@ public class Game {
     }
 //setupGame extractions
     private ArrayList<Island> generateIslands() {
-        ArrayList<Island> islands = new ArrayList<Island>(12);
+        ArrayList<Island> islands = new ArrayList<>(12);
         {
             {
+                Map<PawnColor,Integer> initializationBag = new HashMap<>();
+                for(PawnColor col : PawnColor.values()){
+                    initializationBag.replace(col,2);
+                    this.bag.replace(col,this.bag.get(col)-2);
+                } /*
+                    rileggendo le regole mi sono accorto che il setup delle isole non è completamente random
+                    ma bisogna mettere 2 studenti per ogni colore sulle isole
+                */
                 for(int i=0;i<12;i++){
                     islands.add(new Island(null,null,0,false,false));
                     if(i!=0&&i!=5){
                         PawnColor rdColor=PawnColor.randomColor();
-                        this.bag.replace(rdColor, this.bag.get(rdColor)-1);
+                        initializationBag.replace(rdColor, initializationBag.get(rdColor)-1);
                         islands.get(i).addStudent(rdColor);
                     }//initializes islands with students
                     else if(i==0){
@@ -197,7 +205,7 @@ public class Game {
         return islands;
     }
     private ArrayList<SchoolBoard> generateSchoolBoards(int numberOfPlayers) {
-        ArrayList<SchoolBoard> schoolBoards= new ArrayList<SchoolBoard>(numberOfPlayers);
+        ArrayList<SchoolBoard> schoolBoards= new ArrayList<>(numberOfPlayers);
         {
             for(int i = 0; i< numberOfPlayers; i++){
                 schoolBoards.add(new SchoolBoard());
@@ -216,7 +224,7 @@ public class Game {
         }
     }
     private ArrayList<CloudTile> generateCloudTiles(int numberOfPlayers) {
-        ArrayList<CloudTile> cloudTiles = new ArrayList<CloudTile>(numberOfPlayers);
+        ArrayList<CloudTile> cloudTiles = new ArrayList<>(numberOfPlayers);
         {
             for(int i = 0; i< numberOfPlayers; i++){
                 cloudTiles.add(new CloudTile());
@@ -230,7 +238,7 @@ public class Game {
         }//setta la bag ai valori di default
     }
     private ArrayList<Player> generatePlayers(int numberOfPlayers) {
-        ArrayList<Player> players = new ArrayList<Player>(numberOfPlayers);
+        ArrayList<Player> players = new ArrayList<>(numberOfPlayers);
         {
             for(int i = 0; i< numberOfPlayers; i++){
                 players.add(new Player());
