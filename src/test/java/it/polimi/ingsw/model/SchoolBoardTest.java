@@ -88,11 +88,11 @@ class SchoolBoardTest {
     @Test
     void checkForCoin() {
         SchoolBoard schoolboard = new SchoolBoard(6, TowerColor.grey, GameMode.easy);
-        assertEquals(schoolboard.checkForCoin(PawnColor.blue), false);
+        assertFalse(schoolboard.checkForCoin(PawnColor.blue));
 
         SchoolBoard schoolboard2 = new SchoolBoard(6, TowerColor.grey, GameMode.expert);
         schoolboard2.addStudentEntrance(PawnColor.blue, 6);
-        assertEquals(schoolboard2.checkForCoin(PawnColor.blue), true);
+        assertTrue(schoolboard2.checkForCoin(PawnColor.blue));
 
     }
 }
