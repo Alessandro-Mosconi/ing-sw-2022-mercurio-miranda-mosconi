@@ -14,6 +14,16 @@ public class CharacterCard11 implements CardBehavior{
         parameter.getPlayer().getSchoolBoard().getStudentHall().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentHall().get(chosenColor)+1);
         refill(parameter.getGame());
     }
+
+    @Override
+    public void initializeCard(Parameter parameter) {
+        for(int i=0;i<4;i++){
+            PawnColor rdColor = PawnColor.randomColor();
+            parameter.getGame().getBag().replace(rdColor, parameter.getGame().getBag().get(rdColor)-1);
+            this.students.replace(rdColor, this.students.get(rdColor)+1);
+        }
+    }
+
     public PawnColor chooseColor() {
         //credo vada chiesto al controller il valore del colore da ritornare
         return null;

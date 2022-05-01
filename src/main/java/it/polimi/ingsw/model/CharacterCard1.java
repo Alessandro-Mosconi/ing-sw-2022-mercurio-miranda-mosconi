@@ -15,6 +15,15 @@ public class CharacterCard1 implements CardBehavior{
         refill(parameter.getGame());
     }
 
+    @Override
+    public void initializeCard(Parameter parameter) {
+        for(int i=0;i<4;i++){
+            PawnColor rdColor = PawnColor.randomColor();
+            parameter.getGame().getBag().replace(rdColor, parameter.getGame().getBag().get(rdColor)-1);
+            this.students.replace(rdColor, this.students.get(rdColor)+1);
+        }
+    }
+
     public void moveToIsland(PawnColor color, Island destination){
         this.students.replace(color, this.students.get(color)-1);
         destination.addStudent(color);

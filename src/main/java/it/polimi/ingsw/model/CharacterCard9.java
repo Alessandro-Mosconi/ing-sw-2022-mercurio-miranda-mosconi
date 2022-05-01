@@ -10,6 +10,11 @@ public class CharacterCard9 implements CardBehavior{
         //todo anche questo da capire
     }
 
+    @Override
+    public void initializeCard(Parameter parameter) {
+        //none
+    }
+
 
     public PawnColor chooseColor() {
         //credo vada chiesto al controller il valore del colore da ritornare

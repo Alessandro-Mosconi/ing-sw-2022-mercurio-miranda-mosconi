@@ -10,7 +10,7 @@ public class CharacterCard5 implements CardBehavior{
         this.entryTile = entryTile;
     }
 
-    private int entryTile = 4;
+    private int entryTile;
 
     // ad inizio partita mettiamo le 4 tessere divieto su questa carta. Quando si usa la carta si sposta una tessera divieto su
     // un'isola e resta lì finché non ci va madre natura.
@@ -25,6 +25,11 @@ public class CharacterCard5 implements CardBehavior{
             parameter.getIsland().setNoEntryTile(true);
             this.setEntryTile( this.entryTile - 1 );
         }
+    }
+
+    @Override
+    public void initializeCard(Parameter parameter) {
+        this.setEntryTile(4);
     }
 }
 

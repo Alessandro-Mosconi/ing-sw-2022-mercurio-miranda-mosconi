@@ -17,6 +17,12 @@ public class CharacterCard12 implements CardBehavior{
             }
         }
     }
+
+    @Override
+    public void initializeCard(Parameter parameter) {
+        //none
+    }
+
     public PawnColor chooseColor() {
         //credo vada chiesto al controller il valore del colore da ritornare
         return null;

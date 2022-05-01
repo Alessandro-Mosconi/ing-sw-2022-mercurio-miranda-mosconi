@@ -8,4 +8,9 @@ public class CharacterCard4 implements CardBehavior{
     public void Effect(Parameter parameter){
 //todo
     }
+
+    @Override
+    public void initializeCard(Parameter parameter) {
+        //none
+    }
 }

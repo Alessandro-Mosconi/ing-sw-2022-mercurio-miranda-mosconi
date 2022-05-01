@@ -18,6 +18,12 @@ public class CharacterCard2 implements CardBehavior{
         //alla fine del turno ripristino
         parameter.getGame().setSchoolBoards(currentSchoolBoards);
     }
+
+    @Override
+    public void initializeCard(Parameter parameter) {
+        //none
+    }
+
     public void tmpUpdateProfessors(){
         for(PawnColor color : PawnColor.values()) {
             int currentMax = 0;

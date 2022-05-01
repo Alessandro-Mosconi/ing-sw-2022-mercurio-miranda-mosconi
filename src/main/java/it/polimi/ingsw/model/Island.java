@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Island {
@@ -40,11 +40,8 @@ public class Island {
 
     //is this really useful?
     private void setIslandStudents(Map<PawnColor, Integer> islandStudents) {
-        for (Map.Entry<PawnColor, Integer> entry : this.islandStudents.entrySet()) {
-            // using put method to copy one Map to Other
-            islandStudents.put(entry.getKey(),
-                    entry.getValue());
-        }
+        // using put method to copy one Map to Other
+        islandStudents.putAll(this.islandStudents);
     }
 
     public int getStudentNumber(PawnColor color){
@@ -71,17 +68,17 @@ public class Island {
 
     //We should modify it if there's a 4 player game, as this version does not support it.
     public int calculatePlayerInfluence(SchoolBoard schoolboard){
-        int totStudents = 0;
+        int influencePoints = 0;
         for (PawnColor color : schoolboard.getProfessorTable().keySet()){
                if (schoolboard.getProfessorTable().get(color))
-                   totStudents += getStudentNumber(color);
+                   influencePoints += getStudentNumber(color);
         }
         if (schoolboard.getTowersColor().equals(this.towerColor))
-            totStudents += getTowersNumber();
-        return totStudents;
+            influencePoints += getTowersNumber();
+        return influencePoints;
     }
-
-    public void assignInfluence(SchoolBoard[] schoolBoardsArray){
+// todo re-implementare assign influence per permettere alle carte di modificare il valore dell'influnenza del singolo player
+    public void assignInfluence(ArrayList<SchoolBoard> schoolBoardsArray){
         int maxInfluence = 0;
         TowerColor influence = null;
 

@@ -13,5 +13,10 @@ public class CharacterCard6 implements CardBehavior{
         }
         //??
     }
+
+    @Override
+    public void initializeCard(Parameter parameter) {
+        //none
+    }
 }
 

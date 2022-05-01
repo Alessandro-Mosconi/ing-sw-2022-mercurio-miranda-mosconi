@@ -6,7 +6,7 @@ public class CharacterCard10 implements CardBehavior{
     @Override
     public void Effect(Parameter parameter) {
         //max 2 volte
-        PawnColor chosenColor= chooseColor();
+        PawnColor chosenColor = chooseColor();
         parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(chosenColor)-1);
         parameter.getPlayer().getSchoolBoard().getStudentHall().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentHall().get(chosenColor)+1);
         //da entrance to hall
@@ -14,6 +14,12 @@ public class CharacterCard10 implements CardBehavior{
         parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(chosenColor)+1);
         //da hall to entrance
     }
+
+    @Override
+    public void initializeCard(Parameter parameter) {
+        //none
+    }
+
     public PawnColor chooseColor() {
         //credo vada chiesto al controller il valore del colore da ritornare
         return null;

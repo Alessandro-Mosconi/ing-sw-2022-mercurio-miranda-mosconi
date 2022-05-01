@@ -7,4 +7,9 @@ public class CharacterCard8 implements CardBehavior{
     public void Effect(Parameter parameter) {
         //todo come la carta n6, capire come modificare l'influenza del singolo player
     }
+
+    @Override
+    public void initializeCard(Parameter parameter) {
+        //none
+    }
 }

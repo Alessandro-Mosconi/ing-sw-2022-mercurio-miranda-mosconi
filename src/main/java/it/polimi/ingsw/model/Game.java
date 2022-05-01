@@ -122,9 +122,10 @@ public class Game {
         Collections.shuffle(allCharacterCards);
         return allCharacterCards;
     }
-    public void SetUpGame(int numberOfPlayers, GameMode gamemode)/*gamemode e noOfPlayers si prendono dal controller?*/{
+    public void setupGame(int numberOfPlayers, GameMode gamemode)/*gamemode e noOfPlayers si prendono dal controller?*/{
         this.setNumberOfPlayers(numberOfPlayers);
         this.setGameMode(gamemode);
+        this.bag = new HashMap<>();
         fillBag();
         /* generatore randomico ID del game (?)
         Random rn = new Random();
@@ -136,14 +137,14 @@ public class Game {
         this.setIslandManager(islandManager);
         ArrayList<Player> players = generatePlayers(numberOfPlayers);
         this.setPlayers(players);
-            //todo inizializzare i players
+            //todo inizializzare i players - probabilmente verrà fatto dal controller che darà in input al setupGame l'array di players da settare
         ArrayList<SchoolBoard> schoolBoards = generateSchoolBoards(numberOfPlayers);
         initSchoolBoards(schoolBoards);
         this.setSchoolBoards(schoolBoards);
         Player firstPlayer = SelectFirstPlayer();
         ArrayList<Integer> tmpOrder = new ArrayList<>(numberOfPlayers);
         for(int i=0;i<numberOfPlayers;i++){
-            tmpOrder.add(firstPlayer.getPlayerNumber()+i);
+            tmpOrder.add(firstPlayer.getPlayerNumber()+i % numberOfPlayers);
         }
         this.setPlayerOrder(tmpOrder);
         ArrayList<WizardType> wizards = new ArrayList<>(numberOfPlayers);{
@@ -151,11 +152,12 @@ public class Game {
                 wizards.add(p.getDeck().getWizard());
             }
         }
+        this.setWizards(wizards);//todo forse il mago viene scelto nel setup del controller ?
         ArrayList<CloudTile> cloudTiles = generateCloudTiles(numberOfPlayers);
         fillCloudTiles(numberOfPlayers, cloudTiles);
         this.setCloudTiles(cloudTiles);
-        this.setWizards(wizards);
         if(gamemode.equals(GameMode.expert)){
+            initAllCharacterCards();
             ArrayList<CharacterCard> chosenCharacterCards = initChosenCharacterCards();
             this.setChosenCharacterCards(chosenCharacterCards);
             this.setBank(20);
@@ -164,7 +166,6 @@ public class Game {
     public void updatePlayerOrder(){
         ArrayList<Player> clonePlayerArray = this.players;
         clonePlayerArray.sort(new Comparator<Player>() {
-            @Override
             public int compare(Player i1, Player i2) {
                 return i1.getLastAssistantCard().getValue() - i2.getLastAssistantCard().getValue();
             }
@@ -181,19 +182,16 @@ public class Game {
         ArrayList<Island> islands = new ArrayList<>(12);
         {
             {
-                Map<PawnColor,Integer> initializationBag = new HashMap<>();
+                Map<PawnColor,Integer> islandInitializationBag = new HashMap<>();
                 for(PawnColor col : PawnColor.values()){
-                    initializationBag.replace(col,2);
+                    islandInitializationBag.replace(col,2);
                     this.bag.replace(col,this.bag.get(col)-2);
-                } /*
-                    rileggendo le regole mi sono accorto che il setup delle isole non è completamente random
-                    ma bisogna mettere 2 studenti per ogni colore sulle isole
-                */
+                }
                 for(int i=0;i<12;i++){
                     islands.add(new Island(null,null,0,false,false));
                     if(i!=0&&i!=5){
                         PawnColor rdColor=PawnColor.randomColor();
-                        initializationBag.replace(rdColor, initializationBag.get(rdColor)-1);
+                        islandInitializationBag.replace(rdColor, islandInitializationBag.get(rdColor)-1);
                         islands.get(i).addStudent(rdColor);
                     }//initializes islands with students
                     else if(i==0){
@@ -205,7 +203,7 @@ public class Game {
         return islands;
     }
     private ArrayList<SchoolBoard> generateSchoolBoards(int numberOfPlayers) {
-        ArrayList<SchoolBoard> schoolBoards= new ArrayList<>(numberOfPlayers);
+        ArrayList<SchoolBoard> schoolBoards = new ArrayList<>(numberOfPlayers);
         {
             for(int i = 0; i< numberOfPlayers; i++){
                 schoolBoards.add(new SchoolBoard());
@@ -218,7 +216,7 @@ public class Game {
             for(int i=0;i<3;i++){
                 moveFromBagToCloud(c);
             }
-            if(numberOfPlayers ==3){
+            if(numberOfPlayers == 3){
                 moveFromBagToCloud(c);
             }
         }
@@ -247,7 +245,7 @@ public class Game {
         return players;
     }
     private void initSchoolBoards(ArrayList<SchoolBoard> schoolBoards) {
-        for(SchoolBoard s: schoolBoards){
+        /* for(SchoolBoard s: schoolBoards){
             if(this.numberOfPlayers==2){
                 s.setTowersNumber(8);
             }
@@ -256,25 +254,27 @@ public class Game {
             }
             if(this.numberOfPlayers==4){
                 s.setTowersNumber(4);
-            }
+            }qui va modificato -- todo valutare di aggiungere un attributo che indichi squadra al player e ricordarsi di cambiare le torri qunado si gioca in 4
             for(int i=0;i<7;i++){
                 PawnColor rdColor=PawnColor.randomColor();
                 this.bag.replace(rdColor, this.bag.get(rdColor)-1);
                 s.addStudentEntrance(rdColor);
             }
-            //manca da settare il colore delle torri
-        }
+            manca da settare il colore delle torri
+
+        }*/
     }
     private Player SelectFirstPlayer(){
-        int min_val=0;
-        int max_val=players.size();
-        Random rd=new Random();
-        int randNum=min_val+rd.nextInt((max_val - min_val) + 1);
+        int min_val = 0;
+        int max_val = players.size();
+        Random rd = new Random();
+        int randNum = min_val+rd.nextInt((max_val - min_val) + 1);
         return players.get(randNum);
     }//genera casualmente il primo giocatore che lancia la carta assistente al primo turno
     private void initBag(PawnColor color,int n){
         this.bag.replace(color, n);
     }
+    //gestione init character cards
     private ArrayList<CharacterCard> initChosenCharacterCards() {
         return (ArrayList<CharacterCard>) getAllCharacterCards().subList(0,2);
     }
@@ -283,6 +283,18 @@ public class Game {
     } /* restituisce tutte le charcards in disordine;
      quando si chiama la init si pescano le prime 3 in disordine;
      dopo la init si accede alle chosen tramite la get*/
-
-
+    private void initAllCharacterCards(){
+        this.allCharacterCards.add(new CharacterCard (1, new CharacterCard1()));
+        this.allCharacterCards.add(new CharacterCard (2, new CharacterCard2()));
+        this.allCharacterCards.add(new CharacterCard (3, new CharacterCard3()));
+        this.allCharacterCards.add(new CharacterCard (1, new CharacterCard4()));
+        this.allCharacterCards.add(new CharacterCard (2, new CharacterCard5()));
+        this.allCharacterCards.add(new CharacterCard (3, new CharacterCard6()));
+        this.allCharacterCards.add(new CharacterCard (1, new CharacterCard7()));
+        this.allCharacterCards.add(new CharacterCard (2, new CharacterCard8()));
+        this.allCharacterCards.add(new CharacterCard (3, new CharacterCard9()));
+        this.allCharacterCards.add(new CharacterCard (1, new CharacterCard10()));
+        this.allCharacterCards.add(new CharacterCard (2, new CharacterCard11()));
+        this.allCharacterCards.add(new CharacterCard (3, new CharacterCard12()));
+    }
 }
