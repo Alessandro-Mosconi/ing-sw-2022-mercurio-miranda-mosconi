@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/deliveries/Communication Protocol.md" beforeDir="false" afterPath="$PROJECT_DIR$/deliveries/Communication Protocol.md" afterDir="false" />
+    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="IslandManagerTest completed">
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/IslandManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/IslandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/IslandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/PlayerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +76,7 @@
       <recent name="it.polimi.ingsw.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IslandTest">
+  <component name="RunManager" selected="JUnit.CloudTileTest and 4 more">
     <configuration name="CloudTileTest and 2 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PSP42" />
       <option name="TEST_OBJECT" value="pattern" />
@@ -86,7 +89,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CloudTileTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CloudTileTest and 4 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PSP42" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="it.polimi.ingsw.model.CloudTileTest" />
+        <pattern testClass="it.polimi.ingsw.model.IslandManagerTest" />
+        <pattern testClass="it.polimi.ingsw.model.IslandTest" />
+        <pattern testClass="it.polimi.ingsw.model.PlayerTest" />
+        <pattern testClass="it.polimi.ingsw.model.SchoolBoardTest" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IslandManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PSP42" />
       <extension name="coverage">
         <pattern>
@@ -95,8 +112,19 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CloudTileTest" />
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.IslandManagerTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IslandTest and 1 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PSP42" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="it.polimi.ingsw.model.IslandTest" />
+        <pattern testClass="it.polimi.ingsw.model.IslandManagerTest" />
+      </patterns>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -116,21 +144,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PSP42" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.PlayerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Testing" type="JUnit" factoryName="JUnit">
       <module name="PSP42" />
       <option name="PACKAGE_NAME" value="it.polimi.ingsw" />
@@ -141,35 +154,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="it.polimi.ingsw.model in PSP42" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PSP42" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="JUnit.Testing" />
-      <item itemvalue="JUnit.CloudTileTest" />
-      <item itemvalue="JUnit.it.polimi.ingsw.model in PSP42" />
-      <item itemvalue="JUnit.PlayerTest" />
       <item itemvalue="JUnit.CloudTileTest and 2 more" />
       <item itemvalue="JUnit.IslandTest" />
+      <item itemvalue="JUnit.IslandTest and 1 more" />
+      <item itemvalue="JUnit.IslandManagerTest" />
+      <item itemvalue="JUnit.CloudTileTest and 4 more" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CloudTileTest and 4 more" />
+        <item itemvalue="JUnit.IslandManagerTest" />
+        <item itemvalue="JUnit.IslandTest and 1 more" />
         <item itemvalue="JUnit.IslandTest" />
         <item itemvalue="JUnit.CloudTileTest and 2 more" />
-        <item itemvalue="JUnit.PlayerTest" />
-        <item itemvalue="JUnit.it.polimi.ingsw.model in PSP42" />
-        <item itemvalue="JUnit.CloudTileTest" />
       </list>
     </recent_temporary>
   </component>
@@ -201,7 +200,8 @@
       <workItem from="1651152230634" duration="412000" />
       <workItem from="1651216976659" duration="408000" />
       <workItem from="1651471491286" duration="1966000" />
-      <workItem from="1651475186765" duration="5935000" />
+      <workItem from="1651475186765" duration="8519000" />
+      <workItem from="1651490198169" duration="8291000" />
     </task>
     <task id="LOCAL-00001" summary="classe di prova">
       <created>1647356869665</created>
@@ -329,7 +329,21 @@
       <option name="project" value="LOCAL" />
       <updated>1651483257739</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Communication Protocol, no sequence diagram">
+      <created>1651483292126</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1651483292126</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Communication Protocol, no sequence diagram">
+      <created>1651483432968</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1651483432969</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,13 +389,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/PlayerTest.java</url>
-          <line>123</line>
+          <line>124</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Eriantys$IslandManagerTest.ic" NAME="IslandManagerTest Coverage Results" MODIFIED="1651498467671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_2_more.ic" NAME="CloudTileTest and 2 more Coverage Results" MODIFIED="1651152494282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Eriantys$SchoolBoardTest.ic" NAME="SchoolBoardTest Coverage Results" MODIFIED="1651092700117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
@@ -392,6 +409,7 @@
     <SUITE FILE_PATH="coverage/Eriantys$PlayerTest.ic" NAME="PlayerTest Coverage Results" MODIFIED="1651151874996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_4_more.ic" NAME="CloudTileTest and 4 more Coverage Results" MODIFIED="1651500247717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest.ic" NAME="CloudTileTest Coverage Results" MODIFIED="1651219044908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>

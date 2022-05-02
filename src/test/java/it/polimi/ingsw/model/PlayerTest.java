@@ -74,6 +74,7 @@ class PlayerTest {
         Player player = new Player("bob", deck, 3, schoolboard);
 
         player.moveFromEntranceToHall(PawnColor.yellow);
+        player.moveFromEntranceToHall(PawnColor.red);
 
         assertEquals(player.getSchoolBoard().getStudentEntrance().get(PawnColor.yellow), Integer.valueOf(2));
         assertEquals(player.getSchoolBoard().getStudentHall().get(PawnColor.yellow), Integer.valueOf(1));

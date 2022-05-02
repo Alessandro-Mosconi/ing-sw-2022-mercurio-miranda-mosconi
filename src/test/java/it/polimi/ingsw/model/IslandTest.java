@@ -26,6 +26,20 @@ class IslandTest {
     }
 
     @Test
+    void setTowerColor(){
+        Map<PawnColor, Integer> map = new HashMap<PawnColor, Integer>();
+
+        for(PawnColor color : PawnColor.values())
+            map.put(color, 0);
+
+        Island island = new Island(map, null, 0, false, false);
+
+        island.setTowerColor(TowerColor.grey);
+        assertEquals(island.getTowerColor(), TowerColor.grey);
+
+    }
+
+    @Test
     void assignInfluence() {
         Map<PawnColor, Integer> map = new HashMap<PawnColor, Integer>();
 
@@ -46,11 +60,11 @@ class IslandTest {
         assertEquals(island.calculatePlayerInfluence(schoolboard), Integer.valueOf(2));
         assertEquals(island.calculatePlayerInfluence(schoolboard2), Integer.valueOf(3));
 
-        SchoolBoard[] array2 = new SchoolBoard[2];
-        array2[0]=schoolboard;
-        array2[1]=schoolboard2;
+        ArrayList<SchoolBoard> array = new ArrayList<SchoolBoard>();
+        array.add(schoolboard);
+        array.add(schoolboard2);
 
-        island.assignInfluence(array2);
+        island.assignInfluence(array);
 
         assertEquals(island.getTowerColor(), TowerColor.black);
     }
