@@ -99,16 +99,17 @@ Example of a possible error message during login (when you try to create a new G
 
 | Source     | Message Type  | payload content    |  description
 | :----:     |    :----:   |          :----:  |     :----:  |
-| Server     | LOGIN_SUCCESFUL       | null    | login procedure has been succesfull completed
-| Server     | RECONNECTED  | null | client has been successfully reconnected to server
-| Server     | DISCONNECTED   |   player's username   | inform clients that a player has disconnected
+| Server     | LOGIN_SUCCESSFUL       | null    | login procedure has been succesfull completed
+| Server     | RECONNECTED  | player username | client has been successfully reconnected to server
+| Server     | DISCONNECTED   |   player username   | inform clients that a player has disconnected
+| Server     | QUIT |  player username  | sent by the server to notify that a user quitted the game
 | Server     | ERROR  | an error type  | notifies the client that an error occured
 | Server     | SETTINGS       | null     | tell the client that server is in a state where he expects the number of players and the game difficulty
 | Server     | GAME_STARTED | List\<String\> of the players' usernames | indicates to all clients that game has started
 | Server     | LOBBY_CREATED | number of remaining required players (int) | confirms to the client that he joined the lobby succesfully
 | Server     | OTHER_USER_JOINED |   number of remaining required players (int)   | tells every client that a new player joined
 | Server     | SERVER_DOWN |  null    | notifies the client that the server is crashed
-| Server     | NEXT_TURN | "Turn Object"? | updates the client about the new turn (planning -> action / my action -> next player action)
+| Server     | NEXT_STATE | State object | updates the client about the new turn (planning -> action / my action -> next player action)
 | Server     | GAME_ENDED | "user", "motivation"| tells every client who's the winner
 | Server     | PLANNING        | null     | the server notify the beginning of the planning phase
 | Server     | ACTION        | null     | the server notify the beginning of the action phase
@@ -119,16 +120,16 @@ Example of a possible error message during login (when you try to create a new G
 | Client     | QUIT |  null  | sent by the client to the server to QUIT the game
 | Client     | END_ACTION_TURN      | null     | this message notify the server that a player has ended its action turn
 | Client     | _IN_GAME_ACTION_        | classes needed for the action     | this message contains the different possible decision a Player could do
-| Client     | _MODEL_UPDATE_        | classes updated     | this message contains the classes tha are changed after the actions
+| Server     | _MODEL_UPDATE_        | classes updated     | this message contains the classes tha are changed after the actions
 
 ### In Game Action Table
 | Action Type | parameters |description |
 | :----: | :----: | :----: |
 | ChoseWizard | `Wizard` | choose on deck from the 4 possible
-| Planning | `AssistantCard` | activate chose the Assistant Card
+| Planning | `AssistantCard` | choose the Assistant Card
 | MoveToIsland |`color`, `IslandManager position`| move a student from the Entrance to an Island
 | MoveToHall | `color`| move a student from the Entrance to a Hall
-| MoveMN |`shift`| player decided how many step the MN do
+| MoveMN |`shift`| player decided how many steps the MN does
 | ChoseCloudTile |`CloudTile Array position`| choose a cloud to take students from
 | BuyCharacterCard |`characterCard`| buy, if enough money, a Character Card and use its effect
 
