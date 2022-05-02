@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/deliveries/Communication Protocol.md" beforeDir="false" afterPath="$PROJECT_DIR$/deliveries/Communication Protocol.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deliveries/Sequence Diagram examples/create_match.png" beforeDir="false" afterPath="$PROJECT_DIR$/deliveries/Sequence_Diagram examples/create_match.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deliveries/Sequence Diagram examples/join_match.png" beforeDir="false" afterPath="$PROJECT_DIR$/deliveries/Sequence_Diagram examples/join_match.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deliveries/Sequence Diagram examples/ping_message.png" beforeDir="false" afterPath="$PROJECT_DIR$/deliveries/Sequence_Diagram examples/ping_message.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deliveries/Sequence Diagram examples/planning_phase.png" beforeDir="false" afterPath="$PROJECT_DIR$/deliveries/Sequence_Diagram examples/planning_phase.png" afterDir="false" />
-    </list>
+    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -211,7 +205,7 @@
       <workItem from="1651475186765" duration="8519000" />
       <workItem from="1651490198169" duration="14841000" />
       <workItem from="1651520700051" duration="2645000" />
-      <workItem from="1651525854188" duration="374000" />
+      <workItem from="1651525854188" duration="720000" />
     </task>
     <task id="LOCAL-00001" summary="classe di prova">
       <created>1647356869665</created>
@@ -388,7 +382,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651525975308</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Communication Protocol with sequence diagram">
+      <created>1651526565865</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1651526565865</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,7 +433,8 @@
     <MESSAGE value="Communication Protocol fixed" />
     <MESSAGE value="Communication Protocol no sequence diagram" />
     <MESSAGE value="Communication Protocol + sequence diagram folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Communication Protocol + sequence diagram folder" />
+    <MESSAGE value="Communication Protocol with sequence diagram" />
+    <option name="LAST_COMMIT_MESSAGE" value="Communication Protocol with sequence diagram" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
