@@ -33,6 +33,8 @@ Example of new game creation:
 }
 ```
 
+![create_match](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/deliveries/Sequence_Diagram_Examples/create_match.png)
+
 Example of a message from server asking for th settings:
 
 ```json
