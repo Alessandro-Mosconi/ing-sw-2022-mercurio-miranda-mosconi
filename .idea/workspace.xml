@@ -202,7 +202,7 @@
       <workItem from="1651152230634" duration="412000" />
       <workItem from="1651216976659" duration="408000" />
       <workItem from="1651471491286" duration="1966000" />
-      <workItem from="1651475186765" duration="4217000" />
+      <workItem from="1651475186765" duration="5625000" />
     </task>
     <task id="LOCAL-00001" summary="classe di prova">
       <created>1647356869665</created>
@@ -316,7 +316,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651478907527</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Communication Protocol, no sequence diagram">
+      <created>1651479452299</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1651479452299</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

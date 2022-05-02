@@ -147,10 +147,14 @@ Example of a possible error message during login (when you try to create a new G
 | Error Type | description |
 | :----: | :----: |
 | UNKNOWN_ERROR |
-| INVALID_LOGIN_USERNAME | a player is trying to rejoin a match with a user that doesnt match with anyone of the Player List
+| USERNAME_NOT_FOUND | a player is trying to rejoin a match with a user that doesnt match with anyone of the Player List
 | INVALID_SETTINGS | the selected number of players is invalid
 | GAME_ALREADY_STARTED | a player tries to JOIN a game already started 
 | GAME_ALREADY_EXISTING | a player tries to CREATE a game with an idGame of a game already existing
+| INVALID_LOGIN_USERNAME | username is empty or null
+| INVALID_NUM_PLAYER | num_player is empty, null, <2 or >4 
+| INVALID_DIFFICULTY | difficulty is empty, null, != easy or expert
+
 
 #### Controller Errors
 | Error Type | description |
@@ -159,5 +163,15 @@ Example of a possible error message during login (when you try to create a new G
 | INVALID_ACTION | action not correctly initialized
 | WRONG_ACTION | action can't be performed now
 | WRONG_PLAYER | not their turn
-| NOT_ENOUGH_MONEY? | trying to buy a CharacterCard, but with not enough money
+
+#### Model Errors
+| Error Type | description |
+| :----: | :----: |
+| NOT_ENOUGH_MONEY | trying to buy a CharacterCard, but with not enough money
+| INVALID_REMOVAL_HALL_STUDENT | trying to remove a student that doesn't exists from the hall
+| INVALID_REMOVAL_ENTRANCE_STUDENT | trying to remove a student that doesn't exists from the entrance
+| INVALID_REMOVAL_CLOUD_STUDENT | trying to remove a student that doesn't exists from the cloud
+| INVALID_REMOVAL_ISLAND_STUDENT | trying to remove a student from that doesn't exists  the island
+| INVALID_MN_SHIFT | trying to shift mn more than the AssistantCard possibility (or empty, or null)
+
 
