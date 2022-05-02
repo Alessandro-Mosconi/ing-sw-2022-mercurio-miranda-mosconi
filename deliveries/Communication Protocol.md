@@ -106,8 +106,9 @@ Example of a possible error message during login (when you try to create a new G
 | Server     | ERROR  | an error type  | notifies the client that an error occured
 | Server     | SETTINGS       | null     | tell the client that server is in a state where he expects the number of players and the game difficulty
 | Server     | GAME_STARTED | List\<String\> of the players' usernames | indicates to all clients that game has started
-| Server     | LOBBY_CREATED | number of remaining required players (int) | confirms to the client that he joined the lobby succesfully
-| Server     | OTHER_USER_JOINED |   number of remaining required players (int)   | tells every client that a new player joined
+| Server     | LOBBY_CREATED | null | confirms to the client that he joined the lobby succesfully
+| Server     | LOBBY_JOINED |   List\<String\> of the players usernames   | tell the client the other player in the lobby
+| Server     | OTHER_USER_JOINED |   player username   | tells every client that a new player joined
 | Server     | SERVER_DOWN |  null    | notifies the client that the server is crashed
 | Server     | NEXT_STATE | State object | updates the client about the new turn (planning -> action / my action -> next player action)
 | Server     | GAME_ENDED | "user", "motivation"| tells every client who's the winner
@@ -116,6 +117,7 @@ Example of a possible error message during login (when you try to create a new G
 | Server/Client     | PING |  null  | sent to notify that server/clients are still working
 | Client     | SETTINGS |  int for number of player and String for GameMode    | the chosen number of players    
 | Client     | CREATE_MATCH | the match ID     | sent by client to create a new match
+| Client     | READY |   null   | tell the server that hte game can start
 | Client     | JOIN_MATCH |  the match ID    | sent by client to join an existing match
 | Client     | QUIT |  null  | sent by the client to the server to QUIT the game
 | Client     | END_ACTION_TURN      | null     | this message notify the server that a player has ended its action turn
@@ -152,10 +154,11 @@ Example of a possible error message during login (when you try to create a new G
 | :----: | :----: |
 | UNKNOWN_ERROR |
 | USERNAME_NOT_FOUND | a player is trying to rejoin a match with a user that doesnt match with anyone of the Player List
-| INVALID_SETTINGS | the selected number of players is invalid
+| INVALID_GAME_MODE | the selected game mode is invalid
 | GAME_ALREADY_STARTED | a player tries to JOIN a game already started 
 | GAME_ALREADY_EXISTING | a player tries to CREATE a game with an idGame of a game already existing
-| INVALID_LOGIN_USERNAME | username is empty or null
+| GAME_NOT_FOUND | a player tries to JOIN a game with an idGame that existing doesn't match with any idGame
+| INVALID_USERNAME | username is empty or null
 | INVALID_NUM_PLAYER | num_player is empty, null, <2 or >4 
 | INVALID_DIFFICULTY | difficulty is empty, null, != easy or expert
 
