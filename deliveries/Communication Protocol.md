@@ -6,8 +6,8 @@ The communication protocol used is **JSON** based.
 All messages share the following structure:
 
 - id (String) :
-  - Client->Server: User of the Client who is sending the msg;
-  - Server->Client: User of the destinaton Client;
+  - Client->Server: User of the Client that is sending the msg;
+  - Server->Client: User of the destination Client;
 - messageType (enum)
 - payload (String)
     - if messageType == ACTION -> then payload is a JSON representation of the objects interested;
