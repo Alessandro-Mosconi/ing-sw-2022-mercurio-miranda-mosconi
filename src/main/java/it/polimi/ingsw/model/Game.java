@@ -274,7 +274,7 @@ public class Game {
     private void initBag(PawnColor color,int n){
         this.bag.replace(color, n);
     }
-    //gestione init character cards
+//gestione init character cards
     private ArrayList<CharacterCard> initChosenCharacterCards() {
         return (ArrayList<CharacterCard>) getAllCharacterCards().subList(0,2);
     }
