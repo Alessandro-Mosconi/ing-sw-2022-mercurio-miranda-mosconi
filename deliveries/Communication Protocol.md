@@ -110,8 +110,9 @@ Example of a possible error message during login (when you try to create a new G
 | Server     | SERVER_DOWN |  null    | notifies the client that the server is crashed
 | Server     | NEXT_TURN | "Turn Object"? | updates the client about the new turn (planning -> action / my action -> next player action)
 | Server     | GAME_ENDED | "user", "motivation"| tells every client who's the winner
-| Server     | _IN_GAME_ACTION_        | null     | this message ask to the client a specific action when needed
-| Server/Client     | PING |  null  | sentto notify that server/clients are still working
+| Server     | PLANNING        | null     | the server notify the beginning of the planning phase
+| Server     | ACTION        | null     | the server notify the beginning of the action phase
+| Server/Client     | PING |  null  | sent to notify that server/clients are still working
 | Client     | SETTINGS |  int for number of player and String for GameMode    | the chosen number of players    
 | Client     | CREATE_MATCH | the match ID     | sent by client to create a new match
 | Client     | JOIN_MATCH |  the match ID    | sent by client to join an existing match

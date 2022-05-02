@@ -202,7 +202,7 @@
       <workItem from="1651152230634" duration="412000" />
       <workItem from="1651216976659" duration="408000" />
       <workItem from="1651471491286" duration="1966000" />
-      <workItem from="1651475186765" duration="3634000" />
+      <workItem from="1651475186765" duration="4217000" />
     </task>
     <task id="LOCAL-00001" summary="classe di prova">
       <created>1647356869665</created>
@@ -309,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651419535059</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Communication Protocol, no sequence diagram">
+      <created>1651478907527</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1651478907527</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,7 +354,8 @@
     <MESSAGE value="TestCloudTile added in test section" />
     <MESSAGE value="PlayerTest and SchoolBoardTest completed" />
     <MESSAGE value="IslandTest 53% methods, 75% of lines covered (to finish)" />
-    <option name="LAST_COMMIT_MESSAGE" value="IslandTest 53% methods, 75% of lines covered (to finish)" />
+    <MESSAGE value="Communication Protocol, no sequence diagram" />
+    <option name="LAST_COMMIT_MESSAGE" value="Communication Protocol, no sequence diagram" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
