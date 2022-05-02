@@ -5,10 +5,12 @@ The communication protocol used is **JSON** based.
 ## Message Structure
 All messages share the following structure:
 
-- id (String)
+- id (String) :
+  - Client->Server: User of the Client who is sending the msg;
+  - Server->Client: User of the destinaton Client;
 - messageType (enum)
 - payload (String)
-    - if messageType == ACTION -> then payload is a JSON representation of an action class;
+    - if messageType == ACTION -> then payload is a JSON representation of the objects interested;
     - if messageType == MODEL_UPDATE -> then payload is a JSON representation of the objects that contains the changes made to the model;
     - if messageType == ERROR -> then payload is a JSON representation of the error enumeration.
 
@@ -25,18 +27,18 @@ Example of new game creation:
 
 ```json
 {
-   "id": "idClient",
+   "id": "userClient",
    "messageType": "CREATE_MATCH",
    "payload": "GameID"
 }
 ```
 
-Example of a message from server asking for number of players:
+Example of a message from server asking for th settings:
 
 ```json
 {
-   "id": "idClient",
-   "messageType": "NUMBER_OF_PLAYERS",
+   "id": "userClient",
+   "messageType": "SETTINGS",
    "payload": null
 }
 ```
@@ -45,9 +47,13 @@ Example of a message from client to specify the number of players:
 
 ```json
 {
-   "id": "idClient",
-   "messageType": "NUMBER_OF_PLAYERS",
-   "payload": "3"
+   "id": "userClient",
+   "messageType": "SETTINGS",
+   "payload": 
+   {
+     "players_number": "2",
+     "difficulty": "easy"
+   }
 }
 ```
 
@@ -58,7 +64,7 @@ Example of a login message to join an existing match:
 
 ```json
 {
-   "id": "idClient",
+   "id": "userClient",
    "messageType": "JOIN_MATCH",
    "payload": "idGame"
 }
@@ -70,13 +76,22 @@ Example of a request to perform an action to use/buy a character card:
 
 ```json
 {
-   "username": "idPlayer",
-   "messageType": "ACTION",
+   "username": "userClient",
+   "messageType": "BUY_CHARACTER_CARD",
    "payload":
    {
-      "type": "BUY_CHARACTER_CARD",
-      "characterCard": "card"
+      "idCharacterCard": "1",
+      "price" : "3"
    }
+}
+```
+Example of a possible error message during login (when you try to create a new Game with an id already existing for another match":
+
+```json
+{
+   "username": "userClient",
+   "messageType": "ERROR",
+   "payload": "GAME_ALREADY_EXISTING"
 }
 ```
 
@@ -88,29 +103,54 @@ Example of a request to perform an action to use/buy a character card:
 | Server     | RECONNECTED  | null | client has been successfully reconnected to server
 | Server     | DISCONNECTED   |   player's username   | inform clients that a player has disconnected
 | Server     | ERROR  | an error type  | notifies the client that an error occured
-| Server     | NUMBER_OF_PLAYERS       | null     | tell the client that server is in a state where he expects the number of players
+| Server     | SETTINGS       | null     | tell the client that server is in a state where he expects the number of players and the game difficulty
 | Server     | GAME_STARTED | List\<String\> of the players' usernames | indicates to all clients that game has started
-| Server     | WAIT_FOR_LOBBY_CREATION | a String containing the message description | indicates to the client that there is another player creating the lobby
-| Server     | LOBBY_CREATED |   null   | tells the 1st client that lobby has been created succesfully
-| Server     | YOU_JOINED | number of remaining required players (int) | confirms to the client that he joined the lobby succesfully
+| Server     | LOBBY_CREATED | number of remaining required players (int) | confirms to the client that he joined the lobby succesfully
 | Server     | OTHER_USER_JOINED |   number of remaining required players (int)   | tells every client that a new player joined
 | Server     | SERVER_DOWN |  null    | notifies the client that the server is crashed
-| Client     | NUMBER_OF_PLAYERS        |  the chosen number of players    |
+| Server     | NEXT_TURN | "Turn Object"? | updates the client about the new turn (planning -> action / my action -> next player action)
+| Server     | GAME_ENDED | "user", "motivation"| tells every client who's the winner
+| Server     | _IN_GAME_ACTION_        | null     | this message ask to the client a specific action when needed
+| Server/Client     | PING |  null  | sentto notify that server/clients are still working
+| Client     | SETTINGS |  int for number of player and String for GameMode    | the chosen number of players    
 | Client     | CREATE_MATCH | the match ID     | sent by client to create a new match
 | Client     | JOIN_MATCH |  the match ID    | sent by client to join an existing match
-| Client     | ACTION        | an Action type     | this message contains an Action performed by the client as payload.
 | Client     | QUIT |  null  | sent by the client to the server to QUIT the game
+| Client     | END_ACTION_TURN      | null     | this message notify the server that a player has ended its action turn
+| Client     | _IN_GAME_ACTION_        | classes needed for the action     | this message contains the different possible decision a Player could do
+| Client     | _MODEL_UPDATE_        | classes updated     | this message contains the classes tha are changed after the actions
 
+### In Game Action Table
+| Action Type | parameters |description |
+| :----: | :----: | :----: |
+| Planning | `AssistantCard` | activate chose the Assistant Card
+| MoveToIsland |`color`, `IslandManager position`| move a student from the Entrance to an Island
+| MoveToHall | `color`| move a student from the Entrance to a Hall
+| MoveMN |`shift`| player decided how many step the MN do
+| ChoseCloudTile |`CloudTile Array position`| choose a cloud to take students from
+| BuyCharacterCard |`characterCard`| buy, if enough money, a Character Card and use its effect
+
+### Model Update
+| Action Type | parameters |description |
+| :----: | :----: | :----: |
+| SchoolBoardChanged | `user`, `schoolboard` | the schoolboard of user changed
+| HallChanged | `user`, `map<PawnColor, int>` | the hall of user changed
+| EntranceChanged |`user`, `map<PawnColor, int>` | the entrance of user changed
+| ProfTableChanged |`user`, `map<PawnColor, boolean>` | the professor table cof user hanged
+| CloudChanged |`cloud`, `CloudTile Array position`| the cloud changed
+| IslandChanged |`island`, `IslandManager position` | an Island changed
+| CharacterCardChanged |`newPrice`, `CardId` | a CharacterCard changed its value
 
 ### Errors Tables
 #### Generic Errors
 | Error Type | description |
 | :----: | :----: |
 | UNKNOWN_ERROR |
-| MALFORMED_MESSAGE | the server has recived a malformed Json so he cannot deserialize it into an action
-| INVALID_LOGIN_USERNAME | username is empty or null
-| INVALID_NUMBER_OF_PLAYERS | the selected number of players is invalid
-| GAME_ALREADY_STARTED | a player tries to LOGIN when the game is already started
+| INVALID_LOGIN_USERNAME | a player is trying to rejoin a match with a user that doesnt match with anyone of the Player List
+| INVALID_SETTINGS | the selected number of players is invalid
+| GAME_ALREADY_STARTED | a player tries to JOIN a game already started 
+| GAME_ALREADY_EXISTING | a player tries to CREATE a game with an idGame of a game already existing
+
 #### Controller Errors
 | Error Type | description |
 | :----: | :----: |
@@ -118,3 +158,5 @@ Example of a request to perform an action to use/buy a character card:
 | INVALID_ACTION | action not correctly initialized
 | WRONG_ACTION | action can't be performed now
 | WRONG_PLAYER | not their turn
+| NOT_ENOUGH_MONEY? | trying to buy a CharacterCard, but with not enough money
+
