@@ -10,8 +10,8 @@ All messages share the following structure:
   - Server->Client: User of the destination Client;
 - messageType (enum)
 - payload (String)
-    - if messageType == ACTION -> then payload is a JSON representation of the objects interested;
-    - if messageType == MODEL_UPDATE -> then payload is a JSON representation of the objects that contains the changes made to the model;
+    - if messageType is an _ACTION_ -> then payload is a JSON representation of the objects interested;
+    - if messageType is a _MODEL_UPDATE_ -> then payload is a JSON representation of the objects that contains the changes made to the model;
     - if messageType == ERROR -> then payload is a JSON representation of the error enumeration.
 
 
