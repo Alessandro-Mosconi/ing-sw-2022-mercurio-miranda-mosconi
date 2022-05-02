@@ -18,13 +18,11 @@ public class IslandManager {
         //this if branch checks the current island with its next
         if (checkIslands(this.islandList.get(islandPos), this.islandList.get((islandPos+1)%(this.islandList.size())))){
             mergeIslands(this.islandList.get(islandPos), this.islandList.get((islandPos+1)%(this.islandList.size())));
-            deleteIsland(this.islandList.get((islandPos+1)%(this.islandList.size())));
         }
 
         //this branch checks the current island with its previous
         if (checkIslands(this.islandList.get(islandPos), this.islandList.get((islandPos-1)%(this.islandList.size())))){
             mergeIslands(this.islandList.get((islandPos-1)%(this.islandList.size())), this.islandList.get(islandPos));
-            deleteIsland(this.islandList.get(islandPos));
         }
     }
 
