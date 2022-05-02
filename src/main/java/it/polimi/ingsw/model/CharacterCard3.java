@@ -14,6 +14,4 @@ public class CharacterCard3 implements CardBehavior{
     public void initializeCard(Parameter parameter) {
         //none
     }
-
-    //perché assignInfluence di Island prende come input un array normale se abbiamo fatto tutto il resto in arraylist? --todo modificarlo in island
 }

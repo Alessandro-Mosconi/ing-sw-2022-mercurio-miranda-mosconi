@@ -39,6 +39,7 @@ public class CharacterCard11 implements CardBehavior{
         clonedBag.replace(rdColor, clonedBag.get(rdColor)-1);
         this.students.replace(rdColor,this.students.get(rdColor)+1);
         game.setBag(clonedBag);
-        game.getBag().replace(rdColor,clonedBag.get(rdColor));
+        //game.getBag().replace(rdColor,clonedBag.get(rdColor));
+        //a cosa dovrebbe servire l'ultima riga (che ho commentato)?
     }
-}//TODO la refill delle carte può essere chiamata con parametro Bag direttamente (senza passare dal game)
+}// la refill delle carte può essere chiamata con parametro Bag direttamente (senza passare dal game) (?)

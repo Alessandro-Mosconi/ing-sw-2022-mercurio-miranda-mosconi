@@ -16,14 +16,14 @@ public class IslandManager {
     public void checkForMerge(int islandPos){
 
         //this if branch checks the current island with its next
-        if (checkIslands(this.islandList.get(islandPos), this.islandList.get(islandPos+1))){
-            mergeIslands(this.islandList.get(islandPos), this.islandList.get(islandPos+1));
-            deleteIsland(this.islandList.get(islandPos+1));
+        if (checkIslands(this.islandList.get(islandPos), this.islandList.get((islandPos+1)%(this.islandList.size())))){
+            mergeIslands(this.islandList.get(islandPos), this.islandList.get((islandPos+1)%(this.islandList.size())));
+            deleteIsland(this.islandList.get((islandPos+1)%(this.islandList.size())));
         }
 
         //this branch checks the current island with its previous
-        if (checkIslands(this.islandList.get(islandPos), this.islandList.get(islandPos-1))){
-            mergeIslands(this.islandList.get(islandPos-1), this.islandList.get(islandPos));
+        if (checkIslands(this.islandList.get(islandPos), this.islandList.get((islandPos-1)%(this.islandList.size())))){
+            mergeIslands(this.islandList.get((islandPos-1)%(this.islandList.size())), this.islandList.get(islandPos));
             deleteIsland(this.islandList.get(islandPos));
         }
     }
@@ -51,6 +51,6 @@ public class IslandManager {
 
     public void moveMotherNature(int motherPosition, int cells){
         this.islandList.get(motherPosition).setMotherNature(false);
-        this.islandList.get(motherPosition+cells).setMotherNature(true);
+        this.islandList.get((motherPosition+cells)% islandList.size()).setMotherNature(true);
     }
 }

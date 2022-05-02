@@ -77,7 +77,7 @@ public class Island {
             influencePoints += getTowersNumber();
         return influencePoints;
     }
-// todo re-implementare assign influence per permettere alle carte di modificare il valore dell'influnenza del singolo player
+// todo re-implementare assign influence per permettere alle carte di modificare il valore dell'influnenza del singolo player + gestire noEntryTiles
     public void assignInfluence(ArrayList<SchoolBoard> schoolBoardsArray){
         int maxInfluence = 0;
         TowerColor influence = null;
