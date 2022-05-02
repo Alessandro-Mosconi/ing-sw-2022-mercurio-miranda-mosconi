@@ -20,6 +20,7 @@ All messages share the following structure:
 ### Checking connection
 When connection is established server and client set a socket timeout. Then client and server keep sending each other periodical messages to keep the timeout from expiring (Ping message sent every _timeout/2 sec_)
 
+![ping](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/ping_message.png)
 
 ### Player connection with match creation
 
@@ -33,8 +34,6 @@ Example of new game creation:
 }
 ```
 
-![create_match](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/create_match.png)
-
 Example of a message from server asking for th settings:
 
 ```json
@@ -45,7 +44,7 @@ Example of a message from server asking for th settings:
 }
 ```
 
-Example of a message from client to specify the number of players:
+Example of a message from client to specify the settings:
 
 ```json
 {
@@ -53,12 +52,12 @@ Example of a message from client to specify the number of players:
    "messageType": "SETTINGS",
    "payload": 
    {
-     "players_number": "2",
      "difficulty": "easy"
    }
 }
 ```
 
+![create match](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/create_match.png)
 
 ### Player connection joining an existing match
 
@@ -72,9 +71,39 @@ Example of a login message to join an existing match:
 }
 ```
 
+![join match](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/join_match.png)
+
 ### Ask to perform an action
 
-Example of a request to perform an action to use/buy a character card:
+Example of a request to start the planning phase
+
+```json
+{
+  "username": "userClient",
+  "messageType": "PLANNING",
+  "payload": "null"
+}
+```
+
+Example of the choice of an Assistant Card
+
+```json
+{
+  "username": "userClient",
+  "messageType": "PLANNING",
+  "payload":
+  {
+    "id": "3",
+    "value": "5",
+    "motherMovement": "4",
+    "consumed": "true"
+  }
+}
+```
+
+![planning phase](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/planning_phase.png)
+
+Example of a request to use/buy a character card:
 
 ```json
 {
