@@ -124,6 +124,7 @@ Example of a possible error message during login (when you try to create a new G
 ### In Game Action Table
 | Action Type | parameters |description |
 | :----: | :----: | :----: |
+| ChoseWizard | `Wizard` | choose on deck from the 4 possible
 | Planning | `AssistantCard` | activate chose the Assistant Card
 | MoveToIsland |`color`, `IslandManager position`| move a student from the Entrance to an Island
 | MoveToHall | `color`| move a student from the Entrance to a Hall
@@ -141,6 +142,8 @@ Example of a possible error message during login (when you try to create a new G
 | CloudChanged |`cloud`, `CloudTile Array position`| the cloud changed
 | IslandChanged |`island`, `IslandManager position` | an Island changed
 | CharacterCardChanged |`newPrice`, `CardId` | a CharacterCard changed its value
+| WalletChanged |`wallet`, `user` | the wallet of a user changed
+| DeckChanged |`deck`, `user` | the deck of a user changed
 
 ### Errors Tables
 #### Generic Errors
