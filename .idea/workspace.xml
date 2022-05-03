@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/deliveries/Sequence_Diagram_Examples/planning_phase.png" beforeDir="false" afterPath="$PROJECT_DIR$/deliveries/Sequence_Diagram_Examples/planning_phase.png" afterDir="false" />
+    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="ParameterTest + resources folder created">
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/ParameterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PSP42.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PSP42.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +209,8 @@
       <workItem from="1651475186765" duration="8519000" />
       <workItem from="1651490198169" duration="14841000" />
       <workItem from="1651520700051" duration="2645000" />
-      <workItem from="1651525854188" duration="2108000" />
+      <workItem from="1651525854188" duration="2184000" />
+      <workItem from="1651577332511" duration="755000" />
     </task>
     <task id="LOCAL-00001" summary="classe di prova">
       <created>1647356869665</created>
@@ -412,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651527512612</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Communication Protocol with sequence diagram">
+      <created>1651527989260</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1651527989260</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -471,7 +481,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Eriantys$ParameterTest.ic" NAME="ParameterTest Coverage Results" MODIFIED="1651509453056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$ParameterTest.ic" NAME="ParameterTest Coverage Results" MODIFIED="1651577964943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$IslandManagerTest.ic" NAME="IslandManagerTest Coverage Results" MODIFIED="1651498467671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
