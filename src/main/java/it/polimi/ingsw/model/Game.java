@@ -2,7 +2,9 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 public class Game {
-//attributes
+
+
+    //attributes
     private ArrayList<Player> players;
     private int numberOfPlayers;
     private int gameID;
@@ -75,6 +77,9 @@ public class Game {
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;
     }
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
     public int getNumberOfPlayers() {
         return numberOfPlayers;
     }
@@ -122,9 +127,7 @@ public class Game {
         Collections.shuffle(allCharacterCards);
         return allCharacterCards;
     }
-    public void setupGame(int numberOfPlayers, GameMode gamemode)/*gamemode e noOfPlayers si prendono dal controller?*/{
-        this.setNumberOfPlayers(numberOfPlayers);
-        this.setGameMode(gamemode);
+    public void setupGame()/*gamemode e noOfPlayers si prendono dal controller?*/{
         this.bag = new HashMap<>();
         fillBag();
         /* generatore randomico ID del game (?)
@@ -135,28 +138,27 @@ public class Game {
         ArrayList<Island> islands = generateIslands();
         IslandManager islandManager= new IslandManager(islands);
         this.setIslandManager(islandManager);
-        ArrayList<Player> players = generatePlayers(numberOfPlayers);
-        this.setPlayers(players);
+        //ArrayList<Player> players = generatePlayers(this.numberOfPlayers);
+        //this.setPlayers(players);
             //todo inizializzare i players - probabilmente verrà fatto dal controller che darà in input al setupGame l'array di players da settare
-        ArrayList<SchoolBoard> schoolBoards = generateSchoolBoards(numberOfPlayers);
+        ArrayList<SchoolBoard> schoolBoards = generateSchoolBoards(this.numberOfPlayers);
         initSchoolBoards(schoolBoards);
         this.setSchoolBoards(schoolBoards);
         Player firstPlayer = SelectFirstPlayer();
-        ArrayList<Integer> tmpOrder = new ArrayList<>(numberOfPlayers);
-        for(int i=0;i<numberOfPlayers;i++){
-            tmpOrder.add(firstPlayer.getPlayerNumber()+i % numberOfPlayers);
+        ArrayList<Integer> tmpOrder = new ArrayList<>(this.numberOfPlayers);
+        for(int i=0;i<this.numberOfPlayers;i++){
+            tmpOrder.add(firstPlayer.getPlayerNumber()+i % this.numberOfPlayers);
         }
         this.setPlayerOrder(tmpOrder);
-        ArrayList<WizardType> wizards = new ArrayList<>(numberOfPlayers);{
+        /*ArrayList<WizardType> wizards = new ArrayList<>(numberOfPlayers);{
             for(Player p : players) {
                 wizards.add(p.getDeck().getWizard());
             }
-        }
-        this.setWizards(wizards);//todo forse il mago viene scelto nel setup del controller ?
+        }*/ //todo da mettere nel GenerateControllerState
+       // this.setWizards(wizards);//todo forse il mago viene scelto nel setup del controller ?
         ArrayList<CloudTile> cloudTiles = generateCloudTiles(numberOfPlayers);
-        fillCloudTiles(numberOfPlayers, cloudTiles);
-        this.setCloudTiles(cloudTiles);
-        if(gamemode.equals(GameMode.expert)){
+        //fillCloudTiles(); vengono riempite nel SETUPSTATE dopo il playerOrder
+        if(gameMode.equals(GameMode.expert)){
             initAllCharacterCards();
             ArrayList<CharacterCard> chosenCharacterCards = initChosenCharacterCards();
             this.setChosenCharacterCards(chosenCharacterCards);
@@ -211,12 +213,12 @@ public class Game {
         }
         return schoolBoards;
     }
-    private void fillCloudTiles(int numberOfPlayers, ArrayList<CloudTile> cloudTiles) {
-        for(CloudTile c : cloudTiles){
+    public void fillCloudTiles() {
+        for(CloudTile c : this.cloudTiles){
             for(int i=0;i<3;i++){
                 moveFromBagToCloud(c);
             }
-            if(numberOfPlayers == 3){
+            if(this.numberOfPlayers == 3){
                 moveFromBagToCloud(c);
             }
         }
