@@ -10,11 +10,10 @@ public class PlanningState implements GameControllerState{
     public void startState(GameController gameController) {
         for(Player p : gameController.getGame().getPlayers()){
             //decidiAssistantCard
-            gameController.getGame().updatePlayerOrder();
-            for(CloudTile c : gameController.getGame().getCloudTiles()){
-                gameController.getGame().fillCloudTiles();
-            }
+
         }
+        gameController.getGame().updatePlayerOrder();
+        gameController.getGame().fillCloudTiles();
     }
 
     @Override

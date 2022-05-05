@@ -123,7 +123,7 @@ public class Game {
             }
         }
     }
-    public ArrayList<CharacterCard> shuffleCharacterCards(ArrayList<CharacterCard> allCharacterCards) {
+    public ArrayList<CharacterCard> shuffleCharacterCards() {
         Collections.shuffle(allCharacterCards);
         return allCharacterCards;
     }
@@ -141,8 +141,8 @@ public class Game {
         //ArrayList<Player> players = generatePlayers(this.numberOfPlayers);
         //this.setPlayers(players);
             //todo inizializzare i players - probabilmente verrà fatto dal controller che darà in input al setupGame l'array di players da settare
-        ArrayList<SchoolBoard> schoolBoards = generateSchoolBoards(this.numberOfPlayers);
-        initSchoolBoards(schoolBoards);
+        ArrayList<SchoolBoard> schoolBoards = generateSchoolBoards();
+        initSchoolBoards();
         this.setSchoolBoards(schoolBoards);
         Player firstPlayer = SelectFirstPlayer();
         ArrayList<Integer> tmpOrder = new ArrayList<>(this.numberOfPlayers);
@@ -156,7 +156,7 @@ public class Game {
             }
         }*/ //todo da mettere nel GenerateControllerState
        // this.setWizards(wizards);//todo forse il mago viene scelto nel setup del controller ?
-        ArrayList<CloudTile> cloudTiles = generateCloudTiles(numberOfPlayers);
+        ArrayList<CloudTile> cloudTiles = generateCloudTiles();
         //fillCloudTiles(); vengono riempite nel SETUPSTATE dopo il playerOrder
         if(gameMode.equals(GameMode.expert)){
             initAllCharacterCards();
@@ -204,7 +204,7 @@ public class Game {
         }
         return islands;
     }
-    private ArrayList<SchoolBoard> generateSchoolBoards(int numberOfPlayers) {
+    private ArrayList<SchoolBoard> generateSchoolBoards() {
         ArrayList<SchoolBoard> schoolBoards = new ArrayList<>(numberOfPlayers);
         {
             for(int i = 0; i< numberOfPlayers; i++){
@@ -223,7 +223,7 @@ public class Game {
             }
         }
     }
-    private ArrayList<CloudTile> generateCloudTiles(int numberOfPlayers) {
+    private ArrayList<CloudTile> generateCloudTiles() {
         ArrayList<CloudTile> cloudTiles = new ArrayList<>(numberOfPlayers);
         {
             for(int i = 0; i< numberOfPlayers; i++){
@@ -237,6 +237,7 @@ public class Game {
             this.initBag(color,26);
         }//setta la bag ai valori di default
     }
+    /*
     private ArrayList<Player> generatePlayers(int numberOfPlayers) {
         ArrayList<Player> players = new ArrayList<>(numberOfPlayers);
         {
@@ -245,8 +246,8 @@ public class Game {
             }
         }
         return players;
-    }
-    private void initSchoolBoards(ArrayList<SchoolBoard> schoolBoards) {
+    } da gestire nel controller*/
+    private void initSchoolBoards() {
         /* for(SchoolBoard s: schoolBoards){
             if(this.numberOfPlayers==2){
                 s.setTowersNumber(8);
@@ -256,13 +257,13 @@ public class Game {
             }
             if(this.numberOfPlayers==4){
                 s.setTowersNumber(4);
-            }qui va modificato -- todo valutare di aggiungere un attributo che indichi squadra al player e ricordarsi di cambiare le torri qunado si gioca in 4
+            }//qui va modificato -- todo valutare di aggiungere un attributo che indichi squadra al player e ricordarsi di cambiare le torri qunado si gioca in 4
             for(int i=0;i<7;i++){
                 PawnColor rdColor=PawnColor.randomColor();
                 this.bag.replace(rdColor, this.bag.get(rdColor)-1);
                 s.addStudentEntrance(rdColor);
             }
-            manca da settare il colore delle torri
+            //manca da settare il colore delle torri
 
         }*/
     }
@@ -281,7 +282,7 @@ public class Game {
         return (ArrayList<CharacterCard>) getAllCharacterCards().subList(0,2);
     }
     private ArrayList<CharacterCard> getAllCharacterCards() {
-        return shuffleCharacterCards(allCharacterCards);
+        return shuffleCharacterCards();
     } /* restituisce tutte le charcards in disordine;
      quando si chiama la init si pescano le prime 3 in disordine;
      dopo la init si accede alle chosen tramite la get*/
