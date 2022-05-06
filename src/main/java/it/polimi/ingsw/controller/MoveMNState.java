@@ -8,11 +8,18 @@ public class MoveMNState implements GameControllerState{
         //decidi movimento
         //gameController.getGame().getIslandManager().moveMotherNature();
         //gameController.getGame().getIslandManager().checkForMerge();
+        //if the user clicks on the card then we start
     }
 
     @Override
     public void updateNextState(GameController gameController) {
-        gameController.setCurrentState(new ChooseCTState());
+
+        //todo bisogna aggiungere il check sulle torri
+        if (gameController.getGame().getIslandManager().getIslandList().size() <= 3) {
+            gameController.setCurrentState(new EndGameState());
+        }
+        else
+            gameController.setCurrentState(new ChooseCTState());
     }
     @Override
     public void endState() {

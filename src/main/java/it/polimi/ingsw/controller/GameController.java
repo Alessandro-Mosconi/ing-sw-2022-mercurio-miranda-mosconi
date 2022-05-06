@@ -7,22 +7,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GameController implements ActionListener {
-    public Game getGame() {
-        return game;
-    }
-
     private Game game;
-
-
     // private VirtualView view;
-        private GameControllerState currentState;
+    private GameControllerState currentState;
+    private GameControllerState nextState;
 
     public void setCurrentState(GameControllerState currentState) {
         this.currentState = currentState;
     }
 
-    private GameControllerState nextState;
 
+    public Game getGame() {
+        return game;
+    }
 
     public GameController(Game game/*, VirtualView view*/) {
         this.game = game;
@@ -32,7 +29,7 @@ public class GameController implements ActionListener {
     public GameController() {
             this.game = new Game();
             //this.view = new VirtualView();
-        }
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -50,8 +47,8 @@ public class GameController implements ActionListener {
             this.nextState=this.currentState.updateNextState();
             this.currentState.endState();
             //todo endState sembra abbastanza inutile
-        }
+       }
+       */
 
-         */
     return 0;}
 }
