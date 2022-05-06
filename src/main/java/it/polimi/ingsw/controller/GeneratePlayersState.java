@@ -2,10 +2,10 @@ package it.polimi.ingsw.controller;
 import it.polimi.ingsw.model.Game;
 
 public class GeneratePlayersState implements GameControllerState{
-    @Override /*riceve un game new ma vuoto*/
+
+    @Override
     public void startState(GameController gameController) {
-        //man mano che riceve players li aggiunge alla ArrayList di players
-        //per ogni player che riceve setta i dati del player (nickName , mago, colore torri etc)
+        gameController.getGame().setPlayers(gameController.getView().getPlayers());
         updateNextState(gameController);
     }
 
