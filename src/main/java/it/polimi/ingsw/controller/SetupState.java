@@ -6,10 +6,7 @@ import it.polimi.ingsw.model.GameMode;
 public class SetupState implements GameControllerState{
     @Override
     public void startState(GameController gameController) {
-        //wait for players to join
-        //gameController.getGame().setPlayers(/*da client*/);
-        //gameController.getGame().setNumberOfPlayers(/*da client*/);
-        //gameController.getGame().setGameMode(/*da client*/);
+        //gameController.getGame().setGameMode(gameController.getView().getGameMode());
         //gameController.getGame().setWizards(/*da client*/);
         gameController.getGame().setupGame();
         //leggermente da modificare per i metodi di init

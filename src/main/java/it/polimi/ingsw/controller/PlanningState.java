@@ -8,7 +8,7 @@ public class PlanningState implements GameControllerState{
 
     @Override
     public void startState(GameController gameController) {
-        for(Player p : gameController.getGame().getPlayers()){
+        for (Player p : gameController.getGame().getPlayers()){
             //decidiAssistantCard
 
         }
