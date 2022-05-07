@@ -5,20 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Error.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/MessageType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Pinger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PSP42.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PSP42.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deliveries/Communication Protocol.md" beforeDir="false" afterPath="$PROJECT_DIR$/deliveries/Communication Protocol.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/clientcontroller/ClientController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Island.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Island.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/virtualview/VirtualView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/virtualview/VirtualView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +57,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TCPServerSample-master" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
@@ -90,7 +83,7 @@
       <recent name="it.polimi.ingsw.network" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client3Test">
+  <component name="RunManager" selected="Application.Client2Test">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Client" />
       <module name="PSP42" />
@@ -123,6 +116,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="OLDTEST.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Server" />
+      <module name="PSP42" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.polimi.ingsw.network.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -172,11 +178,13 @@
       <item itemvalue="Application.Client2Test" />
       <item itemvalue="Application.Client3Test" />
       <item itemvalue="JUnit.Testing" />
+      <item itemvalue="Application.Server (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client3Test" />
         <item itemvalue="Application.Client2Test" />
+        <item itemvalue="Application.Server (1)" />
+        <item itemvalue="Application.Client3Test" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
       </list>
@@ -220,7 +228,7 @@
       <workItem from="1651650315147" duration="771000" />
       <workItem from="1651752523889" duration="9081000" />
       <workItem from="1651829571092" duration="20384000" />
-      <workItem from="1651912460732" duration="407000" />
+      <workItem from="1651912460732" duration="21593000" />
     </task>
     <task id="LOCAL-00001" summary="classe di prova">
       <created>1647356869665</created>
@@ -439,7 +447,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651578234202</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Server multi-thread for multiple client connection.">
+      <created>1651913166376</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1651913166376</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -485,7 +500,8 @@
     <MESSAGE value="Communication Protocol + sequence diagram folder" />
     <MESSAGE value="Communication Protocol with sequence diagram" />
     <MESSAGE value="ParameterTest + resources folder created" />
-    <option name="LAST_COMMIT_MESSAGE" value="ParameterTest + resources folder created" />
+    <MESSAGE value="Server multi-thread for multiple client connection." />
+    <option name="LAST_COMMIT_MESSAGE" value="Server multi-thread for multiple client connection." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -495,6 +511,10 @@
           <line>124</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
