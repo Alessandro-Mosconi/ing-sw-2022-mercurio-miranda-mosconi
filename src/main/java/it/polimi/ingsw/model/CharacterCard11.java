@@ -12,7 +12,7 @@ public class CharacterCard11 implements CardBehavior{
         PawnColor chosenColor = chooseColor();
         this.students.replace(chosenColor, this.students.get(chosenColor)-1);
         parameter.getPlayer().getSchoolBoard().getStudentHall().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentHall().get(chosenColor)+1);
-        refill(parameter.getGame());
+        parameter.getGame().setBag(refill(parameter.getGame().getBag()));
     }
 
     @Override
@@ -22,15 +22,15 @@ public class CharacterCard11 implements CardBehavior{
             parameter.getGame().getBag().replace(rdColor, parameter.getGame().getBag().get(rdColor)-1);
             this.students.replace(rdColor, this.students.get(rdColor)+1);
         }
-    }
+    }//Places 4 students on the card
 
     public PawnColor chooseColor() {
         //credo vada chiesto al controller il valore del colore da ritornare
         return null;
     }
-    public void refill(Game game){
+    public Map<PawnColor,Integer> refill(Map<PawnColor,Integer> gameBag){
         PawnColor rdColor=PawnColor.randomColor();
-        Map<PawnColor, Integer> clonedBag = game.getBag();
+        Map<PawnColor, Integer> clonedBag = gameBag;
         if(clonedBag.get(rdColor)==0){
             while(clonedBag.get(rdColor)==0){
                 rdColor=PawnColor.randomColor();
@@ -38,7 +38,8 @@ public class CharacterCard11 implements CardBehavior{
         }//controllo che la bag abbia disponibilità di studenti del colore random
         clonedBag.replace(rdColor, clonedBag.get(rdColor)-1);
         this.students.replace(rdColor,this.students.get(rdColor)+1);
-        game.setBag(clonedBag);
+        return clonedBag;
+        //game.setBag(clonedBag);
         //game.getBag().replace(rdColor,clonedBag.get(rdColor));
         //a cosa dovrebbe servire l'ultima riga (che ho commentato)?
     }

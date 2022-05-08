@@ -15,7 +15,7 @@ public class CharacterCard12 implements CardBehavior{
                     parameter.getGame().getBag().replace(chosenColor, parameter.getGame().getBag().get(chosenColor)+1);
                 }
             }
-        }
+        }//Each player puts 3 students (or all of them if he has less than 3) of a chosen color from its Hall back to the bag.
     }
 
     @Override

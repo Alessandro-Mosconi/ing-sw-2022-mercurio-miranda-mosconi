@@ -127,41 +127,40 @@ public class Game {
         Collections.shuffle(allCharacterCards);
         return allCharacterCards;
     }
-    public void setupGame()/*gamemode e noOfPlayers si prendono dal controller?*/{
+    public void setupGame(){
         this.bag = new HashMap<>();
         fillBag();
-        /* generatore randomico ID del game (?)
-        Random rn = new Random();
-        int n = 100000 - 0 + 1;
-        int j = rn.nextInt() % n;
-        this.setGameID(j); */
         ArrayList<Island> islands = generateIslands();
         IslandManager islandManager= new IslandManager(islands);
         this.setIslandManager(islandManager);
         //ArrayList<Player> players = generatePlayers(this.numberOfPlayers);
         //this.setPlayers(players);
-            //todo inizializzare i players - probabilmente verrà fatto dal controller che darà in input al setupGame l'array di players da settare
+        //todo inizializzare i players - probabilmente verrà fatto dal controller che darà in input al setupGame l'array di players da settare
         ArrayList<SchoolBoard> schoolBoards = generateSchoolBoards();
         initSchoolBoards();
         this.setSchoolBoards(schoolBoards);
-        Player firstPlayer = SelectFirstPlayer();
+        ArrayList<CloudTile> cloudTiles = generateCloudTiles(); //Clouds are filled after the player order is set
+        //Game board parts are allocated and initialized so far
+        Player firstPlayer = SelectFirstPlayer(); //Randomically select the first player to choose an AssistantCard
         ArrayList<Integer> tmpOrder = new ArrayList<>(this.numberOfPlayers);
         for(int i=0;i<this.numberOfPlayers;i++){
             tmpOrder.add(firstPlayer.getPlayerNumber()+i % this.numberOfPlayers);
         }
-        this.setPlayerOrder(tmpOrder);
+        this.setPlayerOrder(tmpOrder);//During the first phase, the player order follows a clockwise order
         /*ArrayList<WizardType> wizards = new ArrayList<>(numberOfPlayers);{
             for(Player p : players) {
                 wizards.add(p.getDeck().getWizard());
             }
         }*/ //todo da mettere nel GenerateControllerState
-       // this.setWizards(wizards);//todo forse il mago viene scelto nel setup del controller ?
-        ArrayList<CloudTile> cloudTiles = generateCloudTiles();
+       // this.setWizards(wizards);//todo il mago viene scelto nel setup del controller ?
         //fillCloudTiles(); vengono riempite nel SETUPSTATE dopo il playerOrder
         if(gameMode.equals(GameMode.expert)){
-            initAllCharacterCards();
-            ArrayList<CharacterCard> chosenCharacterCards = initChosenCharacterCards();
+            initAllCharacterCards(); //Allocates all of the CharacterCards
+            ArrayList<CharacterCard> chosenCharacterCards = initChosenCharacterCards(); //Takes a sublist from the randomized CharacterCards list
             this.setChosenCharacterCards(chosenCharacterCards);
+            for(CharacterCard cc: chosenCharacterCards){
+                cc.getCardBehavior().initializeCard(new Parameter(this));
+            }//Initializes the chosen card
             this.setBank(20);
         }
     }

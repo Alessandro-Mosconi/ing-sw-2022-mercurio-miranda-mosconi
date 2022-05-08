@@ -24,9 +24,8 @@ public class IslandManager {
         if (checkIslands(this.islandList.get(islandPos), this.islandList.get((this.islandList.size()+islandPos-1)%(this.islandList.size())))){
             mergeIslands(this.islandList.get((this.islandList.size()+islandPos-1)%(this.islandList.size())), this.islandList.get(islandPos));
         }
-    }
+    }//Checks both previous and next island and merge them in case they are owned by the same player/team
 
-    //this method merges 2 islands and is supposed to delete the second one.
     public void mergeIslands(Island primaryIsland, Island secondaryIsland){
 
         for (PawnColor color : PawnColor.values()) {
@@ -37,7 +36,8 @@ public class IslandManager {
         primaryIsland.setMotherNature(true);
 
         deleteIsland(secondaryIsland);
-    }
+    }//Merges 2 islands and deletes the second one
+
 
     private void deleteIsland(Island island){
         this.islandList.remove(island);
@@ -45,10 +45,10 @@ public class IslandManager {
 
     public boolean checkIslands(Island primaryIsland, Island island2){
         return primaryIsland.getTowerColor().equals(island2.getTowerColor());
-    }
+    }//Checks if both islands given as parameters have the same TowerColor
 
     public void moveMotherNature(int motherPosition, int cells){
         this.islandList.get(motherPosition).setMotherNature(false);
         this.islandList.get((motherPosition+cells)% islandList.size()).setMotherNature(true);
-    }
+    }//Shifts motherNature
 }

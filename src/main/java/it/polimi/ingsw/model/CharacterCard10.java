@@ -9,10 +9,10 @@ public class CharacterCard10 implements CardBehavior{
         PawnColor chosenColor = chooseColor();
         parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(chosenColor)-1);
         parameter.getPlayer().getSchoolBoard().getStudentHall().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentHall().get(chosenColor)+1);
-        //da entrance to hall
+        //from entrance to hall
         parameter.getPlayer().getSchoolBoard().getStudentHall().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentHall().get(chosenColor)-1);
         parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(chosenColor)+1);
-        //da hall to entrance
+        //from hall to entrance
     }
 
     @Override

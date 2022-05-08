@@ -25,7 +25,7 @@ public class CharacterCard5 implements CardBehavior{
             parameter.getIsland().setNoEntryTile(true);
             this.setEntryTile( this.entryTile - 1 );
         }
-    }
+    }//Moves a noEntryTile from the card to the chosen Island
 
     @Override
     public void initializeCard(Parameter parameter) {

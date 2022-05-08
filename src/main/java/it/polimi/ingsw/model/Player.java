@@ -18,7 +18,6 @@ public class Player {
         this.schoolBoard = null;
         this.lastAssistantCard = null;
     }
-
     public Player(String nickName, Deck deck, int playerNumber, SchoolBoard schoolBoard) {
         this.nickName = nickName;
         this.wallet = 0;
@@ -31,31 +30,25 @@ public class Player {
     public SchoolBoard getSchoolBoard(){
         return schoolBoard;
     }
-
     public String getNickName() {
         return nickName;
     }
-
     public int getWallet() {
         return wallet;
     }
-
     public Deck getDeck() {
         return deck;
     }
-
     public int getPlayerNumber() {
         return playerNumber;
     }
-
     public void setWallet(int wallet) {
         this.wallet = wallet;
     }
-
     public void collectCoin(PawnColor color){
         if(schoolBoard.checkForCoin(color))
             this.wallet = wallet +1;
-    }
+    }//Increases wallet if needed
 
     public void useAssistantCard(AssistantCard card)
     {
