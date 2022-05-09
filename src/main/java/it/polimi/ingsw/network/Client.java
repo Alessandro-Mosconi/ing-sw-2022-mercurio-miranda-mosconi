@@ -1,9 +1,6 @@
 package it.polimi.ingsw.network;
 
-import com.google.gson.*;
-import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.view.*;
-import it.polimi.ingsw.networkhandler.*;
 
 import java.io.*;
 import java.net.Socket;
@@ -61,10 +58,6 @@ public class Client {
         }
         System.out.println("Connected");
 
-        Message msg = new Message("Franco", MessageType.CREATE_MATCH, "Game1");
-
-        System.out.println(msg.toSend());
-
         Pinger pinger = null;
 
         try (
@@ -73,22 +66,22 @@ public class Client {
                 BufferedReader stdIn =new BufferedReader(new InputStreamReader(System.in));
         ) {
             //launch pinger thread
-
             pinger = new Pinger(out, server, "franco");
             Thread thread = new Thread(pinger, "clientPing" + server.getInetAddress());
             thread.start();
+            NetworkHandler networkHandler = new NetworkHandler(out, in);
 
             while (true) {
 
-                out.println(msg.toSend());
-
                 String input = in.readLine();
-                if(!input.equals("ping"))
-                    System.out.println("processing");
-                System.out.println(input);
+                String output = null;
 
-                String end;
-                end = stdIn.readLine();
+                if(!input.equals("ping")) {
+                    System.out.println("processing...");
+                    networkHandler.process(input);
+                    output = networkHandler.send_msg();
+                    out.println(output);
+                }
 
             }
         } catch (SocketTimeoutException e) {
@@ -106,7 +99,7 @@ public class Client {
         pinger.stop();
         server.close();
     } catch (IOException e) {
-        System.out.println("Error with the server socket closing");
+        System.out.println("Error with the socket closing");
     }
 }
 }

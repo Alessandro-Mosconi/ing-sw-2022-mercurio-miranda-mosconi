@@ -21,8 +21,8 @@ public class ClientHandler implements Runnable
     private Socket client;
     private PrintWriter out;
     private BufferedReader in;
-    private static Map<String, HashSet<String>> networkMap = new HashMap<>();
-    private static Map<String, Game> gameMap = new HashMap<>();
+    private static Map<String, HashSet<String>> networkMap = new HashMap<>(); //mappa di gameid e lista di player
+    private static Map<String, Game> gameMap = new HashMap<>(); //mappa di gameid e game
 
     /**
      * Initializes a new handler using a specific socket connected to
@@ -62,7 +62,9 @@ public class ClientHandler implements Runnable
 
         try {
             client.close();
-        } catch (IOException e) { }
+        } catch (IOException e) {
+            System.out.println("Error with the socket closing");
+        }
     }
 
 
@@ -77,15 +79,26 @@ public class ClientHandler implements Runnable
         GameController controller = null;
         VirtualView virtualView = new VirtualView();
 
+        System.out.println("sending ack");
+        out.println("LOGIN");
+
         try {
             while (true) {
 
                 String input = in.readLine();
-
-                System.out.println("[" + client.getInetAddress() + "] client say: " + input);
+                System.out.println("[" + client.getInetAddress() + "]" + " receiving... " + input);
 
                 if(!input.equals("ping")) {
-                    initialize(input);
+                    if(!initialize(input))
+                        System.out.println("processing...");
+                        //virtualView.update(input)
+                        //
+                    /*
+                        Message msg = new Message(user)
+                        msg.setType(SETTING),
+                        msg.fill(null);
+                        return msg.toSend();
+                     */
                 }
 
             }
@@ -113,7 +126,7 @@ public class ClientHandler implements Runnable
         }
     }
 
-    public synchronized void initialize (String input){
+    public synchronized boolean initialize (String input){
 
         System.out.println("initializing...");
         Gson gson = new Gson();
@@ -158,11 +171,15 @@ public class ClientHandler implements Runnable
             default:
                 msg_out.setType(MessageType.ERROR);
                 msg_in.fill(Error.UNKNOWN_ERROR);
-                break;
+                out.println(msg_out.toSend());
+                System.out.println("sending... " + msg_out.toSend());
+                return false;
         }
 
-        System.out.println(msg_out.toSend());
+
+        System.out.println("sending... " + msg_out.toSend());
         out.println(msg_out.toSend());
+        return true;
     }
 
 }

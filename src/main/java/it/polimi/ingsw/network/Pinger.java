@@ -28,26 +28,13 @@ public class Pinger implements Runnable
     public void run() {
 
         try {
-            /*
-            Runnable pingRunnable = new Runnable() {
-
-                public void run() {
-                    out.println("ping");
-                    System.out.println(name + " ping sent");
-                }
-            };
-
-            ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-            executor.scheduleAtFixedRate(pingRunnable, 0, 5, TimeUnit.SECONDS);
-            */
 
             while(!exit)
             {
                 out.println("ping");
-                System.out.println(name + " ping sent");
+                //System.out.println(name + " ping sent");
                 Thread.sleep(5000);
             }
-
 
         } catch (InterruptedException e) {
             e.printStackTrace();

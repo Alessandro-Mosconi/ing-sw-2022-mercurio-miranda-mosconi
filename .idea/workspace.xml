@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="" />
+    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/GeneratePlayersState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/GeneratePlayersState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/MessageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Pinger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Pinger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/networkhandler/NetworkHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/View.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,11 +64,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\aless\Desktop\ing-sw-2022-mercurio-miranda-mosconi\src\main\OLDTEST" />
       <recent name="C:\Users\aless\Desktop\ing-sw-2022-mercurio-miranda-mosconi\src\main" />
       <recent name="C:\Users\aless\Desktop\ing-sw-2022-mercurio-miranda-mosconi\src\main\java\OLDTEST" />
       <recent name="C:\Users\aless\Desktop\ing-sw-2022-mercurio-miranda-mosconi\deliveries" />
       <recent name="C:\Users\aless\Desktop\ing-sw-2022-mercurio-miranda-mosconi\src\main\java" />
-      <recent name="C:\Users\aless\Desktop\ing-sw-2022-mercurio-miranda-mosconi\src\main\Model" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -175,9 +184,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Client2Test" />
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server (1)" />
         <item itemvalue="Application.Client3Test" />
-        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
@@ -220,7 +229,7 @@
       <workItem from="1651650315147" duration="771000" />
       <workItem from="1651752523889" duration="9081000" />
       <workItem from="1651829571092" duration="20384000" />
-      <workItem from="1651912460732" duration="22602000" />
+      <workItem from="1651912460732" duration="46151000" />
     </task>
     <task id="LOCAL-00001" summary="classe di prova">
       <created>1647356869665</created>
@@ -460,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651939964826</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="added the Pinger class for pinging between client and server on another thread">
+      <created>1651940195083</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1651940195083</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

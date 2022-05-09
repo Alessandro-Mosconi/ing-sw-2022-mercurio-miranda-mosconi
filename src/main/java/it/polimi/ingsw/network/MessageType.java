@@ -3,6 +3,7 @@ package it.polimi.ingsw.network;
 
 public enum MessageType {
     ERROR,
+    LOGIN,
     LOGIN_SUCCESSFUL,
     RECONNECTED,
     DISCONNECTED,
@@ -35,5 +36,6 @@ public enum MessageType {
     CloudChanged,
     IslandChanged,
     CharacterCardChanged,
+    WalletChanged,
     DeckChanged;
 }
