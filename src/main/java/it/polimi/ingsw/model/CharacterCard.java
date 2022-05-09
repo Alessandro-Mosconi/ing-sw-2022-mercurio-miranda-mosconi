@@ -20,5 +20,8 @@ public class CharacterCard{
 
     public void increasePrice(){
         this.setPrice(this.getPrice()+1);
-    }//after using the card increase the price and decrease game.bank
+    }//After using the card, increases the price and decreases game.bank
+    public CardBehavior getCardBehavior() {
+        return cardBehavior;
+    }
 }

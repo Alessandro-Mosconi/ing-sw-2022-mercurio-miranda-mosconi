@@ -12,7 +12,7 @@ public class SchoolBoard {
     private Map<PawnColor, Boolean> professorTable;
     private final GameMode gameMode;
 
-public SchoolBoard() {
+    public SchoolBoard() {
     this.towersNumber = 0;
     this.towersColor = null;
     this.gameMode = null;
@@ -26,8 +26,7 @@ public SchoolBoard() {
         this.professorTable.put(color, false);
     }
 }
-
-public SchoolBoard(int numTower, TowerColor colTower, GameMode gameMode) {
+    public SchoolBoard(int numTower, TowerColor colTower, GameMode gameMode) {
     this.towersNumber = numTower;
     this.towersColor = colTower;
     this.gameMode = gameMode;
@@ -46,23 +45,18 @@ public SchoolBoard(int numTower, TowerColor colTower, GameMode gameMode) {
     public int getTowersNumber() {
         return towersNumber;
     }
-
     public TowerColor getTowersColor() {
         return towersColor;
     }
-
     public GameMode getGameMode() {
         return gameMode;
     }
-
     public Map<PawnColor, Boolean> getProfessorTable() {
         return professorTable;
     }
-
     public Map<PawnColor, Integer> getStudentEntrance() {
         return studentEntrance;
     }
-
     public Map<PawnColor, Integer> getStudentHall() {
         return studentHall;
     }
@@ -80,21 +74,17 @@ public SchoolBoard(int numTower, TowerColor colTower, GameMode gameMode) {
     public void addStudentEntrance(PawnColor color) {
         this.studentEntrance.replace(color, this.studentEntrance.get(color)+1);
     }
-
     public void addStudentEntrance(PawnColor color, int n) {
         this.studentEntrance.replace(color, this.studentEntrance.get(color)+n);
     }
-
     public void removeStudentEntrance(PawnColor color) {
         if(this.studentEntrance.get(color)>0)
         this.studentEntrance.replace(color, this.studentEntrance.get(color)-1);
         else System.out.println("studente non presente");
     }
-
     public void addStudentHall(PawnColor color) {
         this.studentHall.replace(color, this.studentHall.get(color)+1);
     }
-
     public void removeStudentHall(PawnColor color) {
         if(this.studentHall.get(color)>0)
             this.studentHall.replace(color, this.studentHall.get(color)-1);

@@ -192,6 +192,7 @@ Example of a possible error message during login (when you try to create a new G
 | INVALID_USERNAME | username is empty or null
 | INVALID_NUM_PLAYER | num_player is empty, null, <2 or >4 
 | INVALID_DIFFICULTY | difficulty is empty, null, != easy or expert
+| FULL_LOBBY| you are trying to join a game with more than 3 player in the lobby
 
 
 #### Controller Errors

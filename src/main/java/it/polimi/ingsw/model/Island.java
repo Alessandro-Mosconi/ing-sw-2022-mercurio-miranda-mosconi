@@ -38,11 +38,14 @@ public class Island {
         return this.islandStudents;
     }
 
+    /*
     //is this really useful?
-    private void setIslandStudents(Map<PawnColor, Integer> islandStudents) {
+    public void setIslandStudents(Map<PawnColor, Integer> islandStudents) {
         // using put method to copy one Map to Other
         islandStudents.putAll(this.islandStudents);
     }
+
+     */
 
     public int getStudentNumber(PawnColor color){
         return this.islandStudents.get(color);

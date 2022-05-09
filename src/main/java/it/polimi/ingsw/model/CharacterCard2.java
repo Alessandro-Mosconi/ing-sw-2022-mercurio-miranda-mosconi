@@ -8,15 +8,16 @@ public class CharacterCard2 implements CardBehavior{
  */
     //essendo l'effetto limitato alla durata di un turno, bisogna salvare su una variabile temporanea lo stato corrente e ripristinarlo alla fine del turno
     private ArrayList<SchoolBoard> tmpSchoolBoards;
-    private ArrayList<SchoolBoard> currentSchoolBoards;
+    //private ArrayList<SchoolBoard> currentSchoolBoards;
     @Override
     public void Effect(Parameter parameter){
+        ArrayList<SchoolBoard> currentSchoolBoards = new ArrayList<>();
         currentSchoolBoards.addAll(parameter.getGame().getSchoolBoards()); //salva per il ripristino le schoolboards
-        tmpSchoolBoards=currentSchoolBoards;//clona lo stato corrente delle schoolboards
-        tmpUpdateProfessors(); //modifica tmpSchoolBoards
+        tmpSchoolBoards=currentSchoolBoards;//Clone of the currentSchoolBoards array
+        tmpUpdateProfessors(); //Temporary update of tmpSchoolBoards
         parameter.getGame().setSchoolBoards(tmpSchoolBoards);
-        //alla fine del turno ripristino
-        parameter.getGame().setSchoolBoards(currentSchoolBoards);
+        //todo alla fine del turno ripristino
+        parameter.getGame().setSchoolBoards(currentSchoolBoards); //Reset the original SchoolBoards array
     }
 
     @Override

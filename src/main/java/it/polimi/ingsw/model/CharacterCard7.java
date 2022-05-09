@@ -13,7 +13,7 @@ public class CharacterCard7 implements CardBehavior {
     public void Effect(Parameter parameter) {
         //da ripetere per max3 volte
         PawnColor studentToTake = chooseColor();
-        PawnColor studentToGive = chooseColor();//eseguire dei controlli per verificare la presenza delle pedine scelte
+        PawnColor studentToGive = chooseColor();//todo eseguire dei controlli per verificare la presenza delle pedine scelte
         parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(studentToGive, parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(studentToGive) - 1);
         this.students.replace(studentToGive, this.students.get(studentToGive) + 1);
         parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(studentToTake, parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(studentToTake) + 1);
@@ -27,7 +27,7 @@ public class CharacterCard7 implements CardBehavior {
             parameter.getGame().getBag().replace(rdColor, parameter.getGame().getBag().get(rdColor)-1);
             this.students.replace(rdColor, this.students.get(rdColor)+1);
         }
-    }
+    }//Places 6 random students from the bag to the card
 
     public PawnColor chooseColor() {
         //credo vada chiesto al controller il valore del colore da ritornare

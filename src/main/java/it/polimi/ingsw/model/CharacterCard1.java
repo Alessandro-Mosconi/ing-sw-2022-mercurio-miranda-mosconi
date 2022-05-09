@@ -22,7 +22,7 @@ public class CharacterCard1 implements CardBehavior{
             parameter.getGame().getBag().replace(rdColor, parameter.getGame().getBag().get(rdColor)-1);
             this.students.replace(rdColor, this.students.get(rdColor)+1);
         }
-    }
+    }//Places 4 random students on the card
 
     public void moveToIsland(PawnColor color, Island destination){
         this.students.replace(color, this.students.get(color)-1);
@@ -35,9 +35,9 @@ public class CharacterCard1 implements CardBehavior{
             while(clonedBag.get(rdColor)==0){
                 rdColor=PawnColor.randomColor();
             }
-        }//controllo che la bag abbia disponibilità di studenti del colore random
-        clonedBag.replace(rdColor, clonedBag.get(rdColor)-1);
-        this.students.replace(rdColor,this.students.get(rdColor)+1);
+        }//Checks that the bag (its clone) has students of the random color
+        clonedBag.replace(rdColor, clonedBag.get(rdColor)-1); //Takes the chosen student from the bag
+        this.students.replace(rdColor,this.students.get(rdColor)+1);//Places the chosen student on the card
         game.setBag(clonedBag);
         game.getBag().replace(rdColor,clonedBag.get(rdColor));
     }
