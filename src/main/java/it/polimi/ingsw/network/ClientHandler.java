@@ -80,7 +80,7 @@ public class ClientHandler implements Runnable
         VirtualView virtualView = new VirtualView();
 
         System.out.println("sending ack");
-        out.println("LOGIN");
+        out.println("ACK");
 
         try {
             while (true) {
