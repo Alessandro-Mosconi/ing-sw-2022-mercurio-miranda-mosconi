@@ -11,7 +11,7 @@ public class GeneratePlayersState implements GameControllerState{
 
     @Override
     public void updateNextState(GameController gameController) {
-        gameController.setCurrentState(new SetupState());
+        gameController.setNextState(new SetupState());
     }
 
     @Override

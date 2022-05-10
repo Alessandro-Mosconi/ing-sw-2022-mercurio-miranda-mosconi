@@ -2,21 +2,34 @@ package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.network.ClientHandler;
 import it.polimi.ingsw.virtualview.VirtualView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class GameController implements ActionListener {
     private Game game;
     private VirtualView view;
     private GameControllerState currentState;
-    private GameControllerState nextState;
+    private GameControllerState nextState  = new GeneratePlayersState();
+    private ArrayList<ClientHandler> clientHandlerArrayList;
+
+    public ArrayList<ClientHandler> getClientHandlerArrayList() {
+        return clientHandlerArrayList;
+    }
+
+    public void setClientHandlerArrayList(ArrayList<ClientHandler> clientHandlerArrayList) {
+        this.clientHandlerArrayList = clientHandlerArrayList;
+    }
 
     public void setCurrentState(GameControllerState currentState) {
         this.currentState = currentState;
     }
-
+    public void setNextState(GameControllerState nextState){
+        this.nextState= nextState;
+    }
 
     public Game getGame() {
         return game;
@@ -45,20 +58,18 @@ public class GameController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
     }
-    int main(){
-        /*this.game = new Game();
-        this.currentState=new GameControllerState();
-        this.nextState=new GameControllerState();
+    void manageTurn(){
+        game = new Game();
+        //currentState=new GameControllerState();
+        //nextState=new GameControllerState();
         //getPLAYERS somehow
-        this.currentState.startState();
+        //currentState.startState();
         while(true){
-            this.currentState=nextState;
-            this.currentState.startState();
-            this.nextState=this.currentState.updateNextState();
-            this.currentState.endState();
-            //todo endState sembra abbastanza inutile
+            currentState=nextState;
+            currentState.startState(this);
+            currentState.updateNextState(this);
+            currentState.endState();
        }
-       */
 
-    return 0;}
+    }
 }
