@@ -11,47 +11,42 @@ import java.util.ArrayList;
 
 public class GameController implements ActionListener {
     private Game game;
-    private VirtualView view;
     private GameControllerState currentState;
-    private GameControllerState nextState  = new GeneratePlayersState();
-    private ArrayList<ClientHandler> clientHandlerArrayList;
-
+    private GameControllerState nextState  = new LoadingState();
+    private ArrayList<ClientHandler> clientHandlerArrayList; //todo i clientHandler vanno aggiunti qui man mano che vengono creati
+    private ArrayList<VirtualView> virtualViews; //da unire ai clientHandler in un'unica classe sooner or later
+    private int currentVirtualView=0;
+    public int getCurrentVirtualView() {
+        return currentVirtualView;
+    }
+    public void setCurrentVirtualView(int currentVirtualView) {
+        this.currentVirtualView = currentVirtualView;
+    }
     public ArrayList<ClientHandler> getClientHandlerArrayList() {
         return clientHandlerArrayList;
     }
-
     public void setClientHandlerArrayList(ArrayList<ClientHandler> clientHandlerArrayList) {
         this.clientHandlerArrayList = clientHandlerArrayList;
     }
-
     public void setCurrentState(GameControllerState currentState) {
         this.currentState = currentState;
     }
     public void setNextState(GameControllerState nextState){
         this.nextState= nextState;
     }
-
     public Game getGame() {
         return game;
     }
-
-    public VirtualView getView() {
-        return view;
+    public ArrayList<VirtualView> getVirtualViews() {
+        return virtualViews;
     }
-
-    public void setView(VirtualView view) {
-        this.view = view;
-    }
-
-
-    public GameController(Game game, VirtualView view) {
-        this.game = game;
-        this.view = view;
+    public void setVirtualViews(ArrayList<VirtualView> virtualViews) {
+        this.virtualViews = virtualViews;
     }
 
     public GameController() {
             this.game = new Game();
-            this.view = new VirtualView();
+            this.virtualViews = new ArrayList<>();
     }
 
     @Override
@@ -68,7 +63,7 @@ public class GameController implements ActionListener {
             currentState=nextState;
             currentState.startState(this);
             currentState.updateNextState(this);
-            currentState.endState();
+            currentState.endState(this);
        }
 
     }

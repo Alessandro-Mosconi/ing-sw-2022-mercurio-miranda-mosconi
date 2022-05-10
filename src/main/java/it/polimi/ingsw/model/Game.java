@@ -128,32 +128,34 @@ public class Game {
         return allCharacterCards;
     }
     public void setupGame(){
-        this.bag = new HashMap<>();
+        players = new ArrayList<>(); //qui vengono aggiunti man mano dal controller
+        bag = new HashMap<>();
         fillBag();
-        ArrayList<Island> islands = generateIslands();
+        ArrayList<Island> islands = generateIslands(); //generates and initialises the islands
         IslandManager islandManager= new IslandManager(islands);
         this.setIslandManager(islandManager);
         //ArrayList<Player> players = generatePlayers(this.numberOfPlayers);
         //this.setPlayers(players);
-        //todo inizializzare i players - probabilmente verrà fatto dal controller che darà in input al setupGame l'array di players da settare
+        //inizializzare i players - probabilmente verrà fatto dal controller che darà in input al setupGame l'array di players da settare
         ArrayList<SchoolBoard> schoolBoards = generateSchoolBoards();
         initSchoolBoards();
         this.setSchoolBoards(schoolBoards);
         ArrayList<CloudTile> cloudTiles = generateCloudTiles(); //Clouds are filled after the player order is set
         //Game board parts are allocated and initialized so far
-        Player firstPlayer = SelectFirstPlayer(); //Randomically select the first player to choose an AssistantCard
+        /*Player firstPlayer = SelectFirstPlayer(); //Randomically select the first player to choose an AssistantCard
         ArrayList<Integer> tmpOrder = new ArrayList<>(this.numberOfPlayers);
         for(int i=0;i<this.numberOfPlayers;i++){
             tmpOrder.add(firstPlayer.getPlayerNumber()+i % this.numberOfPlayers);
         }
-        this.setPlayerOrder(tmpOrder);//During the first phase, the player order follows a clockwise order
+        this.setPlayerOrder(tmpOrder);*/
+        //During the first phase, the player order follows a clockwise order
         /*ArrayList<WizardType> wizards = new ArrayList<>(numberOfPlayers);{
             for(Player p : players) {
                 wizards.add(p.getDeck().getWizard());
             }
-        }*/ //todo da mettere nel GenerateControllerState
-       // this.setWizards(wizards);//todo il mago viene scelto nel setup del controller ?
-        //fillCloudTiles(); vengono riempite nel SETUPSTATE dopo il playerOrder
+        }*/
+       // this.setWizards(wizards);//il mago viene scelto nel setup del controller
+        //fillCloudTiles();  vengono riempite nel SETUPSTATE dopo il playerOrder
         if(gameMode.equals(GameMode.expert)){
             initAllCharacterCards(); //Allocates all of the CharacterCards
             ArrayList<CharacterCard> chosenCharacterCards = initChosenCharacterCards(); //Takes a sublist from the randomized CharacterCards list
@@ -247,24 +249,24 @@ public class Game {
         return players;
     } da gestire nel controller*/
     private void initSchoolBoards() {
-        /* for(SchoolBoard s: schoolBoards){
-            if(this.numberOfPlayers==2){
+         for(SchoolBoard s: schoolBoards){
+            /*if(this.numberOfPlayers==2){
                 s.setTowersNumber(8);
             }
             if(this.numberOfPlayers==3){
                 s.setTowersNumber(6);
             }
             if(this.numberOfPlayers==4){
-                s.setTowersNumber(4);
-            }//qui va modificato -- todo valutare di aggiungere un attributo che indichi squadra al player e ricordarsi di cambiare le torri qunado si gioca in 4
+                s.setTowersNumber(4);}*/
+            //qui va modificato -- todo valutare di aggiungere un attributo che indichi squadra al player e ricordarsi di cambiare le torri qunado si gioca in 4
             for(int i=0;i<7;i++){
                 PawnColor rdColor=PawnColor.randomColor();
                 this.bag.replace(rdColor, this.bag.get(rdColor)-1);
                 s.addStudentEntrance(rdColor);
             }
-            //manca da settare il colore delle torri
+            //manca da settare il colore delle torri todo se lo sceglie il giocatore deve settarlo il controller
 
-        }*/
+        }
     }
     private Player SelectFirstPlayer(){
         int min_val = 0;
@@ -298,5 +300,9 @@ public class Game {
         this.allCharacterCards.add(new CharacterCard (1, new CharacterCard10()));
         this.allCharacterCards.add(new CharacterCard (2, new CharacterCard11()));
         this.allCharacterCards.add(new CharacterCard (3, new CharacterCard12()));
+    }
+
+    public void addPlayer(Player playerToAdd) {
+        players.add(playerToAdd);
     }
 }

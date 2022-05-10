@@ -2,8 +2,8 @@ package it.polimi.ingsw.model;
 
 public class AssistantCard {
 
-    private final int value;
-    private final int motherMovement;
+    private int value;
+    private int motherMovement;
     private boolean consumed;
 
     public AssistantCard(int val, int mov)
@@ -11,6 +11,10 @@ public class AssistantCard {
         this.value = val;
         this.motherMovement = mov;
         this. consumed = false;
+    }
+
+    public AssistantCard() {
+
     }
 
     public int getValue() {

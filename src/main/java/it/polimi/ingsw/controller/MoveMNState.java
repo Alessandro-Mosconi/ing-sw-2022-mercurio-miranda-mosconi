@@ -22,7 +22,7 @@ public class MoveMNState implements GameControllerState{
             gameController.setCurrentState(new ChooseCTState());
     }
     @Override
-    public void endState() {
+    public void endState(GameController gameController) {
 
     }
 }

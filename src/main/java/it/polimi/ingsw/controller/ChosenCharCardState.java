@@ -10,7 +10,7 @@ public class ChosenCharCardState implements GameControllerState{
 
     }
     @Override
-    public void endState() {
+    public void endState(GameController gameController) {
 
     }
 }

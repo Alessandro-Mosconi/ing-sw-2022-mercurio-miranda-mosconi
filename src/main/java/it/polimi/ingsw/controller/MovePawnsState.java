@@ -18,7 +18,7 @@ public class MovePawnsState implements GameControllerState{
        gameController.setCurrentState(new MoveMNState());
     }
     @Override
-    public void endState() {
+    public void endState(GameController gameController) {
 
     }
 }

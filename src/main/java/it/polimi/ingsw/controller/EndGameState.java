@@ -13,7 +13,7 @@ public class EndGameState implements GameControllerState{
     }
 
     @Override
-    public void endState() {
+    public void endState(GameController gameController) {
 
     }
 }

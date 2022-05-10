@@ -17,13 +17,18 @@ public class ChooseCTState implements GameControllerState{
     public void updateNextState(GameController gameController) {
 
         //todo mettere i check per le carte in mano e per gli studenti nella bag. In tal caso si va nell'endgamestate
-        /*
-        if(endRound)gameController.setCurrentState(new PlanningState());
-        if(endTurn)gameController.setCurrentState(new MovePawnsState());
-        */
+        if(gameController.getCurrentVirtualView()<gameController.getVirtualViews().size()-1){
+            gameController.setNextState(new MovePawnsState());
+            gameController.setCurrentVirtualView(gameController.getCurrentVirtualView()+1);
+        }
+        else{
+            gameController.setNextState(new PlanningState());
+            gameController.setCurrentVirtualView(0);
+        }
+
     }
     @Override
-    public void endState() {
+    public void endState(GameController gameController) {
 
     }
 }
