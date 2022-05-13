@@ -18,6 +18,12 @@ public class Deck {
         this.wizard = null;
     }
 
+    public Deck(Set<AssistantCard> cards, WizardType wizard)
+    {
+        this.cards = new HashSet<AssistantCard>(cards);
+        this.wizard = wizard;
+    }
+
     public WizardType getWizard() {
         return wizard;
     }
