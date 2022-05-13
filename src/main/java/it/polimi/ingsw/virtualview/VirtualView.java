@@ -90,4 +90,7 @@ public class VirtualView {
         //todo chiede, riceve e dejsonizza la scelta
         return chosenAssistantCard;
     }
+
+    public void askForMovement(){
+    }
 }
