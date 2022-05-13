@@ -1,12 +1,15 @@
 package it.polimi.ingsw.virtualview;
 
+import com.google.gson.Gson;
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.network.Message;
 
 import java.util.ArrayList;
 import java.util.Set;
 
 public class VirtualView {
 
+    private Message msg_in;
     private String username;
     private String idGame;
     private GameMode gamemode;
@@ -19,13 +22,13 @@ public class VirtualView {
     private boolean online = true;
     private ArrayList<String> players;
 
-    public ArrayList<String> getPlayers() {
-        return players;
-    }
+    public Message getMsg_in() { return msg_in; }
 
-    public void setPlayers(ArrayList<String> players) {
-        this.players = players;
-    }
+    public void setMsg_in(Message msg_in) { this.msg_in = msg_in; }
+
+    public ArrayList<String> getPlayers() { return players; }
+
+    public void setPlayers(ArrayList<String> players) { this.players = players; }
 
     public boolean isOnline() {
         return online;
@@ -59,13 +62,24 @@ public class VirtualView {
         this.gamemode = gamemode;
     }
 
-    public Integer getPlayerNumber() {
-        return playerNumber;
-    }
+    public Integer getPlayerNumber() { return playerNumber; }
 
     public void setPlayerNumber(Integer playerNumber) {
         this.playerNumber = playerNumber;
     }
+
+    public void sendAnswer(){} //da implementare
+
+    public void read(String input){
+
+        Gson gson = new Gson();
+        Message msg = gson.fromJson(input, Message.class);
+
+        this.msg_in = msg;
+
+    }
+
+
 
     //private ArrayList<Player> players;
     //private GameMode chosenGameMode;

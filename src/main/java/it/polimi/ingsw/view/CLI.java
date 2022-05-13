@@ -15,6 +15,7 @@ public class CLI extends View{
     @Override
     public void login() {
 
+        System.out.print("\033[H\033[2J");
         System.out.flush();
 
         System.out.println("""
@@ -51,7 +52,9 @@ public class CLI extends View{
     public void settings() {
 
 
+        System.out.print("\033[H\033[2J");
         System.out.flush();
+
         String input = "" ;
         boolean commandFail = false;
 
@@ -139,6 +142,7 @@ public class CLI extends View{
     @Override
     public void lobby() {
 
+        System.out.print("\033[H\033[2J");
         System.out.flush();
 
         System.out.println("User in this lobby: " + getPlayers());

@@ -94,8 +94,12 @@ public class ClientHandler implements Runnable
 
                 if(!input.equals("ping")) {
                     if(!initialize(input))
+                    {
                         System.out.println("processing...");
-                        //virtualView.update(input)
+                        virtualView.read(input);
+                        //String output = virtualView.sendAnswer();
+                        //out.println(output);
+                    }
 
                 }
 
@@ -109,8 +113,6 @@ public class ClientHandler implements Runnable
         finally
         {
 
-            //prima di chiudere una connessione se l'utente è entrato in qualche lobby o ha creato qualche lobby con solo lui, si cancellano
-
             try
             {
                 pinger.stop();
@@ -122,6 +124,8 @@ public class ClientHandler implements Runnable
             {
                 ex.printStackTrace();
             }
+
+            //dopo aver chiuso una connessione se l'utente è entrato in qualche lobby o ha creato qualche lobby con solo lui, queste si cancellano
 
             synchronized (networkMap) {
                 if (virtualView.getIdGame() != null)
