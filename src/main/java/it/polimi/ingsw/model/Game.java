@@ -8,6 +8,7 @@ public class Game {
     private ArrayList<Player> players;
     private int numberOfPlayers;
     private int gameID;
+    private String idGame;
     private GameMode gameMode;
     private ArrayList<CloudTile> cloudTiles;
     private ArrayList<SchoolBoard> schoolBoards;
@@ -19,7 +20,27 @@ public class Game {
     private ArrayList<WizardType> wizards;
     private ArrayList<CharacterCard> chosenCharacterCards;
     private int bank;
-//methods @Setter @Getter
+    private boolean started;
+
+    public boolean isStarted() {
+        return started;
+    }
+
+    public void setStarted(boolean started) {
+        this.started = started;
+    }
+
+    public Game() {
+    }
+
+    public Game(int numberOfPlayers, String idGame, GameMode gameMode) {
+        this.numberOfPlayers = numberOfPlayers;
+        this.idGame = idGame;
+        this.gameMode = gameMode;
+        this.started = false;
+    }
+
+    //methods @Setter @Getter
     public void setGameMode(GameMode gamemode){
         this.gameMode=gamemode;
     }

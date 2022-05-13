@@ -4,6 +4,7 @@ package it.polimi.ingsw.network;
 public enum MessageType {
     ERROR,
     LOGIN,
+    LOBBY_WAITING,
     LOGIN_SUCCESSFUL,
     RECONNECTED,
     DISCONNECTED,
@@ -37,5 +38,5 @@ public enum MessageType {
     IslandChanged,
     CharacterCardChanged,
     WalletChanged,
-    DeckChanged;
+    DeckChanged
 }

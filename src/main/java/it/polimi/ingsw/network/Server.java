@@ -42,18 +42,21 @@ public class Server
             return;
         }
 
+        int i=0;
+
         while (true) {
             try {
+                i++;
                 /* accepts connections; for every connection we accept,
                  * create a new Thread executing a ClientHandler */
                 Socket client = socket.accept();
                 client.setSoTimeout(10000);
                 ClientHandler clientHandler = new ClientHandler(client);
-                Thread thread = new Thread(clientHandler, "server_" + client.getInetAddress());
+                Thread thread = new Thread(clientHandler, "server_" + i + "] " + client.getInetAddress());
                 thread.start();
 
             } catch (SocketTimeoutException e) {
-                System.out.println("too slow!! "+ e);
+                System.out.println("connection lost "+ e);
             } catch (IOException e) {
                 System.out.println("connection dropped");
             }

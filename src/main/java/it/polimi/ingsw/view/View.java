@@ -1,18 +1,46 @@
 package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.network.MessageType;
 
 import java.util.*;
 
 public class View {
     private String username;
+    private String idGame;
     private GameMode gamemode;
     private Integer playerNumber;
     private Player player;
+    private ArrayList<String> players;
     private ArrayList<SchoolBoard> schoolBoards;
     private ArrayList<CloudTile> clouds;
     private IslandManager islandManager;
     private Set<CharacterCard> characterCards;
+    private MessageType messageType;
+
+    public ArrayList<String> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<String> players) {
+        this.players = players;
+    }
+
+    public MessageType getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(MessageType messageType) {
+        this.messageType = messageType;
+    }
+
+    public String getIdGame() {
+        return idGame;
+    }
+
+    public void setIdGame(String idGame) {
+        this.idGame = idGame;
+    }
 
     public String getUsername() {
         return username;
@@ -20,6 +48,7 @@ public class View {
 
     public void setUsername(String username) {
         this.username = username;
+        System.out.println(this.username);
     }
 
     public GameMode getGamemode() {

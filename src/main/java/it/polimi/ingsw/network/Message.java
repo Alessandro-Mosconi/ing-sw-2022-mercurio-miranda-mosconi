@@ -21,6 +21,12 @@ public class Message {
         this.payload = null;
     }
 
+    public Message() {
+        this.user = null;
+        this.type = null;
+        this.payload = null;
+    }
+
     public Message(String user, MessageType type, String payload) {
         this.user = user;
         this.type = type;

@@ -63,19 +63,21 @@ public class Client {
         try (
                 PrintWriter out = new PrintWriter(server.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
-                BufferedReader stdIn =new BufferedReader(new InputStreamReader(System.in));
+                BufferedReader stdIn =new BufferedReader(new InputStreamReader(System.in))
         ) {
             //launch pinger thread
             pinger = new Pinger(out, server, "franco");
             Thread thread = new Thread(pinger, "clientPing" + server.getInetAddress());
             thread.start();
-            NetworkHandler networkHandler = new NetworkHandler(out, in);
+            View view = new CLI();
+            NetworkHandler networkHandler = new NetworkHandler(out, in, view);
 
             while (true) {
 
                 String input = in.readLine();
-                String output = null;
+                String output;
 
+                if(input != null)
                 if(!input.equals("ping")) {
                     System.out.println("processing...");
                     networkHandler.process(input);

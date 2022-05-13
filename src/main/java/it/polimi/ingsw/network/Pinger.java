@@ -27,20 +27,21 @@ public class Pinger implements Runnable
     @Override
     public void run() {
 
-        try {
+        synchronized (out) {
+            try {
 
-            while(!exit)
-            {
-                out.println("ping");
-                //System.out.println(name + " ping sent");
-                Thread.sleep(5000);
+                while (!exit) {
+                    out.println("ping");
+                    //System.out.println(name + " ping sent");
+                    Thread.sleep(5000);
+                }
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println("[" + socket.getInetAddress() + "] " + ">> Ping terminato <<");
         }
-
-        System.out.println("[" + socket.getInetAddress() + "] " + ">> Ping terminato <<");
     }
 
     public void stop()
