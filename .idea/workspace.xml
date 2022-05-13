@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/Network/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/Network/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/virtualview/VirtualView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/virtualview/VirtualView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +226,7 @@
       <workItem from="1651752523889" duration="9081000" />
       <workItem from="1651829571092" duration="20384000" />
       <workItem from="1651912460732" duration="56316000" />
-      <workItem from="1652381368170" duration="7696000" />
+      <workItem from="1652381368170" duration="8810000" />
     </task>
     <task id="LOCAL-00001" summary="classe di prova">
       <created>1647356869665</created>
@@ -517,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652426391418</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="read method added in VirtualView">
+      <created>1652435384189</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1652435384189</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -542,7 +547,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AssistantCard, Deck and enum classes" />
     <MESSAGE value="creation of model package" />
     <MESSAGE value="insertion of island class and update of IslandManager" />
     <MESSAGE value="CloudTile, Player and Schoolboard completed, GameMode (and Game) modified: from (Easy, Expert) to (easy, expert)" />
@@ -567,7 +571,8 @@
     <MESSAGE value="Network handler" />
     <MESSAGE value="Network handler v2" />
     <MESSAGE value="Lobby, game creation, game join finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lobby, game creation, game join finished" />
+    <MESSAGE value="read method added in VirtualView" />
+    <option name="LAST_COMMIT_MESSAGE" value="read method added in VirtualView" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

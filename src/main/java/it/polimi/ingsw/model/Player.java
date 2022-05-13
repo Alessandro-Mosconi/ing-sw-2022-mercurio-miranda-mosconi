@@ -66,16 +66,6 @@ public class Player {
         return lastAssistantCard;
     }
 
-/* VIEW METHODE
-    public int moveMotherNature(AssistantCard card){
-        System.out.println("choose the movement, max "+ card.getMotherMovement());
-        Scanner scanner = new Scanner(System.in);
-        int a = scanner.nextInt();
-        scanner.close();
-        return a;
-    }
-*/
-
 
 //move a specific student from the entrance to the hall
     public void moveFromEntranceToHall(PawnColor color){
@@ -84,6 +74,8 @@ public class Player {
         else {
             schoolBoard.removeStudentEntrance(color);
             schoolBoard.addStudentHall(color);
+            if(schoolBoard.checkForCoin(color))
+                this.wallet++;
         }
     }
 
