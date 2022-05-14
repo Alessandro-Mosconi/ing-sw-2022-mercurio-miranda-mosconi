@@ -107,4 +107,14 @@ public class VirtualView {
 
     public void askForMovement(){
     }
+
+    //todo modificare appena facciamo la virtualView, ofc
+    public int askForMNMovement(){
+        return 1;
+    }
+
+    //todo modificare appena facciamo la virtualView, ofc 2
+    public int askForCloudTile(){
+        return 1;
+    }
 }

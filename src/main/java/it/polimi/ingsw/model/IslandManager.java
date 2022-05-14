@@ -47,8 +47,17 @@ public class IslandManager {
         return primaryIsland.getTowerColor().equals(island2.getTowerColor());
     }//Checks if both islands given as parameters have the same TowerColor
 
-    public void moveMotherNature(int motherPosition, int cells){
+    public void moveMotherNature(int motherPosition, int shift){
         this.islandList.get(motherPosition).setMotherNature(false);
-        this.islandList.get((motherPosition+cells)% islandList.size()).setMotherNature(true);
+        this.islandList.get((motherPosition+shift)% islandList.size()).setMotherNature(true);
     }//Shifts motherNature
+
+    public int getMNPosition(){
+        for (int i = 0; i < islandList.size(); i++){
+            if (islandList.get(i).isMotherNature())
+                return i;
+        }
+        //bisogna trattare il caso in cui non ritorni nulla? Probabilmente dobbiamo inserire un errore
+        return 0;
+    }
 }

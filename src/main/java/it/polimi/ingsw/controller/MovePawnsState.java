@@ -38,9 +38,9 @@ public class MovePawnsState implements GameControllerState{
             while (pawnMap.get(currentColor) > 0){
                 gameController.getGame().getPlayers().get(gameController.getCurrentVirtualView()).moveFromEntranceToHall(currentColor);
                 pawnMap.replace(currentColor, pawnMap.get(currentColor)-1);
-                gameController.getGame().updateProfessor(currentColor);
                 numUpdates ++;
             }
+            gameController.getGame().updateProfessor(currentColor);
         }
     }
 
