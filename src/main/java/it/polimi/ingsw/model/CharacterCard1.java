@@ -10,8 +10,13 @@ public class CharacterCard1 implements CardBehavior{
 
     @Override
     public void Effect(Parameter parameter){
-        moveToIsland(parameter.getChosenColor(), parameter.getIsland());
-        refill(parameter.getGame());
+        if(this.students.get(parameter.getChosenColor())==0){
+            //TODO manda errore e chiede di reinserire
+        }
+        else {
+            moveToIsland(parameter.getChosenColor(), parameter.getIsland());
+            refill(parameter.getGame());
+        }
     }
 
     @Override

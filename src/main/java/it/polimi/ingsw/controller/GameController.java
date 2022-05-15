@@ -14,10 +14,18 @@ public class GameController implements ActionListener {
     private GameControllerState currentState;
     private GameControllerState nextState  = new LoadingState();
     private GameControllerState previousState;
-
+    private boolean cardUsed = false;
+    private boolean lastRound = false;
     private ArrayList<ClientHandler> clientHandlerArrayList; //todo i clientHandler vanno aggiunti qui man mano che vengono creati
     private ArrayList<VirtualView> virtualViews; //da unire ai clientHandler in un'unica classe sooner or later
     private int currentVirtualView=0;
+
+    public boolean isLastRound() {
+        return lastRound;
+    }
+    public void setLastRound(boolean lastRound) {
+        this.lastRound = lastRound;
+    }
     public int getCurrentVirtualView() {
         return currentVirtualView;
     }
@@ -54,6 +62,10 @@ public class GameController implements ActionListener {
     public GameController() {
             this.game = new Game();
             this.virtualViews = new ArrayList<>();
+    }
+    public void setCardUsed(boolean cardUsed){this.cardUsed=cardUsed;}
+    public boolean isCardUsed() {
+        return cardUsed;
     }
 
     @Override

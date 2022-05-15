@@ -5,20 +5,19 @@ public class CharacterCard10 implements CardBehavior{
     //Puoi scambiare fra loro fino a 2 Studenti presenti nella tua Sala e nel tuo Ingresso.
     @Override
     public void Effect(Parameter parameter) {
-        //max 2 volte
-        PawnColor chosenColor = chooseColor();
-        parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(chosenColor)-1);
-        parameter.getPlayer().getSchoolBoard().getStudentHall().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentHall().get(chosenColor)+1);
-        //from entrance to hall
-        parameter.getPlayer().getSchoolBoard().getStudentHall().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentHall().get(chosenColor)-1);
-        parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(chosenColor)+1);
-        //from hall to entrance
+        for(PawnColor col : PawnColor.values()) {
+            int studToHall = parameter.getColorMap1().get(col);
+            int studToEntrance = parameter.getColorMap2().get(col);
+            if (studToHall < parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(col) || studToEntrance > parameter.getPlayer().getSchoolBoard().getStudentHall().get(col)) {
+                //todo manda errore e chiede di reinserire
+            }
+        }
         for(PawnColor col : PawnColor.values()){
             int studToHall = parameter.getColorMap1().get(col);
             int studToEntrance = parameter.getColorMap2().get(col);
-            parameter.getPlayer().getSchoolBoard().getStudentHall().replace(col, parameter.getPlayer().getSchoolBoard().getStudentHall().get(col)+studToHall-studToEntrance);
-            parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(col, parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(col)-studToHall+studToEntrance);
-        }//todo effettuare controlli sulle disponibilità
+            parameter.getPlayer().getSchoolBoard().getStudentHall().replace(col, parameter.getPlayer().getSchoolBoard().getStudentHall().get(col) + studToHall - studToEntrance);
+            parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(col, parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(col) - studToHall + studToEntrance);
+        }
     }
 
     @Override

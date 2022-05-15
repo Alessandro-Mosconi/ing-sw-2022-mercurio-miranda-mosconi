@@ -25,6 +25,7 @@ public class MoveMNState implements GameControllerState{
         }
         else {
             gameController.getGame().getIslandManager().getIslandList().get(gameController.getGame().getIslandManager().getCurrMNPosition()).setNoEntryTile(false);
+            gameController.getGame().setEntryTiles(gameController.getGame().getEntryTiles()+1);
         }//This else branch takes the entryTiles back and does not let MN change the influence on this island
         updateNextState(gameController);
         //if the user clicks on the card then we start another state?
@@ -32,7 +33,7 @@ public class MoveMNState implements GameControllerState{
 
     @Override
     public void updateNextState(GameController gameController) {
-        if(gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()){
+        if(!gameController.isCardUsed()&&gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()){
             gameController.setPreviousState(this);
             gameController.setNextState(new ChosenCharCardState());
         }

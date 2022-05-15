@@ -24,6 +24,7 @@ public class Game {
     private boolean towersDoCount=true;
     private PawnColor keptOut=null;
     private boolean started;
+    private int entryTiles;
 
 
     public boolean isStarted() {
@@ -45,6 +46,15 @@ public class Game {
     }
 
     //methods @Setter @Getter
+
+    public int getEntryTiles() {
+        return entryTiles;
+    }
+
+    public void setEntryTiles(int entryTiles) {
+        this.entryTiles = entryTiles;
+    }
+
     public boolean isTowersDoCount() {
         return towersDoCount;
     }
@@ -144,14 +154,16 @@ public class Game {
     }
 //other methods
     public void moveFromBagToCloud(CloudTile cloud){
-        PawnColor rdColor=PawnColor.randomColor();
-        if(this.bag.get(rdColor)==0){
-            while(this.bag.get(rdColor)==0){
-                rdColor=PawnColor.randomColor();
-            }
-        }//controllo che la bag abbia disponibilità di studenti del colore random
-        this.bag.replace(rdColor, this.bag.get(rdColor)-1);
-        cloud.getStudents().replace(rdColor, cloud.getStudents().get(rdColor)+1);
+        if(!isBagEmpty()){
+            PawnColor rdColor=PawnColor.randomColor();
+            if(this.bag.get(rdColor)==0){
+                while(this.bag.get(rdColor)==0){
+                    rdColor=PawnColor.randomColor();
+                }
+            }//controllo che la bag abbia disponibilità di studenti del colore random
+            this.bag.replace(rdColor, this.bag.get(rdColor)-1);
+            cloud.getStudents().replace(rdColor, cloud.getStudents().get(rdColor)+1);
+        }
     }
     public void updateProfessor(PawnColor color){
         int currentMax=0;
@@ -210,6 +222,7 @@ public class Game {
             for(CharacterCard cc: chosenCharacterCards){
                 cc.getCardBehavior().initializeCard(new Parameter(this));
             }//Initializes the chosen card
+            this.setEntryTiles(4);
             this.setBank(20);
         }
     }
@@ -351,5 +364,14 @@ public class Game {
 
     public void addPlayer(Player playerToAdd) {
         players.add(playerToAdd);
+    }
+
+    public boolean isBagEmpty() {
+        for(PawnColor c : PawnColor.values()){
+            if(bag.get(c)!=0){
+                return false;
+            }
+        }
+        return true;
     }
 }

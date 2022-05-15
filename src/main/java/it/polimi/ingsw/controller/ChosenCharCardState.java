@@ -4,9 +4,21 @@ import it.polimi.ingsw.model.*;
 public class ChosenCharCardState implements GameControllerState{
     @Override
     public void startState(GameController gameController) {
+        gameController.setCardUsed(true);
         Player currPlayer = gameController.getGame().getPlayers().get(gameController.getGame().getCurrPlayer());
         Parameter parameter = new Parameter(gameController.getGame(), currPlayer);
         CharacterCard chosenCard = gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askForCard();
+        if(chosenCard.getPrice()>gameController.getGame().getPlayers().get(gameController.getCurrentVirtualView()).getWallet()){
+            //todo send error
+            this.endState(gameController);
+        }else{
+            gameController.getGame().getPlayers().get(gameController.getCurrentVirtualView()).setWallet(gameController.getGame().getPlayers().get(gameController.getCurrentVirtualView()).getWallet()-chosenCard.getPrice());
+            for(CharacterCard c: gameController.getGame().getChosenCharacterCards()){
+                if(c.equals(chosenCard)){
+                    c.increasePrice();
+                }
+            }
+        }
         String T = chosenCard.getClass().getSimpleName();
         switch (T) {
             case ("CharacterCard1"), ("CharacterCard9"),("CharacterCard11"), ("CharacterCard12") -> parameter.setChosenColor(gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askForColor());
@@ -59,7 +71,7 @@ public class ChosenCharCardState implements GameControllerState{
     }
     @Override
     public void endState(GameController gameController) {
-
+        gameController.setCardUsed(false);
     }
     public int calculateBag(GameController gameController){
         int students = 0;

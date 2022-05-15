@@ -20,9 +20,16 @@ public class CharacterCard7 implements CardBehavior {
         for(PawnColor col : PawnColor.values()){
             int studToTake = parameter.getColorMap1().get(col);
             int studToGive = parameter.getColorMap2().get(col);
-            parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(col,parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(col)+studToTake-studToGive);
-            this.students.replace(col, this.students.get(col)-studToTake+studToGive);
-        }//todo effettuare controlli sulle disponibilità sia sulla carta per gli studToTake che sulla schoolBoard per quelli toGive
+            if(studToTake>this.students.get(col) || studToGive<parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(col)){
+                //todo manda errore e chiede di reinserire
+            }
+        }
+        for(PawnColor col : PawnColor.values()){
+            int studToTake = parameter.getColorMap1().get(col);
+            int studToGive = parameter.getColorMap2().get(col);
+            parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(col, parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(col) + studToTake - studToGive);
+            this.students.replace(col, this.students.get(col) - studToTake + studToGive);
+        }
     }
 
     @Override
@@ -37,10 +44,5 @@ public class CharacterCard7 implements CardBehavior {
     @Override
     public void endEffect(Parameter parameter) {
         //do nothing
-    }
-
-    public PawnColor chooseColor() {
-        //credo vada chiesto al controller il valore del colore da ritornare
-        return null;
     }
 }
