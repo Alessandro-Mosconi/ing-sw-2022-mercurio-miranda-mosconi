@@ -1,6 +1,7 @@
 package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.GameMode;
 
 public class MoveMNState implements GameControllerState{
     @Override
@@ -33,7 +34,7 @@ public class MoveMNState implements GameControllerState{
 
     @Override
     public void updateNextState(GameController gameController) {
-        if(!gameController.isCardUsed()&&gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()){
+        if (gameController.getGame().getGameMode().equals(GameMode.expert)&&!gameController.isCardUsed() && gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()) {
             gameController.setPreviousState(this);
             gameController.setNextState(new ChosenCharCardState());
         }

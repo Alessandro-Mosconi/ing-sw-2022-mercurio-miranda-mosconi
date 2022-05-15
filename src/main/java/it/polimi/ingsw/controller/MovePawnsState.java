@@ -1,8 +1,5 @@
 package it.polimi.ingsw.controller;
-import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.Island;
-import it.polimi.ingsw.model.PawnColor;
-import it.polimi.ingsw.model.SchoolBoard;
+import it.polimi.ingsw.model.*;
 
 import java.util.Map;
 
@@ -25,11 +22,11 @@ public class MovePawnsState implements GameControllerState{
 
     @Override
     public void updateNextState(GameController gameController) {
-       if(!gameController.isCardUsed()&&gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()){
-           gameController.setPreviousState(this);
-           gameController.setNextState(new ChosenCharCardState());
-       }
-        else{ gameController.setNextState(new MoveMNState()); }
+        if (gameController.getGame().getGameMode().equals(GameMode.expert)&&!gameController.isCardUsed() && gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()) {
+            gameController.setPreviousState(this);
+            gameController.setNextState(new ChosenCharCardState());
+        }
+        else gameController.setNextState(new MoveMNState());
     }
     @Override
     public void endState(GameController gameController) {

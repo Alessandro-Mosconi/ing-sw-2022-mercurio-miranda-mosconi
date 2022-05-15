@@ -1,6 +1,7 @@
 package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.GameMode;
 import it.polimi.ingsw.model.PawnColor;
 
 import java.awt.*;
@@ -22,10 +23,12 @@ public class ChooseCTState implements GameControllerState{
     }
     @Override
     public void updateNextState(GameController gameController) {
-        if(!gameController.isCardUsed()&&gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()){
+
+        if (gameController.getGame().getGameMode().equals(GameMode.expert)&&!gameController.isCardUsed() && gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()) {
             gameController.setPreviousState(this);
             gameController.setNextState(new ChosenCharCardState());
         }
+
         //this branch lets the following player in order start their turn
         else if (gameController.getCurrentVirtualView()<gameController.getVirtualViews().size()-1){
             gameController.setNextState(new MovePawnsState());
