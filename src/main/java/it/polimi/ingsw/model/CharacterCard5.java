@@ -14,7 +14,7 @@ public class CharacterCard5 implements CardBehavior{
 
     // ad inizio partita mettiamo le 4 tessere divieto su questa carta. Quando si usa la carta si sposta una tessera divieto su
     // un'isola e resta lì finché non ci va madre natura.
-    // Se madre natura finisce su un'isola con una tessera divieto allora non si calcola l'influenza todo
+    // Se madre natura finisce su un'isola con una tessera divieto allora non si calcola l'influenza
     /* Direi di fare un controllo quando si sposta madre natura:
         si potrebbe fare il controllo quando si sposta madre natura e togliere, eventualmente, la tile
         di conseguenza andrebbe risettato il valore delle entryTiles su questa carta con una nuova Set
@@ -31,5 +31,11 @@ public class CharacterCard5 implements CardBehavior{
     public void initializeCard(Parameter parameter) {
         this.setEntryTile(4);
     }
+
+    @Override
+    public void endEffect(Parameter parameter) {
+        //do nothing
+    }
 }
 
+//todo rimettere la cloud sopra la carta ??? forse si mettono le entrytiles in game e prima di piazzarne una nuova si fa il check li

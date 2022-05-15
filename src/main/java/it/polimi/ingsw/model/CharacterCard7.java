@@ -11,13 +11,18 @@ public class CharacterCard7 implements CardBehavior {
     //inizializzare con 6 studenti dalla bag nel setupGame se viene scelta questa carta
     @Override
     public void Effect(Parameter parameter) {
-        //da ripetere per max3 volte
-        PawnColor studentToTake = chooseColor();
-        PawnColor studentToGive = chooseColor();//todo eseguire dei controlli per verificare la presenza delle pedine scelte
+        /*PawnColor studentToTake = chooseColor();
+        PawnColor studentToGive = chooseColor();
         parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(studentToGive, parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(studentToGive) - 1);
         this.students.replace(studentToGive, this.students.get(studentToGive) + 1);
         parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(studentToTake, parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(studentToTake) + 1);
-        this.students.replace(studentToGive, this.students.get(studentToGive) - 1);
+        this.students.replace(studentToGive, this.students.get(studentToGive) - 1);*/
+        for(PawnColor col : PawnColor.values()){
+            int studToTake = parameter.getColorMap1().get(col);
+            int studToGive = parameter.getColorMap2().get(col);
+            parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(col,parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(col)+studToTake-studToGive);
+            this.students.replace(col, this.students.get(col)-studToTake+studToGive);
+        }//todo effettuare controlli sulle disponibilità sia sulla carta per gli studToTake che sulla schoolBoard per quelli toGive
     }
 
     @Override
@@ -28,6 +33,11 @@ public class CharacterCard7 implements CardBehavior {
             this.students.replace(rdColor, this.students.get(rdColor)+1);
         }
     }//Places 6 random students from the bag to the card
+
+    @Override
+    public void endEffect(Parameter parameter) {
+        //do nothing
+    }
 
     public PawnColor chooseColor() {
         //credo vada chiesto al controller il valore del colore da ritornare

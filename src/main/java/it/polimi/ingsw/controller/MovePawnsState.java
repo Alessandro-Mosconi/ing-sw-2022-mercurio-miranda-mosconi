@@ -25,7 +25,11 @@ public class MovePawnsState implements GameControllerState{
 
     @Override
     public void updateNextState(GameController gameController) {
-       gameController.setCurrentState(new MoveMNState());
+       if(gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()){
+           gameController.setPreviousState(this);
+           gameController.setNextState(new ChosenCharCardState());
+       }
+        else{ gameController.setNextState(new MoveMNState()); }
     }
     @Override
     public void endState(GameController gameController) {

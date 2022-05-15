@@ -13,11 +13,22 @@ public class CharacterCard10 implements CardBehavior{
         parameter.getPlayer().getSchoolBoard().getStudentHall().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentHall().get(chosenColor)-1);
         parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(chosenColor)+1);
         //from hall to entrance
+        for(PawnColor col : PawnColor.values()){
+            int studToHall = parameter.getColorMap1().get(col);
+            int studToEntrance = parameter.getColorMap2().get(col);
+            parameter.getPlayer().getSchoolBoard().getStudentHall().replace(col, parameter.getPlayer().getSchoolBoard().getStudentHall().get(col)+studToHall-studToEntrance);
+            parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(col, parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(col)-studToHall+studToEntrance);
+        }//todo effettuare controlli sulle disponibilità
     }
 
     @Override
     public void initializeCard(Parameter parameter) {
         //none
+    }
+
+    @Override
+    public void endEffect(Parameter parameter) {
+        //do nothing
     }
 
     public PawnColor chooseColor() {

@@ -13,6 +13,7 @@ public class GameController implements ActionListener {
     private Game game;
     private GameControllerState currentState;
     private GameControllerState nextState  = new LoadingState();
+    private GameControllerState previousState;
 
     private ArrayList<ClientHandler> clientHandlerArrayList; //todo i clientHandler vanno aggiunti qui man mano che vengono creati
     private ArrayList<VirtualView> virtualViews; //da unire ai clientHandler in un'unica classe sooner or later
@@ -44,7 +45,12 @@ public class GameController implements ActionListener {
     public void setVirtualViews(ArrayList<VirtualView> virtualViews) {
         this.virtualViews = virtualViews;
     }
-
+    public GameControllerState getPreviousState() {
+        return previousState;
+    }
+    public void setPreviousState(GameControllerState previousState) {
+        this.previousState = previousState;
+    }
     public GameController() {
             this.game = new Game();
             this.virtualViews = new ArrayList<>();

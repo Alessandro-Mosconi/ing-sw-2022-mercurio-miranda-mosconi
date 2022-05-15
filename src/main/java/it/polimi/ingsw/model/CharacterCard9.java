@@ -6,8 +6,7 @@ public class CharacterCard9 implements CardBehavior{
 
     @Override
     public void Effect(Parameter parameter) {
-        PawnColor chosenColor= chooseColor();
-        //todo anche questo da capire
+        parameter.getGame().setKeptOut(parameter.getChosenColor());
     }
 
     @Override
@@ -15,9 +14,8 @@ public class CharacterCard9 implements CardBehavior{
         //none
     }
 
-
-    public PawnColor chooseColor() {
-        //credo vada chiesto al controller il valore del colore da ritornare
-        return null;
+    @Override
+    public void endEffect(Parameter parameter) {
+        parameter.getGame().setKeptOut(null);
     }
 }

@@ -14,4 +14,9 @@ public class CharacterCard3 implements CardBehavior{
     public void initializeCard(Parameter parameter) {
         //none
     }
+
+    @Override
+    public void endEffect(Parameter parameter) {
+        //do nothing
+    }
 }

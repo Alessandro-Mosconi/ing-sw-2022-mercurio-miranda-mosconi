@@ -21,7 +21,7 @@ public class PlanningState implements GameControllerState{
             gameController.getGame().updatePlayerOrder();
             //todo updateVirtualViewsOrder
             gameController.getGame().fillCloudTiles();
-            gameController.setNextState(new MovePawnsState());
+            gameController.setNextState(new PreActionState());
             gameController.setCurrentVirtualView(0);
         }
     }

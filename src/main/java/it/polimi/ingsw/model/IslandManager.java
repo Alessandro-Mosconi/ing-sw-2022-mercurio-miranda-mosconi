@@ -4,13 +4,19 @@ import java.util.ArrayList;
 
 public class IslandManager {
     private ArrayList<Island> islandList;
-
+    private int currMNPosition;
     public IslandManager(ArrayList<Island> islandList) {
         this.islandList = islandList;
     }
 
     public ArrayList<Island> getIslandList(){
         return  this.islandList;
+    }
+    public int getCurrMNPosition() {
+        return currMNPosition;
+    }
+    public void setCurrMNPosition(int currMNPosition) {
+        this.currMNPosition = currMNPosition;
     }
 
     public void checkForMerge(int islandPos){
@@ -48,8 +54,9 @@ public class IslandManager {
     }//Checks if both islands given as parameters have the same TowerColor
 
     public void moveMotherNature(int motherPosition, int shift){
-        this.islandList.get(motherPosition).setMotherNature(false);
+        this.islandList.get(currMNPosition).setMotherNature(false);
         this.islandList.get((motherPosition+shift)% islandList.size()).setMotherNature(true);
+        this.currMNPosition=((motherPosition+shift)% islandList.size());
     }//Shifts motherNature
 
     public int getMNPosition(){

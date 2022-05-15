@@ -9,9 +9,8 @@ public class CharacterCard11 implements CardBehavior{
     //Poi pesca un nuovo Studente dal sacchetto e posizionalo su questa carta.
     @Override
     public void Effect(Parameter parameter) {
-        PawnColor chosenColor = chooseColor();
-        this.students.replace(chosenColor, this.students.get(chosenColor)-1);
-        parameter.getPlayer().getSchoolBoard().getStudentHall().replace(chosenColor,parameter.getPlayer().getSchoolBoard().getStudentHall().get(chosenColor)+1);
+        this.students.replace(parameter.getChosenColor(), this.students.get(parameter.getChosenColor())-1);
+        parameter.getPlayer().getSchoolBoard().getStudentHall().replace(parameter.getChosenColor(),parameter.getPlayer().getSchoolBoard().getStudentHall().get(parameter.getChosenColor())+1);
         parameter.getGame().setBag(refill(parameter.getGame().getBag()));
     }
 
@@ -24,9 +23,9 @@ public class CharacterCard11 implements CardBehavior{
         }
     }//Places 4 students on the card
 
-    public PawnColor chooseColor() {
-        //credo vada chiesto al controller il valore del colore da ritornare
-        return null;
+    @Override
+    public void endEffect(Parameter parameter) {
+        //do nothing
     }
     public Map<PawnColor,Integer> refill(Map<PawnColor,Integer> gameBag){
         PawnColor rdColor=PawnColor.randomColor();

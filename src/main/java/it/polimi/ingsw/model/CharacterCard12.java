@@ -23,6 +23,11 @@ public class CharacterCard12 implements CardBehavior{
         //none
     }
 
+    @Override
+    public void endEffect(Parameter parameter) {
+        //do nothing
+    }
+
     public PawnColor chooseColor() {
         //credo vada chiesto al controller il valore del colore da ritornare
         return null;

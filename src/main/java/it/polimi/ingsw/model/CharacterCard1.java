@@ -10,8 +10,7 @@ public class CharacterCard1 implements CardBehavior{
 
     @Override
     public void Effect(Parameter parameter){
-        PawnColor color = chooseColor();
-        moveToIsland(color, parameter.getIsland());
+        moveToIsland(parameter.getChosenColor(), parameter.getIsland());
         refill(parameter.getGame());
     }
 
@@ -23,6 +22,11 @@ public class CharacterCard1 implements CardBehavior{
             this.students.replace(rdColor, this.students.get(rdColor)+1);
         }
     }//Places 4 random students on the card
+
+    @Override
+    public void endEffect(Parameter parameter) {
+        //do nothing
+    }
 
     public void moveToIsland(PawnColor color, Island destination){
         this.students.replace(color, this.students.get(color)-1);
@@ -41,11 +45,4 @@ public class CharacterCard1 implements CardBehavior{
         game.setBag(clonedBag);
         game.getBag().replace(rdColor,clonedBag.get(rdColor));
     }
-    public PawnColor chooseColor(){
-        //credo vada chiesto al controller il valore del colore da ritornare
-       return null;
-       //return chosenColor;
-    }
-
-
 }

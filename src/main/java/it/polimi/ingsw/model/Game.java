@@ -6,6 +6,7 @@ public class Game {
 
     //attributes
     private ArrayList<Player> players;
+    private int currPlayer;
     private int numberOfPlayers;
     private int gameID;
     private String idGame;
@@ -20,7 +21,10 @@ public class Game {
     private ArrayList<WizardType> wizards;
     private ArrayList<CharacterCard> chosenCharacterCards;
     private int bank;
+    private boolean towersDoCount=true;
+    private PawnColor keptOut=null;
     private boolean started;
+
 
     public boolean isStarted() {
         return started;
@@ -41,11 +45,33 @@ public class Game {
     }
 
     //methods @Setter @Getter
+    public boolean isTowersDoCount() {
+        return towersDoCount;
+    }
+    public void setTowersDoCount(boolean towersDoCount) {
+        for(Island i: this.getIslandManager().getIslandList()){
+            i.setTowersDoCount(towersDoCount);
+        }
+    }
+    public PawnColor getKeptOut() {
+        return keptOut;
+    }
+    public void setKeptOut(PawnColor keptOut) {
+        for(Island i : this.getIslandManager().getIslandList()){
+            i.setKeptOut(keptOut);
+        }
+    }
     public void setGameMode(GameMode gamemode){
         this.gameMode=gamemode;
     }
     public GameMode getGameMode() {
         return gameMode;
+    }
+    public int getCurrPlayer() {
+        return currPlayer;
+    }
+    public void setCurrPlayer(int currPlayer) {
+        this.currPlayer = currPlayer;
     }
     public void setGameID(int gameID){
         this.gameID=gameID;
@@ -189,7 +215,7 @@ public class Game {
     }
     public void updatePlayerOrder(){
         ArrayList<Player> clonePlayerArray = this.players;
-        clonePlayerArray.sort(new Comparator<Player>() {
+        clonePlayerArray.sort(new Comparator<>() {
             public int compare(Player i1, Player i2) {
                 return i1.getLastAssistantCard().getValue() - i2.getLastAssistantCard().getValue();
             }

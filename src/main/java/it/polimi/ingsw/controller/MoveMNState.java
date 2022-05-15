@@ -11,19 +11,30 @@ public class MoveMNState implements GameControllerState{
 
         //this method can be rewritten receiving only 1 parameter which would be the sum of motherPosition + movement
         gameController.getGame().getIslandManager().moveMotherNature(motherPosition, movement);
-        gameController.getGame().getIslandManager().checkForMerge(motherPosition);
-        gameController.getGame().getIslandManager().getIslandList().get(motherPosition+movement).assignInfluence(gameController.getGame().getSchoolBoards());
-
+        if (!gameController.getGame().getIslandManager().getIslandList().get(gameController.getGame().getIslandManager().getCurrMNPosition()).isNoEntryTile()) {
+            gameController.getGame().getIslandManager().getIslandList().get(motherPosition + movement).assignInfluence(gameController.getGame().getSchoolBoards());
+            if (gameController.getGame().getPlayers().get(gameController.getCurrentVirtualView()).getSchoolBoard().getTowersNumber() == 0) {
+                EndGameState endGameState = new EndGameState();
+                endGameState.startState(gameController);
+            }
+            gameController.getGame().getIslandManager().checkForMerge(motherPosition);
+            if (gameController.getGame().getIslandManager().getIslandList().size() <= 3) {
+                EndGameState endGameState = new EndGameState();
+                endGameState.startState(gameController);
+            }
+        }
+        else {
+            gameController.getGame().getIslandManager().getIslandList().get(gameController.getGame().getIslandManager().getCurrMNPosition()).setNoEntryTile(false);
+        }//This else branch takes the entryTiles back and does not let MN change the influence on this island
         updateNextState(gameController);
         //if the user clicks on the card then we start another state?
     }
 
     @Override
     public void updateNextState(GameController gameController) {
-
-        //questo if controlla che le torri non siano finite e che ci siano più di 3 isole
-        if ((gameController.getGame().getIslandManager().getIslandList().size() <= 3) || (gameController.getGame().getPlayers().get(gameController.getCurrentVirtualView()).getSchoolBoard().getTowersNumber() == 0)) {
-            gameController.setCurrentState(new EndGameState());
+        if(gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()){
+            gameController.setPreviousState(this);
+            gameController.setNextState(new ChosenCharCardState());
         }
         else
             gameController.setCurrentState(new ChooseCTState());

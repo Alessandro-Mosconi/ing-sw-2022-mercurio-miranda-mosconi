@@ -1,11 +1,18 @@
 package it.polimi.ingsw.model;
+
+import java.util.Map;
+
 //these are the parameters given to the character cards when used
 //created in order to give parameters respecting overriding rules
 public class Parameter {
 
+
     private Game game;
     private Island island;
     private Player player;
+    private PawnColor chosenColor;
+    private Map<PawnColor,Integer> colorMap1;
+    private Map<PawnColor,Integer> colorMap2;
 
     public Parameter(Game game, Island island) {
         this.game = game;
@@ -37,6 +44,10 @@ public class Parameter {
         this.island=null;
     }
 
+    public Parameter() {
+
+    }
+
     public Game getGame() {
         return game;
     }
@@ -61,4 +72,27 @@ public class Parameter {
         this.player = player;
     }
 
+    public PawnColor getChosenColor() {
+        return chosenColor;
+    }
+
+    public void setChosenColor(PawnColor chosenColor) {
+        this.chosenColor = chosenColor;
+    }
+
+    public Map<PawnColor, Integer> getColorMap1() {
+        return colorMap1;
+    }
+
+    public void setColorMap1(Map<PawnColor, Integer> colorMap1) {
+        this.colorMap1 = colorMap1;
+    }
+
+    public Map<PawnColor, Integer> getColorMap2() {
+        return colorMap2;
+    }
+
+    public void setColorMap2(Map<PawnColor, Integer> colorMap2) {
+        this.colorMap2 = colorMap2;
+    }
 }

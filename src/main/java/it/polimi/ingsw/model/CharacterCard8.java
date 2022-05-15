@@ -5,11 +5,16 @@ public class CharacterCard8 implements CardBehavior{
     // in questo turno hai 2 punti in più per il calcolo dell'influenza
     @Override
     public void Effect(Parameter parameter) {
-        //todo come la carta n6, capire come modificare l'influenza del singolo player
+        parameter.getGame().getSchoolBoards().get(parameter.getGame().getCurrPlayer()).setBonus2influencepoints(true);
     }
 
     @Override
     public void initializeCard(Parameter parameter) {
         //none
+    }
+
+    @Override
+    public void endEffect(Parameter parameter) {
+        parameter.getGame().getSchoolBoards().get(parameter.getGame().getCurrPlayer()).setBonus2influencepoints(false);
     }
 }
