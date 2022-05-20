@@ -1,10 +1,11 @@
 package it.polimi.ingsw.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Deck {
-    private final Set<AssistantCard> cards;
+    private final ArrayList<AssistantCard> cards;
     private WizardType wizard;
 
     public Deck(){
@@ -12,15 +13,15 @@ public class Deck {
         this.wizard = null;
     }
 
-    public Deck(Set<AssistantCard> cards)
+    public Deck(ArrayList<AssistantCard> cards)
     {
-        this.cards = new HashSet<AssistantCard>(cards);
+        this.cards = new ArrayList<AssistantCard>(cards);
         this.wizard = null;
     }
 
-    public Deck(Set<AssistantCard> cards, WizardType wizard)
+    public Deck(ArrayList<AssistantCard> cards, WizardType wizard)
     {
-        this.cards = new HashSet<AssistantCard>(cards);
+        this.cards = new ArrayList<AssistantCard>(cards);
         this.wizard = wizard;
     }
 
@@ -28,7 +29,7 @@ public class Deck {
         return wizard;
     }
 
-    public Set<AssistantCard> getCards() {
+    public ArrayList<AssistantCard> getCards() {
         return cards;
     }
 

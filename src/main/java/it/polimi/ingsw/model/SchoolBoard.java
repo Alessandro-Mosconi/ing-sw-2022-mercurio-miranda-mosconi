@@ -10,7 +10,7 @@ public class SchoolBoard {
     private Map<PawnColor, Integer> studentHall;
     private Map<PawnColor, Integer> studentEntrance;
     private Map<PawnColor, Boolean> professorTable;
-    private final GameMode gameMode;
+    private GameMode gameMode;
     private boolean bonus2influencepoints=false; //todo mettere a schoolboards questo attributo e settarlo dal game
 
 

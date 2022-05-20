@@ -26,6 +26,39 @@ public class Game {
     private boolean started;
     private int entryTiles;
 
+    private List<Observer> observerList = new ArrayList<>();
+
+    private void sendUpdate(){
+
+        for (Observer observer : this.observerList) {
+            observer.update(this);
+        }
+
+    }
+
+    public void addObserver(Observer observer) {
+        this.observerList.add(observer);
+        sendUpdate();
+    }
+
+    public void removeObserver(Observer observer) {
+        this.observerList.remove(observer);
+    }
+
+    public ArrayList<CharacterCard> getAllCharacterCard(){
+        return this.allCharacterCards;
+    }
+
+    public Player getPlayerByUsername(String username){
+        for (Player player : getPlayers())
+        {
+            if(player.getNickName().equals(username))
+                return player;
+        }
+
+        System.out.println("player non trovato");
+        return null;
+    }
 
     public boolean isStarted() {
         return started;

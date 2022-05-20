@@ -3,6 +3,8 @@ package it.polimi.ingsw.network;
 import com.google.gson.Gson;
 import it.polimi.ingsw.model.Player;
 
+import java.util.ArrayList;
+
 public class Message {
     private String user;
     private MessageType type;
@@ -61,6 +63,16 @@ public class Message {
         Gson gson = new Gson();
         this.payload = gson.toJson(obj);
         return payload;
+    }
+
+    public String fill(ArrayList<Object> objects){
+        ArrayList<String> payloads = new ArrayList<>();
+        Gson gson = new Gson();
+        for(Object obj : objects)
+        {
+            payloads.add(gson.toJson(obj));
+        }
+        return gson.toJson(payloads);
     }
 
     public String toSend (){

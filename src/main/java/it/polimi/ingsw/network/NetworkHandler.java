@@ -1,10 +1,7 @@
 package it.polimi.ingsw.network;
 
 import com.google.gson.Gson;
-import it.polimi.ingsw.model.CloudTile;
-import it.polimi.ingsw.model.Deck;
-import it.polimi.ingsw.model.Island;
-import it.polimi.ingsw.model.PawnColor;
+import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.Message;
 import it.polimi.ingsw.view.View;
 import it.polimi.ingsw.virtualview.VirtualView;
@@ -72,7 +69,7 @@ public class NetworkHandler {
         {
             System.out.println("IL GIOCO PUO' INIZIARE");
 
-            view.login();
+            view.chooseWizard();
 
         }
 
@@ -117,10 +114,11 @@ public class NetworkHandler {
 
             case LOBBY_JOINED:
                 System.out.println(input);
-                VirtualView vv = gson.fromJson(msg_in.getPayload(), VirtualView.class);
-                view.setPlayers(vv.getPlayers());
-                view.setPlayerNumber(vv.getPlayerNumber());
-                view.setGamemode(vv.getGamemode());
+                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
+                ArrayList<String> userList = gson.fromJson(payloads.get(0), ArrayList.class);
+                view.setPlayers(userList);
+                view.setPlayerNumber(gson.fromJson(payloads.get(1), Integer.class));
+                view.setGamemode(gson.fromJson(payloads.get(2), GameMode.class));
                 this.phase=3;
                 break;
 

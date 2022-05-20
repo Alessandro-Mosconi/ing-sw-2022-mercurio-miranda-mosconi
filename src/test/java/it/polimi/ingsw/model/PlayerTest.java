@@ -54,7 +54,7 @@ class PlayerTest {
     @Test
     void useAssistantCard() {
         AssistantCard card = new AssistantCard(0, 0);
-        Set<AssistantCard> cards = new HashSet<AssistantCard>();
+        ArrayList<AssistantCard> cards = new ArrayList<>();
         cards.add(card);
         Deck deck = new Deck(cards);
         SchoolBoard schoolboard = new SchoolBoard(6, TowerColor.grey, GameMode.expert);

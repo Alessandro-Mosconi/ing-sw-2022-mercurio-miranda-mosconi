@@ -1,6 +1,9 @@
 package it.polimi.ingsw.view;
 
+import it.polimi.ingsw.model.AssistantCard;
+import it.polimi.ingsw.model.Deck;
 import it.polimi.ingsw.model.GameMode;
+import it.polimi.ingsw.model.WizardType;
 import it.polimi.ingsw.network.MessageType;
 
 import java.io.BufferedReader;
@@ -124,9 +127,49 @@ public class CLI extends View{
 
     }
 
+    public void printDeck(){
+
+        for(AssistantCard card : getPlayer().getDeck().getCards())
+            System.out.print("-------------\t\t");
+        System.out.println("");
+        for(AssistantCard card : getPlayer().getDeck().getCards())
+            System.out.print("|\t\t\t|\t\t");
+        System.out.println("");
+        for(AssistantCard card : getPlayer().getDeck().getCards())
+            System.out.print("|\t v: "+ card.getValue() + "\t|\t\t");
+        System.out.println("");
+        for(AssistantCard card : getPlayer().getDeck().getCards())
+            System.out.print("|\t\t\t|\t\t");
+        System.out.println("");
+        for(AssistantCard card : getPlayer().getDeck().getCards())
+            System.out.print("|\t m: "+ card.getMotherMovement() + "\t|\t\t");
+        System.out.println("");
+        for(AssistantCard card : getPlayer().getDeck().getCards())
+            System.out.print("|\t\t\t|\t\t");
+        System.out.println("");
+        for(AssistantCard card : getPlayer().getDeck().getCards())
+            System.out.print("-------------\t\t");
+    }
+
     @Override
     public void chooseAssistantCard() {
-        super.chooseAssistantCard();
+
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+
+        System.out.print("Chose an Assistant card: ");
+
+        printDeck();
+
+        String input = "" ;
+        try {
+            input = stdIn.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        //setMessageType();
     }
 
     @Override
@@ -166,7 +209,25 @@ public class CLI extends View{
 
     @Override
     public void chooseWizard() {
-        super.chooseWizard();
+
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+
+        System.out.print("Chose a wizard: ");
+        for(WizardType wizard : getWizards())
+        {
+            System.out.print(wizard + " - ");
+        }
+
+        String input = "" ;
+        try {
+            input = stdIn.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        setMessageType(MessageType.ChoseWizard);
     }
 
     @Override

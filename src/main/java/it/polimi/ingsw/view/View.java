@@ -3,6 +3,7 @@ package it.polimi.ingsw.view;
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.MessageType;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class View {
@@ -17,6 +18,24 @@ public class View {
     private IslandManager islandManager;
     private Set<CharacterCard> characterCards;
     private MessageType messageType;
+    private ArrayList<WizardType> wizards;
+
+    public View(){
+        wizards = new ArrayList<WizardType>();
+        wizards.add(WizardType.wizard1);
+        wizards.add(WizardType.wizard2);
+        wizards.add(WizardType.wizard3);
+        wizards.add(WizardType.wizard4);
+    }
+
+
+    public ArrayList<WizardType> getWizards() {
+        return wizards;
+    }
+
+    public void setWizards(ArrayList<WizardType> wizards) {
+        this.wizards = wizards;
+    }
 
     public ArrayList<String> getPlayers() {
         return players;

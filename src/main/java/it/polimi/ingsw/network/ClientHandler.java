@@ -97,6 +97,7 @@ public class ClientHandler implements Runnable
                     {
                         System.out.println("processing...");
                         virtualView.read(input);
+                        //controller(
                         //String output = virtualView.sendAnswer();
                         //out.println(output);
                     }
@@ -222,10 +223,17 @@ public class ClientHandler implements Runnable
                         UserList.add(msg_in.getUser());
                         networkMap.replace(virtualView.getIdGame(), UserList);
                         virtualView.setPlayers(UserList);
+
                         msg_out.setType(MessageType.LOBBY_JOINED);
-                        msg_out.fill(virtualView);
+                        ArrayList<String> list = new ArrayList<>();
+                        list.add(gson.toJson(virtualView.getPlayers()));
+                        list.add(gson.toJson(virtualView.getPlayerNumber()));
+                        list.add(gson.toJson(virtualView.getGamemode()));
+                        msg_out.fill(list);
+
+                        System.out.println(msg_out.toSend());
                         System.out.println(networkMap);
-                        networkMap.notifyAll();
+                        this.notifyAll();
                         System.out.println("notified");
                         //controller = new GameController(gameMap.get(msg_in.getPayload()));
                     }

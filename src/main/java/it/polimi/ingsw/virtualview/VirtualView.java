@@ -3,13 +3,16 @@ package it.polimi.ingsw.virtualview;
 import com.google.gson.Gson;
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.Message;
+import it.polimi.ingsw.network.MessageType;
 
 import java.util.ArrayList;
 import java.util.Set;
 
-public class VirtualView {
+public class VirtualView implements Observer{
 
     private Message msg_in;
+    private MessageType out_type;
+    private Error error_type;
     private String username;
     private String idGame;
     private GameMode gamemode;
@@ -18,9 +21,20 @@ public class VirtualView {
     private ArrayList<SchoolBoard> schoolBoards;
     private ArrayList<CloudTile> clouds;
     private IslandManager islandManager;
-    private Set<CharacterCard> characterCards;
+    private ArrayList<CharacterCard> characterCards;
     private boolean online = true;
     private ArrayList<String> players;
+
+    public void update(Object o)
+    {
+        Game model = (Game) o;
+
+        this.schoolBoards = model.getSchoolBoards();
+        this.clouds = model.getCloudTiles();
+        this.islandManager = model.getIslandManager();
+        this.characterCards = model.getAllCharacterCard();
+        this.player = model.getPlayerByUsername(this.username);
+    }
 
     public Message getMsg_in() { return msg_in; }
 
@@ -68,7 +82,42 @@ public class VirtualView {
         this.playerNumber = playerNumber;
     }
 
-    public void sendAnswer(){} //da implementare
+    public String sendAnswer(){
+        Message msg = new Message(username, out_type);
+
+        switch(out_type){
+            case ERROR:
+                msg.fill(error_type);
+                break;
+
+            case CloudChanged:
+                msg.fill(clouds);
+                break;
+
+            case HallChanged:
+                msg.fill(player.getSchoolBoard().getStudentHall());
+                break;
+
+            case EntranceChanged:
+                msg.fill(player.getSchoolBoard().getStudentEntrance());
+                break;
+
+            case ProfTableChanged:
+                msg.fill(player.getSchoolBoard().getProfessorTable());
+                break;
+
+            case GAME_STARTED:
+                break;
+
+            case WalletChanged:
+
+
+            default:
+                break;
+        }
+
+        return msg.toSend();
+    } //da finire
 
     public void read(String input){
 
