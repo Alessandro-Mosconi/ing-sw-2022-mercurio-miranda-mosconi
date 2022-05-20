@@ -2,9 +2,16 @@ package it.polimi.ingsw.model;
 
 public class AssistantCard {
 
+
+    private String id;
     private int value;
     private int motherMovement;
     private boolean consumed;
+
+    public String getId() {
+        return id;
+    }
+
 
     public AssistantCard(int val, int mov)
     {

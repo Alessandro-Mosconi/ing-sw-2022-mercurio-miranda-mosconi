@@ -19,7 +19,15 @@ public class GameController implements ActionListener {
     private ArrayList<ClientHandler> clientHandlerArrayList; //todo i clientHandler vanno aggiunti qui man mano che vengono creati
     private ArrayList<VirtualView> virtualViews; //da unire ai clientHandler in un'unica classe sooner or later
     private int currentVirtualView=0;
+    private boolean errorFlag=false;
 
+
+    public boolean isErrorFlag() {
+        return errorFlag;
+    }
+    public void setErrorFlag(boolean errorFlag) {
+        this.errorFlag = errorFlag;
+    }
     public boolean isLastRound() {
         return lastRound;
     }

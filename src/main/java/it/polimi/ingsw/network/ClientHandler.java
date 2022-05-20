@@ -8,11 +8,9 @@ import it.polimi.ingsw.virtualview.VirtualView;
 
 import java.io.*;
 import java.net.Socket;
-import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 
@@ -166,8 +164,8 @@ public class ClientHandler implements Runnable
                     if (msg_in.getPayload().equals("")) {
                         msg_out.setUser(null);
                         msg_out.setType(MessageType.ERROR);
-                        msg_out.fill(Error.INVALID_USERNAME);
-                        System.out.println(Error.INVALID_USERNAME);
+                        msg_out.fill(ErrorType.INVALID_USERNAME);
+                        System.out.println(ErrorType.INVALID_USERNAME);
                     } else {
                         virtualView = new VirtualView();
                         virtualView.setUsername(msg_in.getUser());
@@ -182,8 +180,8 @@ public class ClientHandler implements Runnable
                     if (networkMap.containsKey(payloads.get(0))) {
                         msg_out.setUser(virtualView.getUsername());
                         msg_out.setType(MessageType.ERROR);
-                        msg_out.fill(Error.GAME_ALREADY_EXISTING);
-                        System.out.println(Error.GAME_ALREADY_EXISTING);
+                        msg_out.fill(ErrorType.GAME_ALREADY_EXISTING);
+                        System.out.println(ErrorType.GAME_ALREADY_EXISTING);
                     } else {
                         virtualView.setIdGame(payloads.get(0));
                         virtualView.setPlayerNumber(Integer.parseInt(payloads.get(1)));
@@ -207,13 +205,13 @@ public class ClientHandler implements Runnable
                     if (!networkMap.containsKey(payloads.get(0))) {
                         msg_out.setUser(virtualView.getUsername());
                         msg_out.setType(MessageType.ERROR);
-                        msg_out.fill(Error.GAME_NOT_FOUND);
-                        System.out.println(Error.GAME_NOT_FOUND);
+                        msg_out.fill(ErrorType.GAME_NOT_FOUND);
+                        System.out.println(ErrorType.GAME_NOT_FOUND);
                     } else if (networkMap.get(payloads.get(0)).contains(msg_in.getUser())) {
                         msg_out.setUser(virtualView.getUsername());
                         msg_out.setType(MessageType.ERROR);
-                        msg_out.fill(Error.USERNAME_ALREADY_IN_LOBBY);
-                        System.out.println(Error.USERNAME_ALREADY_IN_LOBBY);
+                        msg_out.fill(ErrorType.USERNAME_ALREADY_IN_LOBBY);
+                        System.out.println(ErrorType.USERNAME_ALREADY_IN_LOBBY);
                     } else {
                         virtualView.setIdGame(payloads.get(0));
                         virtualView.setPlayerNumber(gameMap.get(virtualView.getIdGame()).getNumberOfPlayers());
@@ -287,7 +285,7 @@ public class ClientHandler implements Runnable
 
                 default:
                     msg_out.setType(MessageType.ERROR);
-                    msg_in.fill(Error.UNKNOWN_ERROR);
+                    msg_in.fill(ErrorType.UNKNOWN_ERROR);
                     out.println(msg_out.toSend());
                     System.out.println("sending... " + msg_out.toSend());
                     return false;

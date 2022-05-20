@@ -7,7 +7,7 @@ public class PreActionState implements GameControllerState{
     //una carta effetto prima della fase di azione
     @Override
     public void startState(GameController gameController) {
-        //todo chiedere se vuole iniziare la action o scegliere una carta
+        //do nothing
     }
 
     @Override
@@ -23,6 +23,6 @@ public class PreActionState implements GameControllerState{
 
     @Override
     public void endState(GameController gameController) {
-
+        //do nothing
     }
 }

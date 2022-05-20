@@ -38,5 +38,7 @@ public enum MessageType {
     IslandChanged,
     CharacterCardChanged,
     WalletChanged,
-    DeckChanged
+    DeckChanged,
+    AssistantCard,
+    ModelUpdate, Color, Island, ChosenCharacterCard,
 }

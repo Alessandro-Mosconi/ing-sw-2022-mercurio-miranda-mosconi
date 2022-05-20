@@ -2,12 +2,16 @@ package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.GameMode;
+import it.polimi.ingsw.network.MessageType;
+import it.polimi.ingsw.virtualview.VirtualView;
 
 public class SetupState implements GameControllerState{
     @Override
     public void startState(GameController gameController) {
         gameController.getGame().setupGame();
-        //serve un metodo che dica ai client che il game è stato settato?
+        for(VirtualView v : gameController.getVirtualViews()){
+            v.setOut_type(MessageType.ModelUpdate);
+        }
     }
 
     @Override

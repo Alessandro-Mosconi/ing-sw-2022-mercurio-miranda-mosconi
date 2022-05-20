@@ -1,6 +1,6 @@
 package it.polimi.ingsw.network;
 
-public enum Error {
+public enum ErrorType {
     UNKNOWN_ERROR,
     USERNAME_NOT_FOUND,
     INVALID_GAME_MODE,
@@ -22,5 +22,6 @@ public enum Error {
     INVALID_REMOVAL_ENTRANCE_STUDENT,
     INVALID_REMOVAL_CLOUD_STUDENT,
     INVALID_REMOVAL_ISLAND_STUDENT,
-    INVALID_MN_SHIFT
+    INVALID_MN_SHIFT,
+    INVALID_CARD, INVALID_COLOR, INVALID_ISLAND,
 }

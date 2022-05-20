@@ -29,4 +29,3 @@ public class CharacterCard5 implements CardBehavior{
     }
 }
 
-//todo rimettere la cloud sopra la carta ??? forse si mettono le entrytiles in game e prima di piazzarne una nuova si fa il check li

@@ -6,7 +6,7 @@ public class CharacterCard4 implements CardBehavior{
  */
     @Override
     public void Effect(Parameter parameter){
-//todo sulla virtual view o dove si controlla il numero max di shift
+        parameter.getPlayer().setBonus2Shifts(true);
     }
 
     @Override
@@ -16,6 +16,6 @@ public class CharacterCard4 implements CardBehavior{
 
     @Override
     public void endEffect(Parameter parameter) {
-        //do nothing
+        parameter.getPlayer().setBonus2Shifts(false);
     }
 }

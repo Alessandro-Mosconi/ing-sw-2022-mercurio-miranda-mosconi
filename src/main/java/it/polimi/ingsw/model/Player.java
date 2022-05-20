@@ -9,6 +9,8 @@ public class Player {
     private final int playerNumber;
     private final SchoolBoard schoolBoard;
     private AssistantCard lastAssistantCard;
+    private int maxShift;
+    private boolean bonus2Shifts=false;
 
     public Player(){
         this.nickName = null;
@@ -17,6 +19,8 @@ public class Player {
         this.playerNumber = 0;
         this.schoolBoard = null;
         this.lastAssistantCard = null;
+        this.maxShift=0;
+        this.bonus2Shifts=false;
     }
     public Player(String nickName, Deck deck, int playerNumber, SchoolBoard schoolBoard) {
         this.nickName = nickName;
@@ -49,6 +53,21 @@ public class Player {
         if(schoolBoard.checkForCoin(color))
             this.wallet = wallet +1;
     }//Increases wallet if needed
+    public void setLastAssistantCard(AssistantCard lastAssistantCard) {
+        this.lastAssistantCard = lastAssistantCard;
+    }
+    public int getMaxShift() {
+        return maxShift;
+    }
+    public void setMaxShift(int maxShift) {
+        this.maxShift = maxShift;
+    }
+    public boolean isBonus2Shifts() {
+        return bonus2Shifts;
+    }
+    public void setBonus2Shifts(boolean bonus2Shifts) {
+        this.bonus2Shifts = bonus2Shifts;
+    }
 
     public void useAssistantCard(AssistantCard card)
     {
@@ -58,10 +77,17 @@ public class Player {
             {
                 chosenCard.setConsumed(true);
                 this.lastAssistantCard = chosenCard;
+                updateMaxShift();
+                this.deck.getCards().remove(chosenCard);
             }
         }
     }
-
+    public void updateMaxShift(){
+        if(isBonus2Shifts()){
+            this.maxShift=getLastAssistantCard().getMotherMovement()+2;
+        }
+        else this.maxShift=getLastAssistantCard().getMotherMovement();
+    }
     public AssistantCard getLastAssistantCard() {
         return lastAssistantCard;
     }
