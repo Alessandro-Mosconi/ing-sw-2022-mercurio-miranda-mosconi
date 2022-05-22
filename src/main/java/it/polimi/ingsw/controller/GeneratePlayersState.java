@@ -7,7 +7,13 @@ public class GeneratePlayersState implements GameControllerState{
     public void startState(GameController gameController) {
         gameController.getGame().addPlayer(gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askForPlayerData());
         //aggiunge all'array di player del model il player i cui dati vengono chiesti dalla currentVirtualView
-        updateNextState(gameController);
+        /*
+        model update -> tutte le virtualView sono observer e il loro metodo update che viene chiamato setta a ModelUpdate tutti i prossimi messaggi
+        i client inviano la conferma della ricezione del modelUpdate
+        le VV leggono che il client ha ricevuto correttamente il modelUpdate e settano il msg_out ad:
+        1. okAspetta per tutte
+        2. chiediDati alla prossima vV
+         */
     }
 
     @Override
@@ -25,5 +31,6 @@ public class GeneratePlayersState implements GameControllerState{
 
     @Override
     public void endState(GameController gameController) {
+        gameController.setPreviousState(this);
     }
 }

@@ -35,7 +35,6 @@ public class MoveMNState implements GameControllerState{
     @Override
     public void updateNextState(GameController gameController) {
         if (gameController.getGame().getGameMode().equals(GameMode.expert)&&!gameController.isCardUsed() && gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()) {
-            gameController.setPreviousState(this);
             gameController.setNextState(new ChosenCharCardState());
         }
         else
@@ -43,6 +42,6 @@ public class MoveMNState implements GameControllerState{
     }
     @Override
     public void endState(GameController gameController) {
-
+        gameController.setPreviousState(this);
     }
 }

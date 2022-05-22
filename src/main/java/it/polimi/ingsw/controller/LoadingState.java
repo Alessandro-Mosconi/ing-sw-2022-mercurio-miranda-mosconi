@@ -16,7 +16,8 @@ public class LoadingState implements GameControllerState{
 
     @Override
     public void endState(GameController gameController) {
-
+        //todo setta tutti i msg_out di tutte le vV a askForPlayerData
+        gameController.setPreviousState(this);
     }
     public void doNothing(){
 

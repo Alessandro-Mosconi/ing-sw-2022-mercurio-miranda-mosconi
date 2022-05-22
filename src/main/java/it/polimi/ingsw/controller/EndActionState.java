@@ -10,7 +10,7 @@ public class EndActionState implements GameControllerState{
     public void updateNextState(GameController gameController) {
         if (gameController.getCurrentVirtualView()<gameController.getVirtualViews().size()-1){
             gameController.setNextState(new MovePawnsState());
-            gameController.setCurrentVirtualView(gameController.getCurrentVirtualView()+1 /*todo % gameController.getVirtualViews().size()*/);
+            gameController.setCurrentVirtualView((gameController.getVirtualViewsOrder().get((gameController.getCurrentVirtualView())+1)% gameController.getVirtualViews().size()));
         }
         //this branch is when the players have finished their cards or there are no students left in the bag
         /*else if ((gameController.getGame().getPlayers().get(0).getDeck().getCards().size() < 1) || (calculateBag(gameController) <1)){

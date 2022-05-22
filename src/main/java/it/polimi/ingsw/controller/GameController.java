@@ -18,6 +18,7 @@ public class GameController implements ActionListener {
     private boolean lastRound = false;
     private ArrayList<ClientHandler> clientHandlerArrayList; //todo i clientHandler vanno aggiunti qui man mano che vengono creati
     private ArrayList<VirtualView> virtualViews; //da unire ai clientHandler in un'unica classe sooner or later
+    private ArrayList<Integer> virtualViewsOrder;
     private int currentVirtualView=0;
     private boolean errorFlag=false;
 
@@ -74,6 +75,12 @@ public class GameController implements ActionListener {
     public void setCardUsed(boolean cardUsed){this.cardUsed=cardUsed;}
     public boolean isCardUsed() {
         return cardUsed;
+    }
+    public ArrayList<Integer> getVirtualViewsOrder() {
+        return virtualViewsOrder;
+    }
+    public void setVirtualViewsOrder(ArrayList<Integer> virtualViewsOrder) {
+        this.virtualViewsOrder = virtualViewsOrder;
     }
 
     @Override

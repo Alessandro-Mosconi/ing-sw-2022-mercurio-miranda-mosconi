@@ -23,14 +23,13 @@ public class MovePawnsState implements GameControllerState{
     @Override
     public void updateNextState(GameController gameController) {
         if (gameController.getGame().getGameMode().equals(GameMode.expert)&&!gameController.isCardUsed() && gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()) {
-            gameController.setPreviousState(this);
             gameController.setNextState(new ChosenCharCardState());
         }
         else gameController.setNextState(new MoveMNState());
     }
     @Override
     public void endState(GameController gameController) {
-
+        gameController.setPreviousState(this);
     }
 
     //Se modifichiamo il metodo "moveFromEntrancetoHall" potremmo semplificare un po' questo metodo e togliere il for.
