@@ -17,7 +17,9 @@ public class EndActionState implements GameControllerState{
             gameController.setNextState(new EndGameState());
         }*/
         else if(gameController.isLastRound()){
-            gameController.setNextState(new EndGameState());
+        //gameController.setNextState(new EndGameState());
+            EndGameState endGameState = new EndGameState();
+            endGameState.startState(gameController);
         }
         //this branch is for when a new round starts
         else{

@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 
 public class Client {
     private View view;
+    private static boolean isMyTurn = true;
 
     public static void main(String[] args){
 
@@ -73,18 +74,16 @@ public class Client {
             NetworkHandler networkHandler = new NetworkHandler(out, in, view);
 
             while (true) {
+                    String input = in.readLine();
+                    String output;
 
-                String input = in.readLine();
-                String output;
-
-                if(input != null)
-                if(!input.equals("ping")) {
-                    System.out.println("processing...");
-                    networkHandler.process(input);
-                    output = networkHandler.send_msg();
-                    out.println(output);
-                }
-
+                    if (input != null)
+                        if (!input.equals("ping")) {
+                            System.out.println("processing...");
+                            networkHandler.process(input);
+                            output = networkHandler.send_msg();
+                            out.println(output);
+                        }
             }
         } catch (SocketTimeoutException e) {
             System.err.println("Server no more reachable " + ip);

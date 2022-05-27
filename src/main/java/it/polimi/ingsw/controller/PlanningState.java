@@ -24,7 +24,9 @@ public class PlanningState implements GameControllerState{
         }
         else if(gameController.getCurrentVirtualView()<gameController.getVirtualViews().size()-1){
             gameController.setNextState(new PlanningState());
+            gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).setMyTurn(false);
             gameController.setCurrentVirtualView((gameController.getVirtualViewsOrder().get((gameController.getCurrentVirtualView())+1)% gameController.getVirtualViews().size()));
+            gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).setMyTurn(true);
         }
         else{
             gameController.getGame().updatePlayerOrder();
@@ -38,9 +40,9 @@ public class PlanningState implements GameControllerState{
                     gameController.setLastRound(true);
                 }
             }
-        }
             gameController.setNextState(new PreActionState());
             gameController.setCurrentVirtualView(0);
+        }
     }
     @Override
     public void endState(GameController gameController) {

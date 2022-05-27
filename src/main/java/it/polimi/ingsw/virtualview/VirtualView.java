@@ -24,6 +24,7 @@ public class VirtualView implements Observer {
     private IslandManager islandManager;
     private ArrayList<CharacterCard> characterCards; //sono solo le 3 scelte immagino
     private boolean online = true;
+    private boolean isMyTurn = false;
     private ArrayList<String> players;
 
     public void update(Object o) {
@@ -43,7 +44,13 @@ public class VirtualView implements Observer {
     public void setMsg_in(Message msg_in) {
         this.msg_in = msg_in;
     }
+    public boolean isMyTurn() {
+        return isMyTurn;
+    }
 
+    public void setMyTurn(boolean myTurn) {
+        isMyTurn = myTurn;
+    }
     public ArrayList<String> getPlayers() {
         return players;
     }
@@ -158,6 +165,7 @@ public class VirtualView implements Observer {
         Message msg = gson.fromJson(input, Message.class);
 
         this.msg_in = msg;
+
 
     }
 

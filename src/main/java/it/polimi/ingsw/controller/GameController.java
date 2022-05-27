@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GameController implements ActionListener {
-    private Game game;
+    private Game game = new Game();
     private GameControllerState currentState;
     private GameControllerState nextState  = new LoadingState();
     private GameControllerState previousState;
@@ -87,18 +87,19 @@ public class GameController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
     }
-    void manageTurn(){
-        game = new Game();
+    public void manageState(){
         //currentState=new GameControllerState();
         //nextState=new GameControllerState();
         //getPLAYERS somehow
         //currentState.startState();
-        while(true){
+        //while(true){
             currentState=nextState;
             currentState.startState(this);
             currentState.updateNextState(this);
             currentState.endState(this);
-       }
+
+
+       //}
 
     }
 }
