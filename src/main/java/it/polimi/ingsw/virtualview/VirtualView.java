@@ -164,6 +164,10 @@ public class VirtualView implements Observer {
         Gson gson = new Gson();
         Message msg = gson.fromJson(input, Message.class);
 
+        //anziché salvare in msg_in usiamo uno switch case e salviamo in determinati attributi
+        //Poi più in là vediamo se è la cosa più intelligente da fare.
+
+        //todo Inserire switch case che analizza il tipo di messaggio
         this.msg_in = msg;
 
 

@@ -97,7 +97,7 @@ public class ClientHandler implements Runnable
                         {
                             System.out.println("processing...");
                             virtualView.read(input);
-                            //modifico VV
+                            //modifico VV=
                             //controller observer della VV parte update
                             //setti il tipo di output a OKHORicevutoQuelloCheMiHaiDato con uno switch case
                             //il controller osserva le virtualView
