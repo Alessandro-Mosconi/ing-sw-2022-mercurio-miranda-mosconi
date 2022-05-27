@@ -150,7 +150,7 @@ public class VirtualView implements Observer {
                 break;
 
             case WalletChanged:
-
+                //todo gestire switch case
 
             default:
                 break;
