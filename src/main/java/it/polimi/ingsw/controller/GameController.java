@@ -3,7 +3,6 @@ package it.polimi.ingsw.controller;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.ClientHandler;
-import it.polimi.ingsw.network.VirtualViewListener;
 import it.polimi.ingsw.virtualview.VirtualView;
 
 import java.awt.event.ActionEvent;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 public class GameController implements VirtualViewListener {
     private Game game = new Game();
     private GameControllerState currentState;
-    private GameControllerState nextState  = new LoadingState();
+    private GameControllerState nextState  = new CreateGameState();
     private GameControllerState previousState;
     private boolean cardUsed = false;
     private boolean lastRound = false;

@@ -8,8 +8,7 @@ public class Game {
     private ArrayList<Player> players;
     private int currPlayer;
     private int numberOfPlayers;
-    private int gameID;
-    private String idGame;
+    private String gameID;
     private GameMode gameMode;
     private ArrayList<CloudTile> cloudTiles;
     private ArrayList<SchoolBoard> schoolBoards;
@@ -73,7 +72,7 @@ public class Game {
 
     public Game(int numberOfPlayers, String idGame, GameMode gameMode) {
         this.numberOfPlayers = numberOfPlayers;
-        this.idGame = idGame;
+        this.gameID = idGame;
         this.gameMode = gameMode;
         this.started = false;
     }
@@ -116,10 +115,10 @@ public class Game {
     public void setCurrPlayer(int currPlayer) {
         this.currPlayer = currPlayer;
     }
-    public void setGameID(int gameID){
+    public void setGameID(String gameID){
         this.gameID=gameID;
     }
-    public int getGameID() {
+    public String getGameID() {
         return gameID;
     }
     public ArrayList<CloudTile> getCloudTiles() {

@@ -1,9 +1,6 @@
 package it.polimi.ingsw.view;
 
-import it.polimi.ingsw.model.AssistantCard;
-import it.polimi.ingsw.model.GameMode;
-import it.polimi.ingsw.model.TowerColor;
-import it.polimi.ingsw.model.WizardType;
+import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.Message;
 import it.polimi.ingsw.network.MessageType;
 
@@ -15,11 +12,10 @@ import java.util.ArrayList;
 
 public class CLI extends View{
 
-    //private String lobby_command;
     private BufferedReader stdIn =new BufferedReader(new InputStreamReader(System.in));
 
     @Override
-    public Message login() {
+    public void login() {
         Message msg_out = new Message();
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -43,7 +39,7 @@ public class CLI extends View{
                                                                                                                                          @@@@@@                      \s
                                                                                                                                          @@@@@@@     @@%             \s
                                                                                                                                           @@@@@@@@@@@@&              \s""");
-        ArrayList<String> payloads = new ArrayList<>();
+        //ArrayList<String> payloads = new ArrayList<>();
         System.out.println("Inserire username: ");
         String input = "" ;
         try {
@@ -52,7 +48,7 @@ public class CLI extends View{
             e.printStackTrace();
         }
         setUsername(input);
-        payloads.add(input);
+        //payloads.add(input);
 
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -85,7 +81,7 @@ public class CLI extends View{
                 e.printStackTrace();
             }
             setIdGame(input);
-            payloads.add(input);
+            //payloads.add(input);
             System.out.println("Inserire numero di giocatori [2-4]: ");
 
             try {
@@ -95,7 +91,7 @@ public class CLI extends View{
             }
 
             setPlayerNumber(Integer.parseInt(input));
-            payloads.add(input);
+            //payloads.add(input);
             System.out.println("Inserire la difficolta'[easy]/[expert]: ");
 
             try {
@@ -104,9 +100,9 @@ public class CLI extends View{
                 e.printStackTrace();
             }
             setGamemode(GameMode.valueOf(input));
-            payloads.add(input);
-            //setMessageType(MessageType.CREATE_MATCH);
-            msg_out.setType(MessageType.CREATE_MATCH);
+            //payloads.add(input);
+            setMessageType(MessageType.CREATE_MATCH);
+            //msg_out.setType(MessageType.CREATE_MATCH);
         }
         else if(input.equals("J") || input.equals("j")) {
 
@@ -119,22 +115,15 @@ public class CLI extends View{
             }
 
             setIdGame(input);
-            payloads.add(input);
-            //setMessageType(MessageType.JOIN_MATCH);
+            //payloads.add(input);
+            setMessageType(MessageType.JOIN_MATCH);
             msg_out.setType(MessageType.JOIN_MATCH);
         }
         //setMessageType(MessageType.LOGIN);
-
-        msg_out.fill(payloads);
-        return msg_out;
     }
 
     @Override
-    public Message settings() {
-        Message msg_out = new Message();
-        //setMessageType(MessageType.SETTINGS);
-        msg_out.setType(MessageType.SETTINGS);
-        ArrayList<String> payloads = new ArrayList<>();
+    public void settings() {
         /*
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -205,10 +194,14 @@ public class CLI extends View{
 
             setMessageType(MessageType.JOIN_MATCH);
         }*/
+
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+
         System.out.print("Choose a wizard: ");
         for(WizardType wizard : getWizards())
         {
-            System.out.print(wizard + " - ");
+            System.out.println(wizard);
         }
         String input = "" ;
         try {
@@ -216,22 +209,21 @@ public class CLI extends View{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        payloads.add(input);
-        //todo rimuovere mago scelto
+        getPlayer().getDeck().setWizard(WizardType.valueOf(input));
+
+
         System.out.println("Choose a towers color: ");
-        for(TowerColor t : getTowerColors())
+        for(TowerColor towerColor : getTowerColors())
         {
-            System.out.println(t + " - ");
+            System.out.println(towerColor);
         }
         try {
             input = stdIn.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        payloads.add(input);
-        //todo rimuovere colore scelto
-        msg_out.fill(payloads);
-        return msg_out;
+        setTowerColor(TowerColor.valueOf(input));
+
     }
 
     public void printDeck(){
@@ -259,31 +251,94 @@ public class CLI extends View{
     }
 
     @Override
-    public Message chooseAssistantCard() {
-        Message msg_out = new Message(MessageType.AssistantCard);
-        String payload = new String();
+    public void chooseAssistantCard() {
+
+
         System.out.print("\033[H\033[2J");
         System.out.flush();
-        System.out.print("Choose an Assistant card: ");
-        printDeck();
+
+        System.out.print("Choose an Assistant card by ID: ");
+        //printDeck();
+        for(AssistantCard card : getPlayer().getDeck().getCards())
+            System.out.println(card);
+
+
         String input = "" ;
         try {
             input = stdIn.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        payload = input;
-        msg_out.fill(input);
-        return msg_out;
-        //setMessageType();
+
+        setChosenAssistantCard(getPlayer().getDeck().getCards().get(Integer.parseInt(input)));
+
+    }
+
+    public void showTable(){
+
+        for(Player player : getPlayers())
+        {
+            if(player.equals(getPlayer())) {
+                System.out.println(player.getNickName());
+                System.out.println("Schoolboard: ");
+                System.out.println("Entrance: " + player.getSchoolBoard().getStudentEntrance());
+                System.out.println("Hall: " + player.getSchoolBoard().getStudentHall());
+                System.out.print("Professor owned: " + player.getSchoolBoard().getStudentEntrance());
+                for (PawnColor color : player.getSchoolBoard().getProfessorTable().keySet()) {
+                    if (player.getSchoolBoard().getProfessorTable().get(color))
+                        System.out.print(color + " ");
+
+                }
+                System.out.println("\n");
+            }
+        }
+
+        System.out.println(getPlayer().getNickName() + "is your turn, this is your table:");
+
+        System.out.println("Schoolboard: ");
+        System.out.println("Entrance: " + getPlayer().getSchoolBoard().getStudentEntrance());
+        System.out.println("Hall: " + getPlayer().getSchoolBoard().getStudentHall());
+        System.out.print("Professor owned: " + getPlayer().getSchoolBoard().getStudentEntrance());
+        for (PawnColor color : getPlayer().getSchoolBoard().getProfessorTable().keySet()) {
+            if (getPlayer().getSchoolBoard().getProfessorTable().get(color))
+                System.out.print(color + " ");
+
+        }
+        System.out.println("\n");
+
+        System.out.println("CloudTiles: ");
+        for(CloudTile cloud : getClouds())
+        {
+            System.out.print(cloud.getStudents());
+            System.out.print("\t");
+        }
+
+        System.out.println("\n");
+        System.out.println("Islands: ");
+        for(Island island : getIslandManager().getIslandList())
+        {
+            System.out.print("|");
+            System.out.print(island.getIslandStudents());
+            System.out.print(island.isNoEntryTile()? "NoEntry": "");
+            System.out.print("|\t");
+        }
+
+        System.out.println("\n");
+        System.out.println("CharacterCards: ");
+        for(CharacterCard characterCard : getCharacterCards())
+        {
+            System.out.print("ID: " + characterCard.getID() + "price: " + characterCard.getPrice() + "\t");
+        }
+
     }
 
     @Override
-    public Message choosePawnMove() {
-        Message msg_out = new Message(MessageType.PAWN_MOVE);
+    public void choosePawnMove() {
+
         ArrayList<String> payloads = new ArrayList<>();
+        showTable();
         System.out.print("Choose a student color or type [Character Card] to use if you want to: ");
-        showSchoolBoard();
+
         String input = "" ;
         try {
             input = stdIn.readLine();
@@ -291,19 +346,23 @@ public class CLI extends View{
             e.printStackTrace();
         }
         if(input.equals("Character Card")){
-            return useCharacterCard();
+            useCharacterCard();
+            return;
         }
-        payloads.add(input);
+
+        setMessageType(MessageType.PAWN_MOVE);
+        setColorToMove(PawnColor.valueOf(input));
+
         System.out.print("Choose a destination [-1] to indicate your SchoolBoard / [ID] Island: ");
-        showIslands();
+        //showIslands();
         try {
             input = stdIn.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        payloads.add(input);
-        msg_out.fill(payloads);
-        return msg_out;
+
+        setDestination(Integer.valueOf(input));
+
     }
 
     private void showCharacterCards() {
@@ -379,10 +438,9 @@ public class CLI extends View{
     }*/
 
     @Override
-    public Message chooseMNmovement() {
-        Message msg_out = new Message(MessageType.MN_SHIFT);
-        String payload;
-        System.out.println("Choose Mother Nature shift between 1 and " + getPlayer().getMaxShift() + "or type [Character Card] to use one: ");
+    public void chooseMNmovement() {
+
+        System.out.println("Choose Mother Nature shift between 1 and " + getChosenAssistantCard().getMotherMovement() + "or type [Character Card] to use one: ");
         String input = "" ;
         try {
             input = stdIn.readLine();
@@ -390,18 +448,21 @@ public class CLI extends View{
             e.printStackTrace();
         }
         if(input.equals("Character Card")){
-                return useCharacterCard();
+            useCharacterCard();
+            return;
         }
-        payload = input;
-        msg_out.fill(payload);
-        return msg_out;
+
+        setMessageType(MessageType.MN_SHIFT);
+        setMN_shift(Integer.valueOf(input));
+
     }
 
     @Override
-    public Message chooseCT() {
-        Message msg_out = new Message(MessageType.CHOSEN_CT);
-        String payload;
-        System.out.println("Choose a Cloud Tile to take or type [Character Card] to use one: ");
+    public void chooseCT() {
+
+        showTable();
+
+        System.out.println("Choose a Cloud Tile by ID to take or type [Character Card] to use one: ");
         String input = "";
         try {
             input = stdIn.readLine();
@@ -409,17 +470,18 @@ public class CLI extends View{
             e.printStackTrace();
         }
         if(input.equals("Character Card")){
-            return useCharacterCard();
+            useCharacterCard();
+            return;
         }
-        payload = input;
-        msg_out.fill(payload);
-        return msg_out;
+
+        setChosenCloudPos(Integer.parseInt(input));
+        setMessageType(MessageType.CHOSEN_CT);
+
     }
 
-    public Message useCharacterCard(){
+    public void useCharacterCard(){
         Message msg_out = new Message(MessageType.CHOSEN_CHARACTER_CARD);
-        ArrayList<String> payloads = new ArrayList<>();
-        payloads.add("Character Card");
+
         System.out.println("Which one do you wanna activate? ");
         showCharacterCards();
         String input = "";
@@ -428,7 +490,11 @@ public class CLI extends View{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        payloads.add(input);
+        setChosenCharacterCard(getCharacterCards().get(Integer.parseInt(input)));
+
+        setColorToMove(null);
+        setChosenIslandPos(null);
+
         switch (input){
             case ("1"), ("9"), ("11"), ("12") -> {
                 System.out.println("Choose a color: ");
@@ -437,7 +503,7 @@ public class CLI extends View{
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                payloads.add(input);
+                setColorToMove(PawnColor.valueOf(input));
             }
             case ("3"), ("5") -> {
                 System.out.println("Choose an island: ");
@@ -447,14 +513,14 @@ public class CLI extends View{
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                payloads.add(input);
+                setChosenIslandPos(Integer.parseInt(input));
             }
             case ("7"), ("10") ->{
                 //TODO MAPPE
             }
         }
-        msg_out.fill(payloads);
-        return msg_out;
+
+        setMessageType(MessageType.CHOSEN_CHARACTER_CARD);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package it.polimi.ingsw.controller;
 
-public class SelectWizardState implements GameControllerState{
+public class GeneratePlayerState implements GameControllerState{
 
     @Override
     public void startState(GameController gameController) {

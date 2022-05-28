@@ -68,7 +68,7 @@ public class Message {
         this.payload = gson.toJson(obj);
         return payload;
     }
-
+/*
     public String fill(ArrayList<Object> objects){
         ArrayList<String> payloads = new ArrayList<>();
         Gson gson = new Gson();
@@ -78,6 +78,8 @@ public class Message {
         }
         return gson.toJson(payloads);
     }
+
+ */
 
     public String toSend (){
         Gson gson = new Gson();

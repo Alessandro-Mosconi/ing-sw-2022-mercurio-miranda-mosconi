@@ -9,6 +9,7 @@ public enum Phase {
     CHOOSING_THIRD_MOVE,
     CHOOSING_MN_SHIFT,
     CHOOSING_CT,
+    CHOOSING_CharacterCard,
     CHOOSING_PARAMETERS,
     WAITING,
 
