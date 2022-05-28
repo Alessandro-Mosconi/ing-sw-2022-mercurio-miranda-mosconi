@@ -21,6 +21,7 @@ public class Client {
         int socketPort = 1234;
         boolean portFailed = true;
         boolean ipFailed = true;
+        boolean viewFailed = true;
 
         /* Acquire the IP address from the user*/
         while(ipFailed){
@@ -70,7 +71,27 @@ public class Client {
             pinger = new Pinger(out, server, "franco");
             Thread thread = new Thread(pinger, "clientPing" + server.getInetAddress());
             thread.start();
-            View view = new CLI();
+            String viewChoice=null;
+
+            View view = null;
+
+            while(viewFailed) {
+                System.out.println("Do you prefer CLI version or GUI version? [c]/[g] ");
+                viewChoice = stdIn.readLine();
+                if(viewChoice.equals("C")||viewChoice.equals("c"))
+                {
+                    view = new CLI();
+                    viewFailed=false;
+                }
+                else if(viewChoice.equals("G")||viewChoice.equals("g")){
+                    System.out.println("non ancora implementata");
+                    view = new GUI();
+                    viewFailed=false;
+                }
+                else viewFailed=true;
+            }
+
+
             NetworkHandler networkHandler = new NetworkHandler(out, in, view);
 
             while (true) {
