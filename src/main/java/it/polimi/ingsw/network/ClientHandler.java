@@ -396,4 +396,9 @@ public class ClientHandler implements Runnable
         }
     }
 
+    public void tellToWait() {
+    }
+
+    public void tellToPlay() {
+    }
 }

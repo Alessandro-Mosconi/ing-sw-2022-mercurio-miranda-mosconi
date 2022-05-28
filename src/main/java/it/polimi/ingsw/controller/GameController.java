@@ -1,17 +1,18 @@
 package it.polimi.ingsw.controller;
 
+import it.polimi.ingsw.model.CharacterCard;
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.model.Parameter;
 import it.polimi.ingsw.network.ClientHandler;
 import it.polimi.ingsw.network.VirtualViewListener;
 import it.polimi.ingsw.virtualview.VirtualView;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GameController implements VirtualViewListener {
     private Game game = new Game();
+    private int playersToGo;
+    private int movesToGo;
     private GameControllerState currentState;
     private GameControllerState nextState  = new CreateGameState();
     private GameControllerState previousState;
@@ -20,9 +21,50 @@ public class GameController implements VirtualViewListener {
     private ArrayList<ClientHandler> clientHandlerArrayList; //todo i clientHandler vanno aggiunti qui man mano che vengono creati
     private ArrayList<VirtualView> virtualViews; //da unire ai clientHandler in un'unica classe sooner or later
     private ArrayList<Integer> virtualViewsOrder;
-    private int currentVirtualView=0;
+    private int virtualViewsOrderIterator = 0;
+    private CharacterCard currEffect;
+    private Parameter currParameter;
     private boolean errorFlag=false;
 
+
+    public Parameter getCurrParameter() {
+        return currParameter;
+    }
+
+    public void setCurrParameter(Parameter currParameter) {
+        this.currParameter = currParameter;
+    }
+    public CharacterCard getCurrEffect() {
+        return currEffect;
+    }
+
+    public void setCurrEffect(CharacterCard currEffect) {
+        this.currEffect = currEffect;
+    }
+    public int getPlayersToGo() {
+        return playersToGo;
+    }
+    public void setPlayersToGo(int playersToGo) {
+        this.playersToGo = playersToGo;
+    }
+    public void decreasePlayersToGo(){
+        this.playersToGo=playersToGo-1;
+    }
+    public void resetPlayersToGo(){
+        this.playersToGo=game.getNumberOfPlayers();
+    }
+    public int getMovesToGo() {
+        return movesToGo;
+    }
+    public void setMovesToGo(int movesToGo) {
+        this.movesToGo = movesToGo;
+    }
+    public void decreaseMovesToGo(){
+        this.movesToGo=movesToGo-1;
+    }
+    public void resetMovesToGo(){
+        this.movesToGo=3;
+    }
 
     public boolean isErrorFlag() {
         return errorFlag;
@@ -36,11 +78,11 @@ public class GameController implements VirtualViewListener {
     public void setLastRound(boolean lastRound) {
         this.lastRound = lastRound;
     }
-    public int getCurrentVirtualView() {
-        return currentVirtualView;
+    public int getVirtualViewsOrderIterator() {
+        return virtualViewsOrderIterator;
     }
-    public void setCurrentVirtualView(int currentVirtualView) {
-        this.currentVirtualView = currentVirtualView;
+    public void setVirtualViewsOrderIterator(int virtualViewsOrderIterator) {
+        this.virtualViewsOrderIterator = virtualViewsOrderIterator;
     }
     public ArrayList<ClientHandler> getClientHandlerArrayList() {
         return clientHandlerArrayList;
@@ -103,5 +145,12 @@ public class GameController implements VirtualViewListener {
     @Override
     public void performAction() {
         manageState();
+    }
+
+    public void nextVirtualView() {
+        //TO TEST mi aspetto che setti a current virtual view la next virtual view nell'array dell'ordine delle VV
+        clientHandlerArrayList.get(getVirtualViewsOrder().get(virtualViewsOrderIterator)).tellToWait();
+        virtualViewsOrderIterator = ((virtualViewsOrderIterator +1)%getVirtualViews().size());
+        clientHandlerArrayList.get(getVirtualViewsOrder().get(virtualViewsOrderIterator)).tellToPlay();
     }
 }

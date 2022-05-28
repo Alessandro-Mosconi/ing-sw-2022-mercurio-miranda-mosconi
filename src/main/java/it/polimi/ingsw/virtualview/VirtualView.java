@@ -206,7 +206,7 @@ public class VirtualView implements Observer {
         }
         return null;
     }
-}
+
 
 
     //private ArrayList<Player> players;
@@ -323,5 +323,43 @@ public class VirtualView implements Observer {
         }
         setError_type(ErrorType.INVALID_CARD);
         return null;
+    }
+
+    public WizardType getWizard() {
+        //TODO DA ATTRIBUIRE IN SEGUITO A LETTURA MSG SETTINGS
+        return null;
+    }
+
+    public TowerColor getTowerColor() {
+        //TODO DA ATTRIBUIRE
+        return null;
+    }
+
+    public int getChosenAssistantID() {
+        return 1; //TODO
+    }
+
+    public PawnColor getStudentToMove() {
+        return null; //TODO
+    }
+
+    public int getDestination() {
+        return 1; //TODO
+    }
+
+    public int getMNShift() {
+        return 1; //TODO
+    }
+
+    public int getChosenCloudID() {
+        return 1; //TODO
+    }
+
+    public Parameter getParameter() {
+        return null; //TODO
+    }
+
+    public CharacterCard getChosenCharacterCard() {
+        return null; //TODO
     }
 }

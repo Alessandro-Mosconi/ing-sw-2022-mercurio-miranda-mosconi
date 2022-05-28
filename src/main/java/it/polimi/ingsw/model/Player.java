@@ -3,11 +3,22 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 public class Player {
-    private final String nickName;
+
+
+    private String nickName;
     private int wallet;
-    private final Deck deck;
+
+    public void setDeck(Deck deck) {
+        this.deck = deck;
+    }
+
+    public void setSchoolBoard(SchoolBoard schoolBoard) {
+        this.schoolBoard = schoolBoard;
+    }
+
+    private Deck deck;
     private final int playerNumber;
-    private final SchoolBoard schoolBoard;
+    private SchoolBoard schoolBoard;
     private AssistantCard lastAssistantCard;
     private int maxShift;
     private boolean bonus2Shifts=false;
@@ -36,6 +47,9 @@ public class Player {
     }
     public String getNickName() {
         return nickName;
+    }
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
     public int getWallet() {
         return wallet;
@@ -71,14 +85,14 @@ public class Player {
 
     public void useAssistantCard(AssistantCard card)
     {
-        for(AssistantCard chosenCard:this.deck.getCards())
+        for(AssistantCard chosenCard : this.deck.getCards())
         {
             if(chosenCard.equals(card) && !chosenCard.isConsumed())
             {
                 chosenCard.setConsumed(true);
                 this.lastAssistantCard = chosenCard;
                 updateMaxShift();
-                this.deck.getCards().remove(chosenCard);
+                //this.deck.getCards().remove(chosenCard);
             }
         }
     }
