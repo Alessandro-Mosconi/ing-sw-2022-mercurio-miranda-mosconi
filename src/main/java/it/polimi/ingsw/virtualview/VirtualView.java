@@ -194,9 +194,11 @@ public class VirtualView implements Observer {
                 UsersList.add(username);
                 networkMap.put(idGame, UsersList);
                 System.out.println(networkMap);
-                //Game game = new Game(virtualView.getPlayerNumber(), virtualView.getIdGame(), virtualView.getGamemode());
-                //gameMap.put(virtualView.getIdGame(), game);
+                //gameMap.put(idGame, game);
                 out.println(msg_out);
+            }
+            case SETTINGS -> {
+
             }
         }
     }
