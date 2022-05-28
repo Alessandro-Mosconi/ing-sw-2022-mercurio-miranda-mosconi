@@ -1,15 +1,18 @@
 package it.polimi.ingsw.virtualview;
 
 import com.google.gson.Gson;
+import it.polimi.ingsw.controller.GameController;
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.ErrorType;
 import it.polimi.ingsw.network.Message;
 import it.polimi.ingsw.network.MessageType;
+import it.polimi.ingsw.network.VirtualViewListener;
 
 import java.util.*;
 
-public class VirtualView implements Observer {
+public class VirtualView implements ModelListener {
 
+    private VirtualViewListener gameController;
     private Message msg_in;
     private MessageType out_type;
     private MessageType next_out_type;
@@ -27,16 +30,9 @@ public class VirtualView implements Observer {
     private boolean isMyTurn = false;
     private ArrayList<String> players;
 
-    public void update(Object o) {
-        Game model = (Game) o;
 
-        this.schoolBoards = model.getSchoolBoards();
-        this.clouds = model.getCloudTiles();
-        this.islandManager = model.getIslandManager();
-        this.characterCards = model.getAllCharacterCard();
-        this.player = model.getPlayerByUsername(this.username);
-    }
-
+    public void setGameController(GameController gameController){ this.gameController = gameController; }
+    public VirtualViewListener getGameController(){ return gameController; }
     public Message getMsg_in() {
         return msg_in;
     }
@@ -220,10 +216,6 @@ public class VirtualView implements Observer {
         return 1;
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-
-    }
 
     public boolean askIfCard() {
         String payload = new String();

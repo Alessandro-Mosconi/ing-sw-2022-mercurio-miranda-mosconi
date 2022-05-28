@@ -31,7 +31,8 @@ public class NetworkHandler {
     }
 
     public synchronized String send_msg() {
-        Message msg_out = null;
+        Message msg_out = new Message(view.getUsername());
+        ArrayList<String> payloads = new ArrayList<>();
         switch (phase) {
             case LOGIN -> {
                 msg_out = view.login();
@@ -86,7 +87,7 @@ public class NetworkHandler {
                 //todo in base alla carta che viene scelta cambiano i parametri richiesti
             }
         }
-            msg_out.setUser(view.getUsername());
+           // msg_out.setUser(view.getUsername());
             System.out.println("sending... " + msg_out.toSend());
             return msg_out.toSend();
         }

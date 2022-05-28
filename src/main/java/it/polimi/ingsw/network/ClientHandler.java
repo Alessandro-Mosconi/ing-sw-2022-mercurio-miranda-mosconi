@@ -75,7 +75,7 @@ public class ClientHandler implements Runnable
     {
 
         GameController controller = null;
-
+        virtualView = new VirtualView();
         System.out.println("sending ack");
         out.println("ACK");
 
@@ -84,7 +84,7 @@ public class ClientHandler implements Runnable
 
                 String input = in.readLine();
                 System.out.println("[" + client.getInetAddress() + "]" + " receiving... " + input);
-                if(!input.equals("ping") && !input.equals("MODEL_UPDATED")) {
+                if(!input.equals("ping") && !input.equals("MODEL_UPDATED")){
                    /* if(!initialize(input))
                     {
                         {
@@ -300,7 +300,7 @@ public class ClientHandler implements Runnable
         }
     }*/
     public synchronized void processInput (String input){
-        synchronized (networkMap) {
+       /* synchronized (networkMap) */{
             System.out.println("receiving..." + input);
             //if(input.equals("MODEL_UPDATED")){ return; }
             Gson gson = new Gson();
@@ -316,9 +316,9 @@ public class ClientHandler implements Runnable
                         msg_out.setType(MessageType.ERROR);
                         msg_out.fill(ErrorType.GAME_ALREADY_EXISTING);
                         System.out.println(ErrorType.GAME_ALREADY_EXISTING);
-                        out.println(msg_out);
+                        out.println(msg_out.toSend());
                     } else {
-                        virtualView = new VirtualView();
+                        //virtualView = new VirtualView();
                         virtualView.setUsername(payloads.get(0));
                         virtualView.setIdGame(payloads.get(1));
                         virtualView.setPlayerNumber(Integer.parseInt(payloads.get(2)));
@@ -331,17 +331,17 @@ public class ClientHandler implements Runnable
                         System.out.println(networkMap);
                         Game game = new Game(virtualView.getPlayerNumber(), virtualView.getIdGame(), virtualView.getGamemode());
                         gameMap.put(virtualView.getIdGame(), game);
-                        out.println(msg_out);
+                        out.println(msg_out.toSend());
                     }
                 }
                 case JOIN_MATCH -> {
-                    virtualView = new VirtualView();
+                    //virtualView = new VirtualView();
                     if (!networkMap.containsKey(payloads.get(1))) {
                         msg_out.setUser(/*virtualView.getUsername()*/payloads.get(0));
                         msg_out.setType(MessageType.ERROR);
                         msg_out.fill(ErrorType.GAME_NOT_FOUND);
                         System.out.println(ErrorType.GAME_NOT_FOUND);
-                        out.println(msg_out);
+                        out.println(msg_out.toSend());
                     } else if (networkMap.get(payloads.get(1)).contains(msg_in.getUser())) {
                         virtualView.setUsername(payloads.get(0));
                         virtualView.setIdGame(payloads.get(1));
@@ -349,7 +349,7 @@ public class ClientHandler implements Runnable
                         msg_out.setType(MessageType.ERROR);
                         msg_out.fill(ErrorType.USERNAME_ALREADY_IN_LOBBY);
                         System.out.println(ErrorType.USERNAME_ALREADY_IN_LOBBY);
-                        out.println(msg_out);
+                        out.println(msg_out.toSend());
                     } else {
                         virtualView.setUsername(payloads.get(0));
                         virtualView.setIdGame(payloads.get(1));

@@ -3,13 +3,14 @@ package it.polimi.ingsw.controller;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.ClientHandler;
+import it.polimi.ingsw.network.VirtualViewListener;
 import it.polimi.ingsw.virtualview.VirtualView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class GameController implements ActionListener {
+public class GameController implements VirtualViewListener {
     private Game game = new Game();
     private GameControllerState currentState;
     private GameControllerState nextState  = new LoadingState();
@@ -83,10 +84,6 @@ public class GameController implements ActionListener {
         this.virtualViewsOrder = virtualViewsOrder;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
     public void manageState(){
         //currentState=new GameControllerState();
         //nextState=new GameControllerState();
@@ -101,5 +98,10 @@ public class GameController implements ActionListener {
 
        //}
 
+    }
+
+    @Override
+    public void performAction() {
+        manageState();
     }
 }
