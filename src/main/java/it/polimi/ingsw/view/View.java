@@ -1,12 +1,13 @@
 package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.network.Message;
 import it.polimi.ingsw.network.MessageType;
 
 import java.lang.reflect.Array;
 import java.util.*;
 
-public class View {
+public abstract class View {
     private String username;
     private String idGame;
     private GameMode gamemode;
@@ -19,16 +20,36 @@ public class View {
     private Set<CharacterCard> characterCards;
     private MessageType messageType;
     private ArrayList<WizardType> wizards;
+    private ArrayList<TowerColor> towerColors;
+
+    public boolean isUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(boolean updated) {
+        this.updated = updated;
+    }
+
+    private boolean updated = false;
 
     public View(){
         wizards = new ArrayList<WizardType>();
-        wizards.add(WizardType.wizard1);
-        wizards.add(WizardType.wizard2);
-        wizards.add(WizardType.wizard3);
-        wizards.add(WizardType.wizard4);
+        for(WizardType w : WizardType.values()){
+            wizards.add(w);
+        }
+        towerColors = new ArrayList<>();
+        for(TowerColor t : TowerColor.values()){
+            towerColors.add(t);
+        }
     }
 
+    public ArrayList<TowerColor> getTowerColors() {
+        return towerColors;
+    }
 
+    public void setTowerColors(ArrayList<TowerColor> towerColors) {
+        this.towerColors = towerColors;
+    }
     public ArrayList<WizardType> getWizards() {
         return wizards;
     }
@@ -126,21 +147,28 @@ public class View {
         this.islandManager = islandManager;
     }
 
-    public void login(){
+    public abstract Message login();
+
+    public abstract Message settings();
+
+    public abstract Message chooseAssistantCard();
+
+    public abstract Message choosePawnMove();
+
+    /*public Message waiting(){
+        return null;
+    }*/
+
+    //public void mainboard();
+
+    //public abstract Message chooseWizard();
+
+    public abstract Message chooseMNmovement();
+
+    public abstract Message chooseCT();
+
+    public void updateView() {
+
+        setUpdated(true);
     }
-
-    public void settings(){}
-
-    public void chooseAssistantCard(){}
-
-    public void waiting(){}
-
-    public void mainboard(){}
-
-    public void lobby(){}
-
-    public void chooseWizard(){}
-
-    public void chooseMNmovement(){}
-
 }

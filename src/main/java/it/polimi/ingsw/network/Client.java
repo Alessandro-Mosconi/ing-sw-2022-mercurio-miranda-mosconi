@@ -81,8 +81,14 @@ public class Client {
                         if (!input.equals("ping")) {
                             System.out.println("processing...");
                             networkHandler.process(input);
-                            output = networkHandler.send_msg();
-                            out.println(output);
+                            if(view.isUpdated()){
+                                view.setUpdated(false);
+                                out.println("MODEL_UPDATED");
+                            }
+                            else {
+                                output = networkHandler.send_msg();
+                                out.println(output);
+                            }
                         }
             }
         } catch (SocketTimeoutException e) {
