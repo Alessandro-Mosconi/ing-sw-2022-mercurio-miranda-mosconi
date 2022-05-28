@@ -23,8 +23,7 @@ public class ClientHandler implements Runnable
     private Socket client;
     private PrintWriter out;
     private BufferedReader in;
-    private static Map<String, ArrayList<String>> networkMap = new HashMap<>(); //mappa di gameid e lista di player
-    private static Map<String, Game> gameMap = new HashMap<>(); //mappa di gameid e game
+
 
     /**
      * Initializes a new handler using a specific socket connected to
@@ -310,7 +309,9 @@ public class ClientHandler implements Runnable
             payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
 
             switch (msg_in.getType()) {
-                case CREATE_MATCH -> {
+
+                //non cancellare questa parte perché c'è il codice per la multipartita.!!!
+                /*case CREATE_MATCH -> {
                     if (networkMap.containsKey(payloads.get(1))) {
                         msg_out.setUser(payloads.get(0));
                         msg_out.setType(MessageType.ERROR);
@@ -333,7 +334,7 @@ public class ClientHandler implements Runnable
                         gameMap.put(virtualView.getIdGame(), game);
                         out.println(msg_out);
                     }
-                }
+                }*/
                 case JOIN_MATCH -> {
                     virtualView = new VirtualView();
                     if (!networkMap.containsKey(payloads.get(1))) {
