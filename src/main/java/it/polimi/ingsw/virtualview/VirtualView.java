@@ -1,6 +1,7 @@
 package it.polimi.ingsw.virtualview;
 
 import com.google.gson.Gson;
+import it.polimi.ingsw.controller.GameController;
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.ErrorType;
 import it.polimi.ingsw.network.Message;
@@ -11,13 +12,14 @@ import java.util.*;
 public class VirtualView implements Observer {
 
     private Message msg_in;
+    private Message msg_out;
     private MessageType out_type;
     private MessageType next_out_type;
     private ErrorType error_Type_type;
     private String username;
     private String idGame;
     private GameMode gamemode;
-    private Integer playerNumber;
+    private Integer playersNumber;
     private Player player;
     private ArrayList<SchoolBoard> schoolBoards;
     private ArrayList<CloudTile> clouds;
@@ -26,6 +28,8 @@ public class VirtualView implements Observer {
     private boolean online = true;
     private boolean isMyTurn = false;
     private ArrayList<String> players;
+    private static Map<String, ArrayList<String>> networkMap = new HashMap<>(); //mappa di gameid e lista di player
+    private static Map<String, Game> gameMap = new HashMap<>(); //mappa di gameid e game
 
     public void update(Object o) {
         Game model = (Game) o;
@@ -99,11 +103,11 @@ public class VirtualView implements Observer {
     }
 
     public Integer getPlayerNumber() {
-        return playerNumber;
+        return playersNumber;
     }
 
     public void setPlayerNumber(Integer playerNumber) {
-        this.playerNumber = playerNumber;
+        this.playersNumber = playerNumber;
     }
 
     public MessageType getOut_type() {
@@ -161,16 +165,40 @@ public class VirtualView implements Observer {
 
     public void read(String input) {
 
+        System.out.println("receiving..." + input);
         Gson gson = new Gson();
         Message msg = gson.fromJson(input, Message.class);
 
         //anziché salvare in msg_in usiamo uno switch case e salviamo in determinati attributi
         //Poi più in là vediamo se è la cosa più intelligente da fare.
 
-        //todo Inserire switch case che analizza il tipo di messaggio
+        ArrayList<String> payloads = new ArrayList<String>();
         this.msg_in = msg;
+        payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
 
+        //todo Inserire switch case che analizza il tipo di messaggio
+        switch (msg_in.getType()) {
+            case CREATE_MATCH -> {
+                username = payloads.get(0);
+                idGame = payloads.get(1);
+                playersNumber = Integer.parseInt(payloads.get(2));
+                gamemode = GameMode.valueOf(payloads.get(3));
 
+                GameController controller = new GameController();
+                controller.getVirtualViews().add(this);
+
+                //virtualview manda il messaggio di uscita.
+                msg_out.setUser(username);
+                msg_out.setType(MessageType.ASK_FOR_SETTINGS);
+                ArrayList<String> UsersList = new ArrayList<>();
+                UsersList.add(username);
+                networkMap.put(idGame, UsersList);
+                System.out.println(networkMap);
+                //Game game = new Game(virtualView.getPlayerNumber(), virtualView.getIdGame(), virtualView.getGamemode());
+                //gameMap.put(virtualView.getIdGame(), game);
+                out.println(msg_out);
+            }
+        }
     }
 
 
@@ -186,6 +214,8 @@ public class VirtualView implements Observer {
         this.players = players;
     }
 */
+
+    /*
     public Player askForPlayerData() {
         Player player = new Player();
         //todo deve chiedere ad ogni client di inserire tutti i dati richiesti (username, colore e mago)
@@ -219,7 +249,8 @@ public class VirtualView implements Observer {
     public int askForCloudTile() {
         return 1;
     }
-
+*/
+    //todo tutti i tipi di modelUpdate vanno qui
     @Override
     public void update(Observable o, Object arg) {
 

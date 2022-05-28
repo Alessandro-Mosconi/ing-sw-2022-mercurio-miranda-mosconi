@@ -8,11 +8,13 @@ import it.polimi.ingsw.virtualview.VirtualView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-public class GameController implements ActionListener {
-    private Game game = new Game();
+public class GameController{
+    private Game game;
     private GameControllerState currentState;
-    private GameControllerState nextState  = new LoadingState();
+    private GameControllerState nextState  = new CreateGameState();
     private GameControllerState previousState;
     private boolean cardUsed = false;
     private boolean lastRound = false;
@@ -21,7 +23,6 @@ public class GameController implements ActionListener {
     private ArrayList<Integer> virtualViewsOrder;
     private int currentVirtualView=0;
     private boolean errorFlag=false;
-
 
     public boolean isErrorFlag() {
         return errorFlag;
@@ -83,10 +84,6 @@ public class GameController implements ActionListener {
         this.virtualViewsOrder = virtualViewsOrder;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
     public void manageState(){
         //currentState=new GameControllerState();
         //nextState=new GameControllerState();
