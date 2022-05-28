@@ -83,7 +83,7 @@ public class NetworkHandler {
                 else{
                     nextPhase = Phase.CHOOSING_CharacterCard;
                     payloads.add(view.getChosenCharacterCard().getID().toString());
-                    
+
                     if(view.getColorToMove() != null)
                         payloads.add(view.getColorToMove().toString());
                     else if(view.getChosenIslandPos() != null)
