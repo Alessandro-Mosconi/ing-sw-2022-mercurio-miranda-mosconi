@@ -10,7 +10,7 @@ import it.polimi.ingsw.network.VirtualViewListener;
 
 import java.util.*;
 
-public class VirtualView implements ModelListener {
+public class VirtualView implements Observer {
 
     private VirtualViewListener gameController;
     private Message msg_in;
@@ -256,7 +256,12 @@ public class VirtualView implements ModelListener {
     public int askForCloudTile() {
         return 1;
     }
+*/
+    //todo tutti i tipi di modelUpdate vanno qui
+    @Override
+    public void update(Observable o, Object arg) {
 
+    }
 
     public boolean askIfCard() {
         String payload = new String();
@@ -318,4 +323,5 @@ public class VirtualView implements ModelListener {
         }
         setError_type(ErrorType.INVALID_CARD);
         return null;
-    }*/
+    }
+}

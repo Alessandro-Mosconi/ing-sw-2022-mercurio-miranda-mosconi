@@ -23,7 +23,8 @@ public class ClientHandler implements Runnable
     private Socket client;
     private PrintWriter out;
     private BufferedReader in;
-
+    private static Map<String, ArrayList<String>> networkMap = new HashMap<>(); //mappa di gameid e lista di player
+    private static Map<String, Game> gameMap = new HashMap<>(); //mappa di gameid e game
 
     /**
      * Initializes a new handler using a specific socket connected to
