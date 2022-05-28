@@ -4,8 +4,8 @@ public class AssistantCard {
 
 
     private String id;
-    private int value;
-    private int motherMovement;
+    private Integer value;
+    private Integer motherMovement;
     private boolean consumed;
 
     public String getId() {
@@ -24,11 +24,11 @@ public class AssistantCard {
 
     }
 
-    public int getValue() {
+    public Integer getValue() {
         return value;
     }
 
-    public int getMotherMovement() {
+    public Integer getMotherMovement() {
         return motherMovement;
     }
 

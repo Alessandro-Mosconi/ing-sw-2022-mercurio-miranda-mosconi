@@ -31,65 +31,126 @@ public class NetworkHandler {
     }
 
     public synchronized String send_msg() {
-        Message msg_out = null;
+        Message msg_out = new Message(view.getUsername());
+
+        Gson gson = new Gson();
+        ArrayList<String> payloads = new ArrayList<>();
+
+
         switch (phase) {
             case LOGIN -> {
-                msg_out = view.login();
+                view.login();
+
+                msg_out.setUser(view.getUsername());
+                if (view.getMessageType().equals(MessageType.CREATE_MATCH)) {
+                    payloads.add(view.getIdGame());
+                    payloads.add(view.getPlayerNumber().toString());
+                    payloads.add(view.getGamemode().toString());
+                } else {
+                    payloads.add(view.getIdGame());
+                }
+
+                msg_out.setType(view.getMessageType());
                 nextPhase = Phase.SETTINGS;
                 phase = Phase.WAITING;
             }
             case SETTINGS -> {
-                msg_out = view.settings();
+                view.settings();
+                msg_out.setType(MessageType.SETTINGS);
+
+                payloads.add(view.getPlayer().getDeck().getWizard().toString());
+                payloads.add(view.getTowerColor().toString());
+
                 nextPhase = Phase.PLANNING;
-                phase = Phase.WAITING;
             }
             case PLANNING -> {
-                msg_out = view.chooseAssistantCard();
+                view.chooseAssistantCard();
+                msg_out.setType(MessageType.AssistantCard);
+
+                payloads.add(view.getChosenAssistantCard().getValue().toString());
+
                 nextPhase = Phase.CHOOSING_FIRST_MOVE;
-                phase = Phase.WAITING;
             }
             case CHOOSING_FIRST_MOVE -> {
-                msg_out = view.choosePawnMove();
-                previousPhase = phase;
-                nextPhase = Phase.CHOOSING_SECOND_MOVE;
-                phase = Phase.WAITING;
+                view.choosePawnMove();
+                msg_out.setType(view.getMessageType());
+                if(view.getMessageType().equals(MessageType.PAWN_MOVE))
+                {
+                    payloads.add(view.getColorToMove().toString());
+                    payloads.add(view.getDestination().toString());
+                    nextPhase = Phase.CHOOSING_SECOND_MOVE;
+                }
+                else{
+                    nextPhase = Phase.CHOOSING_CharacterCard;
+                    payloads.add(view.getChosenCharacterCard().getID().toString());
+                    
+                    if(view.getColorToMove() != null)
+                        payloads.add(view.getColorToMove().toString());
+                    else if(view.getChosenIslandPos() != null)
+                        payloads.add(view.getColorToMove().toString());
+                }
+
             }
             case CHOOSING_SECOND_MOVE -> {
-                msg_out = view.choosePawnMove();
+                //msg_out = view.choosePawnMove();
                 previousPhase = phase;
                 nextPhase = Phase.CHOOSING_THIRD_MOVE;
-                phase = Phase.WAITING;
             }
             case CHOOSING_THIRD_MOVE -> {
-                msg_out = view.choosePawnMove();
+                //msg_out = view.choosePawnMove();
                 previousPhase = phase;
                 nextPhase = Phase.CHOOSING_MN_SHIFT;
-                phase = Phase.WAITING;
             }
             case CHOOSING_MN_SHIFT -> {
-                msg_out = view.chooseMNmovement();
-                previousPhase = phase;
-                nextPhase = Phase.CHOOSING_CT;
-                phase = Phase.WAITING;
+                view.chooseMNmovement();
+                msg_out.setType(view.getMessageType());
+                if(view.getMessageType().equals(MessageType.MN_SHIFT))
+                {
+                    payloads.add(view.getMN_shift().toString());
+                    nextPhase = Phase.CHOOSING_CT;
+                }
+                else{
+                    nextPhase = Phase.CHOOSING_CharacterCard;
+                    if(view.getColorToMove() != null)
+                        payloads.add(view.getColorToMove().toString());
+                    else if(view.getChosenIslandPos() != null)
+                        payloads.add(view.getColorToMove().toString());
+                }
             }
             case CHOOSING_CT -> {
-                msg_out = view.chooseCT();
-                previousPhase = phase;
-                phase = Phase.WAITING;
-                nextPhase = Phase.PLANNING;
+                view.chooseCT();
+                msg_out.setType(view.getMessageType());
+                if(view.getMessageType().equals(MessageType.CHOSEN_CT))
+                {
+                    payloads.add(view.getChosenCloudPos().toString());
+                    nextPhase = Phase.PLANNING;
+                }
+                else{
+                    nextPhase = Phase.CHOOSING_CharacterCard;
+                    if(view.getColorToMove() != null)
+                        payloads.add(view.getColorToMove().toString());
+                    else if(view.getChosenIslandPos() != null)
+                        payloads.add(view.getColorToMove().toString());
+                }
+
             }
             case WAITING -> {
                 msg_out.setType(MessageType.WAITING);
                 msg_out.fill("WAITING");
+
             }
             case CHOOSING_PARAMETERS -> {
                 //todo in base alla carta che viene scelta cambiano i parametri richiesti
             }
         }
-            msg_out.setUser(view.getUsername());
-            System.out.println("sending... " + msg_out.toSend());
-            return msg_out.toSend();
-        }
+
+        previousPhase = phase;
+        phase = Phase.WAITING;
+        msg_out.fill(payloads);
+        System.out.println("sending... " + msg_out.toSend());
+
+        return msg_out.toSend();
+    }
         /*
         if (phase==Phase.LOGIN) {
             view.login();
@@ -145,6 +206,7 @@ public class NetworkHandler {
         }
             System.out.println("sending... " + msg_out.toSend());
             return msg_out.toSend();
+
  }
 */
 
@@ -158,6 +220,16 @@ public class NetworkHandler {
         switch(msg_in.getType()){
             case ERROR -> {
                 System.out.println("Error:" + msg_in.getPayload());
+                phase = previousPhase;
+            }
+
+            case ASK_FOR_SETTINGS -> {
+                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
+                ArrayList<WizardType> wizards = gson.fromJson(payloads.get(0), ArrayList.class);
+                ArrayList<TowerColor> towers = gson.fromJson(payloads.get(1), ArrayList.class);
+                view.setWizards(wizards);
+                view.setTowerColors(towers);
+                phase = nextPhase;
             }
             /*
             case LOGIN_SUCCESSFUL:

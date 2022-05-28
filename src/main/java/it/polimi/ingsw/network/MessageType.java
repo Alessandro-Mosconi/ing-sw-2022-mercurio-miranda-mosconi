@@ -5,6 +5,7 @@ public enum MessageType {
     ERROR,
     LOGIN,
     WAIT,
+    ASK_FOR_SETTINGS,
     LOBBY_WAITING,
     LOGIN_SUCCESSFUL,
     RECONNECTED,
