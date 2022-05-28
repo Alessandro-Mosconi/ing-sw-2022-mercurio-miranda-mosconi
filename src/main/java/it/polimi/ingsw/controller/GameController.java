@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GameController implements ActionListener {
-    private Game game;
+    private Game game = new Game();
     private GameControllerState currentState;
     private GameControllerState nextState  = new LoadingState();
     private GameControllerState previousState;
@@ -18,6 +18,7 @@ public class GameController implements ActionListener {
     private boolean lastRound = false;
     private ArrayList<ClientHandler> clientHandlerArrayList; //todo i clientHandler vanno aggiunti qui man mano che vengono creati
     private ArrayList<VirtualView> virtualViews; //da unire ai clientHandler in un'unica classe sooner or later
+    private ArrayList<Integer> virtualViewsOrder;
     private int currentVirtualView=0;
     private boolean errorFlag=false;
 
@@ -75,23 +76,30 @@ public class GameController implements ActionListener {
     public boolean isCardUsed() {
         return cardUsed;
     }
+    public ArrayList<Integer> getVirtualViewsOrder() {
+        return virtualViewsOrder;
+    }
+    public void setVirtualViewsOrder(ArrayList<Integer> virtualViewsOrder) {
+        this.virtualViewsOrder = virtualViewsOrder;
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
     }
-    void manageTurn(){
-        game = new Game();
+    public void manageState(){
         //currentState=new GameControllerState();
         //nextState=new GameControllerState();
         //getPLAYERS somehow
         //currentState.startState();
-        while(true){
+        //while(true){
             currentState=nextState;
             currentState.startState(this);
             currentState.updateNextState(this);
             currentState.endState(this);
-       }
+
+
+       //}
 
     }
 }

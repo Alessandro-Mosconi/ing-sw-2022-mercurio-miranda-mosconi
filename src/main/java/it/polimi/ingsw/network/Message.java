@@ -35,6 +35,10 @@ public class Message {
         this.payload = payload;
     }
 
+    public Message(MessageType lobbyWaiting) {
+        this.type=lobbyWaiting;
+    }
+
     public String getUser() {
         return user;
     }

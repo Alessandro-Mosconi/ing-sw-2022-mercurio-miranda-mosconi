@@ -11,12 +11,12 @@ public class LoadingState implements GameControllerState{
 
     @Override
     public void updateNextState(GameController gameController) {
-        gameController.setNextState(new GeneratePlayersState());
+        gameController.setNextState(new SelectWizardState());
     }
 
     @Override
     public void endState(GameController gameController) {
-
+        gameController.setPreviousState(this);
     }
     public void doNothing(){
 

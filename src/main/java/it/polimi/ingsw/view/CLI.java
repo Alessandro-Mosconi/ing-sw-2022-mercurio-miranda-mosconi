@@ -189,7 +189,7 @@ public class CLI extends View{
         System.out.flush();
 
         System.out.println("User in this lobby: " + getPlayers());
-        System.out.println("waiting for " + (getPlayerNumber()-getPlayers().size()) + "player to join");
+        System.out.println("waiting for " + (getPlayerNumber()-getPlayers().size()) + " player to join");
         this.setMessageType(MessageType.LOBBY_WAITING);
 
         /*;

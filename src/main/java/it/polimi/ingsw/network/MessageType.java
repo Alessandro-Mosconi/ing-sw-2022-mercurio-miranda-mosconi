@@ -40,5 +40,5 @@ public enum MessageType {
     WalletChanged,
     DeckChanged,
     AssistantCard,
-    ModelUpdate, Color, Island, ChosenCharacterCard,
+    ModelUpdate, Color, Island, ChosenCharacterCard, OK_ASSISTANT_CARD, OK_PAWNS_MOVED, OK_MN_MOVED, OK_CLOUTILE_COLLECTED, START_YOUR_TURN, OK_EFFECT_CARD, WAITING, NOW_IS_YOUR_TURN,
 }

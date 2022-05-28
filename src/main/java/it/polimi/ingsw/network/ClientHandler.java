@@ -90,16 +90,24 @@ public class ClientHandler implements Runnable
                 String input = in.readLine();
                 System.out.println("[" + client.getInetAddress() + "]" + " receiving... " + input);
 
-                if(!input.equals("ping")) {
+
+                if(!input.equals("ping") ) {
                     if(!initialize(input))
                     {
-                        System.out.println("processing...");
-                        virtualView.read(input);
-                        //controller(
-                        //String output = virtualView.sendAnswer();
-                        //out.println(output);
+                        {
+                            System.out.println("processing...");
+                            virtualView.read(input);
+                            //modifico VV=
+                            //controller observer della VV parte update
+                            //setti il tipo di output a OKHORicevutoQuelloCheMiHaiDato con uno switch case
+                            //il controller osserva le virtualView
+                            //
+                            //controller
+                            //IF c'è un errore il controller sovrascrive il tipo di messaggio ad ErrorType
+                            //String output = virtualView.sendAnswer();
+                            //out.println(output);
+                        }
                     }
-
                 }
 
             }
@@ -158,93 +166,93 @@ public class ClientHandler implements Runnable
             Message msg_in = gson.fromJson(input, Message.class);
             Message msg_out = new Message();
             ArrayList<String> payloads = new ArrayList<String>();
+            if(!msg_in.getType().equals(MessageType.WAITING)) {
+                switch (msg_in.getType()) {
+                    case LOGIN:
+                        if (msg_in.getPayload().equals("")) {
+                            msg_out.setUser(null);
+                            msg_out.setType(MessageType.ERROR);
+                            msg_out.fill(ErrorType.INVALID_USERNAME);
+                            System.out.println(ErrorType.INVALID_USERNAME);
+                        } else {
+                            virtualView = new VirtualView();
+                            virtualView.setUsername(msg_in.getUser());
+                            msg_out.setUser(virtualView.getUsername());
+                            msg_out.setType(MessageType.LOGIN_SUCCESSFUL);
+                            System.out.println("login successful");
+                        }
+                        break;
 
-            switch (msg_in.getType()) {
-                case LOGIN:
-                    if (msg_in.getPayload().equals("")) {
-                        msg_out.setUser(null);
-                        msg_out.setType(MessageType.ERROR);
-                        msg_out.fill(ErrorType.INVALID_USERNAME);
-                        System.out.println(ErrorType.INVALID_USERNAME);
-                    } else {
-                        virtualView = new VirtualView();
-                        virtualView.setUsername(msg_in.getUser());
-                        msg_out.setUser(virtualView.getUsername());
-                        msg_out.setType(MessageType.LOGIN_SUCCESSFUL);
-                        System.out.println("login successful");
-                    }
-                    break;
+                    case CREATE_MATCH:
+                        payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
+                        if (networkMap.containsKey(payloads.get(0))) {
+                            msg_out.setUser(virtualView.getUsername());
+                            msg_out.setType(MessageType.ERROR);
+                            msg_out.fill(ErrorType.GAME_ALREADY_EXISTING);
+                            System.out.println(ErrorType.GAME_ALREADY_EXISTING);
+                        } else {
+                            virtualView.setIdGame(payloads.get(0));
+                            virtualView.setPlayerNumber(Integer.parseInt(payloads.get(1)));
+                            virtualView.setGamemode(GameMode.valueOf(payloads.get(2)));
 
-                case CREATE_MATCH:
-                    payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                    if (networkMap.containsKey(payloads.get(0))) {
-                        msg_out.setUser(virtualView.getUsername());
-                        msg_out.setType(MessageType.ERROR);
-                        msg_out.fill(ErrorType.GAME_ALREADY_EXISTING);
-                        System.out.println(ErrorType.GAME_ALREADY_EXISTING);
-                    } else {
-                        virtualView.setIdGame(payloads.get(0));
-                        virtualView.setPlayerNumber(Integer.parseInt(payloads.get(1)));
-                        virtualView.setGamemode(GameMode.valueOf(payloads.get(2)));
+                            msg_out.setUser(virtualView.getUsername());
+                            msg_out.setType(MessageType.LOBBY_CREATED);
 
-                        msg_out.setUser(virtualView.getUsername());
-                        msg_out.setType(MessageType.LOBBY_CREATED);
+                            ArrayList<String> UserList = new ArrayList<String>();
+                            UserList.add(virtualView.getUsername());
+                            networkMap.put(virtualView.getIdGame(), UserList);
+                            System.out.println(networkMap);
+                            Game game = new Game(virtualView.getPlayerNumber(), virtualView.getIdGame(), virtualView.getGamemode());
+                            gameMap.put(virtualView.getIdGame(), game);
+                            //controller = new GameController(game);
+                        }
+                        break;
 
-                        ArrayList<String> UserList = new ArrayList<String>();
-                        UserList.add(virtualView.getUsername());
-                        networkMap.put(virtualView.getIdGame(), UserList);
-                        System.out.println(networkMap);
-                        Game game = new Game(virtualView.getPlayerNumber(), virtualView.getIdGame(), virtualView.getGamemode());
-                        gameMap.put(virtualView.getIdGame(), game);
-                        //controller = new GameController(game);
-                    }
-                    break;
+                    case JOIN_MATCH:
+                        payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
+                        if (!networkMap.containsKey(payloads.get(0))) {
+                            msg_out.setUser(virtualView.getUsername());
+                            msg_out.setType(MessageType.ERROR);
+                            msg_out.fill(ErrorType.GAME_NOT_FOUND);
+                            System.out.println(ErrorType.GAME_NOT_FOUND);
+                        } else if (networkMap.get(payloads.get(0)).contains(msg_in.getUser())) {
+                            msg_out.setUser(virtualView.getUsername());
+                            msg_out.setType(MessageType.ERROR);
+                            msg_out.fill(ErrorType.USERNAME_ALREADY_IN_LOBBY);
+                            System.out.println(ErrorType.USERNAME_ALREADY_IN_LOBBY);
+                        } else {
+                            virtualView.setIdGame(payloads.get(0));
+                            virtualView.setPlayerNumber(gameMap.get(virtualView.getIdGame()).getNumberOfPlayers());
+                            virtualView.setGamemode(gameMap.get(virtualView.getIdGame()).getGameMode());
+                            ArrayList<String> UserList = new ArrayList<>();
+                            UserList = networkMap.get(virtualView.getIdGame());
+                            UserList.add(msg_in.getUser());
+                            networkMap.replace(virtualView.getIdGame(), UserList);
+                            virtualView.setPlayers(UserList);
 
-                case JOIN_MATCH:
-                    payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                    if (!networkMap.containsKey(payloads.get(0))) {
-                        msg_out.setUser(virtualView.getUsername());
-                        msg_out.setType(MessageType.ERROR);
-                        msg_out.fill(ErrorType.GAME_NOT_FOUND);
-                        System.out.println(ErrorType.GAME_NOT_FOUND);
-                    } else if (networkMap.get(payloads.get(0)).contains(msg_in.getUser())) {
-                        msg_out.setUser(virtualView.getUsername());
-                        msg_out.setType(MessageType.ERROR);
-                        msg_out.fill(ErrorType.USERNAME_ALREADY_IN_LOBBY);
-                        System.out.println(ErrorType.USERNAME_ALREADY_IN_LOBBY);
-                    } else {
-                        virtualView.setIdGame(payloads.get(0));
-                        virtualView.setPlayerNumber(gameMap.get(virtualView.getIdGame()).getNumberOfPlayers());
-                        virtualView.setGamemode(gameMap.get(virtualView.getIdGame()).getGameMode());
-                        ArrayList<String> UserList = new ArrayList<>();
-                        UserList = networkMap.get(virtualView.getIdGame());
-                        UserList.add(msg_in.getUser());
-                        networkMap.replace(virtualView.getIdGame(), UserList);
-                        virtualView.setPlayers(UserList);
+                            msg_out.setType(MessageType.LOBBY_JOINED);
+                            ArrayList<String> list = new ArrayList<>();
+                            list.add(gson.toJson(virtualView.getPlayers()));
+                            list.add(gson.toJson(virtualView.getPlayerNumber()));
+                            list.add(gson.toJson(virtualView.getGamemode()));
+                            msg_out.fill(list);
 
-                        msg_out.setType(MessageType.LOBBY_JOINED);
-                        ArrayList<String> list = new ArrayList<>();
-                        list.add(gson.toJson(virtualView.getPlayers()));
-                        list.add(gson.toJson(virtualView.getPlayerNumber()));
-                        list.add(gson.toJson(virtualView.getGamemode()));
-                        msg_out.fill(list);
+                            System.out.println(msg_out.toSend());
+                            System.out.println(networkMap);
+                            this.notifyAll();
+                            System.out.println("notified");
+                            //controller = new GameController(gameMap.get(msg_in.getPayload()));
+                        }
+                        break;
 
-                        System.out.println(msg_out.toSend());
-                        System.out.println(networkMap);
-                        this.notifyAll();
-                        System.out.println("notified");
-                        //controller = new GameController(gameMap.get(msg_in.getPayload()));
-                    }
-                    break;
+                    case LOBBY_WAITING:
+                        payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
 
-                case LOBBY_WAITING:
-                    payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
+                        String inputCheck = "ping";
 
-                    String inputCheck = "ping";
+                        while (networkMap.get(virtualView.getIdGame()).size() != virtualView.getPlayerNumber()) {
 
-                    while (networkMap.get(virtualView.getIdGame()).size() != virtualView.getPlayerNumber()) {
-
-                        try {
+                            try {
                                 System.out.println("waiting...");
                                 networkMap.wait(15000);
                                 inputCheck = in.readLine();
@@ -257,11 +265,10 @@ public class ClientHandler implements Runnable
                             }
 
 
+                            System.out.println("svegliato...");
 
-                    System.out.println("svegliato...");
 
-
-                    System.out.println("waiting, while reciving inputCheck");
+                            System.out.println("waiting, while receiving inputCheck");
 
                             if (networkMap.get(virtualView.getIdGame()).size() != virtualView.getPlayerNumber() && networkMap.get(virtualView.getIdGame()).size() != payloads.size()) {
                                 msg_out.setType(MessageType.OTHER_USER_JOINED);
@@ -270,30 +277,32 @@ public class ClientHandler implements Runnable
                                 return false;
                             }
 
-                    }
+                        }
 
-                    gameMap.get(virtualView.getIdGame()).setStarted(true);
-                    msg_out.setUser(virtualView.getUsername());
-                    msg_out.setType(MessageType.GAME_STARTED);
-                    msg_out.fill(networkMap.get(virtualView.getIdGame()));
+                        gameMap.get(virtualView.getIdGame()).setStarted(true);
+                        msg_out.setUser(virtualView.getUsername());
+                        msg_out.setType(MessageType.GAME_STARTED);
+                        msg_out.fill(networkMap.get(virtualView.getIdGame()));
 
-                    System.out.println("sending... " + msg_out.toSend());
-                    out.println(msg_out.toSend());
-                    return true;
-                //break;
+                        System.out.println("sending... " + msg_out.toSend());
+                        out.println(msg_out.toSend());
+                        return true;
+                    //break;
 
 
-                default:
-                    msg_out.setType(MessageType.ERROR);
-                    msg_in.fill(ErrorType.UNKNOWN_ERROR);
-                    out.println(msg_out.toSend());
-                    System.out.println("sending... " + msg_out.toSend());
-                    return false;
+                    default:
+                        msg_out.setType(MessageType.ERROR);
+                        msg_in.fill(ErrorType.UNKNOWN_ERROR);
+                        out.println(msg_out.toSend());
+                        System.out.println("sending... " + msg_out.toSend());
+                        return false;
+                }
+
+
+                System.out.println("sending... " + msg_out.toSend());
+                out.println(msg_out.toSend());
+                return false;
             }
-
-
-            System.out.println("sending... " + msg_out.toSend());
-            out.println(msg_out.toSend());
             return false;
         }
     }

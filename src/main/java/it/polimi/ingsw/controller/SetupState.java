@@ -9,9 +9,11 @@ public class SetupState implements GameControllerState{
     @Override
     public void startState(GameController gameController) {
         gameController.getGame().setupGame();
-        for(VirtualView v : gameController.getVirtualViews()){
+        /*for(VirtualView v : gameController.getVirtualViews()){
             v.setOut_type(MessageType.ModelUpdate);
         }
+        in teoria non serve: il model cambia e parte la update delle singole virtual view
+         */
     }
 
     @Override
@@ -20,6 +22,6 @@ public class SetupState implements GameControllerState{
     }
     @Override
     public void endState(GameController gameController) {
-
+        gameController.setPreviousState(this);
     }
 }

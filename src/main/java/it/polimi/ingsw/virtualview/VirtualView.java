@@ -6,15 +6,13 @@ import it.polimi.ingsw.network.ErrorType;
 import it.polimi.ingsw.network.Message;
 import it.polimi.ingsw.network.MessageType;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class VirtualView implements Observer {
 
     private Message msg_in;
     private MessageType out_type;
+    private MessageType next_out_type;
     private ErrorType error_Type_type;
     private String username;
     private String idGame;
@@ -26,6 +24,7 @@ public class VirtualView implements Observer {
     private IslandManager islandManager;
     private ArrayList<CharacterCard> characterCards; //sono solo le 3 scelte immagino
     private boolean online = true;
+    private boolean isMyTurn = false;
     private ArrayList<String> players;
 
     public void update(Object o) {
@@ -45,7 +44,13 @@ public class VirtualView implements Observer {
     public void setMsg_in(Message msg_in) {
         this.msg_in = msg_in;
     }
+    public boolean isMyTurn() {
+        return isMyTurn;
+    }
 
+    public void setMyTurn(boolean myTurn) {
+        isMyTurn = myTurn;
+    }
     public ArrayList<String> getPlayers() {
         return players;
     }
@@ -62,6 +67,13 @@ public class VirtualView implements Observer {
         this.online = online;
     }
 
+    public MessageType getNext_out_type() {
+        return next_out_type;
+    }
+
+    public void setNext_out_type(MessageType next_out_type) {
+        this.next_out_type = next_out_type;
+    }
     public String getUsername() {
         return username;
     }
@@ -138,7 +150,7 @@ public class VirtualView implements Observer {
                 break;
 
             case WalletChanged:
-
+                //todo gestire switch case
 
             default:
                 break;
@@ -152,7 +164,12 @@ public class VirtualView implements Observer {
         Gson gson = new Gson();
         Message msg = gson.fromJson(input, Message.class);
 
+        //anziché salvare in msg_in usiamo uno switch case e salviamo in determinati attributi
+        //Poi più in là vediamo se è la cosa più intelligente da fare.
+
+        //todo Inserire switch case che analizza il tipo di messaggio
         this.msg_in = msg;
+
 
     }
 
@@ -221,27 +238,7 @@ public class VirtualView implements Observer {
             Gson gson = new Gson();
             payload = gson.fromJson(msg_in.getPayload(), String.class);
             payload = payload.toLowerCase();
-            switch (payload) {
-                case ("yellow") -> {
-                    return PawnColor.yellow;
-                }
-                case ("red") -> {
-                    return PawnColor.red;
-                }
-                case ("green") -> {
-                    return PawnColor.green;
-                }
-                case ("pink") -> {
-                    return PawnColor.pink;
-                }
-                case ("blue") -> {
-                    return PawnColor.blue;
-                }
-                default -> {
-                    setError_type(ErrorType.INVALID_COLOR);
-                    return null;
-                }
-            }
+            return PawnColor.valueOf(payload);
         } else {
             setError_type(ErrorType.INVALID_COLOR);
             return null;
@@ -262,11 +259,17 @@ public class VirtualView implements Observer {
     }
 
     public Map<PawnColor, Integer> askForStudToTake() {
-        //todo djsonizzare mappe
+        Map<PawnColor, Integer> payload = new HashMap<>();
+        Gson gson = new Gson();
+        payload = gson.fromJson(msg_in.getPayload(), HashMap.class);
+        return payload;
     }
 
     public Map<PawnColor, Integer> askForStudToGive() {
-        //todo djsonizzare mappe
+        Map<PawnColor, Integer> payload = new HashMap<>();
+        Gson gson = new Gson();
+        payload = gson.fromJson(msg_in.getPayload(), HashMap.class);
+        return payload;
     }
 
     public CharacterCard askForCharCard() {

@@ -24,14 +24,21 @@ public class PlanningState implements GameControllerState{
         }
         else if(gameController.getCurrentVirtualView()<gameController.getVirtualViews().size()-1){
             gameController.setNextState(new PlanningState());
-            gameController.setCurrentVirtualView((gameController.getCurrentVirtualView()+1));
+            gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).setMyTurn(false);
+            gameController.setCurrentVirtualView((gameController.getVirtualViewsOrder().get((gameController.getCurrentVirtualView())+1)% gameController.getVirtualViews().size()));
+            gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).setMyTurn(true);
         }
         else{
             gameController.getGame().updatePlayerOrder();
-            //todo updateVirtualViewsOrder
+            gameController.setVirtualViewsOrder(gameController.getGame().calculatePlayerOrder());
             gameController.getGame().fillCloudTiles();
-            if(gameController.getGame().isBagEmpty()||gameController.getGame().getPlayers().get(0).getDeck().getCards().size()==0){
+            if(gameController.getGame().isBagEmpty()){
                 gameController.setLastRound(true);
+            }
+            for (int i = 0; i < gameController.getGame().getNumberOfPlayers(); i++) {
+                if (gameController.getGame().getPlayers().get(i).getDeck().getCards().size() == 0) {
+                    gameController.setLastRound(true);
+                }
             }
             gameController.setNextState(new PreActionState());
             gameController.setCurrentVirtualView(0);
@@ -39,6 +46,6 @@ public class PlanningState implements GameControllerState{
     }
     @Override
     public void endState(GameController gameController) {
-
+        gameController.setPreviousState(this);
     }
 }

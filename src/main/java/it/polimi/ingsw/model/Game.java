@@ -30,10 +30,10 @@ public class Game {
 
     private void sendUpdate(){
 
-        for (Observer observer : this.observerList) {
+      /*  for (Observer observer : this.observerList) {
             observer.update(this);
         }
-
+*/
     }
 
     public void addObserver(Observer observer) {
@@ -260,6 +260,11 @@ public class Game {
         }
     }
     public void updatePlayerOrder(){
+        ArrayList<Integer> tmpOrder = calculatePlayerOrder();
+        this.setPlayerOrder(tmpOrder);
+
+    }
+    public ArrayList<Integer> calculatePlayerOrder(){
         ArrayList<Player> clonePlayerArray = this.players;
         clonePlayerArray.sort(new Comparator<>() {
             public int compare(Player i1, Player i2) {
@@ -270,9 +275,8 @@ public class Game {
         for(int i=0;i<numberOfPlayers;i++){
             tmpOrder.add(clonePlayerArray.get(i).getPlayerNumber());
         }
-        this.setPlayerOrder(tmpOrder);
-        //dovrebbe andare ma non sono sicurissimo
-    }
+        return tmpOrder;
+    }//dovrebbe andare ma non sono sicurissimo
 //setupGame extractions
     private ArrayList<Island> generateIslands() {
         ArrayList<Island> islands = new ArrayList<>(12);
