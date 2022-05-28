@@ -4,7 +4,7 @@ public class CharacterCard{
 
 
     // stackOverflow suggests to use Integer type if we need to assign null value
-    private int ID;
+    private Integer ID;
     private int price;
     private final CardBehavior cardBehavior;
 
@@ -21,11 +21,11 @@ public class CharacterCard{
     public void setPrice(int price) {
         this.price = price;
     }
-    public int getID() {
+    public Integer getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(Integer ID) {
         this.ID = ID;
     }
     public void increasePrice(){

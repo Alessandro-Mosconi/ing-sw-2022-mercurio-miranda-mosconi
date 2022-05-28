@@ -13,14 +13,23 @@ public abstract class View {
     private GameMode gamemode;
     private Integer playerNumber;
     private Player player;
-    private ArrayList<String> players;
-    private ArrayList<SchoolBoard> schoolBoards;
+    private ArrayList<String> playersUsername;
+    private ArrayList<Player> players;
     private ArrayList<CloudTile> clouds;
     private IslandManager islandManager;
-    private Set<CharacterCard> characterCards;
+    private ArrayList<CharacterCard> characterCards;
     private MessageType messageType;
+    private TowerColor towerColor;
     private ArrayList<WizardType> wizards;
     private ArrayList<TowerColor> towerColors;
+    private AssistantCard chosenAssistantCard;
+    private CharacterCard chosenCharacterCard;
+    private PawnColor colorToMove;
+    private Integer destination;
+    private Integer MN_shift;
+    private Integer chosenCloudPos;
+    private Integer chosenIslandPos;
+
 
     public boolean isUpdated() {
         return updated;
@@ -31,8 +40,11 @@ public abstract class View {
     }
 
     private boolean updated = false;
-
+/*
     public View(){
+
+        playerNumber = 0;
+
         wizards = new ArrayList<WizardType>();
         for(WizardType w : WizardType.values()){
             wizards.add(w);
@@ -43,6 +55,96 @@ public abstract class View {
         }
     }
 
+ */
+
+    public Integer getChosenIslandPos() {
+        return chosenIslandPos;
+    }
+
+    public void setChosenIslandPos(Integer chosenIslandPos) {
+        this.chosenIslandPos = chosenIslandPos;
+    }
+
+    public Integer getChosenCloudPos() {
+        return chosenCloudPos;
+    }
+
+    public void setChosenCloudPos(Integer chosenCloudPos) {
+        this.chosenCloudPos = chosenCloudPos;
+    }
+
+    public Integer getMN_shift() {
+        return MN_shift;
+    }
+
+    public void setMN_shift(Integer MN_shift) {
+        this.MN_shift = MN_shift;
+    }
+
+    public Integer getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Integer destination) {
+        this.destination = destination;
+    }
+
+    public PawnColor getColorToMove() {
+        return colorToMove;
+    }
+
+    public void setColorToMove(PawnColor colorToMove) {
+        this.colorToMove = colorToMove;
+    }
+
+    public CharacterCard getChosenCharacterCard() {
+        return chosenCharacterCard;
+    }
+
+    public void setChosenCharacterCard(CharacterCard chosenCharacterCard) {
+        this.chosenCharacterCard = chosenCharacterCard;
+    }
+
+    public AssistantCard getChosenAssistantCard() {
+        return chosenAssistantCard;
+    }
+
+    public void setChosenAssistantCard(AssistantCard chosenAssistantCard) {
+        this.chosenAssistantCard = chosenAssistantCard;
+    }
+
+    public void removeTowerColor(TowerColor towerColor){
+        this.towerColors.remove(towerColor);
+    }
+
+    public void removeWizard(WizardType wizard){
+        this.wizards.remove(wizard);
+    }
+
+    public TowerColor getTowerColor() {
+        return towerColor;
+    }
+
+    public void setTowerColor(TowerColor towerColor) {
+        this.towerColor = towerColor;
+    }
+
+    public ArrayList<String> getPlayersUsername() {
+        return playersUsername;
+    }
+
+    public void setPlayersUsername(ArrayList<String> playersUsername) {
+        this.playersUsername = playersUsername;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
     public ArrayList<TowerColor> getTowerColors() {
         return towerColors;
     }
@@ -50,20 +152,13 @@ public abstract class View {
     public void setTowerColors(ArrayList<TowerColor> towerColors) {
         this.towerColors = towerColors;
     }
+
     public ArrayList<WizardType> getWizards() {
         return wizards;
     }
 
     public void setWizards(ArrayList<WizardType> wizards) {
         this.wizards = wizards;
-    }
-
-    public ArrayList<String> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(ArrayList<String> players) {
-        this.players = players;
     }
 
     public MessageType getMessageType() {
@@ -107,11 +202,11 @@ public abstract class View {
         this.playerNumber = playerNumber;
     }
 
-    public Set<CharacterCard> getCharacterCards() {
+    public ArrayList<CharacterCard> getCharacterCards() {
         return characterCards;
     }
 
-    public void setCharacterCards(Set<CharacterCard> characterCards) {
+    public void setCharacterCards(ArrayList<CharacterCard> characterCards) {
         this.characterCards = characterCards;
     }
 
@@ -123,6 +218,7 @@ public abstract class View {
         this.player = player;
     }
 
+    /*
     public ArrayList<SchoolBoard> getSchoolBoards() {
         return schoolBoards;
     }
@@ -130,6 +226,8 @@ public abstract class View {
     public void setSchoolBoards(ArrayList<SchoolBoard> schoolBoards) {
         this.schoolBoards = schoolBoards;
     }
+
+     */
 
     public ArrayList<CloudTile> getClouds() {
         return clouds;
@@ -147,13 +245,13 @@ public abstract class View {
         this.islandManager = islandManager;
     }
 
-    public abstract Message login();
+    public abstract void login();
 
-    public abstract Message settings();
+    public abstract void settings();
 
-    public abstract Message chooseAssistantCard();
+    public abstract void chooseAssistantCard();
 
-    public abstract Message choosePawnMove();
+    public abstract void choosePawnMove();
 
     /*public Message waiting(){
         return null;
@@ -163,9 +261,9 @@ public abstract class View {
 
     //public abstract Message chooseWizard();
 
-    public abstract Message chooseMNmovement();
+    public abstract void chooseMNmovement();
 
-    public abstract Message chooseCT();
+    public abstract void chooseCT();
 
     public void updateView() {
 
