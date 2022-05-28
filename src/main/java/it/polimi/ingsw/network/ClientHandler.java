@@ -35,14 +35,11 @@ public class ClientHandler implements Runnable
     {
         this.client = client;
     }
-
-
     /**
      * Connects to the client and runs the event loop.
      */
     @Override
-    public void run()
-    {
+    public void run(){
         try {
             out = new PrintWriter(this.client.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(this.client.getInputStream()));
@@ -63,9 +60,7 @@ public class ClientHandler implements Runnable
         }
 
         try {
-
             client.close();
-
         } catch (IOException e) {
             System.out.println("Error with the socket closing");
         }
@@ -89,10 +84,8 @@ public class ClientHandler implements Runnable
 
                 String input = in.readLine();
                 System.out.println("[" + client.getInetAddress() + "]" + " receiving... " + input);
-
-
-                if(!input.equals("ping") ) {
-                    if(!initialize(input))
+                if(!input.equals("ping") && !input.equals("MODEL_UPDATED")) {
+                   /* if(!initialize(input))
                     {
                         {
                             System.out.println("processing...");
@@ -107,9 +100,9 @@ public class ClientHandler implements Runnable
                             //String output = virtualView.sendAnswer();
                             //out.println(output);
                         }
-                    }
+                    }*/
+                    processInput(input);
                 }
-
             }
         } catch (SocketTimeoutException e) {
             System.err.println("Client no more reachable ");
@@ -158,7 +151,7 @@ public class ClientHandler implements Runnable
         }
     }
 
-    public synchronized boolean initialize (String input){
+    /*public synchronized boolean initialize (String input){
 
         synchronized (networkMap) {
             System.out.println("initializing...");
@@ -304,6 +297,96 @@ public class ClientHandler implements Runnable
                 return false;
             }
             return false;
+        }
+    }*/
+    public synchronized void processInput (String input){
+        synchronized (networkMap) {
+            System.out.println("receiving..." + input);
+            //if(input.equals("MODEL_UPDATED")){ return; }
+            Gson gson = new Gson();
+            Message msg_in = gson.fromJson(input, Message.class);
+            Message msg_out = new Message();
+            ArrayList<String> payloads = new ArrayList<String>();
+            payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
+
+            switch (msg_in.getType()) {
+                case CREATE_MATCH -> {
+                    if (networkMap.containsKey(payloads.get(1))) {
+                        msg_out.setUser(payloads.get(0));
+                        msg_out.setType(MessageType.ERROR);
+                        msg_out.fill(ErrorType.GAME_ALREADY_EXISTING);
+                        System.out.println(ErrorType.GAME_ALREADY_EXISTING);
+                        out.println(msg_out);
+                    } else {
+                        virtualView = new VirtualView();
+                        virtualView.setUsername(payloads.get(0));
+                        virtualView.setIdGame(payloads.get(1));
+                        virtualView.setPlayerNumber(Integer.parseInt(payloads.get(2)));
+                        virtualView.setGamemode(GameMode.valueOf(payloads.get(3)));
+                        msg_out.setUser(virtualView.getUsername());
+                        msg_out.setType(MessageType.WAIT);
+                        ArrayList<String> UsersList = new ArrayList<>();
+                        UsersList.add(virtualView.getUsername());
+                        networkMap.put(virtualView.getIdGame(), UsersList);
+                        System.out.println(networkMap);
+                        Game game = new Game(virtualView.getPlayerNumber(), virtualView.getIdGame(), virtualView.getGamemode());
+                        gameMap.put(virtualView.getIdGame(), game);
+                        out.println(msg_out);
+                    }
+                }
+                case JOIN_MATCH -> {
+                    virtualView = new VirtualView();
+                    if (!networkMap.containsKey(payloads.get(1))) {
+                        msg_out.setUser(/*virtualView.getUsername()*/payloads.get(0));
+                        msg_out.setType(MessageType.ERROR);
+                        msg_out.fill(ErrorType.GAME_NOT_FOUND);
+                        System.out.println(ErrorType.GAME_NOT_FOUND);
+                        out.println(msg_out);
+                    } else if (networkMap.get(payloads.get(1)).contains(msg_in.getUser())) {
+                        virtualView.setUsername(payloads.get(0));
+                        virtualView.setIdGame(payloads.get(1));
+                        msg_out.setUser(/*virtualView.getUsername()*/payloads.get(0));
+                        msg_out.setType(MessageType.ERROR);
+                        msg_out.fill(ErrorType.USERNAME_ALREADY_IN_LOBBY);
+                        System.out.println(ErrorType.USERNAME_ALREADY_IN_LOBBY);
+                        out.println(msg_out);
+                    } else {
+                        virtualView.setUsername(payloads.get(0));
+                        virtualView.setIdGame(payloads.get(1));
+                        virtualView.setPlayerNumber(gameMap.get(virtualView.getIdGame()).getNumberOfPlayers());
+                        virtualView.setGamemode(gameMap.get(virtualView.getIdGame()).getGameMode());
+                        ArrayList<String> UsersList = new ArrayList<>();
+                        UsersList = networkMap.get(virtualView.getIdGame());
+                        UsersList.add(msg_in.getUser());
+                        networkMap.replace(virtualView.getIdGame(), UsersList);
+                        virtualView.setPlayers(UsersList);
+                        //TODO notificare agli altri in lobby che si è aggiunto un nuovo player
+                    }
+                }
+                case SETTINGS -> {
+                    //TODO
+                }
+                case AssistantCard -> {
+                    //TODO
+                }
+                case PAWN_MOVE -> {
+                    //TODO
+                }
+                case MN_SHIFT -> {
+                    //TODO
+                }
+                case CHOSEN_CT -> {
+                    //TODO
+                }
+                case CHOSEN_CHARACTER_CARD -> {
+                    //TODO
+                }
+                case WAITING -> {
+
+                }
+
+
+            }
         }
     }
 

@@ -19,8 +19,9 @@ public class NetworkHandler {
     private PrintWriter out;
     private BufferedReader in;
     private View view;
+    private Phase previousPhase;
     private Phase phase;
-    private Phase nextPhase = Phase.CHOSING_ASSISTANT_CARD;
+    private Phase nextPhase;
 
     public NetworkHandler(PrintWriter out, BufferedReader in, View view) {
         this.out = out;
@@ -30,9 +31,66 @@ public class NetworkHandler {
     }
 
     public synchronized String send_msg() {
-
         Message msg_out = null;
-
+        switch (phase) {
+            case LOGIN -> {
+                msg_out = view.login();
+                nextPhase = Phase.SETTINGS;
+                phase = Phase.WAITING;
+            }
+            case SETTINGS -> {
+                msg_out = view.settings();
+                nextPhase = Phase.PLANNING;
+                phase = Phase.WAITING;
+            }
+            case PLANNING -> {
+                msg_out = view.chooseAssistantCard();
+                nextPhase = Phase.CHOOSING_FIRST_MOVE;
+                phase = Phase.WAITING;
+            }
+            case CHOOSING_FIRST_MOVE -> {
+                msg_out = view.choosePawnMove();
+                previousPhase = phase;
+                nextPhase = Phase.CHOOSING_SECOND_MOVE;
+                phase = Phase.WAITING;
+            }
+            case CHOOSING_SECOND_MOVE -> {
+                msg_out = view.choosePawnMove();
+                previousPhase = phase;
+                nextPhase = Phase.CHOOSING_THIRD_MOVE;
+                phase = Phase.WAITING;
+            }
+            case CHOOSING_THIRD_MOVE -> {
+                msg_out = view.choosePawnMove();
+                previousPhase = phase;
+                nextPhase = Phase.CHOOSING_MN_SHIFT;
+                phase = Phase.WAITING;
+            }
+            case CHOOSING_MN_SHIFT -> {
+                msg_out = view.chooseMNmovement();
+                previousPhase = phase;
+                nextPhase = Phase.CHOOSING_CT;
+                phase = Phase.WAITING;
+            }
+            case CHOOSING_CT -> {
+                msg_out = view.chooseCT();
+                previousPhase = phase;
+                phase = Phase.WAITING;
+                nextPhase = Phase.PLANNING;
+            }
+            case WAITING -> {
+                msg_out.setType(MessageType.WAITING);
+                msg_out.fill("WAITING");
+            }
+            case CHOOSING_PARAMETERS -> {
+                //todo in base alla carta che viene scelta cambiano i parametri richiesti
+            }
+        }
+            msg_out.setUser(view.getUsername());
+            System.out.println("sending... " + msg_out.toSend());
+            return msg_out.toSend();
+        }
+        /*
         if (phase==Phase.LOGIN) {
             view.login();
             msg_out = new Message(view.getUsername(), view.getMessageType(), view.getUsername());
@@ -58,16 +116,7 @@ public class NetworkHandler {
             msg_out = new Message(view.getUsername(), view.getMessageType());
             msg_out.fill(view.getPlayers());
         }
-       /* if(phase.equals(4))
-        {
-            view.lobby();
-            msg_out = new Message(view.getUsername(), view.getMessageType());
-            msg_out.fill(view.getPlayers());
-            System.out.println("jump");
-            return "jump";
-        }
-        ???
-        */
+
         if(phase==Phase.CHOSING_SCHOOLBOARD)
         {
             //System.out.println("IL GIOCO PUO' INIZIARE");
@@ -96,30 +145,21 @@ public class NetworkHandler {
         }
             System.out.println("sending... " + msg_out.toSend());
             return msg_out.toSend();
+ }
+*/
 
-    }
-
-    public synchronized void process (String input)
-    {
+    public synchronized void process (String input) {
         System.out.println("receiving... " + input);
-
         if(input.equals("ACK")) return;
-
         Gson gson = new Gson();
         Message msg_in = gson.fromJson(input, Message.class);
         Message msg_out = new Message(msg_in.getUser());
-
         ArrayList<String> payloads;
-        String userChange = "";
-        Integer position = null;
-
         switch(msg_in.getType()){
-            case ERROR:
+            case ERROR -> {
                 System.out.println("Error:" + msg_in.getPayload());
-                //this.phase=0;
-                this.phase=Phase.LOGIN;
-                break;
-
+            }
+            /*
             case LOGIN_SUCCESSFUL:
                 System.out.println(input);
                 this.phase=Phase.SETTINGS;
@@ -191,14 +231,8 @@ public class NetworkHandler {
                 System.out.println(input);
                 this.phase = Phase.CHOOSING_PARAMETER;
 
-
-
-
-
-
-
-
-
+*/
+            /*
             case CloudChanged:
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 position = gson.fromJson(payloads.get(0), Integer.class);
@@ -270,9 +304,18 @@ public class NetworkHandler {
                 Integer shift = gson.fromJson(msg_in.getPayload(), Integer.class);
                 break;
                 */
-
-            default:
-                break;
+            case WAIT -> {
+                previousPhase = phase;
+                phase = Phase.WAITING;
+                //nextPhase = nextPhase;
+                System.out.println("ok aspetto\n");
+            }
+            case NOW_IS_YOUR_TURN, ACK -> {
+                phase = nextPhase;
+            }
+            case MODEL_UPDATE -> {
+                view.updateView();
+            }
         }
 
 

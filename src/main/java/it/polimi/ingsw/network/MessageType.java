@@ -4,6 +4,7 @@ package it.polimi.ingsw.network;
 public enum MessageType {
     ERROR,
     LOGIN,
+    WAIT,
     LOBBY_WAITING,
     LOGIN_SUCCESSFUL,
     RECONNECTED,
@@ -40,5 +41,5 @@ public enum MessageType {
     WalletChanged,
     DeckChanged,
     AssistantCard,
-    ModelUpdate, Color, Island, ChosenCharacterCard, OK_ASSISTANT_CARD, OK_PAWNS_MOVED, OK_MN_MOVED, OK_CLOUTILE_COLLECTED, START_YOUR_TURN, OK_EFFECT_CARD, WAITING, NOW_IS_YOUR_TURN,
+    ModelUpdate, Color, Island, ChosenCharacterCard, OK_ASSISTANT_CARD, OK_PAWNS_MOVED, OK_MN_MOVED, OK_CLOUTILE_COLLECTED, START_YOUR_TURN, OK_EFFECT_CARD, WAITING, NOW_IS_YOUR_TURN, SETTINGS, PAWN_MOVE, CHOSEN_CHARACTER_CARD, MN_SHIFT, CHOSEN_CT, ACK, MODEL_UPDATE,
 }
