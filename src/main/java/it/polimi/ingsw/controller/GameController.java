@@ -3,6 +3,7 @@ package it.polimi.ingsw.controller;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.ClientHandler;
+import it.polimi.ingsw.network.VirtualViewListener;
 import it.polimi.ingsw.virtualview.VirtualView;
 
 import java.awt.event.ActionEvent;

@@ -1,10 +1,12 @@
 package it.polimi.ingsw.virtualview;
 
 import com.google.gson.Gson;
+import it.polimi.ingsw.controller.GameController;
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.ErrorType;
 import it.polimi.ingsw.network.Message;
 import it.polimi.ingsw.network.MessageType;
+import it.polimi.ingsw.network.VirtualViewListener;
 
 import java.util.*;
 
@@ -32,8 +34,14 @@ public class VirtualView implements ModelListener {
     private static Map<String, Game> gameMap = new HashMap<>(); //mappa di gameid e game
 
 
-    public void setGameController(GameController gameController){ this.gameController = gameController; }
-    public VirtualViewListener getGameController(){ return gameController; }
+    public void setGameController(VirtualViewListener gameController) {
+        this.gameController = gameController;
+    }
+
+    public VirtualViewListener getGameController() {
+        return gameController;
+    }
+
     public Message getMsg_in() {
         return msg_in;
     }
@@ -41,6 +49,7 @@ public class VirtualView implements ModelListener {
     public void setMsg_in(Message msg_in) {
         this.msg_in = msg_in;
     }
+
     public boolean isMyTurn() {
         return isMyTurn;
     }
@@ -48,6 +57,7 @@ public class VirtualView implements ModelListener {
     public void setMyTurn(boolean myTurn) {
         isMyTurn = myTurn;
     }
+
     public ArrayList<String> getPlayers() {
         return players;
     }
@@ -71,6 +81,7 @@ public class VirtualView implements ModelListener {
     public void setNext_out_type(MessageType next_out_type) {
         this.next_out_type = next_out_type;
     }
+
     public String getUsername() {
         return username;
     }
@@ -156,7 +167,7 @@ public class VirtualView implements ModelListener {
         return msg.toSend();
     } //da finire
 
-    public void read(String input) {
+    public Message read(String input) {
 
         System.out.println("receiving..." + input);
         Gson gson = new Gson();
@@ -189,10 +200,13 @@ public class VirtualView implements ModelListener {
                 System.out.println(networkMap);
                 //Game game = new Game(virtualView.getPlayerNumber(), virtualView.getIdGame(), virtualView.getGamemode());
                 //gameMap.put(virtualView.getIdGame(), game);
-                out.println(msg_out);
+                return msg_out;
+                //out.println(msg_out);
             }
         }
+        return null;
     }
+}
 
 
     //private ArrayList<Player> players;
@@ -304,5 +318,4 @@ public class VirtualView implements ModelListener {
         }
         setError_type(ErrorType.INVALID_CARD);
         return null;
-    }
-}
+    }*/

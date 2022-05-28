@@ -100,7 +100,11 @@ public class ClientHandler implements Runnable
                             //out.println(output);
                         }
                     }*/
-                    processInput(input);
+                    //processInput(input);
+                    if(virtualView.read(input)!=null){ //TODO GESTIRE I CASI IN CUI IL SERVER NON RISPONDE  EIL CLIENT RIMANE IN ATTESA -
+                        //TODO PER ORA SONO SETTATI A NULL I MSG-OUT NEI CASI IN CUI IL SERVER NON DEVE RISPONDERE
+                        out.println(virtualView.read(input));
+                    }
                 }
             }
         } catch (SocketTimeoutException e) {
@@ -126,7 +130,7 @@ public class ClientHandler implements Runnable
 
             //dopo aver chiuso una connessione se l'utente è entrato in qualche lobby o ha creato qualche lobby con solo lui, queste si cancellano
 
-            synchronized (networkMap) {
+            /*synchronized (networkMap) {
                 if (virtualView.getIdGame() != null)
                     if (gameMap.containsKey(virtualView.getIdGame()))
                         if (gameMap.get(virtualView.getIdGame()) != null)
@@ -144,7 +148,7 @@ public class ClientHandler implements Runnable
                                 }
                             }
 
-            }
+            }*/
 
             System.out.println("[" + client.getInetAddress() + "] " + ">> Connessione terminata <<");
         }
@@ -311,7 +315,7 @@ public class ClientHandler implements Runnable
             switch (msg_in.getType()) {
 
                 //non cancellare questa parte perché c'è il codice per la multipartita.!!!
-                /*case CREATE_MATCH -> {
+                /* case CREATE_MATCH -> {
                     if (networkMap.containsKey(payloads.get(1))) {
                         msg_out.setUser(payloads.get(0));
                         msg_out.setType(MessageType.ERROR);
@@ -335,10 +339,10 @@ public class ClientHandler implements Runnable
                         out.println(msg_out.toSend());
                     }
                 }*/
-                case JOIN_MATCH -> {
+                /*case JOIN_MATCH -> {
                     //virtualView = new VirtualView();
                     if (!networkMap.containsKey(payloads.get(1))) {
-                        msg_out.setUser(/*virtualView.getUsername()*/payloads.get(0));
+                        msg_out.setUser(payloads.get(0));
                         msg_out.setType(MessageType.ERROR);
                         msg_out.fill(ErrorType.GAME_NOT_FOUND);
                         System.out.println(ErrorType.GAME_NOT_FOUND);
@@ -346,7 +350,7 @@ public class ClientHandler implements Runnable
                     } else if (networkMap.get(payloads.get(1)).contains(msg_in.getUser())) {
                         virtualView.setUsername(payloads.get(0));
                         virtualView.setIdGame(payloads.get(1));
-                        msg_out.setUser(/*virtualView.getUsername()*/payloads.get(0));
+                        msg_out.setUser(payloads.get(0));
                         msg_out.setType(MessageType.ERROR);
                         msg_out.fill(ErrorType.USERNAME_ALREADY_IN_LOBBY);
                         System.out.println(ErrorType.USERNAME_ALREADY_IN_LOBBY);
@@ -386,7 +390,7 @@ public class ClientHandler implements Runnable
 
                 }
 
-
+*/
             }
         }
     }

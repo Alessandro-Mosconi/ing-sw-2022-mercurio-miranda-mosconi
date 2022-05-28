@@ -94,13 +94,13 @@ public class NetworkHandler {
 
             }
             case CHOOSING_SECOND_MOVE -> {
-                msg_out = view.choosePawnMove();
+                //TODO ALESSANDRO msg_out = view.choosePawnMove();
                 previousPhase = phase;
                 nextPhase = Phase.CHOOSING_THIRD_MOVE;
                 phase = Phase.WAITING;
             }
             case CHOOSING_THIRD_MOVE -> {
-                msg_out = view.choosePawnMove();
+                //TODO ALESSANDRO msg_out = view.choosePawnMove();
                 previousPhase = phase;
                 nextPhase = Phase.CHOOSING_MN_SHIFT;
                 phase = Phase.WAITING;
