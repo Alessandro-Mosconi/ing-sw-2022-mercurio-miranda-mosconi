@@ -10,7 +10,8 @@ public class ChosenCharCardState implements GameControllerState{
         Player currPlayer = gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator()));
         Parameter parameter = gameController.getVirtualViews().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).getParameter();
         parameter.setPlayer(currPlayer);
-        CharacterCard chosenCard = gameController.getVirtualViews().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).getChosenCharacterCard();
+        int cardID = gameController.getVirtualViews().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).getChosenCharacterCardID();
+        CharacterCard chosenCard = gameController.getGame().getAllCharacterCard().get(cardID);
         /*if(chosenCard.getPrice()>gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrderIterator()).getWallet()){
             String prvState = gameController.getPreviousState().getClass().getSimpleName();
             switch (prvState){

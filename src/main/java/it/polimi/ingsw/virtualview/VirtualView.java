@@ -359,7 +359,7 @@ public class VirtualView implements Observer {
         return null; //TODO
     }
 
-    public CharacterCard getChosenCharacterCard() {
-        return null; //TODO
+    public int getChosenCharacterCardID() {
+        return 1; //TODO
     }
 }
