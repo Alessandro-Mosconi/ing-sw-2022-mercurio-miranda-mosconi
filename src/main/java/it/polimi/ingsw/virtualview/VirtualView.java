@@ -30,6 +30,13 @@ public class VirtualView implements Observer {
     private boolean online = true;
     private boolean isMyTurn = false;
     private ArrayList<String> players;
+    private WizardType wizard;
+    private TowerColor towerColor;
+    private int chosenAssistantID;
+    private PawnColor studentToMove;
+    private int destination;
+    private int chosenShift;
+    private int chosenCloudID;
     private static Map<String, ArrayList<String>> networkMap = new HashMap<>(); //mappa di gameid e lista di player
     private static Map<String, Game> gameMap = new HashMap<>(); //mappa di gameid e game
 
@@ -167,7 +174,7 @@ public class VirtualView implements Observer {
         return msg.toSend();
     } //da finire
 
-    public Message read(String input) {
+    public String read(String input) {
 
         System.out.println("receiving..." + input);
         Gson gson = new Gson();
@@ -188,8 +195,8 @@ public class VirtualView implements Observer {
                 playersNumber = Integer.parseInt(payloads.get(2));
                 gamemode = GameMode.valueOf(payloads.get(3));
 
-                GameController controller = new GameController();
-                controller.getVirtualViews().add(this);
+                GameController gameController = new GameController();
+                gameController.getVirtualViews().add(this);
 
                 //virtualview manda il messaggio di uscita.
                 msg_out.setUser(username);
@@ -200,8 +207,78 @@ public class VirtualView implements Observer {
                 System.out.println(networkMap);
                 //Game game = new Game(virtualView.getPlayerNumber(), virtualView.getIdGame(), virtualView.getGamemode());
                 //gameMap.put(virtualView.getIdGame(), game);
-                return msg_out;
+                return msg_out.toSend();
                 //out.println(msg_out);
+            }
+            case JOIN_MATCH -> {
+                //username = payloads.get(0);
+                if(!networkMap.containsKey(payloads.get(1))){
+                    msg_out.setUser(payloads.get(0));
+                    msg_out.setType(MessageType.ERROR);
+                    msg_out.fill(ErrorType.GAME_NOT_FOUND);
+                    System.out.println(ErrorType.GAME_NOT_FOUND);
+                    return msg_out.toSend();
+                }
+                else if(networkMap.get(payloads.get(1)).contains(msg_in.getUser())) {
+                    //setUsername(payloads.get(0));
+                    //setIdGame(payloads.get(1));
+                    msg_out.setUser(payloads.get(0));
+                    msg_out.setType(MessageType.ERROR);
+                    msg_out.fill(ErrorType.USERNAME_ALREADY_IN_LOBBY);
+                    System.out.println(ErrorType.USERNAME_ALREADY_IN_LOBBY);
+                    return msg_out.toSend();
+                }
+                else {
+                    username = payloads.get(0);
+                    idGame = payloads.get(1);
+                    setPlayerNumber(gameMap.get(getIdGame()).getNumberOfPlayers());
+                    setGamemode(gameMap.get(getIdGame()).getGameMode());
+                    ArrayList<String> UsersList = new ArrayList<>();
+                    UsersList = networkMap.get(getIdGame());
+                    UsersList.add(msg_in.getUser());
+                    networkMap.replace(getIdGame(), UsersList);
+                    setPlayers(UsersList);
+                    msg_out.setUser(username);
+                    msg_out.setType(MessageType.ASK_FOR_SETTINGS);
+                    return msg_out.toSend();
+                }
+            }
+            case SETTINGS -> {
+                wizard = WizardType.valueOf(payloads.get(0));
+                towerColor = TowerColor.valueOf(payloads.get(1));
+                msg_out.setType(MessageType.WAIT);
+                msg_out.setUser(username);
+                gameController.performAction();
+                return msg_out.toSend();
+            }
+            case AssistantCard -> {
+                chosenAssistantID = Integer.parseInt(payloads.get(0));
+                msg_out.setType(MessageType.WAIT);
+                msg_out.setUser(username);
+                gameController.performAction();
+                return msg_out.toSend();
+            }
+            case PAWN_MOVE -> {
+                studentToMove = PawnColor.valueOf(payloads.get(0));
+                destination = Integer.parseInt(payloads.get(1));
+                msg_out.setType(MessageType.IS_YOUR_TURN);
+                msg_out.setUser(username);
+                gameController.performAction();
+                return msg_out.toSend();
+            }
+            case MN_SHIFT -> {
+                chosenShift = Integer.parseInt(payloads.get(0));
+                msg_out.setType(MessageType.IS_YOUR_TURN);
+                msg_out.setUser(username);
+                gameController.performAction();
+                return msg_out.toSend();
+            }
+            case CHOSEN_CT -> {
+                chosenCloudID = Integer.parseInt(payloads.get(0));
+                msg_out.setType(MessageType.WAIT);
+                msg_out.setUser(username);
+                gameController.performAction();
+                return msg_out.toSend();
             }
         }
         return null;
@@ -221,7 +298,6 @@ public class VirtualView implements Observer {
         this.players = players;
     }
 */
-
     /*
     public Player askForPlayerData() {
         Player player = new Player();
@@ -263,96 +339,32 @@ public class VirtualView implements Observer {
 
     }
 
-    public boolean askIfCard() {
-        String payload = new String();
-        Gson gson = new Gson();
-        payload = gson.fromJson(msg_in.getPayload(), String.class);
-        return payload.equals("YES");
-    }
-
-    public PawnColor askForColor() {
-        if (msg_in.getType().equals(MessageType.Color)) {
-            String payload = new String();
-            Gson gson = new Gson();
-            payload = gson.fromJson(msg_in.getPayload(), String.class);
-            payload = payload.toLowerCase();
-            return PawnColor.valueOf(payload);
-        } else {
-            setError_type(ErrorType.INVALID_COLOR);
-            return null;
-        }
-    }
-
-    public Island askForIsland() {
-        if (msg_in.getType().equals(MessageType.Island)) {
-            String payload = new String();
-            Gson gson = new Gson();
-            payload = gson.fromJson(msg_in.getPayload(), String.class);
-            return this.islandManager.getIslandList().get(Integer.parseInt(payload));
-        } else {
-            setError_type(ErrorType.INVALID_ISLAND);
-            return null;
-        }
-
-    }
-
-    public Map<PawnColor, Integer> askForStudToTake() {
-        Map<PawnColor, Integer> payload = new HashMap<>();
-        Gson gson = new Gson();
-        payload = gson.fromJson(msg_in.getPayload(), HashMap.class);
-        return payload;
-    }
-
-    public Map<PawnColor, Integer> askForStudToGive() {
-        Map<PawnColor, Integer> payload = new HashMap<>();
-        Gson gson = new Gson();
-        payload = gson.fromJson(msg_in.getPayload(), HashMap.class);
-        return payload;
-    }
-
-    public CharacterCard askForCharCard() {
-        if(msg_in.getType().equals(MessageType.ChosenCharacterCard)){
-            String payload = new String();
-            Gson gson = new Gson();
-            payload = gson.fromJson(msg_in.getPayload(), String.class);
-            for(CharacterCard characterCard : characterCards){
-               if(Integer.parseInt(payload)==(characterCard.getID())){
-                   return characterCard;
-               }
-            }
-        }
-        setError_type(ErrorType.INVALID_CARD);
-        return null;
-    }
-
     public WizardType getWizard() {
-        //TODO DA ATTRIBUIRE IN SEGUITO A LETTURA MSG SETTINGS
-        return null;
+        return wizard;
     }
 
     public TowerColor getTowerColor() {
-        //TODO DA ATTRIBUIRE
-        return null;
+        return towerColor;
     }
 
     public int getChosenAssistantID() {
-        return 1; //TODO
+        return chosenAssistantID;
     }
 
     public PawnColor getStudentToMove() {
-        return null; //TODO
+        return studentToMove;
     }
 
     public int getDestination() {
-        return 1; //TODO
+        return destination;
     }
 
     public int getMNShift() {
-        return 1; //TODO
+        return chosenShift;
     }
 
     public int getChosenCloudID() {
-        return 1; //TODO
+        return chosenCloudID;
     }
 
     public Parameter getParameter() {

@@ -2,16 +2,11 @@ package it.polimi.ingsw.network;
 
 import com.google.gson.Gson;
 import it.polimi.ingsw.model.*;
-import it.polimi.ingsw.network.Message;
 import it.polimi.ingsw.view.View;
-import it.polimi.ingsw.virtualview.VirtualView;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class NetworkHandler {
 
@@ -273,7 +268,7 @@ public class NetworkHandler {
                 //aggiorni view
                 break;
 
-            case NOW_IS_YOUR_TURN:
+            case IS_YOUR_TURN:
                 System.out.println(input);
                 this.phase=nextPhase;
                 break;
@@ -384,7 +379,7 @@ public class NetworkHandler {
                 //nextPhase = nextPhase;
                 System.out.println("ok aspetto\n");
             }
-            case NOW_IS_YOUR_TURN, ACK -> {
+            case IS_YOUR_TURN, ACK -> {
                 phase = nextPhase;
             }
             case MODEL_UPDATE -> {

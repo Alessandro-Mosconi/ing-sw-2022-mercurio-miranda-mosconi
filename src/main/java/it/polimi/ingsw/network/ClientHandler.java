@@ -3,7 +3,6 @@ package it.polimi.ingsw.network;
 import com.google.gson.Gson;
 import it.polimi.ingsw.controller.GameController;
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.GameMode;
 import it.polimi.ingsw.virtualview.VirtualView;
 
 import java.io.*;
@@ -370,22 +369,22 @@ public class ClientHandler implements Runnable
                     }
                 }
                 case SETTINGS -> {
-                    //TODO
+
                 }
                 case AssistantCard -> {
-                    //TODO
+
                 }
                 case PAWN_MOVE -> {
-                    //TODO
+
                 }
                 case MN_SHIFT -> {
-                    //TODO
+
                 }
                 case CHOSEN_CT -> {
-                    //TODO
+
                 }
                 case CHOSEN_CHARACTER_CARD -> {
-                    //TODO
+
                 }
                 case WAITING -> {
 
@@ -397,8 +396,14 @@ public class ClientHandler implements Runnable
     }
 
     public void tellToWait() {
+        Message msg_out = new Message();
+        msg_out.setType(MessageType.WAITING);
+        out.println(msg_out.toSend());
     }
 
     public void tellToPlay() {
+        Message msg_out = new Message();
+        msg_out.setType(MessageType.IS_YOUR_TURN);
+        out.println(msg_out.toSend());
     }
 }
