@@ -2,16 +2,11 @@ package it.polimi.ingsw.network;
 
 import com.google.gson.Gson;
 import it.polimi.ingsw.model.*;
-import it.polimi.ingsw.network.Message;
 import it.polimi.ingsw.view.View;
-import it.polimi.ingsw.virtualview.VirtualView;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class NetworkHandler {
 
@@ -62,6 +57,7 @@ public class NetworkHandler {
                 payloads.add(view.getTowerColor().toString());
 
                 nextPhase = Phase.PLANNING;
+                phase = Phase.WAITING;
             }
             case PLANNING -> {
                 view.chooseAssistantCard();
@@ -70,6 +66,7 @@ public class NetworkHandler {
                 payloads.add(view.getChosenAssistantCard().getValue().toString());
 
                 nextPhase = Phase.CHOOSING_FIRST_MOVE;
+                phase = Phase.WAITING;
             }
             case CHOOSING_FIRST_MOVE -> {
                 view.choosePawnMove();
@@ -92,14 +89,16 @@ public class NetworkHandler {
 
             }
             case CHOOSING_SECOND_MOVE -> {
-                //msg_out = view.choosePawnMove();
+                //TODO ALESSANDRO msg_out = view.choosePawnMove();
                 previousPhase = phase;
                 nextPhase = Phase.CHOOSING_THIRD_MOVE;
+                phase = Phase.WAITING;
             }
             case CHOOSING_THIRD_MOVE -> {
-                //msg_out = view.choosePawnMove();
+                //TODO ALESSANDRO msg_out = view.choosePawnMove();
                 previousPhase = phase;
                 nextPhase = Phase.CHOOSING_MN_SHIFT;
+                phase = Phase.WAITING;
             }
             case CHOOSING_MN_SHIFT -> {
                 view.chooseMNmovement();
@@ -137,7 +136,6 @@ public class NetworkHandler {
             case WAITING -> {
                 msg_out.setType(MessageType.WAITING);
                 msg_out.fill("WAITING");
-
             }
             case CHOOSING_PARAMETERS -> {
                 //todo in base alla carta che viene scelta cambiano i parametri richiesti
@@ -206,7 +204,6 @@ public class NetworkHandler {
         }
             System.out.println("sending... " + msg_out.toSend());
             return msg_out.toSend();
-
  }
 */
 
@@ -271,7 +268,7 @@ public class NetworkHandler {
                 //aggiorni view
                 break;
 
-            case NOW_IS_YOUR_TURN:
+            case IS_YOUR_TURN:
                 System.out.println(input);
                 this.phase=nextPhase;
                 break;
@@ -382,7 +379,7 @@ public class NetworkHandler {
                 //nextPhase = nextPhase;
                 System.out.println("ok aspetto\n");
             }
-            case NOW_IS_YOUR_TURN, ACK -> {
+            case IS_YOUR_TURN, ACK -> {
                 phase = nextPhase;
             }
             case MODEL_UPDATE -> {

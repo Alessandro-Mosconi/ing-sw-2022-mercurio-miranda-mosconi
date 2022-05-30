@@ -6,7 +6,12 @@ import static it.polimi.ingsw.model.GameMode.*;
 
 public class SchoolBoard {
     private int towersNumber;
-    private final TowerColor towersColor;
+
+    public void setTowersColor(TowerColor towersColor) {
+        this.towersColor = towersColor;
+    }
+
+    private TowerColor towersColor;
     private Map<PawnColor, Integer> studentHall;
     private Map<PawnColor, Integer> studentEntrance;
     private Map<PawnColor, Boolean> professorTable;

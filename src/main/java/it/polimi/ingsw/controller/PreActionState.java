@@ -12,7 +12,7 @@ public class PreActionState implements GameControllerState{
 
     @Override
     public void updateNextState(GameController gameController) {
-        if (gameController.getGame().getGameMode().equals(GameMode.expert)&&gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()) {
+        if (gameController.getGame().getGameMode().equals(GameMode.expert)&&gameController.getVirtualViews().get(gameController.getVirtualViewsOrderIterator()).askIfCard()) {
 //            gameController.setPreviousState(this);
             gameController.setNextState(new ChosenCharCardState());
         }

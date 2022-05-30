@@ -5,27 +5,33 @@ import java.util.Map;
 
 public class MovePawnsState implements GameControllerState{
     //questo attributo lo uso per capire quante pedine sono state spostate dai metodi nel caso in cui ci siano spostamenti misti
-    int numUpdates = 0;
-
     @Override
     public void startState(GameController gameController) {
         //Assumo che il client mi mandi un messaggio con le pedine (secondo me meglio mappa) + destinazione
         //nella VV dovrei fare un controllo che si tratti di Schoolboard o Island e che poi chiami il metodo giusto nel controller.
         //Probabilmente dovremmo fare una synch sulla schoolboard e poi svegliare questo metodo? così da farlo continuare
-        gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askForMovement();
-
-        while (numUpdates<3){
-            //inutile, devo trovare un modo più intelligente
+        PawnColor studentToMove = gameController.getVirtualViews().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).getStudentToMove();
+        int destination = gameController.getVirtualViews().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).getDestination();
+        if(destination == -1){
+            gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).moveFromEntranceToHall(studentToMove);
+            gameController.decreaseMovesToGo();
         }
-        updateNextState(gameController);
+        else{
+            Island destinationIsland = gameController.getGame().getIslandManager().getIslandList().get(destination);
+            gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).moveFromEntranceToIsland(destinationIsland,studentToMove);
+            gameController.decreaseMovesToGo();
+        }
     }
 
     @Override
     public void updateNextState(GameController gameController) {
-        if (gameController.getGame().getGameMode().equals(GameMode.expert)&&!gameController.isCardUsed() && gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()) {
-            gameController.setNextState(new ChosenCharCardState());
+        if(gameController.getMovesToGo()==0) {
+            gameController.resetMovesToGo();
+            gameController.setNextState(new MoveMNState());
         }
-        else gameController.setNextState(new MoveMNState());
+        else{
+            gameController.setNextState(new MovePawnsState());
+        }
     }
     @Override
     public void endState(GameController gameController) {
@@ -33,10 +39,10 @@ public class MovePawnsState implements GameControllerState{
     }
 
     //Se modifichiamo il metodo "moveFromEntrancetoHall" potremmo semplificare un po' questo metodo e togliere il for.
-    public void movePawnToSchoolboard(GameController gameController, Map<PawnColor, Integer> pawnMap, SchoolBoard schoolBoard){
+    /*public void movePawnToSchoolboard(GameController gameController, Map<PawnColor, Integer> pawnMap, SchoolBoard schoolBoard){
         for (PawnColor currentColor: pawnMap.keySet()){
             while (pawnMap.get(currentColor) > 0){
-                gameController.getGame().getPlayers().get(gameController.getCurrentVirtualView()).moveFromEntranceToHall(currentColor);
+                gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrderIterator()).moveFromEntranceToHall(currentColor);
                 pawnMap.replace(currentColor, pawnMap.get(currentColor)-1);
                 numUpdates ++;
             }
@@ -48,10 +54,10 @@ public class MovePawnsState implements GameControllerState{
     public void movePawnToIsland(GameController gameController, Map<PawnColor, Integer> pawnMap, Island island){
         for (PawnColor currentColor: pawnMap.keySet()){
             while (pawnMap.get(currentColor) > 0){
-                gameController.getGame().getPlayers().get(gameController.getCurrentVirtualView()).moveFromEntranceToIsland(island, currentColor);
+                gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrderIterator()).moveFromEntranceToIsland(island, currentColor);
                 pawnMap.replace(currentColor, pawnMap.get(currentColor)-1);
                 numUpdates++;
             }
         };
-    }
+    }*/
 }

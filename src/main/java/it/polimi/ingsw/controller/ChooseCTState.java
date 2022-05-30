@@ -1,38 +1,44 @@
 package it.polimi.ingsw.controller;
 
-import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.CloudTile;
 import it.polimi.ingsw.model.GameMode;
 import it.polimi.ingsw.model.PawnColor;
-
-import java.awt.*;
-import java.util.Collection;
-import java.util.Map;
 
 public class ChooseCTState implements GameControllerState{
     @Override
     public void startState(GameController gameController) {
 
-        //questo metodo chiede al client la nuvola scelta
-        int chosenCloud = gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askForCloudTile();
-        gameController.getGame().getPlayers().get(gameController.getCurrentVirtualView()).moveFromCloudToEntrance(gameController.getGame().getCloudTiles().get(chosenCloud));
+        int chosenCloudID = gameController.getVirtualViews().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).getChosenCloudID();
+        CloudTile chosenCT = gameController.getGame().getCloudTiles().get(chosenCloudID);
+        gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).moveFromCloudToEntrance(chosenCT);
 
-        //potrebbe essere ottimizzata? Alla fine è un for con 5 valori, stica
+        //todo potrebbe essere ottimizzata? Alla fine è un for con 5 valori, stica
         for(PawnColor color : PawnColor.values()){
-            gameController.getGame().getCloudTiles().get(chosenCloud).reset(color);
+            gameController.getGame().getCloudTiles().get(chosenCloudID).reset(color);
         }
+        gameController.decreasePlayersToGo();
     }
     @Override
     public void updateNextState(GameController gameController) {
-
-        if (gameController.getGame().getGameMode().equals(GameMode.expert)&&!gameController.isCardUsed() && gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).askIfCard()) {
-            gameController.setNextState(new ChosenCharCardState());
+        if(gameController.getPlayersToGo()!=0){
+            gameController.setNextState(new MovePawnsState());
+            gameController.nextVirtualView();
+        }
+        else if (gameController.isLastRound()){
+            EndGameState endGameState = new EndGameState();
+            endGameState.startState(gameController);
         }
         else{
-            gameController.setNextState(new EndActionState());
+            gameController.setNextState(new AssistantSelectionState());
+            gameController.setVirtualViewsOrderIterator(0);
         }
     }
     @Override
     public void endState(GameController gameController) {
+        if(gameController.isCardUsed()){
+            gameController.getCurrEffect().getCardBehavior().endEffect(gameController.getCurrParameter());
+            gameController.setCardUsed(false);
+        }
         gameController.setPreviousState(this);
     }
     /*
