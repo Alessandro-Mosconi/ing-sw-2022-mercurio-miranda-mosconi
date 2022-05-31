@@ -7,9 +7,9 @@ public class CreateGameState implements GameControllerState{
 
     @Override
     public void startState(GameController gameController) {
-        int currentVirtualView = gameController.getCurrentVirtualView();
+        //int currentVirtualView = gameController.getCurrentVirtualView();
         Game game = gameController.getGame();
-        VirtualView currentView = gameController.getVirtualViews().get(currentVirtualView);
+        VirtualView currentView = gameController.getVirtualViews().get(0);
 
         game.setGameID(currentView.getIdGame());
         game.setGameMode(currentView.getGamemode());

@@ -20,7 +20,9 @@ public abstract class View {
     private ArrayList<CharacterCard> characterCards;
     private MessageType messageType;
     private TowerColor towerColor;
-    private ArrayList<WizardType> wizards;
+    private ArrayList<WizardType> wizards = new ArrayList<>(4){{
+        this.addAll(Arrays.asList(WizardType.values()));
+    }};
     private ArrayList<TowerColor> towerColors;
     private AssistantCard chosenAssistantCard;
     private CharacterCard chosenCharacterCard;
@@ -29,6 +31,8 @@ public abstract class View {
     private Integer MN_shift;
     private Integer chosenCloudPos;
     private Integer chosenIslandPos;
+
+
 
 
     public boolean isUpdated() {

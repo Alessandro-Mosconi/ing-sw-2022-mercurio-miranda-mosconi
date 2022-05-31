@@ -197,7 +197,7 @@ public class VirtualView implements Observer {
 
                 GameController gameController = new GameController();
                 gameController.getVirtualViews().add(this);
-
+                gameController.performAction();
                 //virtualview manda il messaggio di uscita.
                 msg_out.setUser(username);
                 msg_out.setType(MessageType.ASK_FOR_SETTINGS);

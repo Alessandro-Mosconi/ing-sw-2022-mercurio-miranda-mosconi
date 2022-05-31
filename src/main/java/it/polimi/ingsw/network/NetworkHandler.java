@@ -31,13 +31,13 @@ public class NetworkHandler {
         Gson gson = new Gson();
         ArrayList<String> payloads = new ArrayList<>();
 
-
         switch (phase) {
             case LOGIN -> {
                 view.login();
 
                 msg_out.setUser(view.getUsername());
                 if (view.getMessageType().equals(MessageType.CREATE_MATCH)) {
+                    payloads.add(view.getUsername());
                     payloads.add(view.getIdGame());
                     payloads.add(view.getPlayerNumber().toString());
                     payloads.add(view.getGamemode().toString());
@@ -221,12 +221,12 @@ public class NetworkHandler {
             }
 
             case ASK_FOR_SETTINGS -> {
-                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                ArrayList<WizardType> wizards = gson.fromJson(payloads.get(0), ArrayList.class);
-                ArrayList<TowerColor> towers = gson.fromJson(payloads.get(1), ArrayList.class);
-                view.setWizards(wizards);
-                view.setTowerColors(towers);
-                phase = nextPhase;
+                //payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
+                //ArrayList<WizardType> wizards = gson.fromJson(payloads.get(0), ArrayList.class);
+                //ArrayList<TowerColor> towers = gson.fromJson(payloads.get(1), ArrayList.class);
+                //view.setWizards(wizards);
+                //view.setTowerColors(towers);
+                phase = Phase.SETTINGS;
             }
             /*
             case LOGIN_SUCCESSFUL:
