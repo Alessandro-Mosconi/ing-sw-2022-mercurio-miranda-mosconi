@@ -15,6 +15,7 @@ public class AssistantCard {
 
     public AssistantCard(int val, int mov)
     {
+        this.id = String.valueOf(val);
         this.value = val;
         this.motherMovement = mov;
         this. consumed = false;

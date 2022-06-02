@@ -10,12 +10,13 @@ public class ChooseCTState implements GameControllerState{
 
         int chosenCloudID = gameController.getVirtualViews().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).getChosenCloudID();
         CloudTile chosenCT = gameController.getGame().getCloudTiles().get(chosenCloudID);
-        gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).moveFromCloudToEntrance(chosenCT);
+        gameController.getGame().moveFromCloudToEntrance(chosenCT);
+        //getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).moveFromCloudToEntrance(chosenCT);
 
         //todo potrebbe essere ottimizzata? Alla fine è un for con 5 valori, stica
-        for(PawnColor color : PawnColor.values()){
+        /*for(PawnColor color : PawnColor.values()){
             gameController.getGame().getCloudTiles().get(chosenCloudID).reset(color);
-        }
+        } dovrebbe essere gestito sul model quando viene presa la cloud*/
         gameController.decreasePlayersToGo();
     }
     @Override
@@ -36,7 +37,7 @@ public class ChooseCTState implements GameControllerState{
     @Override
     public void endState(GameController gameController) {
         if(gameController.isCardUsed()){
-            gameController.getCurrEffect().getCardBehavior().endEffect(gameController.getCurrParameter());
+            //gameController.getCurrEffect().getCardBehavior().endEffect(gameController.getCurrParameter());
             gameController.setCardUsed(false);
         }
         gameController.setPreviousState(this);

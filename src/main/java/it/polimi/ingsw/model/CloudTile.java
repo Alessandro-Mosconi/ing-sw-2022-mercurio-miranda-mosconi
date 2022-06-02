@@ -5,11 +5,24 @@ import java.util.Map;
 
 public class CloudTile {
 
+    public CloudTile(Map<PawnColor, Integer> map) {
+        this.students=map;
+    }
+
+    public int getCloudID() {
+        return cloudID;
+    }
+
+    public void setCloudID(int cloudID) {
+        this.cloudID = cloudID;
+    }
+
+    private int cloudID;
     private Map<PawnColor, Integer> students;
 
-    public CloudTile(Map<PawnColor, Integer> students)
+    public CloudTile(int ID, Map<PawnColor, Integer> students)
     {
-        this.students = new HashMap<PawnColor, Integer>();
+        this.cloudID=ID;
         this.students = students;
     }
 
@@ -24,7 +37,9 @@ public class CloudTile {
     public Map<PawnColor, Integer> getStudents() {
         return students;
     }
-
+    public void setStudentsMap(Map<PawnColor,Integer> map) {
+        this.students = map;
+    }
     public void setStudents(PawnColor color, int n) {
         this.students.replace(color,n);
     }

@@ -1,17 +1,29 @@
 package it.polimi.ingsw.model;
 import java.util.Map;
 
-public class CharacterCard1 implements CardBehavior{
-/*
-    all'inizio della partita 4 studenti vengono piazzati sopra questa carta
-    Eff: prendi 1 studente e piazzalo su un'isola a scelta; pesca uno studente e mettilo sulla carta
- */
+public class CharacterCard1 extends CharacterCard{
+    public CharacterCard1(int id, int price) {
+        super(id, price);
+    }
     private Map<PawnColor,Integer> students; //da inizializzare a 4 nel setup game
+
+    public Map<PawnColor, Integer> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Map<PawnColor, Integer> students) {
+        this.students = students;
+    }
+
+    /*
+        all'inizio della partita 4 studenti vengono piazzati sopra questa carta
+        Eff: prendi 1 studente e piazzalo su un'isola a scelta; pesca uno studente e mettilo sulla carta
+     */
 
     @Override
     public void Effect(Parameter parameter){
         if(this.students.get(parameter.getChosenColor())==0){
-            //TODO manda errore e chiede di reinserire
+            //TODO manda errore e chiede di reinserire ?
         }
         else {
             moveToIsland(parameter.getChosenColor(), parameter.getIsland());

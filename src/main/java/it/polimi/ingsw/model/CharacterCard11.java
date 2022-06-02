@@ -2,8 +2,13 @@ package it.polimi.ingsw.model;
 
 import java.util.Map;
 
-public class CharacterCard11 implements CardBehavior{
+public class CharacterCard11 extends CharacterCard{
     private Map<PawnColor, Integer> students; //da settare nel setupgame se viene scelta questa carta
+
+    public CharacterCard11(int id, int price) {
+        super(id, price);
+    }
+
     //All'inizio della partita, pescate 4 Studenti e piazzateli su questa carta. EFFETTO:
     //Prendi 1 Studente da questa carta e piazzalo nella tua Sala.
     //Poi pesca un nuovo Studente dal sacchetto e posizionalo su questa carta.

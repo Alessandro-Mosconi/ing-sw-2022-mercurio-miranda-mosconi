@@ -2,6 +2,7 @@ package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.CharacterCard;
 import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.ModelListener;
 import it.polimi.ingsw.model.Parameter;
 import it.polimi.ingsw.network.ClientHandler;
 import it.polimi.ingsw.network.VirtualViewListener;
@@ -18,9 +19,9 @@ public class GameController implements VirtualViewListener {
     private GameControllerState previousState;
     private boolean cardUsed = false;
     private boolean lastRound = false;
-    private ArrayList<ClientHandler> clientHandlerArrayList; //todo i clientHandler vanno aggiunti qui man mano che vengono creati
-    private ArrayList<VirtualView> virtualViews; //da unire ai clientHandler in un'unica classe sooner or later
-    private ArrayList<Integer> virtualViewsOrder;
+    private ArrayList<ClientHandler> clientHandlerArrayList = new ArrayList<>(); //todo i clientHandler vanno aggiunti qui man mano che vengono creati
+    private ArrayList<VirtualView> virtualViews = new ArrayList<>(); //da unire ai clientHandler in un'unica classe sooner or later
+    private ArrayList<Integer> virtualViewsOrder = new ArrayList<>();
     private int virtualViewsOrderIterator = 0;
     private CharacterCard currEffect;
     private Parameter currParameter;
@@ -145,6 +146,14 @@ public class GameController implements VirtualViewListener {
     @Override
     public void performAction() {
         manageState();
+    }
+
+    @Override
+    public void addVirtualView(VirtualView virtualView) {
+        this.virtualViews.add(virtualView);
+        this.getClientHandlerArrayList().add(virtualView.getClientHandler());
+        this.virtualViewsOrder.add(virtualView.getPlayer().getPlayerNumber());
+        game.addListener(virtualView.getClientHandler());
     }
 
     public void nextVirtualView() {

@@ -4,6 +4,24 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Island {
+    public Island() {
+
+    }
+
+    public int getIslandID() {
+        return islandID;
+    }
+
+    public void setIslandID(int islandID) {
+        this.islandID = islandID;
+    }
+
+    private int islandID;
+
+    public void setIslandStudents(Map<PawnColor, Integer> islandStudents) {
+        this.islandStudents = islandStudents;
+    }
+
     private Map<PawnColor, Integer> islandStudents;
     private TowerColor towerColor;
     private int towerNumber;
@@ -102,26 +120,26 @@ public class Island {
         return influencePoints;
     }
     public void assignInfluence(ArrayList<SchoolBoard> schoolBoardsArray){
-        SchoolBoard currOwner = new SchoolBoard();
-        for(SchoolBoard s : schoolBoardsArray){
-            if(this.getTowerColor().equals(s.getTowersColor())){
-                currOwner=s;
-            }
-        }
-        int maxInfluence = calculatePlayerInfluence(currOwner);
-        TowerColor currInfluence = this.getTowerColor();
-
-        for (SchoolBoard schoolBoard : schoolBoardsArray) {
-            //if (schoolBoard.getTowersColor().equals(this.getTowerColor()))????????
-            if(calculatePlayerInfluence(schoolBoard)>maxInfluence){
-                maxInfluence = calculatePlayerInfluence(schoolBoard);
-                currOwner.setTowersNumber(currOwner.getTowersNumber()+this.getTowersNumber());
-                for(int i=0; i<this.getTowersNumber(); i++) {
-                    schoolBoard.setTowersNumber(schoolBoard.getTowersNumber() - 1);
+            SchoolBoard currOwner = new SchoolBoard();
+            for (SchoolBoard s : schoolBoardsArray) {
+                if (this.getTowerColor().equals(s.getTowersColor())) {
+                    currOwner = s;
                 }
-                this.setTowerColor(schoolBoard.getTowersColor());
             }
-        }
+            int maxInfluence = calculatePlayerInfluence(currOwner);
+            TowerColor currInfluence = this.getTowerColor();
+
+            for (SchoolBoard schoolBoard : schoolBoardsArray) {
+                //if (schoolBoard.getTowersColor().equals(this.getTowerColor()))????????
+                if (calculatePlayerInfluence(schoolBoard) > maxInfluence) {
+                    maxInfluence = calculatePlayerInfluence(schoolBoard);
+                    currOwner.setTowersNumber(currOwner.getTowersNumber() + this.getTowersNumber());
+                    for (int i = 0; i < this.getTowersNumber(); i++) {
+                        schoolBoard.setTowersNumber(schoolBoard.getTowersNumber() - 1);
+                    }
+                    this.setTowerColor(schoolBoard.getTowersColor());
+                }
+            }
 
         /*for (SchoolBoard schoolBoard : schoolBoardsArray) {
             int currentInfluence = calculatePlayerInfluence(schoolBoard);
@@ -131,4 +149,5 @@ public class Island {
             }
         }*/
     }
+
 }

@@ -19,9 +19,10 @@ public class IslandManager {
         this.currMNPosition = currMNPosition;
     }
 
-    public void checkForMerge(int islandPos){
+    public void checkForMerge(){
 
         //this if branch checks the current island with its next
+        int islandPos = currMNPosition;
         if (checkIslands(this.islandList.get(islandPos), this.islandList.get((islandPos+1)%(this.islandList.size())))){
             mergeIslands(this.islandList.get(islandPos), this.islandList.get((islandPos+1)%(this.islandList.size())));
         }
@@ -53,18 +54,26 @@ public class IslandManager {
         return primaryIsland.getTowerColor().equals(island2.getTowerColor());
     }//Checks if both islands given as parameters have the same TowerColor
 
-    public void moveMotherNature(int motherPosition, int shift){
+    public void moveMotherNature(int shift){
         this.islandList.get(currMNPosition).setMotherNature(false);
-        this.islandList.get((motherPosition+shift)% islandList.size()).setMotherNature(true);
-        this.currMNPosition=((motherPosition+shift)% islandList.size());
+        this.islandList.get((currMNPosition+shift)% islandList.size()).setMotherNature(true);
+        this.currMNPosition=((currMNPosition+shift)% islandList.size());
     }//Shifts motherNature
 
-    public int getMNPosition(){
+    public void assignInfluence(ArrayList<SchoolBoard> schoolBoards) {
+        islandList.get(currMNPosition).assignInfluence(schoolBoards);
+    }
+
+    public void setIslandList(ArrayList<Island> islandList) {
+        this.islandList = islandList;
+    }
+
+/*    public int getMNPosition(){
         for (int i = 0; i < islandList.size(); i++){
             if (islandList.get(i).isMotherNature())
                 return i;
         }
         //bisogna trattare il caso in cui non ritorni nulla? Probabilmente dobbiamo inserire un errore
         return 0;
-    }
+    }*/ //diventa inutile questo metodo se salviamo il valore della posizione dell'isola su cui è MN
 }

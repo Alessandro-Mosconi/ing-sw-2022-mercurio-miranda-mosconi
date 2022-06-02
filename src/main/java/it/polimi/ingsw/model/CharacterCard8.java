@@ -1,6 +1,10 @@
 package it.polimi.ingsw.model;
 
-public class CharacterCard8 implements CardBehavior{
+public class CharacterCard8 extends CharacterCard{
+
+    public CharacterCard8(int id, int price) {
+        super(id, price);
+    }
 
     // in questo turno hai 2 punti in più per il calcolo dell'influenza
     @Override

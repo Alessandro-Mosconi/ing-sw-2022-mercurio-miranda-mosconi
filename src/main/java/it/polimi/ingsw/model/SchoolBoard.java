@@ -7,12 +7,32 @@ import static it.polimi.ingsw.model.GameMode.*;
 public class SchoolBoard {
     private int towersNumber;
 
+    public SchoolBoard(int i, TowerColor grey, GameMode expert) {
+        this.towersNumber = i;
+        this.towersColor =grey;
+        this.gameMode=expert;
+    }
+
     public void setTowersColor(TowerColor towersColor) {
         this.towersColor = towersColor;
     }
 
     private TowerColor towersColor;
+
+    public void setStudentHall(Map<PawnColor, Integer> studentHall) {
+        this.studentHall = studentHall;
+    }
+
     private Map<PawnColor, Integer> studentHall;
+
+    public void setStudentEntrance(Map<PawnColor, Integer> studentEntrance) {
+        this.studentEntrance = studentEntrance;
+    }
+
+    public void setProfessorTable(Map<PawnColor, Boolean> professorTable) {
+        this.professorTable = professorTable;
+    }
+
     private Map<PawnColor, Integer> studentEntrance;
     private Map<PawnColor, Boolean> professorTable;
     private GameMode gameMode;
@@ -33,12 +53,12 @@ public class SchoolBoard {
         this.professorTable.put(color, false);
     }
 }
-    public SchoolBoard(int numTower, TowerColor colTower, GameMode gameMode) {
+    public SchoolBoard(int numTower, TowerColor colTower, Map<PawnColor,Integer> entrance, GameMode gameMode) {
     this.towersNumber = numTower;
     this.towersColor = colTower;
     this.gameMode = gameMode;
     this.studentHall = new HashMap<PawnColor, Integer>();
-    this.studentEntrance = new HashMap<PawnColor, Integer>();
+    this.studentEntrance = entrance;
     this.professorTable = new HashMap<PawnColor, Boolean>();
 
     for(PawnColor color : PawnColor.values()){

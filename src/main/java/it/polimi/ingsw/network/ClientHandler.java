@@ -2,7 +2,7 @@ package it.polimi.ingsw.network;
 
 import com.google.gson.Gson;
 import it.polimi.ingsw.controller.GameController;
-import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.virtualview.VirtualView;
 
 import java.io.*;
@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * A class that represents the client inside the server.
  */
-public class ClientHandler implements Runnable
+public class ClientHandler implements Runnable, ModelListener
 {
     private VirtualView virtualView;
     private Socket client;
@@ -75,6 +75,7 @@ public class ClientHandler implements Runnable
 
         GameController controller = null;
         virtualView = new VirtualView();
+        virtualView.setClientHandler(this);
         System.out.println("sending ack");
         out.println("ACK");
 
@@ -153,7 +154,6 @@ public class ClientHandler implements Runnable
             System.out.println("[" + client.getInetAddress() + "] " + ">> Connessione terminata <<");
         }
     }
-
     /*public synchronized boolean initialize (String input){
 
         synchronized (networkMap) {
@@ -301,9 +301,8 @@ public class ClientHandler implements Runnable
             }
             return false;
         }
-    }*/
-    public synchronized void processInput (String input){
-       /* synchronized (networkMap) */{
+    }*//*public synchronized void processInput (String input){
+       /* synchronized (networkMap) *//*{
             System.out.println("receiving..." + input);
             //if(input.equals("MODEL_UPDATED")){ return; }
             Gson gson = new Gson();
@@ -313,9 +312,9 @@ public class ClientHandler implements Runnable
             payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
 
             switch (msg_in.getType()) {
-
-                //non cancellare questa parte perché c'è il codice per la multipartita.!!!
-                /* case CREATE_MATCH -> {
+               *//*
+    non cancellare questa parte perché c'è il codice per la multipartita.!!!
+    *//* case CREATE_MATCH -> {
                     if (networkMap.containsKey(payloads.get(1))) {
                         msg_out.setUser(payloads.get(0));
                         msg_out.setType(MessageType.ERROR);
@@ -338,8 +337,7 @@ public class ClientHandler implements Runnable
                         gameMap.put(virtualView.getIdGame(), game);
                         out.println(msg_out.toSend());
                     }
-                }*/
-                /*case JOIN_MATCH -> {
+                }*//*case JOIN_MATCH -> {
                     //virtualView = new VirtualView();
                     if (!networkMap.containsKey(payloads.get(1))) {
                         msg_out.setUser(payloads.get(0));
@@ -390,11 +388,9 @@ public class ClientHandler implements Runnable
 
                 }
 
-*/
-            }
+*//* }
         }
-    }
-
+    }*/
     public void tellToWait() {
         Message msg_out = new Message();
         msg_out.setType(MessageType.WAITING);
@@ -405,5 +401,182 @@ public class ClientHandler implements Runnable
         Message msg_out = new Message();
         msg_out.setType(MessageType.IS_YOUR_TURN);
         out.println(msg_out.toSend());
+    }
+
+    @Override
+    public void updateModel(Game game) {
+        Message msg_out = new Message();
+        msg_out.setType(MessageType.GAME_MODEL_UPDATE);
+        ArrayList<String> payloads = new ArrayList<>();
+        int numOfPlayers = game.getNumberOfPlayers();
+        payloads.add(String.valueOf(numOfPlayers));
+        payloads.add(String.valueOf(game.getGameMode()));
+        for(Player p : game.getPlayers()){
+            payloads.add(p.getNickName());
+            payloads.add(String.valueOf(p.getSchoolBoard().getTowersColor()));
+            payloads.add(String.valueOf(p.getSchoolBoard().getTowersNumber()));
+            for(PawnColor color : PawnColor.values()){
+                payloads.add(String.valueOf(color));
+                payloads.add(String.valueOf(p.getSchoolBoard().getStudentEntrance().get(color)));
+            }
+        }
+        for(CloudTile ct : game.getCloudTiles()){
+            payloads.add(String.valueOf(ct.getCloudID()));
+            for(PawnColor color : PawnColor.values()){
+                payloads.add(String.valueOf(color));
+                payloads.add(String.valueOf(ct.getStudents().get(color)));
+            }
+        }
+        for(Island i : game.getIslandManager().getIslandList()){
+            payloads.add(String.valueOf(i.getIslandID()));
+            for(PawnColor color : PawnColor.values()){
+                payloads.add(String.valueOf(color));
+                payloads.add(String.valueOf(i.getIslandStudents().get(color)));
+            }
+        }
+        /*if(game.getGameMode().equals(GameMode.expert)){
+            for(CharacterCard c : game.getChosenCharacterCards()){
+                payloads.add(String.valueOf(c.getID()));
+                if(c instanceof CharacterCard1 || c instanceof CharacterCard7 || c instanceof CharacterCard11){
+                    payloads.add(String.valueOf(c));
+                    payloads.add(String.valueOf(c));
+                }
+              }
+            }*///TODO capire come mandare la mappe delle carte che ne hanno una
+        }
+
+    @Override
+    public void updateAvailableWizards(ArrayList<WizardType> wizards) {
+        Message msg_out = new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        msg_out.setType(MessageType.AVAILABLE_WIZARDS);
+        for(WizardType w : wizards){
+            payloads.add(String.valueOf(w));
+        }
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
+    }
+    public void updateAvailableTowerColors(ArrayList<TowerColor> towerColors){
+        Message msg_out = new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        msg_out.setType(MessageType.AVAILABLE_TOWER_COLORS);
+        for(TowerColor tc : towerColors){
+            payloads.add(String.valueOf(tc));
+        }
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
+    }
+
+    @Override
+    public void updateLastAssistantCard(Player player) {
+        Message msg_out = new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        msg_out.setType(MessageType.UPDATE_ASSISTANT_CARD);
+        payloads.add(player.getNickName());
+        payloads.add(String.valueOf(player.getLastAssistantCard().getValue()));
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
+    }
+
+    @Override
+    public void updateIsland(Island island) {
+        Message msg_out=new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        msg_out.setType(MessageType.UPDATE_ISLAND);
+        payloads.add(String.valueOf(island.getIslandID()));
+        for(PawnColor c: PawnColor.values()){
+            payloads.add(String.valueOf(c));
+            payloads.add(String.valueOf(island.getIslandStudents().get(c)));
+        }
+    }
+    @Override
+    public void updateSchoolBoardEntrance(Player player) {
+        Message msg_out=new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        msg_out.setType(MessageType.UPDATE_SCHOOL_BOARD_ENTRANCE);
+        payloads.add(player.getNickName());
+        for(PawnColor c : PawnColor.values()){
+            payloads.add(String.valueOf(c));
+            payloads.add(String.valueOf(player.getSchoolBoard().getStudentEntrance().get(c)));
+        }
+    }
+    public void updateSchoolBoardHall(Player player) {
+        Message msg_out=new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        msg_out.setType(MessageType.UPDATE_SCHOOL_BOARD_HALL);
+        payloads.add(player.getNickName());
+        for(PawnColor c : PawnColor.values()){
+            payloads.add(String.valueOf(c));
+            payloads.add(String.valueOf(player.getSchoolBoard().getStudentHall().get(c)));
+        }
+    }
+
+    @Override
+    public void updateProfessorTables(ArrayList<Player> players) {
+        Message msg_out=new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        msg_out.setType(MessageType.UPDATE_PROFESSORS);
+        for(Player p : players){
+            payloads.add(p.getNickName());
+            for(PawnColor c : PawnColor.values()){
+                payloads.add(String.valueOf(c));
+                payloads.add(String.valueOf(p.getSchoolBoard().getProfessorTable().get(c)));
+            }
+        }
+    }
+
+    @Override
+    public void updateIslandList(ArrayList<Island> islandList) {
+        Message msg_out=new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        msg_out.setType(MessageType.UPDATE_ISLAND_LIST);
+        for(Island i : islandList){
+            payloads.add(String.valueOf(i.getIslandID()));
+            payloads.add(String.valueOf(i.isMotherNature()));
+            payloads.add(String.valueOf(i.isNoEntryTile()));
+            payloads.add(String.valueOf(i.getTowerColor()));
+            payloads.add(String.valueOf(i.getTowersNumber()));
+            for(PawnColor color : PawnColor.values()){
+                payloads.add(String.valueOf(color));
+                payloads.add(String.valueOf(i.getIslandStudents().get(color)));
+            }
+        }
+    }
+
+    @Override
+    public void updateCT(CloudTile ct) {
+        Message msg_out=new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        msg_out.setType(MessageType.UPDATE_CLOUDTILE);
+        payloads.add(String.valueOf(ct.getCloudID()));
+        for(PawnColor color : PawnColor.values()){
+            payloads.add(String.valueOf(color));
+            payloads.add(String.valueOf(ct.getStudents().get(color)));
+        }
+    }
+
+    @Override
+    public void updateCharacterCardUsed(CharacterCard charCard) {
+
+    }
+
+    @Override
+    public void updateCardStudents(CharacterCard charCard) {
+
+    }
+
+    @Override
+    public void updateBonus2InfluencePoints(Player player) {
+
+    }
+
+    @Override
+    public void updateMaxShift(Player player) {
+
+    }
+
+    @Override
+    public void updateKeptOut(PawnColor keptOutColor) {
+
     }
 }

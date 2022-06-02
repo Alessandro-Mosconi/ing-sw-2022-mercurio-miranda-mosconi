@@ -1,7 +1,11 @@
 package it.polimi.ingsw.model;
 
-public class CharacterCard5 implements CardBehavior{
+public class CharacterCard5 extends CharacterCard{
 
+
+    public CharacterCard5(int id, int price) {
+        super(id, price);
+    }
 
     // ad inizio partita mettiamo le 4 tessere divieto su questa carta. Quando si usa la carta si sposta una tessera divieto su
     // un'isola e resta lì finché non ci va madre natura.

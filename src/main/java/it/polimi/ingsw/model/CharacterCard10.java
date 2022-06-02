@@ -1,6 +1,10 @@
 package it.polimi.ingsw.model;
 
-public class CharacterCard10 implements CardBehavior{
+public class CharacterCard10 extends CharacterCard{
+
+    public CharacterCard10(int id, int price) {
+        super(id, price);
+    }
 
     //Puoi scambiare fra loro fino a 2 Studenti presenti nella tua Sala e nel tuo Ingresso.
     @Override

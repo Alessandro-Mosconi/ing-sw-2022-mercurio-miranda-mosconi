@@ -13,12 +13,14 @@ public class MovePawnsState implements GameControllerState{
         PawnColor studentToMove = gameController.getVirtualViews().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).getStudentToMove();
         int destination = gameController.getVirtualViews().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).getDestination();
         if(destination == -1){
-            gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).moveFromEntranceToHall(studentToMove);
+            gameController.getGame().movePawnToHall(studentToMove);
+            //getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).moveFromEntranceToHall(studentToMove);
             gameController.decreaseMovesToGo();
         }
         else{
             Island destinationIsland = gameController.getGame().getIslandManager().getIslandList().get(destination);
-            gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).moveFromEntranceToIsland(destinationIsland,studentToMove);
+            gameController.getGame().movePawnToIsland(studentToMove,destinationIsland);
+            //getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).moveFromEntranceToIsland(destinationIsland,studentToMove);
             gameController.decreaseMovesToGo();
         }
     }

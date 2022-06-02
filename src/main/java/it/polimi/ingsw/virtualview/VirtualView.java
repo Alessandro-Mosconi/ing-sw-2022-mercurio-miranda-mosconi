@@ -3,16 +3,19 @@ package it.polimi.ingsw.virtualview;
 import com.google.gson.Gson;
 import it.polimi.ingsw.controller.GameController;
 import it.polimi.ingsw.model.*;
-import it.polimi.ingsw.network.ErrorType;
-import it.polimi.ingsw.network.Message;
-import it.polimi.ingsw.network.MessageType;
-import it.polimi.ingsw.network.VirtualViewListener;
+import it.polimi.ingsw.network.*;
 
 import java.util.*;
 
-public class VirtualView implements Observer {
+public class VirtualView{
 
     private VirtualViewListener gameController;
+
+    public ClientHandler getClientHandler() {
+        return clientHandler;
+    }
+
+    private ClientHandler clientHandler;
     private Message msg_in;
     private Message msg_out;
     private MessageType out_type;
@@ -22,7 +25,16 @@ public class VirtualView implements Observer {
     private String idGame;
     private GameMode gamemode;
     private Integer playersNumber;
-    private Player player;
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    private Player player = new Player();
     private ArrayList<SchoolBoard> schoolBoards;
     private ArrayList<CloudTile> clouds;
     private IslandManager islandManager;
@@ -38,13 +50,16 @@ public class VirtualView implements Observer {
     private int chosenShift;
     private int chosenCloudID;
     private static Map<String, ArrayList<String>> networkMap = new HashMap<>(); //mappa di gameid e lista di player
-    private static Map<String, Game> gameMap = new HashMap<>(); //mappa di gameid e game
+    private static Map<String, GameController> gameMap = new HashMap<>(); //mappa di gameid e game
 
 
     public void setGameController(VirtualViewListener gameController) {
         this.gameController = gameController;
     }
 
+    public void setClientHandler(ClientHandler clientHandler) {
+        this.clientHandler = clientHandler;
+    }
     public VirtualViewListener getGameController() {
         return gameController;
     }
@@ -113,11 +128,11 @@ public class VirtualView implements Observer {
         this.gamemode = gamemode;
     }
 
-    public Integer getPlayerNumber() {
+    public Integer getPlayersNumber() {
         return playersNumber;
     }
 
-    public void setPlayerNumber(Integer playersNumber) {
+    public void setPlayersNumber(Integer playersNumber) {
         this.playersNumber = playersNumber;
     }
 
@@ -195,15 +210,24 @@ public class VirtualView implements Observer {
                 playersNumber = Integer.parseInt(payloads.get(2));
                 gamemode = GameMode.valueOf(payloads.get(3));
 
-                GameController gameController = new GameController();
-                gameController.getVirtualViews().add(this);
-                gameController.performAction();
+                GameController gController = new GameController();
+                gController.setPlayersToGo(playersNumber);
+                this.player.setPlayerNumber(0);
+                gController.addVirtualView(this);
+                //gController.getVirtualViews().add(this);
+                //gController.getClientHandlerArrayList().add(this.clientHandler);
+                //gController.getVirtualViewsOrder().add(0);
+                //gController.getVirtualViews().add(this);
+                gController.performAction();
+                gameController = gController;
                 //virtualview manda il messaggio di uscita.
+                msg_out = new Message();
                 msg_out.setUser(username);
                 msg_out.setType(MessageType.ASK_FOR_SETTINGS);
                 ArrayList<String> UsersList = new ArrayList<>();
                 UsersList.add(username);
                 networkMap.put(idGame, UsersList);
+                gameMap.put(idGame,gController);
                 System.out.println(networkMap);
                 //Game game = new Game(virtualView.getPlayerNumber(), virtualView.getIdGame(), virtualView.getGamemode());
                 //gameMap.put(virtualView.getIdGame(), game);
@@ -213,6 +237,7 @@ public class VirtualView implements Observer {
             case JOIN_MATCH -> {
                 //username = payloads.get(0);
                 if(!networkMap.containsKey(payloads.get(1))){
+                    msg_out = new Message();
                     msg_out.setUser(payloads.get(0));
                     msg_out.setType(MessageType.ERROR);
                     msg_out.fill(ErrorType.GAME_NOT_FOUND);
@@ -222,6 +247,7 @@ public class VirtualView implements Observer {
                 else if(networkMap.get(payloads.get(1)).contains(msg_in.getUser())) {
                     //setUsername(payloads.get(0));
                     //setIdGame(payloads.get(1));
+                    msg_out = new Message();
                     msg_out.setUser(payloads.get(0));
                     msg_out.setType(MessageType.ERROR);
                     msg_out.fill(ErrorType.USERNAME_ALREADY_IN_LOBBY);
@@ -231,14 +257,21 @@ public class VirtualView implements Observer {
                 else {
                     username = payloads.get(0);
                     idGame = payloads.get(1);
-                    setPlayerNumber(gameMap.get(getIdGame()).getNumberOfPlayers());
-                    setGamemode(gameMap.get(getIdGame()).getGameMode());
+                    setPlayersNumber(gameMap.get(getIdGame()).getGame().getNumberOfPlayers());
+                    setGamemode(gameMap.get(getIdGame()).getGame().getGameMode());
+                    GameController gController = gameMap.get(idGame);
                     ArrayList<String> UsersList = new ArrayList<>();
                     UsersList = networkMap.get(getIdGame());
                     UsersList.add(msg_in.getUser());
                     networkMap.replace(getIdGame(), UsersList);
                     setPlayers(UsersList);
+                    this.player.setPlayerNumber(UsersList.size());
+                    msg_out = new Message();
                     msg_out.setUser(username);
+                    gController.addVirtualView(this);
+                    //gController.getClientHandlerArrayList().add(this.clientHandler);
+                    //gController.getVirtualViews().add(this);
+                    //gameController.addVirtualView(this);
                     msg_out.setType(MessageType.ASK_FOR_SETTINGS);
                     return msg_out.toSend();
                 }
@@ -246,6 +279,7 @@ public class VirtualView implements Observer {
             case SETTINGS -> {
                 wizard = WizardType.valueOf(payloads.get(0));
                 towerColor = TowerColor.valueOf(payloads.get(1));
+                msg_out = new Message();
                 msg_out.setType(MessageType.WAIT);
                 msg_out.setUser(username);
                 gameController.performAction();
@@ -253,6 +287,7 @@ public class VirtualView implements Observer {
             }
             case AssistantCard -> {
                 chosenAssistantID = Integer.parseInt(payloads.get(0));
+                msg_out = new Message();
                 msg_out.setType(MessageType.WAIT);
                 msg_out.setUser(username);
                 gameController.performAction();
@@ -261,6 +296,7 @@ public class VirtualView implements Observer {
             case PAWN_MOVE -> {
                 studentToMove = PawnColor.valueOf(payloads.get(0));
                 destination = Integer.parseInt(payloads.get(1));
+                msg_out = new Message();
                 msg_out.setType(MessageType.IS_YOUR_TURN);
                 msg_out.setUser(username);
                 gameController.performAction();
@@ -268,6 +304,7 @@ public class VirtualView implements Observer {
             }
             case MN_SHIFT -> {
                 chosenShift = Integer.parseInt(payloads.get(0));
+                msg_out = new Message();
                 msg_out.setType(MessageType.IS_YOUR_TURN);
                 msg_out.setUser(username);
                 gameController.performAction();
@@ -275,6 +312,7 @@ public class VirtualView implements Observer {
             }
             case CHOSEN_CT -> {
                 chosenCloudID = Integer.parseInt(payloads.get(0));
+                msg_out = new Message();
                 msg_out.setType(MessageType.WAIT);
                 msg_out.setUser(username);
                 gameController.performAction();
@@ -334,10 +372,6 @@ public class VirtualView implements Observer {
     }
 */
     //todo tutti i tipi di modelUpdate vanno qui
-    @Override
-    public void update(Observable o, Object arg) {
-
-    }
 
     public WizardType getWizard() {
         return wizard;

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.AssistantCard;
+import it.polimi.ingsw.model.Player;
 
 public class AssistantSelectionState implements GameControllerState{
 
@@ -9,7 +10,8 @@ public class AssistantSelectionState implements GameControllerState{
         gameController.setErrorFlag(false);
         AssistantCard chosenCard = gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrderIterator()).getDeck().getCards().get(gameController.getVirtualViews().get(gameController.getVirtualViewsOrderIterator()).getChosenAssistantID());
         if (chosenCard != null) {
-            gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).useAssistantCard(chosenCard);
+            Player currPlayer = gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator()));
+            gameController.getGame().useAssistantCard(currPlayer, chosenCard); //TODO serve iterare il currentPlayer anche usl model
             gameController.decreasePlayersToGo();
         }
         else gameController.setErrorFlag(true);

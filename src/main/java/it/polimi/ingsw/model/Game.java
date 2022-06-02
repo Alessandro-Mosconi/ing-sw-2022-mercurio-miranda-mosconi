@@ -24,25 +24,31 @@ public class Game {
     private PawnColor keptOut=null;
     private boolean started;
     private int entryTiles;
+    private List<ModelListener> clientHandlersListeners = new ArrayList<ModelListener>();
 
-    private List<Observer> observerList = new ArrayList<>();
-
-    private void sendUpdate(){
-
-      /*  for (Observer observer : this.observerList) {
-            observer.update(this);
-        }
-*/
+    public ArrayList<WizardType> getAvailableWizards() {
+        return availableWizards;
     }
 
-    public void addObserver(Observer observer) {
-        this.observerList.add(observer);
-        sendUpdate();
+    public void setAvailableWizards(ArrayList<WizardType> availableWizards) {
+        this.availableWizards = availableWizards;
     }
 
-    public void removeObserver(Observer observer) {
-        this.observerList.remove(observer);
+    public ArrayList<TowerColor> getAvailableTowerColors() {
+        return availableTowerColors;
     }
+
+    public void setAvailableTowerColors(ArrayList<TowerColor> availableTowerColors) {
+        this.availableTowerColors = availableTowerColors;
+    }
+
+    private ArrayList<WizardType> availableWizards = new ArrayList<>() {{
+        addAll(List.of(WizardType.values()));
+    }};
+
+    private ArrayList<TowerColor> availableTowerColors = new ArrayList<>(){{
+        addAll(List.of(TowerColor.values()));
+    }};
 
     public ArrayList<CharacterCard> getAllCharacterCard(){
         return this.allCharacterCards;
@@ -68,6 +74,23 @@ public class Game {
     }
 
     public Game() {
+        this.players = new ArrayList<>();
+        this.currPlayer = 0;
+        this.numberOfPlayers =0;
+        this.gameID = "0";
+        this.gameMode =null;
+        this.cloudTiles =new ArrayList<>();
+        this.schoolBoards=new ArrayList<>();
+        this.islandManager = new IslandManager(new ArrayList<Island>());
+        this.bag= new HashMap<>();
+        this.allCharacterCards=new ArrayList<>();
+        this.players=new ArrayList<>();
+        this.wizards=new ArrayList<>();
+        this.chosenCharacterCards=new ArrayList<>();
+        this.bank=20;
+        this.started=false;
+        this.entryTiles=4;
+        this.clientHandlersListeners=new ArrayList<>();
     }
 
     public Game(int numberOfPlayers, String idGame, GameMode gameMode) {
@@ -222,6 +245,8 @@ public class Game {
         players = new ArrayList<>(); //qui vengono aggiunti man mano dal controller
         bag = new HashMap<>();
         fillBag();
+        availableTowerColors.addAll(List.of(TowerColor.values()));
+        availableWizards.addAll(List.of(WizardType.values()));
         ArrayList<Island> islands = generateIslands(); //generates and initialises the islands
         IslandManager islandManager= new IslandManager(islands);
         this.setIslandManager(islandManager);
@@ -252,10 +277,13 @@ public class Game {
             ArrayList<CharacterCard> chosenCharacterCards = initChosenCharacterCards(); //Takes a sublist from the randomized CharacterCards list
             this.setChosenCharacterCards(chosenCharacterCards);
             for(CharacterCard cc: chosenCharacterCards){
-                cc.getCardBehavior().initializeCard(new Parameter(this));
+                cc.initializeCard(new Parameter(this));
             }//Initializes the chosen card
             this.setEntryTiles(4);
             this.setBank(20);
+        }
+        for(ModelListener l : clientHandlersListeners){
+            l.updateModel(this);
         }
     }
     public void updatePlayerOrder(){
@@ -318,7 +346,11 @@ public class Game {
             if(this.numberOfPlayers == 3){
                 moveFromBagToCloud(c);
             }
+            for(ModelListener l : clientHandlersListeners){
+                l.updateCT(c);
+            }
         }
+
     }
     private ArrayList<CloudTile> generateCloudTiles() {
         ArrayList<CloudTile> cloudTiles = new ArrayList<>(numberOfPlayers);
@@ -359,7 +391,7 @@ public class Game {
                 PawnColor rdColor=PawnColor.randomColor();
                 this.bag.replace(rdColor, this.bag.get(rdColor)-1);
                 s.addStudentEntrance(rdColor);
-            }
+            }//todo se si gioca in 3 se ne mettono 9
             //manca da settare il colore delle torri todo se lo sceglie il giocatore deve settarlo il controller
 
         }
@@ -383,19 +415,19 @@ public class Game {
     } /* restituisce tutte le charcards in disordine;
      quando si chiama la init si pescano le prime 3 in disordine;
      dopo la init si accede alle chosen tramite la get*/
-    private void initAllCharacterCards(){
-        this.allCharacterCards.add(new CharacterCard (1,1, new CharacterCard1()));
-        this.allCharacterCards.add(new CharacterCard (2,2, new CharacterCard2()));
-        this.allCharacterCards.add(new CharacterCard (3,3, new CharacterCard3()));
-        this.allCharacterCards.add(new CharacterCard (4,1, new CharacterCard4()));
-        this.allCharacterCards.add(new CharacterCard (5,2, new CharacterCard5()));
-        this.allCharacterCards.add(new CharacterCard (6,3, new CharacterCard6()));
-        this.allCharacterCards.add(new CharacterCard (7,1, new CharacterCard7()));
-        this.allCharacterCards.add(new CharacterCard (8,2, new CharacterCard8()));
-        this.allCharacterCards.add(new CharacterCard (9,3, new CharacterCard9()));
-        this.allCharacterCards.add(new CharacterCard (10,1, new CharacterCard10()));
-        this.allCharacterCards.add(new CharacterCard (11,2, new CharacterCard11()));
-        this.allCharacterCards.add(new CharacterCard (12,3, new CharacterCard12()));
+    private void initAllCharacterCards(){//TODO ereditarietà instead of interfaccia
+        this.allCharacterCards.add(new CharacterCard1(1,1));
+        this.allCharacterCards.add(new CharacterCard2 (2,2));
+        this.allCharacterCards.add(new CharacterCard3 (3,3));
+        this.allCharacterCards.add(new CharacterCard (4,1));
+        this.allCharacterCards.add(new CharacterCard (5,2));
+        this.allCharacterCards.add(new CharacterCard (6,3));
+        this.allCharacterCards.add(new CharacterCard (7,1));
+        this.allCharacterCards.add(new CharacterCard (8,2));
+        this.allCharacterCards.add(new CharacterCard (9,3));
+        this.allCharacterCards.add(new CharacterCard (10,1));
+        this.allCharacterCards.add(new CharacterCard (11,2));
+        this.allCharacterCards.add(new CharacterCard (12,3));
     }
 
     public void addPlayer(Player playerToAdd) {
@@ -409,5 +441,63 @@ public class Game {
             }
         }
         return true;
+    }
+    public void useAssistantCard(Player currPlayer, AssistantCard assistantCard){
+        players.get(this.currPlayer).useAssistantCard(assistantCard);
+        for(ModelListener l: clientHandlersListeners){
+            l.updateLastAssistantCard(players.get(this.currPlayer));
+        }
+    }
+    public void movePawnToIsland(PawnColor student, Island destination){
+        players.get(currPlayer).moveFromEntranceToIsland(destination, student);
+        for(ModelListener l : clientHandlersListeners){
+            l.updateIsland(destination);
+            l.updateSchoolBoardEntrance(players.get(currPlayer));
+        }
+    }
+    public void movePawnToHall(PawnColor student){
+        players.get(currPlayer).moveFromEntranceToHall(student);
+        updateProfessor(student);
+        for(ModelListener l : clientHandlersListeners){
+            l.updateSchoolBoardHall(players.get(currPlayer));
+            l.updateProfessorTables(players);
+        }
+    }
+    public void moveFromCloudToEntrance(CloudTile ct){
+        players.get(currPlayer).moveFromCloudToEntrance(ct);
+        for(ModelListener l : clientHandlersListeners){
+            l.updateCT(ct);
+            l.updateSchoolBoardEntrance(players.get(currPlayer));
+        }
+    }
+    public void moveMN(int shift){
+        islandManager.moveMotherNature(shift);
+        if(islandManager.getIslandList().get(islandManager.getCurrMNPosition()).isNoEntryTile()){
+            islandManager.getIslandList().get(islandManager.getCurrMNPosition()).setNoEntryTile(false);
+            entryTiles += 1;
+        }else{
+            islandManager.assignInfluence(schoolBoards);
+            islandManager.checkForMerge();
+        }
+        for(ModelListener l : clientHandlersListeners){
+            l.updateIslandList(islandManager.getIslandList());
+        }
+    }
+    public void addListener(ModelListener l){
+        this.clientHandlersListeners.add(l);
+    }
+
+    public void removeWizard(WizardType wizard) {
+        this.availableWizards.remove(wizard);
+        for(ModelListener l : clientHandlersListeners){
+            l.updateAvailableWizards(availableWizards);
+        }
+    }
+
+    public void removeTowerColor(TowerColor towersColor) {
+        this.availableTowerColors.remove(towersColor);
+        for(ModelListener l : clientHandlersListeners){
+            l.updateAvailableTowerColors(availableTowerColors);
+        }
     }
 }

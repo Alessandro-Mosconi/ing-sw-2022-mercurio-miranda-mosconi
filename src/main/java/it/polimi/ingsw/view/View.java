@@ -8,29 +8,31 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public abstract class View {
-    private String username;
-    private String idGame;
-    private GameMode gamemode;
-    private Integer playerNumber;
-    private Player player;
-    private ArrayList<String> playersUsername;
-    private ArrayList<Player> players;
-    private ArrayList<CloudTile> clouds;
-    private IslandManager islandManager;
-    private ArrayList<CharacterCard> characterCards;
-    private MessageType messageType;
-    private TowerColor towerColor;
-    private ArrayList<WizardType> wizards = new ArrayList<>(4){{
+    protected String username;
+    protected String idGame;
+    protected GameMode gamemode;
+    protected Integer playerNumber;
+    protected Player player;
+    protected ArrayList<String> playersUsername;
+    protected ArrayList<Player> players;
+    protected ArrayList<CloudTile> clouds;
+    protected IslandManager islandManager;
+    protected ArrayList<CharacterCard> characterCards;
+    protected MessageType messageType;
+    protected TowerColor towerColor;
+    protected ArrayList<WizardType> wizards = new ArrayList<>(4){{
         this.addAll(Arrays.asList(WizardType.values()));
     }};
-    private ArrayList<TowerColor> towerColors;
-    private AssistantCard chosenAssistantCard;
-    private CharacterCard chosenCharacterCard;
-    private PawnColor colorToMove;
-    private Integer destination;
-    private Integer MN_shift;
-    private Integer chosenCloudPos;
-    private Integer chosenIslandPos;
+    protected ArrayList<TowerColor> towerColors = new ArrayList<>(3){{
+        this.addAll(Arrays.asList(TowerColor.values()));
+    }};
+    protected AssistantCard chosenAssistantCard;
+    protected CharacterCard chosenCharacterCard;
+    protected PawnColor colorToMove;
+    protected Integer destination;
+    protected Integer MN_shift;
+    protected Integer chosenCloudPos;
+    protected Integer chosenIslandPos;
 
 
 

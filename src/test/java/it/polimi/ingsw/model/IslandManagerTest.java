@@ -38,11 +38,11 @@ class IslandManagerTest {
 
         IslandManager islandManager = new IslandManager(islandList);
 
-        islandManager.moveMotherNature(2, 1);
+        islandManager.moveMotherNature(2);
 
         //questo cancella la isola in 0 e la fonda con l'isola in 2 -> isola[0]= old.isola[1], isola[1]=old.isola[merge]
         //isola[0] = old.isola[1], isola[1] = merge isola[0] e isola[2]
-        islandManager.checkForMerge(0);
+        islandManager.checkForMerge();
         assertEquals(islandManager.getIslandList().size(), Integer.valueOf(2));
         assertEquals(islandManager.getIslandList(). get(1).getTowersNumber(), Integer.valueOf(3));
         assertEquals(islandManager.getIslandList(). get(1).getStudentNumber(PawnColor.blue), Integer.valueOf(3));
@@ -81,7 +81,7 @@ class IslandManagerTest {
 
         IslandManager islandManager = new IslandManager(islandList);
 
-        islandManager.moveMotherNature(0, 5);
+        islandManager.moveMotherNature (5);
 
         assertTrue(island3.isMotherNature());
 

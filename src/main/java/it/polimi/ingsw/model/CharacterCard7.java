@@ -2,11 +2,15 @@ package it.polimi.ingsw.model;
 
 import java.util.Map;
 
-public class CharacterCard7 implements CardBehavior {
+public class CharacterCard7 extends CharacterCard {
 
     // all'inizio della partita peschiamo 6 studenti e li piazziamo qui. Possiamo prendere 3 studenti e scambiarli con 3 studenti
     // nel nostro ingresso
     private Map<PawnColor, Integer> students;
+
+    public CharacterCard7(int id, int price) {
+        super(id, price);
+    }
 
     //inizializzare con 6 studenti dalla bag nel setupGame se viene scelta questa carta
     @Override

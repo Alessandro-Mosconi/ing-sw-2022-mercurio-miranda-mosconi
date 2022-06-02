@@ -8,6 +8,12 @@ public class Player {
     private String nickName;
     private int wallet;
 
+    public Player(int playerNumber, String nickname, SchoolBoard sb) {
+        this.playerNumber = playerNumber;
+        this.nickName = nickname;
+        this.schoolBoard = sb;
+    }
+
     public void setDeck(Deck deck) {
         this.deck = deck;
     }
@@ -17,7 +23,12 @@ public class Player {
     }
 
     private Deck deck;
-    private final int playerNumber;
+
+    public void setPlayerNumber(int playerNumber) {
+        this.playerNumber = playerNumber;
+    }
+
+    private int playerNumber;
     private SchoolBoard schoolBoard;
     private AssistantCard lastAssistantCard;
     private int maxShift;
@@ -26,9 +37,9 @@ public class Player {
     public Player(){
         this.nickName = null;
         this.wallet = 0;
-        this.deck = null;
+        this.deck = new Deck();
         this.playerNumber = 0;
-        this.schoolBoard = null;
+        this.schoolBoard = new SchoolBoard();
         this.lastAssistantCard = null;
         this.maxShift=0;
         this.bonus2Shifts=false;

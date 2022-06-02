@@ -16,6 +16,7 @@ public class CLI extends View{
 
     @Override
     public void login() {
+        player = new Player();
         Message msg_out = new Message();
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -48,6 +49,7 @@ public class CLI extends View{
             e.printStackTrace();
         }
         setUsername(input);
+        player.setNickName(input);
         //payloads.add(input);
 
         System.out.print("\033[H\033[2J");
@@ -209,7 +211,8 @@ public class CLI extends View{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        getPlayer().getDeck().setWizard(WizardType.valueOf(input));
+        getPlayer().setDeck(new Deck(WizardType.valueOf(input)));
+        //getPlayer().getDeck().setWizard(WizardType.valueOf(input));
 
 
         System.out.println("Choose a towers color: ");
@@ -260,7 +263,7 @@ public class CLI extends View{
         System.out.print("Choose an Assistant card by ID: ");
         //printDeck();
         for(AssistantCard card : getPlayer().getDeck().getCards())
-            System.out.println(card);
+            System.out.println(card.getId());
 
 
         String input = "" ;

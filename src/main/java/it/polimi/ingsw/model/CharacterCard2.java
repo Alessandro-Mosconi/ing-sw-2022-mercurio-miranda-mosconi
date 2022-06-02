@@ -2,13 +2,17 @@ package it.polimi.ingsw.model;
 
 import java.util.ArrayList;
 
-public class CharacterCard2 implements CardBehavior{
+public class CharacterCard2 extends CharacterCard{
 /*
     Eff: durante il turno, prendi il controllo dei prof anche se nella tua sala hai lo stesso numero di studenti del giocatore che controlla i prof in quel momento
  */
     //essendo l'effetto limitato alla durata di un turno, bisogna salvare su una variabile temporanea lo stato corrente e ripristinarlo alla fine del turno
     private ArrayList<SchoolBoard> tmpSchoolBoards;
     private ArrayList<SchoolBoard> currentSchoolBoards;
+
+    public CharacterCard2(int id, int price) {
+        super(id, price);
+    }
 
     //private ArrayList<SchoolBoard> currentSchoolBoards;
     @Override

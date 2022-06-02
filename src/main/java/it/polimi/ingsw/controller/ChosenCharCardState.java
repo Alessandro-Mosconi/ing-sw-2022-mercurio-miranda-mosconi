@@ -112,7 +112,7 @@ public class ChosenCharCardState implements GameControllerState{
     */
         gameController.setCurrEffect(chosenCard);
         gameController.setCurrParameter(parameter);
-        chosenCard.getCardBehavior().Effect(parameter);
+        //chosenCard.getCardBehavior().Effect(parameter);
     }
     @Override
     public void updateNextState(GameController gameController) {
