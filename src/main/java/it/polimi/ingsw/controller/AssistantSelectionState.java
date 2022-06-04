@@ -2,16 +2,20 @@ package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.AssistantCard;
 import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.virtualview.VirtualView;
 
 public class AssistantSelectionState implements GameControllerState{
 
     @Override
     public void startState(GameController gameController) {
         gameController.setErrorFlag(false);
-        AssistantCard chosenCard = gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrderIterator()).getDeck().getCards().get(gameController.getVirtualViews().get(gameController.getVirtualViewsOrderIterator()).getChosenAssistantID());
+         int currOrder = gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator());
+         VirtualView currVV = gameController.getVirtualViews().get(currOrder);
+         AssistantCard chosenCard = currVV.getPlayer().getDeck().getCards().get(currVV.getChosenAssistantID()-1);
+       // AssistantCard chosenCard = gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrderIterator()).getDeck().getCards().get(gameController.getVirtualViews().get(gameController.getVirtualViewsOrderIterator()).getChosenAssistantID());
         if (chosenCard != null) {
             Player currPlayer = gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator()));
-            gameController.getGame().useAssistantCard(currPlayer, chosenCard); //TODO serve iterare il currentPlayer anche usl model
+            gameController.getGame().useAssistantCard(currPlayer, chosenCard); //TODO serve iterare il currentPlayer anche sul model?
             gameController.decreasePlayersToGo();
         }
         else gameController.setErrorFlag(true);
@@ -27,7 +31,7 @@ public class AssistantSelectionState implements GameControllerState{
             gameController.nextVirtualView();
             //gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).setMyTurn(true);
         }
-        else{
+        else if (gameController.getPlayersToGo()==0){
             gameController.getGame().updatePlayerOrder();
             gameController.setVirtualViewsOrder(gameController.getGame().calculatePlayerOrder());
             gameController.getGame().fillCloudTiles();

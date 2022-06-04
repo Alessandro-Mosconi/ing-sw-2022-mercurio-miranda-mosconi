@@ -9,17 +9,22 @@ public class CreateGameState implements GameControllerState{
     @Override
     public void startState(GameController gameController) {
         //int currentVirtualView = gameController.getCurrentVirtualView();
-        Game game = gameController.getGame();
-        VirtualView currentView = gameController.getVirtualViews().get(0);
+        Game game = new Game();
+        VirtualView hostView = gameController.getVirtualViews().get(0);
         //game.addListener((ModelListener) currentView.getClientHandler());
-        game.setGameID(currentView.getIdGame());
-        game.setGameMode(currentView.getGamemode());
-        game.setNumberOfPlayers(currentView.getPlayersNumber());
+        game.addListener((ModelListener) gameController.getVirtualViews().get(0).getClientHandler());
+        gameController.setVirtualViewsOrderIterator(0);
+        game.setGameID(hostView.getIdGame());
+        game.setGameMode(hostView.getGamemode());
+        game.setNumberOfPlayers(hostView.getPlayersNumber());
+        gameController.setGame(game);
+        gameController.decreasePlayersToGo();
     }
 
     @Override
     public void updateNextState(GameController gameController) {
-        gameController.setNextState(new GeneratePlayerState());
+        //gameController.setVirtualViewsOrderIterator(1);
+        gameController.setNextState(new LobbyState());
     }
 
     @Override

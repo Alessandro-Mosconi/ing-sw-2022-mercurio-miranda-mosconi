@@ -273,7 +273,7 @@ public class CLI extends View{
             e.printStackTrace();
         }
 
-        setChosenAssistantCard(getPlayer().getDeck().getCards().get(Integer.parseInt(input)));
+        setChosenAssistantCard(getPlayer().getDeck().getCards().get(Integer.parseInt(input)-1));
 
     }
 

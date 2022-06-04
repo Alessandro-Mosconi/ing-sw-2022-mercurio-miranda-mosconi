@@ -5,7 +5,7 @@ public class Game {
 
 
     //attributes
-    private ArrayList<Player> players;
+    private ArrayList<Player> players = new ArrayList<>();
     private int currPlayer;
     private int numberOfPlayers;
     private String gameID;
@@ -242,21 +242,38 @@ public class Game {
         return allCharacterCards;
     }
     public void setupGame(){
-        players = new ArrayList<>(); //qui vengono aggiunti man mano dal controller
+        //players = new ArrayList<>(); //qui vengono aggiunti man mano dal controller
+        for(ModelListener l : clientHandlersListeners){
+            l.updatePlayers(players);
+        }
         bag = new HashMap<>();
         fillBag();
-        availableTowerColors.addAll(List.of(TowerColor.values()));
-        availableWizards.addAll(List.of(WizardType.values()));
+        //availableTowerColors.addAll(List.of(TowerColor.values()));
+        //availableWizards.addAll(List.of(WizardType.values()));
         ArrayList<Island> islands = generateIslands(); //generates and initialises the islands
         IslandManager islandManager= new IslandManager(islands);
         this.setIslandManager(islandManager);
+        for(ModelListener l : clientHandlersListeners){
+            l.updateIslandList(islands);
+        }
         //ArrayList<Player> players = generatePlayers(this.numberOfPlayers);
         //this.setPlayers(players);
         //inizializzare i players - probabilmente verrà fatto dal controller che darà in input al setupGame l'array di players da settare
         ArrayList<SchoolBoard> schoolBoards = generateSchoolBoards();
         initSchoolBoards();
         this.setSchoolBoards(schoolBoards);
-        ArrayList<CloudTile> cloudTiles = generateCloudTiles(); //Clouds are filled after the player order is set
+        for(ModelListener l : clientHandlersListeners){
+            for(Player p : players){
+                l.updateSchoolBoardEntrance(p);
+            }
+        }
+        ArrayList<CloudTile> cloudTiles = generateCloudTiles();
+        for(ModelListener l : clientHandlersListeners){
+            for(CloudTile ct: cloudTiles) {
+                l.updateCT(ct);
+            }
+        }
+        //Clouds are filled after the player order is set
         //Game board parts are allocated and initialized so far
         /*Player firstPlayer = SelectFirstPlayer(); //Randomically select the first player to choose an AssistantCard
         ArrayList<Integer> tmpOrder = new ArrayList<>(this.numberOfPlayers);
@@ -282,9 +299,9 @@ public class Game {
             this.setEntryTiles(4);
             this.setBank(20);
         }
-        for(ModelListener l : clientHandlersListeners){
+        /*for(ModelListener l : clientHandlersListeners){
             l.updateModel(this);
-        }
+        }*/
     }
     public void updatePlayerOrder(){
         ArrayList<Integer> tmpOrder = calculatePlayerOrder();
@@ -311,7 +328,7 @@ public class Game {
             {
                 Map<PawnColor,Integer> islandInitializationBag = new HashMap<>();
                 for(PawnColor col : PawnColor.values()){
-                    islandInitializationBag.replace(col,2);
+                    islandInitializationBag.put(col,2);
                     this.bag.replace(col,this.bag.get(col)-2);
                 }
                 for(int i=0;i<12;i++){
@@ -404,7 +421,7 @@ public class Game {
         return players.get(randNum);
     }//genera casualmente il primo giocatore che lancia la carta assistente al primo turno
     private void initBag(PawnColor color,int n){
-        this.bag.replace(color, n);
+        this.bag.put(color, n);
     }
 //gestione init character cards
     private ArrayList<CharacterCard> initChosenCharacterCards() {
@@ -432,6 +449,9 @@ public class Game {
 
     public void addPlayer(Player playerToAdd) {
         players.add(playerToAdd);
+        for(ModelListener l : clientHandlersListeners){
+            l.updatePlayers(this.players);
+        }
     }
 
     public boolean isBagEmpty() {
@@ -443,9 +463,10 @@ public class Game {
         return true;
     }
     public void useAssistantCard(Player currPlayer, AssistantCard assistantCard){
-        players.get(this.currPlayer).useAssistantCard(assistantCard);
+        //players.get(this.currPlayer).useAssistantCard(assistantCard);
+        currPlayer.useAssistantCard(assistantCard);
         for(ModelListener l: clientHandlersListeners){
-            l.updateLastAssistantCard(players.get(this.currPlayer));
+            l.updateLastAssistantCard(currPlayer);
         }
     }
     public void movePawnToIsland(PawnColor student, Island destination){

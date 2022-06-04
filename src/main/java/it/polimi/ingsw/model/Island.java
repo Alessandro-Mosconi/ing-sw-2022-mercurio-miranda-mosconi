@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Island {
@@ -31,7 +32,10 @@ public class Island {
     private PawnColor keptOut=null;
 
     public Island(Map<PawnColor, Integer> islandStudents, TowerColor towerColor, int towerNumber, boolean noEntryTile, boolean motherNature) {
-        this.islandStudents = islandStudents;
+        this.islandStudents = islandStudents = new HashMap<>();
+        for(PawnColor c : PawnColor.values()){
+            this.islandStudents.put(c,0);
+        }
         this.towerColor = towerColor;
         this.towerNumber = towerNumber;
         this.noEntryTile = noEntryTile;
@@ -86,7 +90,7 @@ public class Island {
     }
 
     public void addStudent(PawnColor color){
-        this.islandStudents.put(color, getStudentNumber(color)+1);
+        this.islandStudents.replace(color, getStudentNumber(color)+1);
     }
 
     public void setMotherNature(boolean isPresent){

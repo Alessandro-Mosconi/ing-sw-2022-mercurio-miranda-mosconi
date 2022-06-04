@@ -95,8 +95,9 @@ public class Client {
             NetworkHandler networkHandler = new NetworkHandler(out, in, view);
 
             while (true) {
+                    System.out.println("Ora leggo: ");
                     String input = in.readLine();
-                    String output;
+                    String output=null;
 
                     if (input != null)
                         if (!input.equals("ping")) {
@@ -108,6 +109,7 @@ public class Client {
                             }
                             else {
                                 output = networkHandler.send_msg();
+                                System.out.println("Ora invio questo msg: "+ output);
                                 out.println(output);
                             }
                         }

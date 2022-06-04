@@ -191,7 +191,7 @@ public class VirtualView{
 
     public String read(String input) {
 
-        System.out.println("receiving..." + input);
+        //System.out.println("receiving..." + input);
         Gson gson = new Gson();
         Message msg = gson.fromJson(input, Message.class);
 
@@ -211,6 +211,7 @@ public class VirtualView{
                 gamemode = GameMode.valueOf(payloads.get(3));
 
                 GameController gController = new GameController();
+                gameController = (VirtualViewListener) gController;
                 gController.setPlayersToGo(playersNumber);
                 this.player.setPlayerNumber(0);
                 gController.addVirtualView(this);
@@ -218,12 +219,11 @@ public class VirtualView{
                 //gController.getClientHandlerArrayList().add(this.clientHandler);
                 //gController.getVirtualViewsOrder().add(0);
                 //gController.getVirtualViews().add(this);
-                gController.performAction();
-                gameController = gController;
+                gameController.performAction(); //CREATEGAMESTATE
                 //virtualview manda il messaggio di uscita.
                 msg_out = new Message();
                 msg_out.setUser(username);
-                msg_out.setType(MessageType.ASK_FOR_SETTINGS);
+                msg_out.setType(MessageType.LOBBY_WAITING);
                 ArrayList<String> UsersList = new ArrayList<>();
                 UsersList.add(username);
                 networkMap.put(idGame, UsersList);
@@ -257,22 +257,26 @@ public class VirtualView{
                 else {
                     username = payloads.get(0);
                     idGame = payloads.get(1);
-                    setPlayersNumber(gameMap.get(getIdGame()).getGame().getNumberOfPlayers());
-                    setGamemode(gameMap.get(getIdGame()).getGame().getGameMode());
+                    playersNumber = (gameMap.get(getIdGame()).getGame().getNumberOfPlayers());
+                    gamemode = (gameMap.get(getIdGame()).getGame().getGameMode());
+
                     GameController gController = gameMap.get(idGame);
+                    gameController = (VirtualViewListener) gController;
                     ArrayList<String> UsersList = new ArrayList<>();
                     UsersList = networkMap.get(getIdGame());
                     UsersList.add(msg_in.getUser());
                     networkMap.replace(getIdGame(), UsersList);
                     setPlayers(UsersList);
-                    this.player.setPlayerNumber(UsersList.size());
+                    this.player.setPlayerNumber(UsersList.size()-1);
+                    gController.addVirtualView(this);
                     msg_out = new Message();
                     msg_out.setUser(username);
-                    gController.addVirtualView(this);
                     //gController.getClientHandlerArrayList().add(this.clientHandler);
                     //gController.getVirtualViews().add(this);
                     //gameController.addVirtualView(this);
-                    msg_out.setType(MessageType.ASK_FOR_SETTINGS);
+                    //gController.addVirtualView(this);
+                    gameController.performAction();
+                    msg_out.setType(MessageType.LOBBY_WAITING);
                     return msg_out.toSend();
                 }
             }

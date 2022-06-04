@@ -73,7 +73,7 @@ public class ClientHandler implements Runnable, ModelListener
     private void handleClientConnection(Pinger pinger) throws IOException
     {
 
-        GameController controller = null;
+        //GameController controller = null;
         virtualView = new VirtualView();
         virtualView.setClientHandler(this);
         System.out.println("sending ack");
@@ -81,9 +81,10 @@ public class ClientHandler implements Runnable, ModelListener
 
         try {
             while (true) {
-
+                System.out.println("Ora leggo da user: " + virtualView.getUsername());
                 String input = in.readLine();
-                System.out.println("[" + client.getInetAddress() + "]" + " receiving... " + input);
+                System.out.println("Appena letto da user: "+ virtualView.getUsername()+"il msg" + input);
+                //System.out.println("[" + client.getInetAddress() + "]" + " receiving... " + input);
                 if(!input.equals("ping") && !input.equals("MODEL_UPDATED")){
                    /* if(!initialize(input))
                     {
@@ -102,9 +103,12 @@ public class ClientHandler implements Runnable, ModelListener
                         }
                     }*/
                     //processInput(input);
-                    if(virtualView.read(input)!=null){ //TODO GESTIRE I CASI IN CUI IL SERVER NON RISPONDE  EIL CLIENT RIMANE IN ATTESA -
+                    String processedInput = virtualView.read(input);
+                    if(processedInput!=null){ //TODO GESTIRE I CASI IN CUI IL SERVER NON RISPONDE  EIL CLIENT RIMANE IN ATTESA -
                         //TODO PER ORA SONO SETTATI A NULL I MSG-OUT NEI CASI IN CUI IL SERVER NON DEVE RISPONDERE
-                        out.println(virtualView.read(input));
+                        System.out.println("sending... " + processedInput);
+                        System.out.println("ora scrivo a user:"+virtualView.getUsername()+"il msg"+processedInput);
+                        out.println(processedInput);
                     }
                 }
             }
@@ -302,7 +306,8 @@ public class ClientHandler implements Runnable, ModelListener
             return false;
         }
     }*//*public synchronized void processInput (String input){
-       /* synchronized (networkMap) *//*{
+       /* synchronized (networkMap) */
+    /*{
             System.out.println("receiving..." + input);
             //if(input.equals("MODEL_UPDATED")){ return; }
             Gson gson = new Gson();
@@ -312,7 +317,8 @@ public class ClientHandler implements Runnable, ModelListener
             payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
 
             switch (msg_in.getType()) {
-               *//*
+               */
+    /*
     non cancellare questa parte perché c'è il codice per la multipartita.!!!
     *//* case CREATE_MATCH -> {
                     if (networkMap.containsKey(payloads.get(1))) {
@@ -337,7 +343,8 @@ public class ClientHandler implements Runnable, ModelListener
                         gameMap.put(virtualView.getIdGame(), game);
                         out.println(msg_out.toSend());
                     }
-                }*//*case JOIN_MATCH -> {
+                }*/
+    /*case JOIN_MATCH -> {
                     //virtualView = new VirtualView();
                     if (!networkMap.containsKey(payloads.get(1))) {
                         msg_out.setUser(payloads.get(0));
@@ -393,18 +400,32 @@ public class ClientHandler implements Runnable, ModelListener
     }*/
     public void tellToWait() {
         Message msg_out = new Message();
-        msg_out.setType(MessageType.WAITING);
+        msg_out.setType(MessageType.WAIT);
+        System.out.println("sending... " + msg_out.toSend() + "to" + this.virtualView.getUsername());
+
         out.println(msg_out.toSend());
     }
 
     public void tellToPlay() {
         Message msg_out = new Message();
         msg_out.setType(MessageType.IS_YOUR_TURN);
+        System.out.println("sending... " + msg_out.toSend() + "to" + this.virtualView.getUsername());
+
+        out.println(msg_out.toSend());
+    }
+
+    public void tellAPlayerJoined(Integer playersToGo) {
+        Message msg_out = new Message();
+        msg_out.setType(MessageType.LOBBY_UPDATED);
+        msg_out.fill(String.valueOf(playersToGo));
+        System.out.println("sending... " + msg_out.toSend() + "to" + this.virtualView.getUsername());
+
         out.println(msg_out.toSend());
     }
 
     @Override
     public void updateModel(Game game) {
+        System.out.println("Sto mandando il model update a "  + virtualView.getUsername());
         Message msg_out = new Message();
         msg_out.setType(MessageType.GAME_MODEL_UPDATE);
         ArrayList<String> payloads = new ArrayList<>();
@@ -443,8 +464,9 @@ public class ClientHandler implements Runnable, ModelListener
                 }
               }
             }*///TODO capire come mandare la mappe delle carte che ne hanno una
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
         }
-
     @Override
     public void updateAvailableWizards(ArrayList<WizardType> wizards) {
         Message msg_out = new Message();
@@ -456,6 +478,7 @@ public class ClientHandler implements Runnable, ModelListener
         msg_out.fill(payloads);
         out.println(msg_out.toSend());
     }
+    @Override
     public void updateAvailableTowerColors(ArrayList<TowerColor> towerColors){
         Message msg_out = new Message();
         ArrayList<String> payloads = new ArrayList<>();
@@ -466,7 +489,6 @@ public class ClientHandler implements Runnable, ModelListener
         msg_out.fill(payloads);
         out.println(msg_out.toSend());
     }
-
     @Override
     public void updateLastAssistantCard(Player player) {
         Message msg_out = new Message();
@@ -477,7 +499,6 @@ public class ClientHandler implements Runnable, ModelListener
         msg_out.fill(payloads);
         out.println(msg_out.toSend());
     }
-
     @Override
     public void updateIsland(Island island) {
         Message msg_out=new Message();
@@ -500,6 +521,7 @@ public class ClientHandler implements Runnable, ModelListener
             payloads.add(String.valueOf(player.getSchoolBoard().getStudentEntrance().get(c)));
         }
     }
+    @Override
     public void updateSchoolBoardHall(Player player) {
         Message msg_out=new Message();
         ArrayList<String> payloads = new ArrayList<>();
@@ -510,7 +532,6 @@ public class ClientHandler implements Runnable, ModelListener
             payloads.add(String.valueOf(player.getSchoolBoard().getStudentHall().get(c)));
         }
     }
-
     @Override
     public void updateProfessorTables(ArrayList<Player> players) {
         Message msg_out=new Message();
@@ -524,7 +545,6 @@ public class ClientHandler implements Runnable, ModelListener
             }
         }
     }
-
     @Override
     public void updateIslandList(ArrayList<Island> islandList) {
         Message msg_out=new Message();
@@ -542,7 +562,6 @@ public class ClientHandler implements Runnable, ModelListener
             }
         }
     }
-
     @Override
     public void updateCT(CloudTile ct) {
         Message msg_out=new Message();
@@ -554,29 +573,37 @@ public class ClientHandler implements Runnable, ModelListener
             payloads.add(String.valueOf(ct.getStudents().get(color)));
         }
     }
-
     @Override
     public void updateCharacterCardUsed(CharacterCard charCard) {
 
     }
-
     @Override
     public void updateCardStudents(CharacterCard charCard) {
 
     }
-
     @Override
     public void updateBonus2InfluencePoints(Player player) {
 
     }
-
     @Override
     public void updateMaxShift(Player player) {
 
     }
-
     @Override
     public void updateKeptOut(PawnColor keptOutColor) {
 
+    }
+    @Override
+    public void updatePlayers(ArrayList<Player> players) {
+        System.out.println("invio update players a "+ virtualView.getUsername());
+        Message msg_out=new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        msg_out.setType(MessageType.UPDATE_PLAYERS);
+        for(Player p : players){
+            payloads.add(p.getNickName());
+            payloads.add(String.valueOf(p.getDeck().getWizard()));
+            payloads.add(String.valueOf(p.getSchoolBoard().getTowersColor()));
+            //TODO serve towersn umber e wallet?
+        }
     }
 }

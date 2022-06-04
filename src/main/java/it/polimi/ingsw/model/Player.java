@@ -96,7 +96,8 @@ public class Player {
 
     public void useAssistantCard(AssistantCard card)
     {
-        for(AssistantCard chosenCard : this.deck.getCards())
+        int pos = card.getValue()-1;
+        /*for(AssistantCard chosenCard : this.deck.getCards())
         {
             if(chosenCard.equals(card) && !chosenCard.isConsumed())
             {
@@ -105,7 +106,11 @@ public class Player {
                 updateMaxShift();
                 //this.deck.getCards().remove(chosenCard);
             }
-        }
+        }*/
+        this.deck.getCards().get(pos).setConsumed(true);
+        this.setLastAssistantCard(card);
+        updateMaxShift();
+
     }
     public void updateMaxShift(){
         if(isBonus2Shifts()){
