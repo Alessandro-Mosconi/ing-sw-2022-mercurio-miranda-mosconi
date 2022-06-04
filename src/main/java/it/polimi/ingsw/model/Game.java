@@ -244,7 +244,7 @@ public class Game {
     public void setupGame(){
         //players = new ArrayList<>(); //qui vengono aggiunti man mano dal controller
         for(ModelListener l : clientHandlersListeners){
-            l.updatePlayers(players);
+            l.updateSetupPlayers(players);
         }
         bag = new HashMap<>();
         fillBag();
@@ -260,8 +260,10 @@ public class Game {
         //this.setPlayers(players);
         //inizializzare i players - probabilmente verrà fatto dal controller che darà in input al setupGame l'array di players da settare
         ArrayList<SchoolBoard> schoolBoards = generateSchoolBoards();
-        initSchoolBoards();
         this.setSchoolBoards(schoolBoards);
+
+        initSchoolBoards();
+        //this.setSchoolBoards(schoolBoards);
         for(ModelListener l : clientHandlersListeners){
             for(Player p : players){
                 l.updateSchoolBoardEntrance(p);
@@ -269,9 +271,7 @@ public class Game {
         }
         ArrayList<CloudTile> cloudTiles = generateCloudTiles();
         for(ModelListener l : clientHandlersListeners){
-            for(CloudTile ct: cloudTiles) {
-                l.updateCT(ct);
-            }
+            l.updateCTs(cloudTiles);
         }
         //Clouds are filled after the player order is set
         //Game board parts are allocated and initialized so far
@@ -332,7 +332,7 @@ public class Game {
                     this.bag.replace(col,this.bag.get(col)-2);
                 }
                 for(int i=0;i<12;i++){
-                    islands.add(new Island(null,null,0,false,false));
+                    islands.add(new Island(i,null,0,false,false));
                     if(i!=0&&i!=5){
                         PawnColor rdColor=PawnColor.randomColor();
                         islandInitializationBag.replace(rdColor, islandInitializationBag.get(rdColor)-1);
@@ -364,7 +364,7 @@ public class Game {
                 moveFromBagToCloud(c);
             }
             for(ModelListener l : clientHandlersListeners){
-                l.updateCT(c);
+                l.updateCTs(cloudTiles);
             }
         }
 
@@ -394,23 +394,31 @@ public class Game {
         return players;
     } da gestire nel controller*/
     private void initSchoolBoards() {
+        int j=0;
          for(SchoolBoard s: schoolBoards){
-            /*if(this.numberOfPlayers==2){
+             s.setTowersColor(players.get(j).getSchoolBoard().getTowersColor());
+            if(this.numberOfPlayers==2){
                 s.setTowersNumber(8);
             }
             if(this.numberOfPlayers==3){
                 s.setTowersNumber(6);
             }
-            if(this.numberOfPlayers==4){
-                s.setTowersNumber(4);}*/
             //qui va modificato -- todo valutare di aggiungere un attributo che indichi squadra al player e ricordarsi di cambiare le torri qunado si gioca in 4
             for(int i=0;i<7;i++){
                 PawnColor rdColor=PawnColor.randomColor();
                 this.bag.replace(rdColor, this.bag.get(rdColor)-1);
                 s.addStudentEntrance(rdColor);
-            }//todo se si gioca in 3 se ne mettono 9
+            }if(numberOfPlayers==3){
+                for(int i = 0 ; i<2 ; i++){
+                    PawnColor rdColor=PawnColor.randomColor();
+                    this.bag.replace(rdColor, this.bag.get(rdColor)-1);
+                    s.addStudentEntrance(rdColor);
+                }
+                //todo se si gioca in 3 se ne mettono 9
+             }
             //manca da settare il colore delle torri todo se lo sceglie il giocatore deve settarlo il controller
-
+            players.get(j).setSchoolBoard(s);
+            j++;
         }
     }
     private Player SelectFirstPlayer(){
@@ -446,14 +454,12 @@ public class Game {
         this.allCharacterCards.add(new CharacterCard (11,2));
         this.allCharacterCards.add(new CharacterCard (12,3));
     }
-
     public void addPlayer(Player playerToAdd) {
         players.add(playerToAdd);
         for(ModelListener l : clientHandlersListeners){
             l.updatePlayers(this.players);
         }
     }
-
     public boolean isBagEmpty() {
         for(PawnColor c : PawnColor.values()){
             if(bag.get(c)!=0){
@@ -487,7 +493,7 @@ public class Game {
     public void moveFromCloudToEntrance(CloudTile ct){
         players.get(currPlayer).moveFromCloudToEntrance(ct);
         for(ModelListener l : clientHandlersListeners){
-            l.updateCT(ct);
+            l.updateCTs(this.cloudTiles);
             l.updateSchoolBoardEntrance(players.get(currPlayer));
         }
     }

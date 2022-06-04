@@ -279,16 +279,17 @@ public class CLI extends View{
 
     public void showTable(){
 
-        for(Player player : getPlayers())
+        for(Player p : players)
         {
-            if(player.equals(getPlayer())) {
-                System.out.println(player.getNickName());
+            //if(player.equals(getPlayer())) {
+            {
+                System.out.println(p.getNickName());
                 System.out.println("Schoolboard: ");
-                System.out.println("Entrance: " + player.getSchoolBoard().getStudentEntrance());
-                System.out.println("Hall: " + player.getSchoolBoard().getStudentHall());
-                System.out.print("Professor owned: " + player.getSchoolBoard().getStudentEntrance());
-                for (PawnColor color : player.getSchoolBoard().getProfessorTable().keySet()) {
-                    if (player.getSchoolBoard().getProfessorTable().get(color))
+                System.out.println("Entrance: " + p.getSchoolBoard().getStudentEntrance());
+                System.out.println("Hall: " + p.getSchoolBoard().getStudentHall());
+                System.out.print("Professor owned: " + p.getSchoolBoard().getProfessorTable());
+                for (PawnColor color : p.getSchoolBoard().getProfessorTable().keySet()) {
+                    if (p.getSchoolBoard().getProfessorTable().get(color))
                         System.out.print(color + " ");
 
                 }
@@ -296,14 +297,14 @@ public class CLI extends View{
             }
         }
 
-        System.out.println(getPlayer().getNickName() + "is your turn, this is your table:");
+        System.out.println(getPlayer().getNickName() + " is your turn, this is your table:");
 
         System.out.println("Schoolboard: ");
-        System.out.println("Entrance: " + getPlayer().getSchoolBoard().getStudentEntrance());
-        System.out.println("Hall: " + getPlayer().getSchoolBoard().getStudentHall());
-        System.out.print("Professor owned: " + getPlayer().getSchoolBoard().getStudentEntrance());
-        for (PawnColor color : getPlayer().getSchoolBoard().getProfessorTable().keySet()) {
-            if (getPlayer().getSchoolBoard().getProfessorTable().get(color))
+        System.out.println("Entrance: " + this.player.getSchoolBoard().getStudentEntrance());
+        System.out.println("Hall: " + this.player.getSchoolBoard().getStudentHall());
+        System.out.print("Professor owned: " + this.player.getSchoolBoard().getProfessorTable());
+        for (PawnColor color : this.player.getSchoolBoard().getProfessorTable().keySet()) {
+            if (this.player.getSchoolBoard().getProfessorTable().get(color))
                 System.out.print(color + " ");
 
         }
@@ -328,10 +329,10 @@ public class CLI extends View{
 
         System.out.println("\n");
         System.out.println("CharacterCards: ");
-        for(CharacterCard characterCard : getCharacterCards())
+        /*for(CharacterCard characterCard : getCharacterCards())
         {
             System.out.print("ID: " + characterCard.getID() + "price: " + characterCard.getPrice() + "\t");
-        }
+        }*/
 
     }
 

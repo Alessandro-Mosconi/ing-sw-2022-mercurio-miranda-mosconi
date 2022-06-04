@@ -320,7 +320,8 @@ public class ClientHandler implements Runnable, ModelListener
                */
     /*
     non cancellare questa parte perché c'è il codice per la multipartita.!!!
-    *//* case CREATE_MATCH -> {
+    */
+    /* case CREATE_MATCH -> {
                     if (networkMap.containsKey(payloads.get(1))) {
                         msg_out.setUser(payloads.get(0));
                         msg_out.setType(MessageType.ERROR);
@@ -509,9 +510,13 @@ public class ClientHandler implements Runnable, ModelListener
             payloads.add(String.valueOf(c));
             payloads.add(String.valueOf(island.getIslandStudents().get(c)));
         }
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
     }
     @Override
     public void updateSchoolBoardEntrance(Player player) {
+        System.out.println("Sto inviando la entrance del player :" + player.getNickName() + "al client "+ virtualView.getUsername());
+        System.out.println(player.getSchoolBoard().getStudentEntrance());
         Message msg_out=new Message();
         ArrayList<String> payloads = new ArrayList<>();
         msg_out.setType(MessageType.UPDATE_SCHOOL_BOARD_ENTRANCE);
@@ -520,6 +525,8 @@ public class ClientHandler implements Runnable, ModelListener
             payloads.add(String.valueOf(c));
             payloads.add(String.valueOf(player.getSchoolBoard().getStudentEntrance().get(c)));
         }
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
     }
     @Override
     public void updateSchoolBoardHall(Player player) {
@@ -531,6 +538,8 @@ public class ClientHandler implements Runnable, ModelListener
             payloads.add(String.valueOf(c));
             payloads.add(String.valueOf(player.getSchoolBoard().getStudentHall().get(c)));
         }
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
     }
     @Override
     public void updateProfessorTables(ArrayList<Player> players) {
@@ -544,7 +553,15 @@ public class ClientHandler implements Runnable, ModelListener
                 payloads.add(String.valueOf(p.getSchoolBoard().getProfessorTable().get(c)));
             }
         }
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
     }
+
+    @Override
+    public void updatePlayers(ArrayList<Player> players) {
+
+    }
+
     @Override
     public void updateIslandList(ArrayList<Island> islandList) {
         Message msg_out=new Message();
@@ -561,17 +578,23 @@ public class ClientHandler implements Runnable, ModelListener
                 payloads.add(String.valueOf(i.getIslandStudents().get(color)));
             }
         }
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
     }
     @Override
-    public void updateCT(CloudTile ct) {
+    public void updateCTs(ArrayList<CloudTile> cts) {
         Message msg_out=new Message();
         ArrayList<String> payloads = new ArrayList<>();
-        msg_out.setType(MessageType.UPDATE_CLOUDTILE);
-        payloads.add(String.valueOf(ct.getCloudID()));
-        for(PawnColor color : PawnColor.values()){
-            payloads.add(String.valueOf(color));
-            payloads.add(String.valueOf(ct.getStudents().get(color)));
+        msg_out.setType(MessageType.UPDATE_CLOUDTILES);
+        for(CloudTile ct : cts) {
+            payloads.add(String.valueOf(ct.getCloudID()));
+            for (PawnColor color : PawnColor.values()) {
+                payloads.add(String.valueOf(color));
+                payloads.add(String.valueOf(ct.getStudents().get(color)));
+            }
         }
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
     }
     @Override
     public void updateCharacterCardUsed(CharacterCard charCard) {
@@ -594,16 +617,18 @@ public class ClientHandler implements Runnable, ModelListener
 
     }
     @Override
-    public void updatePlayers(ArrayList<Player> players) {
+    public void updateSetupPlayers(ArrayList<Player> players) {
         System.out.println("invio update players a "+ virtualView.getUsername());
         Message msg_out=new Message();
         ArrayList<String> payloads = new ArrayList<>();
-        msg_out.setType(MessageType.UPDATE_PLAYERS);
+        msg_out.setType(MessageType.SETUP_PLAYERS);
         for(Player p : players){
             payloads.add(p.getNickName());
             payloads.add(String.valueOf(p.getDeck().getWizard()));
             payloads.add(String.valueOf(p.getSchoolBoard().getTowersColor()));
             //TODO serve towersn umber e wallet?
         }
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
     }
 }

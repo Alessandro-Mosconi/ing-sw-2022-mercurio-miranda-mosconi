@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class NetworkHandler {
 
@@ -36,7 +37,6 @@ public class NetworkHandler {
         switch (phase) {
             case LOGIN -> {
                 view.login();
-
                 msg_out.setUser(view.getUsername());
                 payloads.add(view.getUsername());
                 if (view.getMessageType().equals(MessageType.CREATE_MATCH)) {
@@ -46,7 +46,6 @@ public class NetworkHandler {
                 } else {
                     payloads.add(view.getIdGame());
                 }
-
                 msg_out.setType(view.getMessageType());
                 nextPhase = Phase.SETTINGS;
                 phase = Phase.WAITING;
@@ -384,7 +383,7 @@ public class NetworkHandler {
             case IS_YOUR_TURN, ACK -> {
                 phase = nextPhase;
             }
-            case GAME_MODEL_UPDATE -> {
+            /*case GAME_MODEL_UPDATE -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 int numPlayers = Integer.parseInt(payloads.get(0));
                 GameMode gameMode = GameMode.valueOf(payloads.get(1));
@@ -445,7 +444,7 @@ public class NetworkHandler {
                 islandManager.setCurrMNPosition(0);
                 view.setIslandManager(islandManager);
                 //TODO MANCA GESTIONE CASO EXPERT MODE
-            }
+            }*/
             case AVAILABLE_WIZARDS -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 ArrayList<WizardType> availableWizards = new ArrayList<>();
@@ -495,8 +494,9 @@ public class NetworkHandler {
                 }
             }
             case UPDATE_SCHOOL_BOARD_ENTRANCE -> {
+                System.out.println("Ho ricevuto "+ input);
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                String playerID = payloads.get(0);
+                String playerID = payloads.get(0); //TODO si potrebbe mandare il playernumber equivalentemente all'id
                 int payloadsIterator = 1;
                 Map<PawnColor, Integer> entrance = new HashMap<>();
                 for (int j = 0; j < PawnColor.values().length; j++) {
@@ -506,11 +506,20 @@ public class NetworkHandler {
                     payloadsIterator++;
                     entrance.put(c, number);
                 }
-                for (Player p : view.getPlayers()) {
-                    if (p.getNickName().equals(playerID)) {
+                for(Player p : view.getPlayers()){
+                    if(playerID.equals(p.getNickName())){
                         p.getSchoolBoard().setStudentEntrance(entrance);
+                        if(playerID.equals(view.getUsername())){
+                            view.getPlayer().getSchoolBoard().setStudentEntrance(entrance);
+                        }
                     }
                 }
+                /*for (Player p : view.getPlayers()) {
+                    if (p.getNickName().equals(playerID)) {
+                        p.getSchoolBoard().setStudentEntrance(entrance);
+                        view.getPlayers().get(p.getPlayerNumber()).getSchoolBoard().setStudentEntrance(entrance);
+                    }
+                }*/
             }
             case UPDATE_SCHOOL_BOARD_HALL -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -555,14 +564,17 @@ public class NetworkHandler {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 ArrayList<Island> islandList = new ArrayList<>();
                 int payloadsIterator = 0;
-                while (payloads.get(payloadsIterator) != null) {
+                while (payloadsIterator < payloads.size()) {
                     String islandID = payloads.get(payloadsIterator);
                     payloadsIterator++;
                     Boolean isMN = Boolean.parseBoolean(payloads.get(payloadsIterator));
                     payloadsIterator++;
                     Boolean isNET = Boolean.parseBoolean(payloads.get(payloadsIterator));
                     payloadsIterator++;
-                    TowerColor tc = TowerColor.valueOf(payloads.get(payloadsIterator));
+                    TowerColor tc=null;
+                    if(!(payloads.get(payloadsIterator).equals("null"))){
+                        TowerColor.valueOf(payloads.get(payloadsIterator));
+                    }
                     payloadsIterator++;
                     Integer tn = Integer.parseInt(payloads.get(payloadsIterator));
                     payloadsIterator++;
@@ -574,29 +586,30 @@ public class NetworkHandler {
                         payloadsIterator++;
                         islandMap.put(c, num);
                     }
-                    islandList.add(new Island(islandMap, tc, tn, isNET, isMN));
+                    islandList.add(new Island(Integer.parseInt(islandID), islandMap, tc, tn, isNET, isMN));
                 }
                 view.getIslandManager().setIslandList(islandList);
             }
-            case UPDATE_CLOUDTILE -> {
+            case UPDATE_CLOUDTILES -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                Integer ctID = Integer.parseInt(payloads.get(0));
-                int payloadsIterator = 1;
+                ArrayList<CloudTile> clouds = new ArrayList<>();
                 Map<PawnColor, Integer> map = new HashMap<>();
-                for (int j = 0; j < PawnColor.values().length; j++) {
-                    PawnColor c = PawnColor.valueOf(payloads.get(payloadsIterator));
+                int payloadsIterator = 0;
+                while (payloadsIterator < payloads.size()) {
+                    Integer ctID = Integer.parseInt(payloads.get(payloadsIterator));
                     payloadsIterator++;
-                    Integer num = Integer.parseInt(payloads.get(payloadsIterator));
-                    payloadsIterator++;
-                    map.put(c, num);
-                }
-                for (CloudTile ct : view.getClouds()) {
-                    if (ct.getCloudID() == ctID) {
-                        ct.setStudentsMap(map);
+                    for (int j = 0; j < PawnColor.values().length; j++) {
+                        PawnColor c = PawnColor.valueOf(payloads.get(payloadsIterator));
+                        payloadsIterator++;
+                        Integer num = Integer.parseInt(payloads.get(payloadsIterator));
+                        payloadsIterator++;
+                        map.put(c, num);
                     }
+                    clouds.add(new CloudTile(ctID,map));
                 }
+                view.setClouds(clouds);
             }
-            case UPDATE_PLAYERS -> {
+            case SETUP_PLAYERS -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 ArrayList<Player> players = new ArrayList<>();
                 for (int i = 0; i < payloads.size(); i++) {

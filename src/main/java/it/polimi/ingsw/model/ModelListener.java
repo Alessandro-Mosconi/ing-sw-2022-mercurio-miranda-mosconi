@@ -7,9 +7,9 @@ public interface ModelListener {
     void updateModel(Game game);
     void updateLastAssistantCard(Player player);
     void updateIsland (Island island);
-    void updatePlayers(ArrayList<Player> players);
+    void updateSetupPlayers(ArrayList<Player> players);
     void updateIslandList(ArrayList<Island> islandList);
-    void updateCT (CloudTile ct);
+    void updateCTs (ArrayList<CloudTile> cts);
     void updateCharacterCardUsed (CharacterCard charCard);
     void updateCardStudents (CharacterCard charCard);
     void updateBonus2InfluencePoints (Player player);
@@ -24,4 +24,6 @@ public interface ModelListener {
     void updateSchoolBoardHall(Player player);
 
     void updateProfessorTables(ArrayList<Player> players);
+
+    void updatePlayers(ArrayList<Player> players);
 }

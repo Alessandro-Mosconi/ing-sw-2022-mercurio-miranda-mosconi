@@ -9,7 +9,7 @@ import java.util.Map;
 import static it.polimi.ingsw.model.TowerColor.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class IslandManagerTest {
+class IslandManagerTest {/*
 
     @Test
     void mergeIslands() {
@@ -54,9 +54,8 @@ class IslandManagerTest {
         assertEquals(islandManager.getIslandList().size(), Integer.valueOf(2));
         assertEquals(islandManager.getIslandList().get(1).getTowersNumber(), Integer.valueOf(3));
         assertEquals(islandManager.getIslandList().get(1).getStudentNumber(PawnColor.blue), Integer.valueOf(3));
-
          */
-
+/*
     }
 
     @Test
@@ -85,5 +84,5 @@ class IslandManagerTest {
 
         assertTrue(island3.isMotherNature());
 
-    }
+    }*/
 }

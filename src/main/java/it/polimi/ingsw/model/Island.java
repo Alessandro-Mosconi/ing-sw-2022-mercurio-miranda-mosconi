@@ -31,11 +31,22 @@ public class Island {
     private boolean towersDoCount=true;
     private PawnColor keptOut=null;
 
-    public Island(Map<PawnColor, Integer> islandStudents, TowerColor towerColor, int towerNumber, boolean noEntryTile, boolean motherNature) {
-        this.islandStudents = islandStudents = new HashMap<>();
-        for(PawnColor c : PawnColor.values()){
-            this.islandStudents.put(c,0);
+    public Island(int id, TowerColor towerColor, int towerNumber, boolean noEntryTile, boolean motherNature) {
+        this.islandID=id;
+        this.islandStudents = new HashMap<>(){{
+            for(PawnColor c : PawnColor.values()){
+                put(c,0);
+            }
         }
+        };
+        this.towerColor = towerColor;
+        this.towerNumber = towerNumber;
+        this.noEntryTile = noEntryTile;
+        this.motherNature = motherNature;
+    }
+    public Island(int id, Map<PawnColor,Integer> islandMap, TowerColor towerColor, int towerNumber, boolean noEntryTile, boolean motherNature) {
+        this.islandID=id;
+        this.islandStudents = islandMap;
         this.towerColor = towerColor;
         this.towerNumber = towerNumber;
         this.noEntryTile = noEntryTile;

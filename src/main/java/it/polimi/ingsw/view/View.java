@@ -15,8 +15,8 @@ public abstract class View {
     protected Player player;
     protected ArrayList<String> playersUsername;
     protected ArrayList<Player> players;
-    protected ArrayList<CloudTile> clouds;
-    protected IslandManager islandManager;
+    protected ArrayList<CloudTile> clouds = new ArrayList<>();
+    protected IslandManager islandManager = new IslandManager(new ArrayList<>());
     protected ArrayList<CharacterCard> characterCards;
     protected MessageType messageType;
     protected TowerColor towerColor;
