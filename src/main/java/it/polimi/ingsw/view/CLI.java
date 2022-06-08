@@ -196,45 +196,69 @@ public class CLI extends View{
 
             setMessageType(MessageType.JOIN_MATCH);
         }*/
+        boolean invalidInput = true;
+        String input = "";
 
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        do {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
 
-        System.out.print("Choose a wizard: ");
-        for(WizardType wizard : getWizards())
-        {
-            System.out.println(wizard);
-        }
-        String input = "" ;
-        try {
-            input = stdIn.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        getPlayer().setDeck(new Deck(WizardType.valueOf(input)));
+            System.out.print("Choose a wizard:\n ");
+            for (WizardType wizard : getWizards()) {
+                System.out.println(wizard);
+            }
+            //String input = "";
+            try {
+                input = stdIn.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            //boolean accettable = false;
+            for(WizardType w : getWizards()){
+                if(String.valueOf(w).equals(input)){
+                    invalidInput = false;
+                }
+            }
+            if(invalidInput){
+                System.out.println("Error: invalid wizard");
+            }
+        }while(invalidInput);
+        player.setDeck(new Deck(WizardType.valueOf(input)));
         //getPlayer().getDeck().setWizard(WizardType.valueOf(input));
 
-
-        System.out.println("Choose a towers color: ");
-        for(TowerColor towerColor : getTowerColors())
-        {
-            System.out.println(towerColor);
-        }
-        try {
-            input = stdIn.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        invalidInput = true;
+        do {
+            System.out.println("Choose a towers color: ");
+            for (TowerColor towerColor : getTowerColors()) {
+                System.out.println(towerColor);
+            }
+            try {
+                input = stdIn.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            //boolean accettable = false;
+            for(TowerColor tc : getTowerColors()){
+                if(String.valueOf(tc).equals(input)){
+                    invalidInput=false;
+                }
+            }
+            if(invalidInput){
+                System.out.println("Error: invalid towers color");
+                //invalidInput=true;
+            }
+        }while(invalidInput);
+        player.getSchoolBoard().setTowersColor(TowerColor.valueOf(input));
         setTowerColor(TowerColor.valueOf(input));
 
     }
 
     public void printDeck(){
-
-        for(AssistantCard card : getPlayer().getDeck().getCards())
+        //TODO inserire check sulle consumed
+        for(AssistantCard card : player.getDeck().getCards())
             System.out.print("-------------\t\t");
         System.out.println("");
-        for(AssistantCard card : getPlayer().getDeck().getCards())
+        for(AssistantCard card : player.getDeck().getCards())
             System.out.print("|\t\t\t|\t\t");
         System.out.println("");
         for(AssistantCard card : getPlayer().getDeck().getCards())
@@ -256,31 +280,117 @@ public class CLI extends View{
     @Override
     public void chooseAssistantCard() {
 
-
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-
-        System.out.print("Choose an Assistant card by ID: ");
-        //printDeck();
-        for(AssistantCard card : getPlayer().getDeck().getCards())
-            System.out.println(card.getId());
-
-
         String input = "" ;
-        try {
-            input = stdIn.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        boolean invalidInput = true;
+        do {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
 
+            System.out.print("Choose an Assistant card by ID: ");
+            //printDeck();
+            for (AssistantCard card : getPlayer().getDeck().getCards()) {
+                if (!card.isConsumed())
+                    System.out.println(card.getId());
+            }
+
+            //String input = "" ;
+            try {
+                input = stdIn.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            int availableCards = 0;
+            boolean lastCard = true;
+            for(int i = 1; i<11; i++){
+                if (input.equals(String.valueOf(i))) {
+                    invalidInput = false;
+                    break;
+                }
+            }
+            if(!invalidInput) {
+                for (AssistantCard card : getPlayer().getDeck().getCards()) {
+                    if (lastCard) {
+                        if (!card.isConsumed()) {
+                            availableCards++;
+                        }
+                        if (availableCards > 1) {
+                            lastCard = false;
+                        }
+                    }
+                }
+                for (AssistantCard card : getPlayer().getDeck().getCards()) {
+                    if (input.equals(card.getId()) && !card.isConsumed()) {
+                        invalidInput = false;
+                        for (Player p : players) {
+                            if (p.getLastAssistantCard() != null) {
+                                if (card.getValue().equals(p.getLastAssistantCard().getValue()) && !lastCard) {
+                                    invalidInput = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if (invalidInput) {
+                System.out.println("Error: invalid input");
+            }
+        }while(invalidInput);
+        player.getDeck().getCards().get(Integer.parseInt(input)-1).setConsumed(true);
         setChosenAssistantCard(getPlayer().getDeck().getCards().get(Integer.parseInt(input)-1));
-
     }
 
     public void showTable(){
 
-        for(Player p : players)
+        showSchoolBoards();
+        showYourSchoolBoard();
+        showCloudTiles();
+        showIslands();
+        //showCharacterCards();
+        //showDeck();
+        showUsedAssistantCards();
+    }
+    public void showUsedAssistantCards() {
+        System.out.println("Already used cards:");
+        for(Player p : players){
+            if(p.getLastAssistantCard()!=null) {
+                System.out.println(p.getNickName() + " used card " + p.getLastAssistantCard().getValue());
+                //TODO resettare le used cards alla fine del round
+            }
+        }
+    }
+    private void showDeck() {
+        System.out.println("\n");
+        System.out.println("Here's your deck:");
+        System.out.println("|");
+        for(AssistantCard ac : this.player.getDeck().getCards()){
+            if(!ac.isConsumed()){
+                System.out.println("Card  " + ac.getValue() + ", Max Shift " + ac.getMotherMovement() + "|");
+            }
+        }
+    }
+    private void showCloudTiles() {
+        System.out.println("CloudTiles: ");
+        for(CloudTile cloud : clouds)
         {
+            System.out.print("Cloud ID: "+cloud.getCloudID() + " - " + cloud.getStudents());
+            System.out.print("\t");
+        }
+    }
+    private void showYourSchoolBoard() {
+        System.out.println(this.player.getNickName() + " is your turn, this is your table:");
+        System.out.println("Schoolboard: ");
+        System.out.println("Entrance: " + this.player.getSchoolBoard().getStudentEntrance());
+        System.out.println("Hall: " + this.player.getSchoolBoard().getStudentHall());
+        System.out.print("Professor owned: " + this.player.getSchoolBoard().getProfessorTable());
+        for (PawnColor color : this.player.getSchoolBoard().getProfessorTable().keySet()) {
+            if (this.player.getSchoolBoard().getProfessorTable().get(color))
+                System.out.print(color + " ");
+
+        }
+        System.out.println("\n");
+    }
+    private void showSchoolBoards() {
+        for(Player p : players){
             //if(player.equals(getPlayer())) {
             {
                 System.out.println(p.getNickName());
@@ -296,100 +406,102 @@ public class CLI extends View{
                 System.out.println("\n");
             }
         }
+    }
+    @Override
+    public void choosePawnMove() {
 
-        System.out.println(getPlayer().getNickName() + " is your turn, this is your table:");
+        ArrayList<String> payloads = new ArrayList<>();
+        showTable();
+        String input = "";
+        boolean invalidInput = true;
+        do {
+            System.out.print("Choose a student color or type [Character Card] to use if you want to: ");
 
-        System.out.println("Schoolboard: ");
-        System.out.println("Entrance: " + this.player.getSchoolBoard().getStudentEntrance());
-        System.out.println("Hall: " + this.player.getSchoolBoard().getStudentHall());
-        System.out.print("Professor owned: " + this.player.getSchoolBoard().getProfessorTable());
-        for (PawnColor color : this.player.getSchoolBoard().getProfessorTable().keySet()) {
-            if (this.player.getSchoolBoard().getProfessorTable().get(color))
-                System.out.print(color + " ");
+            //String input = "" ;
+            try {
+                input = stdIn.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if(input.equals("Character Card")) {
+                useCharacterCard();
+                return;
+            }else{
+                for(PawnColor pc: PawnColor.values()){
+                    if(input.equals(String.valueOf(pc))){
+                        invalidInput = false;
+                    }
+                }
+                if(!invalidInput) {
+                    invalidInput = true;
+                    for (PawnColor pc : PawnColor.values()) {
+                        if (pc.equals(PawnColor.valueOf(input))) {
+                            if (player.getSchoolBoard().getStudentEntrance().get(pc) != 0) {
+                                invalidInput = false;
+                            }
+                        }
+                    }
+                }
+            }
+            if(invalidInput){
+                System.out.println("Error: invalid input");
+            }
+        }while(invalidInput);
+        setMessageType(MessageType.PAWN_MOVE);
+        setColorToMove(PawnColor.valueOf(input));
+        invalidInput = true;
+        do {
+            System.out.print("Choose a destination [-1] to indicate your SchoolBoard / [ID] Island: ");
+            //showIslands();
+            try {
+                input = stdIn.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            for(int i=-1;i<islandManager.getIslandList().size();i++){
+                if(input.equals(String.valueOf(i))){
+                    invalidInput = false;
+                }
+            }
+            if(invalidInput){
+                System.out.println("Error: invalid input");
+            }
+        }while(invalidInput);
+        setDestination(Integer.valueOf(input));
 
-        }
-        System.out.println("\n");
-
-        System.out.println("CloudTiles: ");
-        for(CloudTile cloud : getClouds())
-        {
-            System.out.print(cloud.getStudents());
-            System.out.print("\t");
-        }
-
-        System.out.println("\n");
-        System.out.println("Islands: ");
-        for(Island island : getIslandManager().getIslandList())
-        {
-            System.out.print("|");
-            System.out.print(island.getIslandStudents());
-            System.out.print(island.isNoEntryTile()? "NoEntry": "");
-            System.out.print("|\t");
-        }
-
+    }
+    private void showCharacterCards() {
         System.out.println("\n");
         System.out.println("CharacterCards: ");
         /*for(CharacterCard characterCard : getCharacterCards())
         {
             System.out.print("ID: " + characterCard.getID() + "price: " + characterCard.getPrice() + "\t");
         }*/
-
     }
-
-    @Override
-    public void choosePawnMove() {
-
-        ArrayList<String> payloads = new ArrayList<>();
-        showTable();
-        System.out.print("Choose a student color or type [Character Card] to use if you want to: ");
-
-        String input = "" ;
-        try {
-            input = stdIn.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if(input.equals("Character Card")){
-            useCharacterCard();
-            return;
-        }
-
-        setMessageType(MessageType.PAWN_MOVE);
-        setColorToMove(PawnColor.valueOf(input));
-
-        System.out.print("Choose a destination [-1] to indicate your SchoolBoard / [ID] Island: ");
-        //showIslands();
-        try {
-            input = stdIn.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        setDestination(Integer.valueOf(input));
-
-    }
-
-    private void showCharacterCards() {
-        //TODO
-    }
-
     private void showIslands() {
-        //TODO
+        System.out.println("\n");
+        System.out.println("Islands: ");
+        for(Island island : getIslandManager().getIslandList())
+        {
+            System.out.print("|");
+            System.out.print(island.isMotherNature()? " MotherNature ":"");
+            System.out.print("id" + island.getIslandID() + " towerNumber " + island.getTowersNumber());
+            if(island.getTowerColor()!=null) System.out.println("towerColor" + island.getTowerColor());
+            System.out.print(" map:" + island.getIslandStudents());
+            System.out.print(island.isNoEntryTile()? " NoEntry ": "");
+            System.out.print("|\t");
+        }
     }
-
     private void showSchoolBoard() {
         //TODO
     }
-
     /*@Override
     public Message chooseWizard() {
         return null;
     }*/
-
     /*public Message waiting() {
         super.waiting();
     }*/
-
     /*public void mainboard() {
         super.mainboard();
     }*/
@@ -443,19 +555,34 @@ public class CLI extends View{
 
     @Override
     public void chooseMNmovement() {
-
-        System.out.println("Choose Mother Nature shift between 1 and " + getChosenAssistantCard().getMotherMovement() + "or type [Character Card] to use one: ");
-        String input = "" ;
-        try {
-            input = stdIn.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if(input.equals("Character Card")){
-            useCharacterCard();
-            return;
-        }
-
+        String input = "";
+        boolean invalidInput = true;
+        do {
+            System.out.println("Choose Mother Nature shift between 1 and " + getChosenAssistantCard().getMotherMovement()/*player.getMaxShift()*/ + "or type [Character Card] to use one: ");
+            //String input = "";
+            try {
+                input = stdIn.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (input.equals("Character Card")) {
+                useCharacterCard();
+                return;
+            }
+            else{
+                for(int i=1; i<=getChosenAssistantCard().getMotherMovement();i++){
+                    if(input.equals(String.valueOf(i))){
+                        invalidInput=false;
+                    }
+                }
+                /*if(Integer.parseInt(input)>0 && !(Integer.parseInt(input) > getChosenAssistantCard().getMotherMovement())){ //TODO sistemare maxShift nella gestione dei messaggi va inserito il boolean che indica il bonus effetto in caso
+                    invalidInput = false;
+                }*/
+            }
+            if(invalidInput){
+                System.out.println("Error: invalid input");
+            }
+        }while (invalidInput);
         setMessageType(MessageType.MN_SHIFT);
         setMN_shift(Integer.valueOf(input));
 
@@ -465,19 +592,38 @@ public class CLI extends View{
     public void chooseCT() {
 
         showTable();
-
-        System.out.println("Choose a Cloud Tile by ID to take or type [Character Card] to use one: ");
         String input = "";
-        try {
-            input = stdIn.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if(input.equals("Character Card")){
-            useCharacterCard();
-            return;
-        }
-
+        boolean invalidInput = true;
+        do {
+            System.out.println("Choose a Cloud Tile by ID to take or type [Character Card] to use one: ");
+            try {
+                input = stdIn.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (input.equals("Character Card")) {
+                useCharacterCard();
+                return;
+            }
+            else{
+                for(int i=0; i<players.size();i++){
+                    if(input.equals(String.valueOf(i))){
+                        invalidInput=false;
+                    }
+                }
+                if(!invalidInput){
+                    invalidInput=true;
+                    for(PawnColor pc : PawnColor.values()){
+                        if(clouds.get(Integer.parseInt(input)).getStudents().get(pc)!=0){
+                            invalidInput = false;
+                        }
+                    }
+                }
+            }
+            if(invalidInput){
+                System.out.println("Error: invalid input");
+            }
+        }while(invalidInput);
         setChosenCloudPos(Integer.parseInt(input));
         setMessageType(MessageType.CHOSEN_CT);
 

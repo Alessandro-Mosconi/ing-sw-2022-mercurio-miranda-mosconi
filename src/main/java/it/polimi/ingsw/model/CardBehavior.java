@@ -5,3 +5,4 @@ public interface CardBehavior {
      void initializeCard(Parameter parameter);
      void endEffect(Parameter parameter);
 }
+//TODO se si fa l'ereditarietà dalla characterCard non serve interfaccia behavior

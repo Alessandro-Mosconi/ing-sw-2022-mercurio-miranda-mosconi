@@ -33,11 +33,14 @@ public class NetworkHandler {
 
         Gson gson = new Gson();
         ArrayList<String> payloads = new ArrayList<>();
-
+        previousPhase = phase;
         switch (phase) {
             case LOGIN -> {
                 view.login();
                 msg_out.setUser(view.getUsername());
+                //
+                view.getPlayer().setNickName(view.getUsername());
+                //
                 payloads.add(view.getUsername());
                 if (view.getMessageType().equals(MessageType.CREATE_MATCH)) {
                     payloads.add(view.getIdGame());
@@ -55,6 +58,7 @@ public class NetworkHandler {
                 msg_out.setType(MessageType.SETTINGS);
 
                 payloads.add(view.getPlayer().getDeck().getWizard().toString());
+
                 payloads.add(view.getTowerColor().toString());
 
                 nextPhase = Phase.PLANNING;
@@ -76,7 +80,9 @@ public class NetworkHandler {
                     payloads.add(view.getColorToMove().toString());
                     payloads.add(view.getDestination().toString());
                     nextPhase = Phase.CHOOSING_SECOND_MOVE;
+                    //phase = Phase.WAITING;
                 } else {
+                    //phase = Phase.WAITING;
                     nextPhase = Phase.CHOOSING_CharacterCard;
                     payloads.add(view.getChosenCharacterCard().getID().toString());
 
@@ -89,15 +95,47 @@ public class NetworkHandler {
             }
             case CHOOSING_SECOND_MOVE -> {
                 //TODO ALESSANDRO msg_out = view.choosePawnMove();
-                previousPhase = phase;
-                nextPhase = Phase.CHOOSING_THIRD_MOVE;
-                phase = Phase.WAITING;
+                view.choosePawnMove();
+                if (view.getMessageType().equals(MessageType.PAWN_MOVE)) {
+                    payloads.add(view.getColorToMove().toString());
+                    payloads.add(view.getDestination().toString());
+                    nextPhase = Phase.CHOOSING_THIRD_MOVE;
+                    //phase = Phase.WAITING;
+                } else {
+                    //phase = Phase.WAITING;
+                    nextPhase = Phase.CHOOSING_CharacterCard;
+                    payloads.add(view.getChosenCharacterCard().getID().toString());
+
+                    if (view.getColorToMove() != null)
+                        payloads.add(view.getColorToMove().toString());
+                    else if (view.getChosenIslandPos() != null)
+                        payloads.add(view.getColorToMove().toString());
+                }
+                msg_out.setType(view.getMessageType());
+                //nextPhase = Phase.CHOOSING_THIRD_MOVE;
+                //phase = Phase.WAITING;
             }
             case CHOOSING_THIRD_MOVE -> {
                 //TODO ALESSANDRO msg_out = view.choosePawnMove();
-                previousPhase = phase;
-                nextPhase = Phase.CHOOSING_MN_SHIFT;
-                phase = Phase.WAITING;
+                view.choosePawnMove();
+                if (view.getMessageType().equals(MessageType.PAWN_MOVE)) {
+                    payloads.add(view.getColorToMove().toString());
+                    payloads.add(view.getDestination().toString());
+                    nextPhase = Phase.CHOOSING_MN_SHIFT;
+                    //phase = Phase.WAITING;
+                }else{
+                    //phase = Phase.WAITING;
+                    nextPhase = Phase.CHOOSING_CharacterCard;
+                    payloads.add(view.getChosenCharacterCard().getID().toString());
+
+                    if (view.getColorToMove() != null)
+                        payloads.add(view.getColorToMove().toString());
+                    else if (view.getChosenIslandPos() != null)
+                        payloads.add(view.getColorToMove().toString());
+                }
+                msg_out.setType(view.getMessageType());
+                //nextPhase = Phase.CHOOSING_MN_SHIFT;
+                //phase = Phase.WAITING;
             }
             case CHOOSING_MN_SHIFT -> {
                 view.chooseMNmovement();
@@ -126,7 +164,9 @@ public class NetworkHandler {
                     else if (view.getChosenIslandPos() != null)
                         payloads.add(view.getColorToMove().toString());
                 }
-
+                for(Player p : view.getPlayers()){
+                    p.setLastAssistantCard(null);
+                }//resetta le lastAssistantCards usate dai player
             }
             case WAITING -> {
                 msg_out.setType(MessageType.WAITING);
@@ -137,7 +177,7 @@ public class NetworkHandler {
             }
         }
 
-        previousPhase = phase;
+        //previousPhase = phase;
         phase = Phase.WAITING;
         msg_out.fill(payloads);
         System.out.println("sending... " + msg_out.toSend());
@@ -179,7 +219,6 @@ public class NetworkHandler {
 
 
 
-            //todo scegliere anche colore torri e -potenzialmente- squadra
         }
         if(phase == Phase.CHOSING_ASSISTANT_CARD){
             System.out.println("scegli assistant card:");
@@ -469,11 +508,18 @@ public class NetworkHandler {
                     if (p.getNickName().equals(nickname)) {
                         for (AssistantCard ac : p.getDeck().getCards()) {
                             if (ac.getId().equals(idAssistantCard)) {
+                                ac.setConsumed(true);
                                 p.setLastAssistantCard(ac);
+                                if(p.equals(view.getPlayer())){
+                                    view.getPlayer().setLastAssistantCard(ac);
+                                }
                             }
                         }
                     }
                 }
+                view.showUsedAssistantCards();
+                /*bisogna che il client non posssa selezionare carte dello stesso valore di quelle usate dai client
+                 precedenti + gestire caso in cui l'ultima carta è necessariamente uguale (if deck.size()==1)-> salta check else ->check */
             }
             case UPDATE_ISLAND -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -496,7 +542,7 @@ public class NetworkHandler {
             case UPDATE_SCHOOL_BOARD_ENTRANCE -> {
                 System.out.println("Ho ricevuto "+ input);
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                String playerID = payloads.get(0); //TODO si potrebbe mandare il playernumber equivalentemente all'id
+                String playerID = payloads.get(0); //TODO si potrebbe mandare il playernumber al posto dell'id
                 int payloadsIterator = 1;
                 Map<PawnColor, Integer> entrance = new HashMap<>();
                 for (int j = 0; j < PawnColor.values().length; j++) {
@@ -536,6 +582,9 @@ public class NetworkHandler {
                 for (Player p : view.getPlayers()) {
                     if (p.getNickName().equals(playerID)) {
                         p.getSchoolBoard().setStudentHall(hall);
+                        if(playerID.equals(view.getUsername())){
+                            view.getPlayer().getSchoolBoard().setStudentHall(hall);
+                        }
                     }
                 }
             }
@@ -543,13 +592,13 @@ public class NetworkHandler {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 int payloadsIterator = 0;
                 for (int i = 0; i < view.getPlayers().size(); i++) {
-                    String nickname = payloads.get(i + payloadsIterator);
+                    String nickname = payloads.get(payloadsIterator);
                     payloadsIterator++;
                     Map<PawnColor, Boolean> professorTable = new HashMap<>();
                     for (int j = 0; j < PawnColor.values().length; j++) {
-                        PawnColor c = PawnColor.valueOf(payloads.get(i + payloadsIterator));
+                        PawnColor c = PawnColor.valueOf(payloads.get(payloadsIterator));
                         payloadsIterator++;
-                        Boolean prof = Boolean.parseBoolean(payloads.get(i + payloadsIterator));
+                        Boolean prof = Boolean.parseBoolean(payloads.get(payloadsIterator));
                         payloadsIterator++;
                         professorTable.put(c, prof);
                     }
@@ -573,7 +622,7 @@ public class NetworkHandler {
                     payloadsIterator++;
                     TowerColor tc=null;
                     if(!(payloads.get(payloadsIterator).equals("null"))){
-                        TowerColor.valueOf(payloads.get(payloadsIterator));
+                        tc = TowerColor.valueOf(payloads.get(payloadsIterator));
                     }
                     payloadsIterator++;
                     Integer tn = Integer.parseInt(payloads.get(payloadsIterator));
@@ -593,9 +642,14 @@ public class NetworkHandler {
             case UPDATE_CLOUDTILES -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 ArrayList<CloudTile> clouds = new ArrayList<>();
-                Map<PawnColor, Integer> map = new HashMap<>();
+                //Map<PawnColor, Integer> map = new HashMap<>();
                 int payloadsIterator = 0;
                 while (payloadsIterator < payloads.size()) {
+                    Map<PawnColor, Integer> map = new HashMap<>(){{
+                        for(PawnColor c : PawnColor.values()){
+                            put(c,0);
+                        }
+                    }};
                     Integer ctID = Integer.parseInt(payloads.get(payloadsIterator));
                     payloadsIterator++;
                     for (int j = 0; j < PawnColor.values().length; j++) {
@@ -603,7 +657,7 @@ public class NetworkHandler {
                         payloadsIterator++;
                         Integer num = Integer.parseInt(payloads.get(payloadsIterator));
                         payloadsIterator++;
-                        map.put(c, num);
+                        map.replace(c, num);
                     }
                     clouds.add(new CloudTile(ctID,map));
                 }
@@ -615,18 +669,26 @@ public class NetworkHandler {
                 for (int i = 0; i < payloads.size(); i++) {
                     String nickname = payloads.get(i);
                     i++;
+                    Integer playerNumber = Integer.parseInt(payloads.get(i));
+                    i++;
                     WizardType wt = WizardType.valueOf(payloads.get(i));
                     i++;
                     TowerColor tc = TowerColor.valueOf(payloads.get(i));
                     Player p = new Player();
                     p.setNickName(nickname);
+                    p.setPlayerNumber(playerNumber);
                     p.setDeck(new Deck(wt));
                     p.getSchoolBoard().setTowersColor(tc);
                     players.add(p);
+                    if(p.getNickName().equals(view.getUsername())){
+                        view.setPlayer(p);
+                    }
                 }
                 view.setPlayers(players);
             }
-
+            case MODEL_CREATED -> {
+                view.showTable();
+            }
 
         }
     }

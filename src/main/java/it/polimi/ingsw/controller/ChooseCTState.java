@@ -3,20 +3,19 @@ package it.polimi.ingsw.controller;
 import it.polimi.ingsw.model.CloudTile;
 import it.polimi.ingsw.model.GameMode;
 import it.polimi.ingsw.model.PawnColor;
+import it.polimi.ingsw.model.Player;
 
 public class ChooseCTState implements GameControllerState{
     @Override
     public void startState(GameController gameController) {
-
+        Player currPlayer = gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator()));
         int chosenCloudID = gameController.getVirtualViews().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).getChosenCloudID();
         CloudTile chosenCT = gameController.getGame().getCloudTiles().get(chosenCloudID);
-        gameController.getGame().moveFromCloudToEntrance(chosenCT);
+        gameController.getGame().moveFromCloudToEntrance(currPlayer, chosenCT);
         //getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).moveFromCloudToEntrance(chosenCT);
-
-        //todo potrebbe essere ottimizzata? Alla fine è un for con 5 valori, stica
         /*for(PawnColor color : PawnColor.values()){
             gameController.getGame().getCloudTiles().get(chosenCloudID).reset(color);
-        } dovrebbe essere gestito sul model quando viene presa la cloud*/
+        }  è gestito sul model quando viene presa la cloud*/
         gameController.decreasePlayersToGo();
     }
     @Override
@@ -31,7 +30,9 @@ public class ChooseCTState implements GameControllerState{
         }
         else{
             gameController.setNextState(new AssistantSelectionState());
-            gameController.setVirtualViewsOrderIterator(0);
+            //gameController.setVirtualViewsOrderIterator(0);
+            gameController.resetPlayersToGo();
+            gameController.nextVirtualView();
         }
     }
     @Override

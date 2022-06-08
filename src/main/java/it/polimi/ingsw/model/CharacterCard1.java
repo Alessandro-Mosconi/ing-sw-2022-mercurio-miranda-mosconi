@@ -6,31 +6,26 @@ public class CharacterCard1 extends CharacterCard{
         super(id, price);
     }
     private Map<PawnColor,Integer> students; //da inizializzare a 4 nel setup game
-
     public Map<PawnColor, Integer> getStudents() {
         return students;
     }
-
     public void setStudents(Map<PawnColor, Integer> students) {
         this.students = students;
     }
-
     /*
         all'inizio della partita 4 studenti vengono piazzati sopra questa carta
         Eff: prendi 1 studente e piazzalo su un'isola a scelta; pesca uno studente e mettilo sulla carta
      */
-
     @Override
     public void Effect(Parameter parameter){
         if(this.students.get(parameter.getChosenColor())==0){
-            //TODO manda errore e chiede di reinserire ?
+            //TODO manda errore e chiede di reinserire -- NO, direi che i check sulla validità dell'input andrebbero fatti lato client
         }
         else {
             moveToIsland(parameter.getChosenColor(), parameter.getIsland());
             refill(parameter.getGame());
         }
     }
-
     @Override
     public void initializeCard(Parameter parameter) {
         for(int i=0;i<4;i++){
@@ -39,12 +34,10 @@ public class CharacterCard1 extends CharacterCard{
             this.students.replace(rdColor, this.students.get(rdColor)+1);
         }
     }//Places 4 random students on the card
-
     @Override
     public void endEffect(Parameter parameter) {
         //do nothing
     }
-
     public void moveToIsland(PawnColor color, Island destination){
         this.students.replace(color, this.students.get(color)-1);
         destination.addStudent(color);

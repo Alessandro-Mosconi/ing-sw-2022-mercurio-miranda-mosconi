@@ -222,6 +222,12 @@ public class Game {
     }
     public void updateProfessor(PawnColor color){
         int currentMax=0;
+
+        for(SchoolBoard s : schoolBoards){
+            if(s.getProfessorTable().get(color)){
+                currentMax=s.getStudentHall().get(color);
+            }
+        }
         /*
         si potrebbe tenere in game una mappa che tenga traccia del numero di studenti che ha il player
         che possiede già il prof in modo da effettuare la update solo quando serve piuttosto che farlo
@@ -269,10 +275,11 @@ public class Game {
                 l.updateSchoolBoardEntrance(p);
             }
         }
-        ArrayList<CloudTile> cloudTiles = generateCloudTiles();
+        this.cloudTiles = generateCloudTiles();
         for(ModelListener l : clientHandlersListeners){
             l.updateCTs(cloudTiles);
         }
+
         //Clouds are filled after the player order is set
         //Game board parts are allocated and initialized so far
         /*Player firstPlayer = SelectFirstPlayer(); //Randomically select the first player to choose an AssistantCard
@@ -299,9 +306,9 @@ public class Game {
             this.setEntryTiles(4);
             this.setBank(20);
         }
-        /*for(ModelListener l : clientHandlersListeners){
-            l.updateModel(this);
-        }*/
+        for(ModelListener l : clientHandlersListeners){
+            l.modelCreated();
+        }
     }
     public void updatePlayerOrder(){
         ArrayList<Integer> tmpOrder = calculatePlayerOrder();
@@ -309,15 +316,17 @@ public class Game {
 
     }
     public ArrayList<Integer> calculatePlayerOrder(){
-        ArrayList<Player> clonePlayerArray = this.players;
-        clonePlayerArray.sort(new Comparator<>() {
+        ArrayList<Player> tmpPlayerArray = new ArrayList<>(){{
+            addAll(players);
+        }};
+        tmpPlayerArray.sort(new Comparator<>() {
             public int compare(Player i1, Player i2) {
                 return i1.getLastAssistantCard().getValue() - i2.getLastAssistantCard().getValue();
             }
         });
         ArrayList<Integer> tmpOrder = new ArrayList<>(numberOfPlayers);
         for(int i=0;i<numberOfPlayers;i++){
-            tmpOrder.add(clonePlayerArray.get(i).getPlayerNumber());
+            tmpOrder.add(tmpPlayerArray.get(i).getPlayerNumber());
         }
         return tmpOrder;
     }//dovrebbe andare ma non sono sicurissimo
@@ -335,6 +344,11 @@ public class Game {
                     islands.add(new Island(i,null,0,false,false));
                     if(i!=0&&i!=5){
                         PawnColor rdColor=PawnColor.randomColor();
+                        if(islandInitializationBag.get(rdColor)==0){
+                           while(islandInitializationBag.get(rdColor)==0){
+                               rdColor = PawnColor.randomColor();
+                           }
+                        }
                         islandInitializationBag.replace(rdColor, islandInitializationBag.get(rdColor)-1);
                         islands.get(i).addStudent(rdColor);
                     }//initializes islands with students
@@ -363,17 +377,16 @@ public class Game {
             if(this.numberOfPlayers == 3){
                 moveFromBagToCloud(c);
             }
-            for(ModelListener l : clientHandlersListeners){
-                l.updateCTs(cloudTiles);
-            }
         }
-
+        for(ModelListener l : clientHandlersListeners){
+            l.updateCTs(cloudTiles);
+        }
     }
     private ArrayList<CloudTile> generateCloudTiles() {
         ArrayList<CloudTile> cloudTiles = new ArrayList<>(numberOfPlayers);
         {
             for(int i = 0; i< numberOfPlayers; i++){
-                cloudTiles.add(new CloudTile());
+                cloudTiles.add(new CloudTile(i));
             }
         }
         return cloudTiles;
@@ -403,7 +416,7 @@ public class Game {
             if(this.numberOfPlayers==3){
                 s.setTowersNumber(6);
             }
-            //qui va modificato -- todo valutare di aggiungere un attributo che indichi squadra al player e ricordarsi di cambiare le torri qunado si gioca in 4
+            //todo valutare di aggiungere un attributo che indichi squadra al player e ricordarsi di cambiare le torri qunado si gioca in 4
             for(int i=0;i<7;i++){
                 PawnColor rdColor=PawnColor.randomColor();
                 this.bag.replace(rdColor, this.bag.get(rdColor)-1);
@@ -414,20 +427,11 @@ public class Game {
                     this.bag.replace(rdColor, this.bag.get(rdColor)-1);
                     s.addStudentEntrance(rdColor);
                 }
-                //todo se si gioca in 3 se ne mettono 9
              }
-            //manca da settare il colore delle torri todo se lo sceglie il giocatore deve settarlo il controller
             players.get(j).setSchoolBoard(s);
             j++;
         }
     }
-    private Player SelectFirstPlayer(){
-        int min_val = 0;
-        int max_val = players.size();
-        Random rd = new Random();
-        int randNum = min_val+rd.nextInt((max_val - min_val) + 1);
-        return players.get(randNum);
-    }//genera casualmente il primo giocatore che lancia la carta assistente al primo turno
     private void initBag(PawnColor color,int n){
         this.bag.put(color, n);
     }
@@ -440,7 +444,7 @@ public class Game {
     } /* restituisce tutte le charcards in disordine;
      quando si chiama la init si pescano le prime 3 in disordine;
      dopo la init si accede alle chosen tramite la get*/
-    private void initAllCharacterCards(){//TODO ereditarietà instead of interfaccia
+    private void initAllCharacterCards(){//TODO ereditarietà instead of interfaccia?
         this.allCharacterCards.add(new CharacterCard1(1,1));
         this.allCharacterCards.add(new CharacterCard2 (2,2));
         this.allCharacterCards.add(new CharacterCard3 (3,3));
@@ -468,33 +472,34 @@ public class Game {
         }
         return true;
     }
-    public void useAssistantCard(Player currPlayer, AssistantCard assistantCard){
+    public void useAssistantCard(Player cPlayer, AssistantCard assistantCard){
         //players.get(this.currPlayer).useAssistantCard(assistantCard);
-        currPlayer.useAssistantCard(assistantCard);
+        cPlayer.useAssistantCard(assistantCard);
         for(ModelListener l: clientHandlersListeners){
-            l.updateLastAssistantCard(currPlayer);
+            l.updateLastAssistantCard(cPlayer);
         }
     }
-    public void movePawnToIsland(PawnColor student, Island destination){
-        players.get(currPlayer).moveFromEntranceToIsland(destination, student);
+    public void movePawnToIsland(Player currPlayer, PawnColor student, Island destination){
+        currPlayer.moveFromEntranceToIsland(destination, student);
         for(ModelListener l : clientHandlersListeners){
             l.updateIsland(destination);
-            l.updateSchoolBoardEntrance(players.get(currPlayer));
+            l.updateSchoolBoardEntrance(currPlayer);
         }
     }
-    public void movePawnToHall(PawnColor student){
-        players.get(currPlayer).moveFromEntranceToHall(student);
+    public void movePawnToHall(Player currPlayer, PawnColor student){
+        currPlayer.moveFromEntranceToHall(student);
         updateProfessor(student);
         for(ModelListener l : clientHandlersListeners){
-            l.updateSchoolBoardHall(players.get(currPlayer));
+            l.updateSchoolBoardEntrance(currPlayer);
+            l.updateSchoolBoardHall(currPlayer);
             l.updateProfessorTables(players);
         }
     }
-    public void moveFromCloudToEntrance(CloudTile ct){
-        players.get(currPlayer).moveFromCloudToEntrance(ct);
+    public void moveFromCloudToEntrance(Player currPlayer, CloudTile ct){
+        currPlayer.moveFromCloudToEntrance(ct);
         for(ModelListener l : clientHandlersListeners){
             l.updateCTs(this.cloudTiles);
-            l.updateSchoolBoardEntrance(players.get(currPlayer));
+            l.updateSchoolBoardEntrance(currPlayer);
         }
     }
     public void moveMN(int shift){
@@ -513,14 +518,12 @@ public class Game {
     public void addListener(ModelListener l){
         this.clientHandlersListeners.add(l);
     }
-
     public void removeWizard(WizardType wizard) {
         this.availableWizards.remove(wizard);
         for(ModelListener l : clientHandlersListeners){
             l.updateAvailableWizards(availableWizards);
         }
     }
-
     public void removeTowerColor(TowerColor towersColor) {
         this.availableTowerColors.remove(towersColor);
         for(ModelListener l : clientHandlersListeners){

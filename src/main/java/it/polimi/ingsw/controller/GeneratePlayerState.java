@@ -19,6 +19,7 @@ public class GeneratePlayerState implements GameControllerState{
         gameController.getGame().removeWizard(playerToAdd.getDeck().getWizard());
         playerToAdd.getSchoolBoard().setTowersColor(gameController.getVirtualViews().get(gameController.getVirtualViewsOrderIterator()).getTowerColor());
         gameController.getGame().removeTowerColor(playerToAdd.getSchoolBoard().getTowersColor());
+        playerToAdd.setPlayerNumber(gameController.getGame().getNumberOfPlayers() - gameController.getPlayersToGo());
         //gameController.getGame().setPlayers(new ArrayList<>());
         gameController.getGame().addPlayer(playerToAdd);
         gameController.decreasePlayersToGo();
@@ -34,9 +35,11 @@ public class GeneratePlayerState implements GameControllerState{
             System.out.println("inizia planning con players-to-go:" + gameController.getPlayersToGo());
             gameController.resetPlayersToGo();
             gameController.setNextState(new AssistantSelectionState());
-
-            gameController.setVirtualViewsOrderIterator(0);//TODO IN REALTA DEVE ESSERE RANDOM E NON 0
-            gameController.getVirtualViews().get(0).getClientHandler().tellToPlay();
+            int min = 0;
+            int max = gameController.getGame().getNumberOfPlayers()-1;
+            int rdNumber = (int) Math.floor(Math.random()*(max-min+1)+min);
+            gameController.setVirtualViewsOrderIterator(rdNumber);
+            gameController.getVirtualViews().get(rdNumber).getClientHandler().tellToPlay();
         }
         else{
             //gameController.decreasePlayersToGo();

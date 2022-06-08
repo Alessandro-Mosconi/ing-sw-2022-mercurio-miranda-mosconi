@@ -26,4 +26,6 @@ public interface ModelListener {
     void updateProfessorTables(ArrayList<Player> players);
 
     void updatePlayers(ArrayList<Player> players);
+
+    void modelCreated();
 }

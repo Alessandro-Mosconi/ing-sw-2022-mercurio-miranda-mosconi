@@ -266,7 +266,7 @@ public abstract class View {
     //public void mainboard();
 
     //public abstract Message chooseWizard();
-
+    public abstract void showTable();
     public abstract void chooseMNmovement();
 
     public abstract void chooseCT();
@@ -275,4 +275,6 @@ public abstract class View {
 
         setUpdated(true);
     }
+
+    public abstract void showUsedAssistantCards();
 }

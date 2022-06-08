@@ -137,9 +137,10 @@ public class SchoolBoard {
     public void removeProfessor(PawnColor color){this.professorTable.replace(color, false); }
 
     public boolean checkForCoin(PawnColor color){
-        if(getGameMode().equals(expert))
+        /*if(getGameMode().equals(expert))
             return ((studentEntrance.get(color) % 3) == 0);
-        else return false;
+        else return false;*/
+        return false;
     }
 
 

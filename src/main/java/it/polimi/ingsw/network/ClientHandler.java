@@ -104,8 +104,7 @@ public class ClientHandler implements Runnable, ModelListener
                     }*/
                     //processInput(input);
                     String processedInput = virtualView.read(input);
-                    if(processedInput!=null){ //TODO GESTIRE I CASI IN CUI IL SERVER NON RISPONDE  EIL CLIENT RIMANE IN ATTESA -
-                        //TODO PER ORA SONO SETTATI A NULL I MSG-OUT NEI CASI IN CUI IL SERVER NON DEVE RISPONDERE
+                    if(processedInput!=null){
                         System.out.println("sending... " + processedInput);
                         System.out.println("ora scrivo a user:"+virtualView.getUsername()+"il msg"+processedInput);
                         out.println(processedInput);
@@ -371,7 +370,6 @@ public class ClientHandler implements Runnable, ModelListener
                         UsersList.add(msg_in.getUser());
                         networkMap.replace(virtualView.getIdGame(), UsersList);
                         virtualView.setPlayers(UsersList);
-                        //TODO notificare agli altri in lobby che si è aggiunto un nuovo player
                     }
                 }
                 case SETTINGS -> {
@@ -396,7 +394,8 @@ public class ClientHandler implements Runnable, ModelListener
 
                 }
 
-*//* }
+*/
+    /* }
         }
     }*/
     public void tellToWait() {
@@ -464,7 +463,7 @@ public class ClientHandler implements Runnable, ModelListener
                     payloads.add(String.valueOf(c));
                 }
               }
-            }*///TODO capire come mandare la mappe delle carte che ne hanno una
+            }*///TODO mandare la mappe delle carte che ne hanno una (se vengono selezionate)
         msg_out.fill(payloads);
         out.println(msg_out.toSend());
         }
@@ -563,6 +562,13 @@ public class ClientHandler implements Runnable, ModelListener
     }
 
     @Override
+    public void modelCreated() {
+        Message msg_out = new Message();
+        msg_out.setType(MessageType.MODEL_CREATED);
+        out.println(msg_out.toSend());
+    }
+
+    @Override
     public void updateIslandList(ArrayList<Island> islandList) {
         Message msg_out=new Message();
         ArrayList<String> payloads = new ArrayList<>();
@@ -618,15 +624,18 @@ public class ClientHandler implements Runnable, ModelListener
     }
     @Override
     public void updateSetupPlayers(ArrayList<Player> players) {
-        System.out.println("invio update players a "+ virtualView.getUsername());
+        System.out.println("invio update players a "+ virtualView.getUsername() + players);
         Message msg_out=new Message();
         ArrayList<String> payloads = new ArrayList<>();
         msg_out.setType(MessageType.SETUP_PLAYERS);
         for(Player p : players){
             payloads.add(p.getNickName());
+            payloads.add(String.valueOf(p.getPlayerNumber()));
             payloads.add(String.valueOf(p.getDeck().getWizard()));
             payloads.add(String.valueOf(p.getSchoolBoard().getTowersColor()));
-            //TODO serve towersn umber e wallet?
+            //TODO serve mandare il wallet?
+            //all'inizio si manda questo messaggio - successivamente si manda un updatePlayer singolo
+            //quando viene modificata la schoolbaord o il wallet
         }
         msg_out.fill(payloads);
         out.println(msg_out.toSend());

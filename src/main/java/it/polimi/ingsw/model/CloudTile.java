@@ -25,6 +25,14 @@ public class CloudTile {
         this.cloudID=ID;
         this.students = students;
     }
+    public CloudTile(int ID)
+    {
+        this.cloudID=ID;
+        this.students = new HashMap<PawnColor, Integer>();
+
+        for(PawnColor color : PawnColor.values())
+            this.students.put(color, 0);
+    }
 
     public CloudTile()
     {

@@ -180,7 +180,6 @@ public class VirtualView{
                 break;
 
             case WalletChanged:
-                //todo gestire switch case
 
             default:
                 break;
@@ -202,7 +201,6 @@ public class VirtualView{
         this.msg_in = msg;
         payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
 
-        //todo Inserire switch case che analizza il tipo di messaggio
         switch (msg_in.getType()) {
             case CREATE_MATCH -> {
                 username = payloads.get(0);
@@ -286,6 +284,8 @@ public class VirtualView{
                 msg_out = new Message();
                 msg_out.setType(MessageType.WAIT);
                 msg_out.setUser(username);
+                player.getDeck().setWizard(wizard);
+                player.getSchoolBoard().setTowersColor(towerColor);
                 gameController.performAction();
                 return msg_out.toSend();
             }
@@ -294,6 +294,8 @@ public class VirtualView{
                 msg_out = new Message();
                 msg_out.setType(MessageType.WAIT);
                 msg_out.setUser(username);
+                //player.getDeck().getCards().get(chosenAssistantID-1).setConsumed(true);
+                //player.setLastAssistantCard(player.getDeck().getCards().get(chosenAssistantID-1));
                 gameController.performAction();
                 return msg_out.toSend();
             }
@@ -331,7 +333,6 @@ public class VirtualView{
     //private ArrayList<Player> players;
     //private GameMode chosenGameMode;
 
-    //todo compito della virtual view è di prendere i player dal network handler.
     /*public ArrayList<Player> getPlayers() {
         return players;
     }
@@ -343,13 +344,11 @@ public class VirtualView{
     /*
     public Player askForPlayerData() {
         Player player = new Player();
-        //todo deve chiedere ad ogni client di inserire tutti i dati richiesti (username, colore e mago)
         return player;
     }
 
     public AssistantCard askForAssistantCard() {
         AssistantCard chosenAssistantCard = new AssistantCard();
-        //todo chiede, riceve e dejsonizza la scelta
         if (msg_in.getType().equals(MessageType.AssistantCard)) {
             ArrayList<String> payloads = new ArrayList<>();
             Gson gson = new Gson();
@@ -364,18 +363,14 @@ public class VirtualView{
 
     public void askForMovement() {
     }
-
-    //todo modificare appena facciamo la virtualView, ofc
     public int askForMNMovement() {
         return 1;
     }
 
-    //todo modificare appena facciamo la virtualView, ofc 2
     public int askForCloudTile() {
         return 1;
     }
 */
-    //todo tutti i tipi di modelUpdate vanno qui
 
     public WizardType getWizard() {
         return wizard;

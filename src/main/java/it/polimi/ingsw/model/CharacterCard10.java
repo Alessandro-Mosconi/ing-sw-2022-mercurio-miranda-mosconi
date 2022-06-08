@@ -13,7 +13,7 @@ public class CharacterCard10 extends CharacterCard{
             int studToHall = parameter.getColorMap1().get(col);
             int studToEntrance = parameter.getColorMap2().get(col);
             if (studToHall < parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(col) || studToEntrance > parameter.getPlayer().getSchoolBoard().getStudentHall().get(col)) {
-                //todo manda errore e chiede di reinserire
+                //todo manda errore e chiede di reinserire - fare check lato client
             }
         }
         for(PawnColor col : PawnColor.values()){

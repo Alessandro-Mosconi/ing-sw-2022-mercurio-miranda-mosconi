@@ -75,8 +75,8 @@ public class Player {
         this.wallet = wallet;
     }
     public void collectCoin(PawnColor color){
-        if(schoolBoard.checkForCoin(color))
-            this.wallet = wallet +1;
+        //if(schoolBoard.checkForCoin(color))
+          //  this.wallet = wallet +1;
     }//Increases wallet if needed
     public void setLastAssistantCard(AssistantCard lastAssistantCard) {
         this.lastAssistantCard = lastAssistantCard;
@@ -110,7 +110,6 @@ public class Player {
         this.deck.getCards().get(pos).setConsumed(true);
         this.setLastAssistantCard(card);
         updateMaxShift();
-
     }
     public void updateMaxShift(){
         if(isBonus2Shifts()){
@@ -130,8 +129,8 @@ public class Player {
         else {
             schoolBoard.removeStudentEntrance(color);
             schoolBoard.addStudentHall(color);
-            if(schoolBoard.checkForCoin(color))
-                this.wallet++;
+            //if(schoolBoard.checkForCoin(color))
+            //    this.wallet++;
         }
     }
 
