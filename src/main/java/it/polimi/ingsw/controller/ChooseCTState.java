@@ -38,8 +38,7 @@ public class ChooseCTState implements GameControllerState{
     @Override
     public void endState(GameController gameController) {
         if(gameController.isCardUsed()){
-            //gameController.getCurrEffect().getCardBehavior().endEffect(gameController.getCurrParameter());
-            gameController.setCardUsed(false);
+            gameController.endCardEffect();
         }
         gameController.setPreviousState(this);
     }

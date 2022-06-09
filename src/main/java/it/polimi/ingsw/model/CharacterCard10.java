@@ -1,14 +1,10 @@
 package it.polimi.ingsw.model;
 
-public class CharacterCard10 extends CharacterCard{
+public class CharacterCard10 implements CardBehavior{
 
-    public CharacterCard10(int id, int price) {
-        super(id, price);
-    }
 
     //Puoi scambiare fra loro fino a 2 Studenti presenti nella tua Sala e nel tuo Ingresso.
-    @Override
-    public void Effect(Parameter parameter) {
+    public void startEffect(Parameter parameter) {
         for(PawnColor col : PawnColor.values()) {
             int studToHall = parameter.getColorMap1().get(col);
             int studToEntrance = parameter.getColorMap2().get(col);
@@ -24,18 +20,12 @@ public class CharacterCard10 extends CharacterCard{
         }
     }
 
-    @Override
     public void initializeCard(Parameter parameter) {
         //none
     }
 
-    @Override
     public void endEffect(Parameter parameter) {
         //do nothing
     }
 
-    public PawnColor chooseColor() {
-        //credo vada chiesto al controller il valore del colore da ritornare
-        return null;
-    }
 }

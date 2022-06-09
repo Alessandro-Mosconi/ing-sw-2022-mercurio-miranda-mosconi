@@ -1,11 +1,14 @@
 package it.polimi.ingsw.model;
+import java.util.HashMap;
 import java.util.Map;
 
-public class CharacterCard1 extends CharacterCard{
-    public CharacterCard1(int id, int price) {
-        super(id, price);
-    }
-    private Map<PawnColor,Integer> students; //da inizializzare a 4 nel setup game
+public class CharacterCard1 implements CardBehavior{
+
+    private Map<PawnColor,Integer> students = new HashMap<>(){{
+        for(PawnColor color : PawnColor.values()){
+            put(color,0);
+        }
+    }}; //da inizializzare a 4 nel setup game
     public Map<PawnColor, Integer> getStudents() {
         return students;
     }
@@ -16,17 +19,15 @@ public class CharacterCard1 extends CharacterCard{
         all'inizio della partita 4 studenti vengono piazzati sopra questa carta
         Eff: prendi 1 studente e piazzalo su un'isola a scelta; pesca uno studente e mettilo sulla carta
      */
-    @Override
-    public void Effect(Parameter parameter){
-        if(this.students.get(parameter.getChosenColor())==0){
-            //TODO manda errore e chiede di reinserire -- NO, direi che i check sulla validità dell'input andrebbero fatti lato client
+    public void startEffect(Parameter parameter){
+        /*if(this.students.get(parameter.getChosenColor())==0){
+            //TODO manda errore e chiede di reinserire --  direi che i check sulla validità dell'input andrebbero fatti lato client
         }
-        else {
+        else */{
             moveToIsland(parameter.getChosenColor(), parameter.getIsland());
             refill(parameter.getGame());
         }
     }
-    @Override
     public void initializeCard(Parameter parameter) {
         for(int i=0;i<4;i++){
             PawnColor rdColor = PawnColor.randomColor();
@@ -34,7 +35,6 @@ public class CharacterCard1 extends CharacterCard{
             this.students.replace(rdColor, this.students.get(rdColor)+1);
         }
     }//Places 4 random students on the card
-    @Override
     public void endEffect(Parameter parameter) {
         //do nothing
     }

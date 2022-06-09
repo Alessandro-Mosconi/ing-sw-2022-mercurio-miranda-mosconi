@@ -28,4 +28,10 @@ public interface ModelListener {
     void updatePlayers(ArrayList<Player> players);
 
     void modelCreated();
+
+    void updateWallet(Player p);
+
+    void initializedCharacterCards(ArrayList<CharacterCard> chosenCharacterCards);
+
+    void updatePrice(CharacterCard currEffect);
 }

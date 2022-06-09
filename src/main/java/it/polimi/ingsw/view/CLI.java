@@ -9,6 +9,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CLI extends View{
 
@@ -253,8 +255,7 @@ public class CLI extends View{
 
     }
 
-    public void printDeck(){
-        //TODO inserire check sulle consumed
+    /*public void printDeck(){
         for(AssistantCard card : player.getDeck().getCards())
             System.out.print("-------------\t\t");
         System.out.println("");
@@ -275,7 +276,7 @@ public class CLI extends View{
         System.out.println("");
         for(AssistantCard card : getPlayer().getDeck().getCards())
             System.out.print("-------------\t\t");
-    }
+    }*/
 
     @Override
     public void chooseAssistantCard() {
@@ -337,6 +338,7 @@ public class CLI extends View{
         }while(invalidInput);
         player.getDeck().getCards().get(Integer.parseInt(input)-1).setConsumed(true);
         setChosenAssistantCard(getPlayer().getDeck().getCards().get(Integer.parseInt(input)-1));
+        player.setMaxShift(chosenAssistantCard.getMotherMovement());
     }
 
     public void showTable(){
@@ -345,7 +347,9 @@ public class CLI extends View{
         showYourSchoolBoard();
         showCloudTiles();
         showIslands();
-        //showCharacterCards();
+        if(gamemode.equals(GameMode.expert)){
+            showCharacterCards();
+        }
         //showDeck();
         showUsedAssistantCards();
     }
@@ -387,6 +391,9 @@ public class CLI extends View{
                 System.out.print(color + " ");
 
         }
+        if(gamemode.equals(GameMode.expert)){
+            System.out.println("\nWallet: " + player.getWallet());
+        }
         System.out.println("\n");
     }
     private void showSchoolBoards() {
@@ -403,6 +410,9 @@ public class CLI extends View{
                         System.out.print(color + " ");
 
                 }
+                if(gamemode.equals(GameMode.expert)){
+                    System.out.println("\nWallet: "+ p.getWallet());
+                }
                 System.out.println("\n");
             }
         }
@@ -415,8 +425,10 @@ public class CLI extends View{
         String input = "";
         boolean invalidInput = true;
         do {
-            System.out.print("Choose a student color or type [Character Card] to use if you want to: ");
-
+            if(gamemode.equals(GameMode.expert) && !cardUsed)
+                System.out.print("Choose a student color or type [Character Card] to use if you want to: ");
+            else
+                System.out.println("Choose a student color: ");
             //String input = "" ;
             try {
                 input = stdIn.readLine();
@@ -424,8 +436,10 @@ public class CLI extends View{
                 e.printStackTrace();
             }
             if(input.equals("Character Card")) {
-                useCharacterCard();
-                return;
+                cardUsed = useCharacterCard();
+                if(cardUsed){
+                    return;
+                }
             }else{
                 for(PawnColor pc: PawnColor.values()){
                     if(input.equals(String.valueOf(pc))){
@@ -468,15 +482,23 @@ public class CLI extends View{
             }
         }while(invalidInput);
         setDestination(Integer.valueOf(input));
-
     }
     private void showCharacterCards() {
         System.out.println("\n");
         System.out.println("CharacterCards: ");
-        /*for(CharacterCard characterCard : getCharacterCards())
+        for(CharacterCard characterCard : characterCards)
         {
-            System.out.print("ID: " + characterCard.getID() + "price: " + characterCard.getPrice() + "\t");
-        }*/
+            System.out.print("ID: " + characterCard.getID() + " price: " + characterCard.getPrice() + "\t");
+            if(characterCard.getCardBehavior() instanceof CharacterCard1){
+                System.out.println("Map : " + ((CharacterCard1) characterCard.getCardBehavior()).getStudents());
+            }
+            if(characterCard.getCardBehavior() instanceof CharacterCard7){
+                System.out.println("Map : " + ((CharacterCard7) characterCard.getCardBehavior()).getStudents());
+            }
+            if(characterCard.getCardBehavior() instanceof CharacterCard11){
+                System.out.println("Map : " + ((CharacterCard11) characterCard.getCardBehavior()).getStudents());
+            }
+        }
     }
     private void showIslands() {
         System.out.println("\n");
@@ -492,9 +514,7 @@ public class CLI extends View{
             System.out.print("|\t");
         }
     }
-    private void showSchoolBoard() {
-        //TODO
-    }
+
     /*@Override
     public Message chooseWizard() {
         return null;
@@ -505,7 +525,6 @@ public class CLI extends View{
     /*public void mainboard() {
         super.mainboard();
     }*/
-
     /*
     @Override
     public void lobby() {
@@ -530,7 +549,6 @@ public class CLI extends View{
 
          */
     //}
-
     /*@Override
     public Message chooseWizard() {
 
@@ -558,7 +576,12 @@ public class CLI extends View{
         String input = "";
         boolean invalidInput = true;
         do {
-            System.out.println("Choose Mother Nature shift between 1 and " + getChosenAssistantCard().getMotherMovement()/*player.getMaxShift()*/ + "or type [Character Card] to use one: ");
+            if(gamemode.equals(GameMode.expert) && !cardUsed)
+                System.out.println("Choose Mother Nature shift between 1 and " + player.getMaxShift()/*player.getMaxShift()*/ + "or type [Character Card] to use one: ");
+            //TODO se viene usata la carta che modifica il maxShift del player, viene mandato un messaggio specifico che modifica maxShift;
+            // non serve poi risettare a fine effetto -> al prossimo turno, l'utilizzo di una nuova carta sovrascriverà il maxShift corretto.
+            else
+                System.out.println("Choose Mother Nature shift between 1 and "+ player.getMaxShift()+ ":");
             //String input = "";
             try {
                 input = stdIn.readLine();
@@ -566,8 +589,10 @@ public class CLI extends View{
                 e.printStackTrace();
             }
             if (input.equals("Character Card")) {
-                useCharacterCard();
-                return;
+                cardUsed = useCharacterCard();
+                if(cardUsed){
+                    return;
+                }
             }
             else{
                 for(int i=1; i<=getChosenAssistantCard().getMotherMovement();i++){
@@ -575,7 +600,8 @@ public class CLI extends View{
                         invalidInput=false;
                     }
                 }
-                /*if(Integer.parseInt(input)>0 && !(Integer.parseInt(input) > getChosenAssistantCard().getMotherMovement())){ //TODO sistemare maxShift nella gestione dei messaggi va inserito il boolean che indica il bonus effetto in caso
+                /*if(Integer.parseInt(input)>0 && !(Integer.parseInt(input) > getChosenAssistantCard().getMotherMovement())){
+                //TODO sistemare maxShift nella gestione dei messaggi va inserito il boolean che indica il bonus effetto in caso
                     invalidInput = false;
                 }*/
             }
@@ -595,15 +621,21 @@ public class CLI extends View{
         String input = "";
         boolean invalidInput = true;
         do {
-            System.out.println("Choose a Cloud Tile by ID to take or type [Character Card] to use one: ");
+            if(gamemode.equals(GameMode.expert) && !cardUsed)
+                System.out.println("Choose a Cloud Tile by ID to take or type [Character Card] to use one: ");
+
+            else
+                System.out.println("Choose a Cloud Tile by ID: ");
             try {
                 input = stdIn.readLine();
             } catch (IOException e) {
                 e.printStackTrace();
             }
             if (input.equals("Character Card")) {
-                useCharacterCard();
-                return;
+                cardUsed = useCharacterCard();
+                if(cardUsed){
+                    return;
+                }
             }
             else{
                 for(int i=0; i<players.size();i++){
@@ -629,53 +661,169 @@ public class CLI extends View{
 
     }
 
-    public void useCharacterCard(){
-        Message msg_out = new Message(MessageType.CHOSEN_CHARACTER_CARD);
-
+    public boolean useCharacterCard(){
+        parameter.setPlayer(player);
+        boolean invalidInput = true;
         System.out.println("Which one do you wanna activate? ");
         showCharacterCards();
+        showCharacterCardsCaptions();
+        CharacterCard chosenCard = null;
         String input = "";
+        do{
+            System.out.println("Choose the card you wanna activate or type [exit] to cancel.");
+            try {
+                input = stdIn.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            for(CharacterCard cc : characterCards){
+                if(input.equals(String.valueOf(cc.getID()))&&player.getWallet()>=cc.getPrice()) {
+                    chosenCard = cc;
+                    invalidInput = false;
+                }
+            }
+        }while(invalidInput && !input.equals("exit"));
+
+        setChosenCharacterCard(chosenCard);
+
+    //setColorToMove(null);??
+    //setChosenIslandPos(null);??
+
+        switch (input){
+            case ("1") ->{
+                choosePawnColor();
+                chooseIsland();
+            }
+            case ("9"), ("11"), ("12") -> {
+                choosePawnColor();
+            }
+            case ("3"), ("5") -> {
+                chooseIsland();
+            }
+            case ("7") -> {
+                int chosenStudents = 0;
+                Map<PawnColor, Integer> map1 = new HashMap<>(){{
+                    for(PawnColor color : PawnColor.values()){
+                        put(color, 0);
+                    }
+                }};
+                do{
+                    System.out.println("Choose a student from this card: ");
+                    try {
+                        input = stdIn.readLine();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    //check che sia stato inserito un input = color
+                    map1.replace(PawnColor.valueOf(input), map1.get(PawnColor.valueOf(input))+1);
+                    chosenStudents++;
+                    //if non colore allora non incrementare chosenStudents
+                }while(chosenStudents<3 && !input.equals("stop"));
+                Map<PawnColor,Integer> map2 = new HashMap<>(){{
+                    for(PawnColor color : PawnColor.values()){
+                        put(color,0);
+                    }
+                }};
+                do{
+                    System.out.println("Choose a student from your entrance: ");
+                    try {
+                        input = stdIn.readLine();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    //check che sia stato inserito un input = color
+                    map2.replace(PawnColor.valueOf(input), map2.get(PawnColor.valueOf(input))+1);
+                    chosenStudents--;
+                    //if non colore allora non incrementare chosenStudents
+                }while(chosenStudents>0);
+                parameter.setColorMap1(map1);
+                parameter.setColorMap2(map2);
+            }
+            case ("10") -> {
+                int chosenStudents = 0;
+                Map<PawnColor, Integer> map1 = new HashMap<>(){{
+                    for(PawnColor color : PawnColor.values()){
+                        put(color, 0);
+                    }
+                }};
+                do{
+                    System.out.println("Choose a student from your Entrance: ");
+                    try {
+                        input = stdIn.readLine();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    //check che sia stato inserito un input = color
+                    map1.replace(PawnColor.valueOf(input), map1.get(PawnColor.valueOf(input))+1);
+                    chosenStudents++;
+                    //if non colore allora non incrementare chosenStudents
+                }while(chosenStudents<2 && !input.equals("stop"));
+                Map<PawnColor,Integer> map2 = new HashMap<>(){{
+                    for(PawnColor color : PawnColor.values()){
+                        put(color,0);
+                    }
+                }};
+                do{
+                    System.out.println("Choose a student from your Hall: ");
+                    try {
+                        input = stdIn.readLine();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    //check che sia stato inserito un input = color
+                    map2.replace(PawnColor.valueOf(input), map2.get(PawnColor.valueOf(input))+1);
+                    chosenStudents--;
+                    //if non colore allora non incrementare chosenStudents
+                }while(chosenStudents>0);
+                parameter.setColorMap1(map1);
+                parameter.setColorMap2(map2);
+            }
+            case ("exit") ->{
+                return false;
+            }
+        }
+
+        setMessageType(MessageType.CHOSEN_CHARACTER_CARD);
+        return true;
+    }
+
+    private void chooseIsland() {
+        String input = "";
+        System.out.println("Choose an island: ");
+        showIslands();
         try {
             input = stdIn.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        setChosenCharacterCard(getCharacterCards().get(Integer.parseInt(input)));
-
-        setColorToMove(null);
-        setChosenIslandPos(null);
-
-        switch (input){
-            case ("1"), ("9"), ("11"), ("12") -> {
-                System.out.println("Choose a color: ");
-                try {
-                    input = stdIn.readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                setColorToMove(PawnColor.valueOf(input));
-            }
-            case ("3"), ("5") -> {
-                System.out.println("Choose an island: ");
-                showIslands();
-                try {
-                    input = stdIn.readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                setChosenIslandPos(Integer.parseInt(input));
-            }
-            case ("7"), ("10") ->{
-                //TODO MAPPE
-            }
-        }
-
-        setMessageType(MessageType.CHOSEN_CHARACTER_CARD);
+        parameter.setIsland(islandManager.getIslandList().get(Integer.parseInt(input)));
     }
 
+    private void choosePawnColor() {
+        String input = "";
+        System.out.println("Choose a color: ");
+        try {
+            input = stdIn.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        parameter.setChosenColor(PawnColor.valueOf(input));
+        //setColorToMove(PawnColor.valueOf(input));
+    }
+
+    private void showCharacterCardsCaptions() {
+        for(CharacterCard cc : characterCards){
+            System.out.println("Card: " + cc.getID());
+            System.out.println("Effect: " + cc.getCaption());
+        }
+    }
+
+    public void showEndGameWindow(String winnerID){
+        System.out.println("End Game: player "+ winnerID+" won the game!\n");
+    }
     @Override
     public void updateView() {
         super.updateView();
-        //TODO
+        //TODO?
     }
 }

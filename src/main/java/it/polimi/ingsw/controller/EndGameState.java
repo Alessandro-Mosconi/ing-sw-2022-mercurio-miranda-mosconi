@@ -3,6 +3,7 @@ import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.PawnColor;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.model.SchoolBoard;
+import it.polimi.ingsw.virtualview.VirtualView;
 
 public class EndGameState implements GameControllerState{
     Player winner = new Player();
@@ -42,6 +43,8 @@ public class EndGameState implements GameControllerState{
 
     @Override
     public void endState(GameController gameController) {
-        //todo mostra a video il vincitore presumo
+        for(VirtualView vv : gameController.getVirtualViews()){
+            vv.getClientHandler().tellWhoWon(winner);
+        }
     }
 }

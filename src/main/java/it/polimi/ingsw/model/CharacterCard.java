@@ -6,15 +6,34 @@ public class CharacterCard{
 
 
     // stackOverflow suggests to use Integer type if we need to assign null value
-    protected Integer ID;
-    protected int price;
-    //private final CardBehavior cardBehavior;
-    protected Map<PawnColor,Integer> students = null;
+    private Integer ID;
 
-    public CharacterCard(int id, int price/*, CardBehavior cardBehavior*/) {
+    public String getCaption() {
+        return caption;
+    }
+
+    public void setCaption(String caption) {
+        this.caption = caption;
+    }
+
+    private String caption = "caption";
+    private int price;
+    private final CardBehavior cardBehavior;
+    public CardBehavior getCardBehavior() {
+        return cardBehavior;
+    }
+
+
+    public CharacterCard(int id, int price,CardBehavior cardBehavior) {
         this.ID=id;
         this.price=price;
-        //this.cardBehavior = cardBehavior;
+        this.cardBehavior = cardBehavior;
+    }
+    public CharacterCard(int id, int price,CardBehavior cardBehavior, String cap) {
+        this.ID=id;
+        this.price=price;
+        this.cardBehavior = cardBehavior;
+        this.caption = cap;
     }
 
     public int getPrice() {
@@ -34,8 +53,9 @@ public class CharacterCard{
     public void increasePrice(){
         this.setPrice(this.getPrice()+1);
     }//After using the card, increases the price and decreases game.bank
-    //public CardBehavior getCardBehavior() {return cardBehavior;}
 
+    //public CardBehavior getCardBehavior() {return cardBehavior;}
+/*
     public void Effect(Parameter parameter) {
 
     };
@@ -44,6 +64,6 @@ public class CharacterCard{
     };
     public void endEffect(Parameter parameter){
 
-    };
+    };*/
 
 }

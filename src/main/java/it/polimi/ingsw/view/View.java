@@ -17,7 +17,7 @@ public abstract class View {
     protected ArrayList<Player> players;
     protected ArrayList<CloudTile> clouds = new ArrayList<>();
     protected IslandManager islandManager = new IslandManager(new ArrayList<>());
-    protected ArrayList<CharacterCard> characterCards;
+    protected ArrayList<CharacterCard> characterCards = new ArrayList<>();
     protected MessageType messageType;
     protected TowerColor towerColor;
     protected ArrayList<WizardType> wizards = new ArrayList<>(4){{
@@ -34,6 +34,21 @@ public abstract class View {
     protected Integer chosenCloudPos;
     protected Integer chosenIslandPos;
 
+    public Parameter getParameter() {
+        return parameter;
+    }
+
+    public void setParameter(Parameter parameter) {
+        this.parameter = parameter;
+    }
+
+    protected Parameter parameter = new Parameter();
+
+    public void setCardUsed(boolean cardUsed) {
+        this.cardUsed = cardUsed;
+    }
+
+    protected boolean cardUsed = false;
 
 
 
@@ -277,4 +292,7 @@ public abstract class View {
     }
 
     public abstract void showUsedAssistantCards();
+
+    public void showEndGameWindow(String winnerID) {
+    }
 }

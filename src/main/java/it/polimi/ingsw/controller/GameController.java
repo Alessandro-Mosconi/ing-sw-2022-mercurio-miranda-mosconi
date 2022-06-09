@@ -1,14 +1,12 @@
 package it.polimi.ingsw.controller;
 
-import it.polimi.ingsw.model.CharacterCard;
-import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.ModelListener;
-import it.polimi.ingsw.model.Parameter;
+import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.ClientHandler;
 import it.polimi.ingsw.network.VirtualViewListener;
 import it.polimi.ingsw.virtualview.VirtualView;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class GameController implements VirtualViewListener {
     public void setGame(Game game) {
@@ -154,6 +152,40 @@ public class GameController implements VirtualViewListener {
     @Override
     public void performAction() {
         manageState();
+    }
+
+    @Override
+    public void activateCardEffect(Integer ID, String playerUsername, PawnColor color, Integer islandID, Map<PawnColor,Integer> map1, Map<PawnColor,Integer> map2) {
+        cardUsed = true;
+        for(CharacterCard cc : game.getChosenCharacterCards()){
+            if(ID.equals(cc.getID())){
+                game.setCurrEffect(cc);
+            }
+        }
+        Parameter parameter = new Parameter(this.game);
+        Player player = new Player();
+        for(Player p : game.getPlayers()){
+            if(p.getNickName().equals(playerUsername))
+                player=p;
+        }
+        parameter.setPlayer(player);
+        parameter.setChosenColor(color);
+        if(islandID!=null) {
+            parameter.setIsland(this.game.getIslandManager().getIslandList().get(islandID));
+        }
+        parameter.setColorMap1(map1);
+        parameter.setColorMap2(map2);
+        game.setCurrParameter(parameter);
+        game.startEffect();
+
+        game.increaseCurrEffectPrice();
+        //parameter.setGame(this.game);
+
+    }
+
+    public void endCardEffect() {
+        game.endEffect();
+        cardUsed=false;
     }
 
     @Override

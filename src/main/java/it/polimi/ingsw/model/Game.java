@@ -10,6 +10,23 @@ public class Game {
     private int numberOfPlayers;
     private String gameID;
     private GameMode gameMode;
+
+    public CharacterCard getCurrEffect() {
+        return currEffect;
+    }
+
+    public void setCurrEffect(CharacterCard currEffect) {
+        this.currEffect = currEffect;
+    }
+
+    public Parameter getCurrParameter() {
+        return currParameter;
+    }
+
+    public void setCurrParameter(Parameter currParameter) {
+        this.currParameter = currParameter;
+    }
+
     private ArrayList<CloudTile> cloudTiles;
     private ArrayList<SchoolBoard> schoolBoards;
     private IslandManager islandManager;
@@ -24,6 +41,8 @@ public class Game {
     private PawnColor keptOut=null;
     private boolean started;
     private int entryTiles;
+    private CharacterCard currEffect;
+    private Parameter currParameter;
     private List<ModelListener> clientHandlersListeners = new ArrayList<ModelListener>();
 
     public ArrayList<WizardType> getAvailableWizards() {
@@ -296,18 +315,27 @@ public class Game {
         }*/
        // this.setWizards(wizards);//il mago viene scelto nel setup del controller
         //fillCloudTiles();  vengono riempite nel SETUPSTATE dopo il playerOrder
+        for(ModelListener l : clientHandlersListeners){
+            l.modelCreated();
+        }
         if(gameMode.equals(GameMode.expert)){
             initAllCharacterCards(); //Allocates all of the CharacterCards
             ArrayList<CharacterCard> chosenCharacterCards = initChosenCharacterCards(); //Takes a sublist from the randomized CharacterCards list
             this.setChosenCharacterCards(chosenCharacterCards);
             for(CharacterCard cc: chosenCharacterCards){
-                cc.initializeCard(new Parameter(this));
+                cc.getCardBehavior().initializeCard(new Parameter(this));
             }//Initializes the chosen card
             this.setEntryTiles(4);
             this.setBank(20);
-        }
-        for(ModelListener l : clientHandlersListeners){
-            l.modelCreated();
+            for(Player p : players){
+                p.setWallet(1);
+                for(ModelListener l : clientHandlersListeners){
+                    l.updateWallet(p);
+                }
+            }
+            for(ModelListener l : clientHandlersListeners){
+                l.initializedCharacterCards(chosenCharacterCards);
+            }
         }
     }
     public void updatePlayerOrder(){
@@ -437,26 +465,27 @@ public class Game {
     }
 //gestione init character cards
     private ArrayList<CharacterCard> initChosenCharacterCards() {
-        return (ArrayList<CharacterCard>) getAllCharacterCards().subList(0,2);
+        ArrayList<CharacterCard> chosenCards = new ArrayList<>(getAllCharacterCards().subList(0,3));
+        return chosenCards;
     }
     private ArrayList<CharacterCard> getAllCharacterCards() {
         return shuffleCharacterCards();
     } /* restituisce tutte le charcards in disordine;
      quando si chiama la init si pescano le prime 3 in disordine;
      dopo la init si accede alle chosen tramite la get*/
-    private void initAllCharacterCards(){//TODO ereditarietà instead of interfaccia?
-        this.allCharacterCards.add(new CharacterCard1(1,1));
-        this.allCharacterCards.add(new CharacterCard2 (2,2));
-        this.allCharacterCards.add(new CharacterCard3 (3,3));
-        this.allCharacterCards.add(new CharacterCard (4,1));
-        this.allCharacterCards.add(new CharacterCard (5,2));
-        this.allCharacterCards.add(new CharacterCard (6,3));
-        this.allCharacterCards.add(new CharacterCard (7,1));
-        this.allCharacterCards.add(new CharacterCard (8,2));
-        this.allCharacterCards.add(new CharacterCard (9,3));
-        this.allCharacterCards.add(new CharacterCard (10,1));
-        this.allCharacterCards.add(new CharacterCard (11,2));
-        this.allCharacterCards.add(new CharacterCard (12,3));
+    private void initAllCharacterCards(){
+        this.allCharacterCards.add(new CharacterCard (1,1,new CharacterCard1()));
+        this.allCharacterCards.add(new CharacterCard (2,2,new CharacterCard2()));
+        this.allCharacterCards.add(new CharacterCard (3,3,new CharacterCard3()));
+        this.allCharacterCards.add(new CharacterCard (4,1,new CharacterCard4()));
+        this.allCharacterCards.add(new CharacterCard (5,2,new CharacterCard5()));
+        this.allCharacterCards.add(new CharacterCard (6,3,new CharacterCard6()));
+        this.allCharacterCards.add(new CharacterCard (7,1,new CharacterCard7()));
+        this.allCharacterCards.add(new CharacterCard (8,2,new CharacterCard8()));
+        this.allCharacterCards.add(new CharacterCard (9,3,new CharacterCard9()));
+        this.allCharacterCards.add(new CharacterCard (10,1,new CharacterCard10()));
+        this.allCharacterCards.add(new CharacterCard (11,2,new CharacterCard11()));
+        this.allCharacterCards.add(new CharacterCard (12,3,new CharacterCard12()));
     }
     public void addPlayer(Player playerToAdd) {
         players.add(playerToAdd);
@@ -477,6 +506,9 @@ public class Game {
         cPlayer.useAssistantCard(assistantCard);
         for(ModelListener l: clientHandlersListeners){
             l.updateLastAssistantCard(cPlayer);
+            if (cPlayer.isBonus2Shifts()){
+                l.updateMaxShift(cPlayer);
+            }
         }
     }
     public void movePawnToIsland(Player currPlayer, PawnColor student, Island destination){
@@ -489,6 +521,12 @@ public class Game {
     public void movePawnToHall(Player currPlayer, PawnColor student){
         currPlayer.moveFromEntranceToHall(student);
         updateProfessor(student);
+        if(currPlayer.getSchoolBoard().checkForCoin(student)){
+            currPlayer.setWallet(currPlayer.getWallet()+1);
+            for(ModelListener l : clientHandlersListeners){
+                l.updateWallet(currPlayer);
+            }
+        }
         for(ModelListener l : clientHandlersListeners){
             l.updateSchoolBoardEntrance(currPlayer);
             l.updateSchoolBoardHall(currPlayer);
@@ -529,5 +567,116 @@ public class Game {
         for(ModelListener l : clientHandlersListeners){
             l.updateAvailableTowerColors(availableTowerColors);
         }
+    }
+
+    public void increaseCurrEffectPrice() {
+        this.currEffect.increasePrice();
+        for(ModelListener l : clientHandlersListeners){
+            l.updatePrice(currEffect);
+        }
+    }
+
+    public void startEffect() {
+        this.currEffect.getCardBehavior().startEffect(this.currParameter);
+        currParameter.getPlayer().setWallet(currParameter.getPlayer().getWallet()-currEffect.getPrice());
+        for(ModelListener l : clientHandlersListeners) {
+            l.updateWallet(currParameter.getPlayer());
+        }
+            //TODO mandare gli updates mancanti
+        switch(currEffect.getID()){
+            case 1->{
+                for(ModelListener l : clientHandlersListeners){
+                    l.updateIslandList(islandManager.getIslandList());
+                    l.updateCardStudents(currEffect);
+                }
+            }
+            case 2 ->{
+                for(ModelListener l : clientHandlersListeners){
+                    l.updateProfessorTables(players);
+                }
+            }
+            case 3, 5 ->{
+                for(ModelListener l : clientHandlersListeners){
+                    l.updateIslandList(islandManager.getIslandList());
+                }
+            }
+            case 4 ->{
+                for(ModelListener l : clientHandlersListeners){
+
+                }
+            }
+            case 6 ->{
+                for(ModelListener l : clientHandlersListeners){
+
+                }
+            }
+            case 7 ->{
+                for(ModelListener l : clientHandlersListeners){
+                    l.updateSchoolBoardEntrance(currParameter.getPlayer());
+                    l.updateCardStudents(currEffect);
+                }
+            }
+            case 8 ->{
+                for(ModelListener l : clientHandlersListeners){
+
+                }
+            }
+            case 9 ->{
+                for(ModelListener l : clientHandlersListeners){
+
+                }
+            }
+            case 10 ->{
+                for(PawnColor color : PawnColor.values()){
+                    updateProfessor(color);
+                }
+                for(ModelListener l : clientHandlersListeners){
+                    l.updateSchoolBoardEntrance(currParameter.getPlayer());
+                    l.updateSchoolBoardHall(currParameter.getPlayer());
+                    l.updateProfessorTables(players);
+                }
+            }
+            case 11 ->{
+                for(ModelListener l : clientHandlersListeners){
+                    l.updateSchoolBoardHall(currParameter.getPlayer());
+                    l.updateCardStudents(currEffect);
+                }
+            }
+            case 12 ->{
+                for(PawnColor color : PawnColor.values()){
+                    updateProfessor(color);
+                }
+                for(ModelListener l : clientHandlersListeners){
+                    for(Player p : players){
+                        l.updateSchoolBoardHall(p);
+                    }
+                    l.updateProfessorTables(players);
+                }
+
+            }
+        }
+    }
+
+    public void endEffect() {
+        this.currEffect.getCardBehavior().endEffect(this.currParameter);
+        //TODO mandare il ripristino degli effetti (solo card 2 e forse 6-8-9)
+        switch(currEffect.getID()){
+            case 2 ->{
+                for(ModelListener l : clientHandlersListeners){
+                    l.updateProfessorTables(players);
+                }
+            }
+            case 6 ->{
+
+            }
+            case 8 ->{
+
+            }
+            case 9 ->{
+
+            }
+        }
+        this.currEffect=null;
+        this.currParameter=null;
     }
 }

@@ -222,6 +222,9 @@ public class VirtualView{
                 msg_out = new Message();
                 msg_out.setUser(username);
                 msg_out.setType(MessageType.LOBBY_WAITING);
+                ArrayList<String> toPush = new ArrayList<>();
+                toPush.add(String.valueOf(gamemode));
+                msg_out.fill(toPush);
                 ArrayList<String> UsersList = new ArrayList<>();
                 UsersList.add(username);
                 networkMap.put(idGame, UsersList);
@@ -269,6 +272,10 @@ public class VirtualView{
                     gController.addVirtualView(this);
                     msg_out = new Message();
                     msg_out.setUser(username);
+                    ArrayList<String> toPush = new ArrayList<>();
+                    toPush.add(String.valueOf(gamemode));
+                    msg_out.fill(toPush);
+                    //msg_out.fill(String.valueOf(gamemode));
                     //gController.getClientHandlerArrayList().add(this.clientHandler);
                     //gController.getVirtualViews().add(this);
                     //gameController.addVirtualView(this);
@@ -322,6 +329,57 @@ public class VirtualView{
                 msg_out.setType(MessageType.WAIT);
                 msg_out.setUser(username);
                 gameController.performAction();
+                return msg_out.toSend();
+            }
+            case CHOSEN_CHARACTER_CARD -> {
+                String playerID = payloads.get(0);
+                Integer characterCardID = Integer.parseInt(payloads.get(1));
+                int payloadsIterator = 2;
+                //Parameter parameter = new Parameter(player);
+                PawnColor color = null;
+                Integer islandID = null;
+                Map<PawnColor,Integer> map1 = null;
+                Map<PawnColor,Integer> map2 = null;
+                switch (characterCardID){
+                    case 1 ->{
+                        //parameter.setChosenColor(PawnColor.valueOf(payloads.get(payloadsIterator)));
+                        color = PawnColor.valueOf(payloads.get(payloadsIterator));
+                        payloadsIterator++;
+                        //parameter.setIsland(islandManager.getIslandList().get(Integer.parseInt(payloads.get(payloadsIterator))));
+                        islandID = Integer.parseInt(payloads.get(payloadsIterator));
+                    }
+                    case 3, 5 ->{
+                       //parameter.setIsland(islandManager.getIslandList().get(Integer.parseInt(payloads.get(payloadsIterator))));
+                        islandID = Integer.parseInt(payloads.get(payloadsIterator));
+                    }
+                    case 7, 10 ->{
+                        map1 = new HashMap<>();
+                        map2 = new HashMap<>();
+                        for(int j=0; j<PawnColor.values().length; j++){
+                            PawnColor currColor = PawnColor.valueOf(payloads.get(payloadsIterator));
+                            payloadsIterator++;
+                            Integer num = Integer.parseInt(payloads.get(payloadsIterator));
+                            payloadsIterator++;
+                            map1.put(currColor,num);
+                        }
+                        for(int j=0; j<PawnColor.values().length; j++){
+                            PawnColor currColor = PawnColor.valueOf(payloads.get(payloadsIterator));
+                            payloadsIterator++;
+                            Integer num = Integer.parseInt(payloads.get(payloadsIterator));
+                            payloadsIterator++;
+                            map2.put(currColor,num);
+                        }
+                        //parameter.setColorMap1(map1);
+                        //parameter.setColorMap2(map2);
+                    }
+                    case 9,11,12 ->{
+                        //parameter.setChosenColor(PawnColor.valueOf(payloads.get(payloadsIterator)));
+                        color = PawnColor.valueOf(payloads.get(payloadsIterator));
+                    }
+                }
+                gameController.activateCardEffect(characterCardID, username, color, islandID, map1, map2);
+                msg_out = new Message();
+                msg_out.setType(MessageType.CARD_ACTIVATED);
                 return msg_out.toSend();
             }
         }
@@ -407,4 +465,5 @@ public class VirtualView{
     public int getChosenCharacterCardID() {
         return 1; //TODO
     }
+
 }

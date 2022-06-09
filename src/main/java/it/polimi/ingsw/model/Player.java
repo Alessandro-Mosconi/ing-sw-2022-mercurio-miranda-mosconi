@@ -131,6 +131,7 @@ public class Player {
             schoolBoard.addStudentHall(color);
             //if(schoolBoard.checkForCoin(color))
             //    this.wallet++;
+            //Il check sul wallet l'ho lasciato fare al gameModel
         }
     }
 

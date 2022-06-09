@@ -567,7 +567,6 @@ public class ClientHandler implements Runnable, ModelListener
         msg_out.setType(MessageType.MODEL_CREATED);
         out.println(msg_out.toSend());
     }
-
     @Override
     public void updateIslandList(ArrayList<Island> islandList) {
         Message msg_out=new Message();
@@ -616,7 +615,13 @@ public class ClientHandler implements Runnable, ModelListener
     }
     @Override
     public void updateMaxShift(Player player) {
-
+        System.out.println("sending update Max Shift for player " + player.getNickName());
+        Message msg_out = new Message();
+        String payload = "";
+        payload = player.getNickName();
+        msg_out.setType(MessageType.UPDATE_MAX_SHIFT);
+        msg_out.fill(payload);
+        out.println(msg_out.toSend());
     }
     @Override
     public void updateKeptOut(PawnColor keptOutColor) {
@@ -633,11 +638,75 @@ public class ClientHandler implements Runnable, ModelListener
             payloads.add(String.valueOf(p.getPlayerNumber()));
             payloads.add(String.valueOf(p.getDeck().getWizard()));
             payloads.add(String.valueOf(p.getSchoolBoard().getTowersColor()));
-            //TODO serve mandare il wallet?
             //all'inizio si manda questo messaggio - successivamente si manda un updatePlayer singolo
-            //quando viene modificata la schoolbaord o il wallet
+            //quando viene modificata la schoolbaord o il wallet (il wallet viene mandato anche all'inizio se e solo se expertMode)
         }
         msg_out.fill(payloads);
         out.println(msg_out.toSend());
+    }
+
+    public void tellWhoWon(Player winner) {
+        System.out.println("sending : Player "+winner.getNickName()+" won the game.");
+        Message msg_out = new Message();
+        String payloads = "";
+        msg_out.setType(MessageType.GAME_ENDED);
+        payloads= winner.getNickName();
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
+    }
+
+    @Override
+    public void updateWallet(Player p){
+        System.out.println("sending player "+p.getNickName()+"'s wallet update");
+        Message msg_out = new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        msg_out.setType(MessageType.UPDATE_WALLET);
+        payloads.add(p.getNickName());
+        payloads.add(String.valueOf(p.getWallet()));
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
+    }
+
+    @Override
+    public void initializedCharacterCards(ArrayList<CharacterCard> chosenCharacterCards) {
+        System.out.println("sending init chosenCharacter cards + their attributes (if they have any)");
+        Message msg_out = new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        msg_out.setType(MessageType.INIT_CHARACTER_CARDS);
+        for(CharacterCard cc : chosenCharacterCards){
+            payloads.add(String.valueOf(cc.getID()));
+            payloads.add(String.valueOf(cc.getPrice()));
+
+            //if(cc.getID()==1||cc.getID()==7||cc.getID()==11)
+            if(cc.getCardBehavior() instanceof CharacterCard1) {// || cc.getCardBehavior() instanceof CharacterCard7 || cc.getCardBehavior() instanceof CharacterCard11){
+                for (PawnColor color : PawnColor.values()) {
+                    payloads.add(String.valueOf(color));
+                    payloads.add(String.valueOf(((CharacterCard1) cc.getCardBehavior()).getStudents().get(color)));
+                }
+            }
+            else if(cc.getCardBehavior() instanceof CharacterCard7){
+                for(PawnColor color : PawnColor.values()){
+                    payloads.add(String.valueOf(color));
+                    payloads.add(String.valueOf(((CharacterCard7) cc.getCardBehavior()).getStudents().get(color)));
+                }
+            }
+            else if(cc.getCardBehavior() instanceof CharacterCard11){
+                for(PawnColor color : PawnColor.values()){
+                    payloads.add(String.valueOf(color));
+                    payloads.add(String.valueOf(((CharacterCard11) cc.getCardBehavior()).getStudents().get(color)));
+                }
+            }
+        }
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
+    }
+
+    @Override
+    public void updatePrice(CharacterCard currEffect) {
+        System.out.println("sendind price increased card "+ currEffect.getID());
+        Message msg_out = new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        msg_out.setType(MessageType.PRICE_INCREASE);
+        payloads.add(String.valueOf(currEffect.getID()));
     }
 }

@@ -9,7 +9,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class NetworkHandler {
 
@@ -69,7 +68,7 @@ public class NetworkHandler {
                 msg_out.setType(MessageType.AssistantCard);
 
                 payloads.add(view.getChosenAssistantCard().getValue().toString());
-
+                view.setCardUsed(false);
                 nextPhase = Phase.CHOOSING_FIRST_MOVE;
                 phase = Phase.WAITING;
             }
@@ -81,59 +80,59 @@ public class NetworkHandler {
                     payloads.add(view.getDestination().toString());
                     nextPhase = Phase.CHOOSING_SECOND_MOVE;
                     //phase = Phase.WAITING;
-                } else {
+                } else if (view.getMessageType().equals(MessageType.CHOSEN_CHARACTER_CARD)){
+                    return characterCardToSend();
                     //phase = Phase.WAITING;
-                    nextPhase = Phase.CHOOSING_CharacterCard;
+                    /*nextPhase = Phase.CHOOSING_CHARACTER_CARD;
                     payloads.add(view.getChosenCharacterCard().getID().toString());
 
                     if (view.getColorToMove() != null)
                         payloads.add(view.getColorToMove().toString());
                     else if (view.getChosenIslandPos() != null)
-                        payloads.add(view.getColorToMove().toString());
+                        payloads.add(view.getColorToMove().toString());*/
                 }
 
             }
             case CHOOSING_SECOND_MOVE -> {
-                //TODO ALESSANDRO msg_out = view.choosePawnMove();
                 view.choosePawnMove();
+                msg_out.setType(view.getMessageType());
                 if (view.getMessageType().equals(MessageType.PAWN_MOVE)) {
                     payloads.add(view.getColorToMove().toString());
                     payloads.add(view.getDestination().toString());
                     nextPhase = Phase.CHOOSING_THIRD_MOVE;
                     //phase = Phase.WAITING;
-                } else {
+                } else if (view.getMessageType().equals(MessageType.CHOSEN_CHARACTER_CARD)){
+                    return characterCardToSend();
                     //phase = Phase.WAITING;
-                    nextPhase = Phase.CHOOSING_CharacterCard;
+                    /*nextPhase = Phase.CHOOSING_CHARACTER_CARD;
                     payloads.add(view.getChosenCharacterCard().getID().toString());
 
                     if (view.getColorToMove() != null)
                         payloads.add(view.getColorToMove().toString());
                     else if (view.getChosenIslandPos() != null)
-                        payloads.add(view.getColorToMove().toString());
+                        payloads.add(view.getColorToMove().toString());*/
                 }
-                msg_out.setType(view.getMessageType());
                 //nextPhase = Phase.CHOOSING_THIRD_MOVE;
                 //phase = Phase.WAITING;
             }
             case CHOOSING_THIRD_MOVE -> {
-                //TODO ALESSANDRO msg_out = view.choosePawnMove();
                 view.choosePawnMove();
+                msg_out.setType(view.getMessageType());
                 if (view.getMessageType().equals(MessageType.PAWN_MOVE)) {
                     payloads.add(view.getColorToMove().toString());
                     payloads.add(view.getDestination().toString());
                     nextPhase = Phase.CHOOSING_MN_SHIFT;
                     //phase = Phase.WAITING;
-                }else{
+                }else if (view.getMessageType().equals(MessageType.CHOSEN_CHARACTER_CARD)){
+                    return characterCardToSend();
                     //phase = Phase.WAITING;
-                    nextPhase = Phase.CHOOSING_CharacterCard;
+                    /*nextPhase = Phase.CHOOSING_CHARACTER_CARD;
                     payloads.add(view.getChosenCharacterCard().getID().toString());
-
                     if (view.getColorToMove() != null)
                         payloads.add(view.getColorToMove().toString());
                     else if (view.getChosenIslandPos() != null)
-                        payloads.add(view.getColorToMove().toString());
+                        payloads.add(view.getColorToMove().toString());*/
                 }
-                msg_out.setType(view.getMessageType());
                 //nextPhase = Phase.CHOOSING_MN_SHIFT;
                 //phase = Phase.WAITING;
             }
@@ -143,12 +142,14 @@ public class NetworkHandler {
                 if (view.getMessageType().equals(MessageType.MN_SHIFT)) {
                     payloads.add(view.getMN_shift().toString());
                     nextPhase = Phase.CHOOSING_CT;
-                } else {
-                    nextPhase = Phase.CHOOSING_CharacterCard;
+                } else if (view.getMessageType().equals(MessageType.CHOSEN_CHARACTER_CARD)){
+                    return characterCardToSend();
+                    /*nextPhase = Phase.CHOOSING_CHARACTER_CARD;
                     if (view.getColorToMove() != null)
                         payloads.add(view.getColorToMove().toString());
                     else if (view.getChosenIslandPos() != null)
                         payloads.add(view.getColorToMove().toString());
+                    */
                 }
             }
             case CHOOSING_CT -> {
@@ -157,12 +158,14 @@ public class NetworkHandler {
                 if (view.getMessageType().equals(MessageType.CHOSEN_CT)) {
                     payloads.add(view.getChosenCloudPos().toString());
                     nextPhase = Phase.PLANNING;
-                } else {
-                    nextPhase = Phase.CHOOSING_CharacterCard;
+                } else if (view.getMessageType().equals(MessageType.CHOSEN_CHARACTER_CARD)){
+                    return characterCardToSend();
+                    /*nextPhase = Phase.CHOOSING_CHARACTER_CARD;
                     if (view.getColorToMove() != null)
                         payloads.add(view.getColorToMove().toString());
                     else if (view.getChosenIslandPos() != null)
                         payloads.add(view.getColorToMove().toString());
+                */
                 }
                 for(Player p : view.getPlayers()){
                     p.setLastAssistantCard(null);
@@ -172,17 +175,50 @@ public class NetworkHandler {
                 msg_out.setType(MessageType.WAITING);
                 msg_out.fill("WAITING");
             }
-            case CHOOSING_PARAMETERS -> {
-                //todo in base alla carta che viene scelta cambiano i parametri richiesti
-            }
         }
 
         //previousPhase = phase;
         phase = Phase.WAITING;
         msg_out.fill(payloads);
         System.out.println("sending... " + msg_out.toSend());
-
         return msg_out.toSend();
+    }
+
+    private String characterCardToSend() {
+        previousPhase = phase;
+        Message cardMsg = new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        cardMsg.setType(MessageType.CHOSEN_CHARACTER_CARD);
+        payloads.add((view.getPlayer().getNickName()));
+        payloads.add(String.valueOf(view.getChosenCharacterCard().getID()));
+        switch (view.getChosenCharacterCard().getID()){
+            case 1 ->{
+                payloads.add(String.valueOf(view.getParameter().getChosenColor()));
+                payloads.add(String.valueOf(view.getParameter().getIsland().getIslandID()));
+            }
+            case 3, 5 ->{
+                payloads.add(String.valueOf(view.getParameter().getIsland().getIslandID()));
+            }
+            case 7, 10 ->{
+                Map<PawnColor,Integer> map1 = view.getParameter().getColorMap1();
+                Map<PawnColor,Integer> map2 = view.getParameter().getColorMap2();
+                for(PawnColor pc : PawnColor.values()){
+                    payloads.add(String.valueOf(pc));
+                    payloads.add(String.valueOf(map1.get(pc)));
+                }
+                for(PawnColor pc : PawnColor.values()){
+                    payloads.add(String.valueOf(pc));
+                    payloads.add(String.valueOf(map2.get(pc)));
+                }
+            }
+            case 9, 11, 12 ->{
+                payloads.add(String.valueOf(view.getParameter().getChosenColor()));
+            }
+            //casi senza parametro 2-4-6-8
+        }
+        cardMsg.fill(payloads);
+        nextPhase = phase;
+        return cardMsg.toSend();
     }
         /*
         if (phase==Phase.LOGIN) {
@@ -254,6 +290,9 @@ public class NetworkHandler {
                 phase = previousPhase;
             }
             case LOBBY_WAITING -> {
+                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
+                GameMode gm = GameMode.valueOf(String.valueOf(payloads.get(0)));
+                view.setGamemode(gm);
                 phase = Phase.WAITING;
                 nextPhase = Phase.SETTINGS;
             }
@@ -414,7 +453,7 @@ public class NetworkHandler {
                 break;
                 */
             case WAIT -> {
-                previousPhase = phase;
+                //previousPhase = phase;
                 phase = Phase.WAITING;
                 //nextPhase = nextPhase;
                 System.out.println("ok aspetto\n");
@@ -542,7 +581,7 @@ public class NetworkHandler {
             case UPDATE_SCHOOL_BOARD_ENTRANCE -> {
                 System.out.println("Ho ricevuto "+ input);
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                String playerID = payloads.get(0); //TODO si potrebbe mandare il playernumber al posto dell'id
+                String playerID = payloads.get(0);
                 int payloadsIterator = 1;
                 Map<PawnColor, Integer> entrance = new HashMap<>();
                 for (int j = 0; j < PawnColor.values().length; j++) {
@@ -689,7 +728,144 @@ public class NetworkHandler {
             case MODEL_CREATED -> {
                 view.showTable();
             }
-
+            case GAME_ENDED -> {
+                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
+                String winnerID = payloads.get(0);
+                phase = Phase.END_GAME;
+                view.showEndGameWindow(winnerID);
+                //TODO mandare al server il messaggio che la partita finisce e chiudere le socket
+            }
+            case UPDATE_WALLET ->{
+                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
+                String playerID = payloads.get(0);
+                Integer coins = Integer.parseInt(payloads.get(1));
+                for(Player p : view.getPlayers()){
+                    if(p.getNickName().equals(playerID)){
+                        p.setWallet(coins);
+                        if(p.getNickName().equals(view.getUsername())){
+                            view.getPlayer().setWallet(coins);
+                        }
+                    }
+                }
+            }
+            case UPDATE_MAX_SHIFT ->{
+                payloads = gson.fromJson(msg_in.getPayload(),ArrayList.class);
+                if(payloads.get(0).equals(view.getPlayer().getNickName())){
+                    view.getPlayer().setMaxShift(view.getPlayer().getMaxShift()+2);
+                }
+            }
+            case CARD_ACTIVATED -> {
+                phase = nextPhase;
+                //phase = previousPhase;
+            }
+            case PRICE_INCREASE -> {
+                payloads = gson.fromJson(msg_in.getPayload(),ArrayList.class);
+                Integer cardID = Integer.parseInt(payloads.get(0));
+                for(CharacterCard cc : view.getCharacterCards()){
+                    if(cc.getID().equals(cardID)){
+                        cc.increasePrice();
+                    }
+                }
+            }
+            case INIT_CHARACTER_CARDS -> {
+                payloads = gson.fromJson(msg_in.getPayload(),ArrayList.class);
+                int payloadsIterator = 0;
+                while(payloadsIterator<payloads.size()){
+                    Integer id = Integer.parseInt(payloads.get(payloadsIterator));
+                    payloadsIterator++;
+                    Integer price = Integer.parseInt(payloads.get(payloadsIterator));
+                    payloadsIterator++;
+                    switch (id){
+                        case 1 ->{
+                            Map<PawnColor,Integer> map = new HashMap<>();
+                            for(int j=0; j<PawnColor.values().length; j++){
+                                PawnColor c = PawnColor.valueOf(payloads.get(payloadsIterator));
+                                payloadsIterator++;
+                                Integer num = Integer.parseInt(payloads.get(payloadsIterator));
+                                payloadsIterator++;
+                                map.put(c,num);
+                            }
+                            CharacterCard1 cc1 = new CharacterCard1();
+                            cc1.setStudents(map);
+                            String caption = "";
+                            view.getCharacterCards().add(new CharacterCard(id,price,cc1,caption));
+                        }
+                        case 2 ->{
+                            CharacterCard2 cc2 = new CharacterCard2();
+                            String caption = "";
+                            view.getCharacterCards().add(new CharacterCard(id,price,cc2,caption));
+                        }
+                        case 3 ->{
+                            CharacterCard3 cc3 = new CharacterCard3();
+                            String caption = "";
+                            view.getCharacterCards().add(new CharacterCard(id,price,cc3,caption));
+                        }
+                        case 4 ->{
+                            CharacterCard4 cc4 = new CharacterCard4();
+                            String caption = "";
+                            view.getCharacterCards().add(new CharacterCard(id,price,cc4,caption));
+                        }
+                        case 5 ->{
+                            CharacterCard5 cc5 = new CharacterCard5();
+                            String caption = "";
+                            view.getCharacterCards().add(new CharacterCard(id,price,cc5,caption));
+                        }
+                        case 6 ->{
+                            CharacterCard6 cc6 = new CharacterCard6();
+                            String caption = "";
+                            view.getCharacterCards().add(new CharacterCard(id,price,cc6,caption));
+                        }
+                        case 7 ->{
+                            Map<PawnColor,Integer> map = new HashMap<>();
+                            for(int j=0; j<PawnColor.values().length; j++){
+                                PawnColor c = PawnColor.valueOf(payloads.get(payloadsIterator));
+                                payloadsIterator++;
+                                Integer num = Integer.parseInt(payloads.get(payloadsIterator));
+                                payloadsIterator++;
+                                map.put(c,num);
+                            }
+                            CharacterCard7 cc7 = new CharacterCard7();
+                            cc7.setStudents(map);
+                            String caption = "";
+                            view.getCharacterCards().add(new CharacterCard(id,price,cc7,caption));
+                        }
+                        case 8 ->{
+                            CharacterCard8 cc8 = new CharacterCard8();
+                            String caption = "";
+                            view.getCharacterCards().add(new CharacterCard(id,price,cc8,caption));
+                        }
+                        case 9 ->{
+                            CharacterCard9 cc9 = new CharacterCard9();
+                            String caption = "";
+                            view.getCharacterCards().add(new CharacterCard(id,price,cc9,caption));
+                        }
+                        case 10 ->{
+                            CharacterCard10 cc10 = new CharacterCard10();
+                            String caption = "";
+                            view.getCharacterCards().add(new CharacterCard(id,price,cc10,caption));
+                        }
+                        case 11 ->{
+                            Map<PawnColor,Integer> map = new HashMap<>();
+                            for(int j=0; j<PawnColor.values().length; j++){
+                                PawnColor c = PawnColor.valueOf(payloads.get(payloadsIterator));
+                                payloadsIterator++;
+                                Integer num = Integer.parseInt(payloads.get(payloadsIterator));
+                                payloadsIterator++;
+                                map.put(c,num);
+                            }
+                            CharacterCard11 cc11 = new CharacterCard11();
+                            cc11.setStudents(map);
+                            String caption = "";
+                            view.getCharacterCards().add(new CharacterCard(id,price,cc11,caption));
+                        }
+                        case 12 ->{
+                            CharacterCard12 cc12 = new CharacterCard12();
+                            String caption = "";
+                            view.getCharacterCards().add(new CharacterCard(id,price,cc12,caption));
+                        }
+                    }//TODO SETTARE LE CAPTIONS DELLE CARTE NELLO SWITCH CASE
+                }
+            }
         }
     }
 }
