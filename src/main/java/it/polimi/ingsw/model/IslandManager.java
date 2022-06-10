@@ -30,16 +30,34 @@ public class IslandManager {
             resetIslandsID();
         }
         //this branch checks the current island with its previous
-        if (checkIslands(this.islandList.get(islandPos), this.islandList.get((this.islandList.size()+islandPos-1)%(this.islandList.size())))){
+        if (checkIslands(this.islandList.get((this.islandList.size()+islandPos-1)%(this.islandList.size())), this.islandList.get(islandPos))){
             mergeIslands(this.islandList.get((this.islandList.size()+islandPos-1)%(this.islandList.size())), this.islandList.get(islandPos));
             resetIslandsID();
         }
     }//Checks both previous and next island and merge them in case they are owned by the same player/team
+    public void checkForMerge(Integer islandID){
+
+        //this if branch checks the current island with its next
+        int islandPos = islandID;
+        if(islandList.get(currMNPosition).getTowerColor()==null) return;
+        if (checkIslands(this.islandList.get(islandPos), this.islandList.get((islandPos+1)%(this.islandList.size())))){
+            mergeIslands(this.islandList.get(islandPos), this.islandList.get((islandPos+1)%(this.islandList.size())));
+            resetIslandsID();
+        }
+        //this branch checks the current island with its previous
+        if (checkIslands(this.islandList.get((this.islandList.size()+islandPos-1)%(this.islandList.size())), this.islandList.get(islandPos))){
+            mergeIslands(this.islandList.get((this.islandList.size()+islandPos-1)%(this.islandList.size())), this.islandList.get(islandPos));
+            resetIslandsID();
+        }
+    }//Checks both previous and next island and merge when characterCard 3 is activated
 
     private void resetIslandsID() {
         int i=0;
         for(Island island : islandList){
             island.setIslandID(i);
+            if(island.isMotherNature()){
+                currMNPosition=i;
+            }
             i++;
         }
     }
@@ -51,7 +69,8 @@ public class IslandManager {
         }
         primaryIsland.setTowersNumber(primaryIsland.getTowersNumber() + secondaryIsland.getTowersNumber());
         primaryIsland.setNoEntryTile(secondaryIsland.isNoEntryTile());
-        primaryIsland.setMotherNature(true);
+        boolean motherNature = primaryIsland.isMotherNature() || secondaryIsland.isMotherNature();
+        primaryIsland.setMotherNature(motherNature);
         deleteIsland(secondaryIsland);
     }//Merges 2 islands and deletes the second one
 
@@ -67,9 +86,8 @@ public class IslandManager {
 
     public void moveMotherNature(int shift){
         this.islandList.get(currMNPosition).setMotherNature(false);
-        this.currMNPosition=((currMNPosition+shift)% islandList.size());
+        this.currMNPosition=((islandList.size()+currMNPosition+shift)% islandList.size());
         this.islandList.get(currMNPosition).setMotherNature(true);
-        //this.currMNPosition=((currMNPosition+shift)% islandList.size());
     }//Shifts motherNature
 
     public void assignInfluence(ArrayList<SchoolBoard> schoolBoards) {
@@ -80,12 +98,4 @@ public class IslandManager {
         this.islandList = islandList;
     }
 
-/*    public int getMNPosition(){
-        for (int i = 0; i < islandList.size(); i++){
-            if (islandList.get(i).isMotherNature())
-                return i;
-        }
-        //bisogna trattare il caso in cui non ritorni nulla? Probabilmente dobbiamo inserire un errore
-        return 0;
-    }*/ //diventa inutile questo metodo se salviamo il valore della posizione dell'isola su cui è MN
 }

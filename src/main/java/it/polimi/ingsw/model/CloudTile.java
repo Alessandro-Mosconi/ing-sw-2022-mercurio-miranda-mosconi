@@ -25,15 +25,13 @@ public class CloudTile {
         this.cloudID=ID;
         this.students = students;
     }
-    public CloudTile(int ID)
-    {
-        this.cloudID=ID;
+    public CloudTile(int ID) {
+        this.cloudID = ID;
         this.students = new HashMap<PawnColor, Integer>();
 
-        for(PawnColor color : PawnColor.values())
+        for (PawnColor color : PawnColor.values())
             this.students.put(color, 0);
     }
-
     public CloudTile()
     {
         this.students = new HashMap<PawnColor, Integer>();
@@ -41,7 +39,6 @@ public class CloudTile {
         for(PawnColor color : PawnColor.values())
             this.students.put(color, 0);
     }
-
     public Map<PawnColor, Integer> getStudents() {
         return students;
     }
@@ -51,18 +48,9 @@ public class CloudTile {
     public void setStudents(PawnColor color, int n) {
         this.students.replace(color,n);
     }
-
     public void addStudents(PawnColor color) {
         this.students.replace(color, this.students.get(color)+1);
     }
-
-    /*
-    public void removeStudents(PawnColor color) {
-        if(this.students.get(color)>0)
-            this.students.replace(color, this.students.get(color)-1);
-    }
-    */
-    
     public void reset(PawnColor color) {
         this.students.replace(color, 0);
     }

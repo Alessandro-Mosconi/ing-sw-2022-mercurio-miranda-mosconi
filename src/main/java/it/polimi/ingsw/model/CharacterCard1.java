@@ -8,7 +8,7 @@ public class CharacterCard1 implements CardBehavior{
         for(PawnColor color : PawnColor.values()){
             put(color,0);
         }
-    }}; //da inizializzare a 4 nel setup game
+    }};
     public Map<PawnColor, Integer> getStudents() {
         return students;
     }

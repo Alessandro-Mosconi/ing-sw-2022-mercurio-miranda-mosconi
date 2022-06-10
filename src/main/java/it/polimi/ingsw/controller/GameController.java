@@ -22,13 +22,8 @@ public class GameController implements VirtualViewListener {
     private boolean cardUsed = false;
     private boolean lastRound = false;
     private ArrayList<ClientHandler> clientHandlerArrayList = new ArrayList<>();
-
-    //i clientHandler vanno aggiunti qui man mano che vengono creati
-    //in realtà non servono i clienthandler sul controller se li attribuiamo alle vvs
     private ArrayList<VirtualView> virtualViews = new ArrayList<>(); //da unire ai clientHandler in un'unica classe sooner or later
-    private ArrayList<Integer> virtualViewsOrder = new ArrayList<>()/*{{
-        add(0);add(1);
-    }}*/;
+    private ArrayList<Integer> virtualViewsOrder = new ArrayList<>();
     private int virtualViewsOrderIterator;
     private CharacterCard currEffect;
     private Parameter currParameter;
@@ -135,18 +130,12 @@ public class GameController implements VirtualViewListener {
     }
 
     public void manageState(){
-        //currentState=new GameControllerState();
-        //nextState=new GameControllerState();
-        //getPLAYERS somehow
-        //currentState.startState();
-        //while(true){
             currentState=nextState;
             System.out.println("Inizia la fase di "+ currentState.toString());
             currentState.startState(this);
             currentState.updateNextState(this);
             currentState.endState(this);
             System.out.println("Finisce la fase di "+ currentState.toString());
-        //}
     }
 
     @Override
@@ -177,14 +166,18 @@ public class GameController implements VirtualViewListener {
         parameter.setColorMap2(map2);
         game.setCurrParameter(parameter);
         game.startEffect();
-
         game.increaseCurrEffectPrice();
-        //parameter.setGame(this.game);
+        for(VirtualView vv : virtualViews){
+            vv.getClientHandler().tellAPlayerActivatedACard(virtualViews.get(virtualViewsOrder.get(virtualViewsOrderIterator)).getUsername(), ID);
+        }
 
     }
 
     public void endCardEffect() {
         game.endEffect();
+        for(VirtualView vv : virtualViews){
+            vv.getClientHandler().tellTheEffectEnded();
+        }
         cardUsed=false;
     }
 
@@ -193,33 +186,15 @@ public class GameController implements VirtualViewListener {
         this.virtualViews.add(virtualView);
         this.getClientHandlerArrayList().add(virtualView.getClientHandler());
         this.virtualViewsOrder.add(virtualView.getPlayer().getPlayerNumber());
-        //game.addListener((ModelListener) virtualView.getClientHandler());
     }
 
     public void nextVirtualView() {
-        //TO TEST mi aspetto che setti a current virtual view la next virtual view nell'array dell'ordine delle VV
-        //int size = getVirtualViews().size();
-        //clientHandlerArrayList.get(getVirtualViewsOrder().get(size+virtualViewsOrderIterator)) ;
-        //clientHandlerArrayList.get(getVirtualViewsOrder().get((getVirtualViews().size()+virtualViewsOrderIterator)%getVirtualViews().size()-1)).tellToWait();
-        //virtualViewsOrderIterator = ((virtualViewsOrderIterator +1)%getVirtualViews().size());
-        //clientHandlerArrayList.get(getVirtualViewsOrder().get((getVirtualViews().size()+virtualViewsOrderIterator)%getVirtualViews().size()-1)).tellToPlay();
-        //clientHandlerArrayList.get(0).tellToWait();
-        //clientHandlerArrayList.get(1).tellToPlay();
-        //virtualViewsOrderIterator = virtualViewsOrderIterator%(getVirtualViewsOrder().size());
-        //this.clientHandlerArrayList.get(this.getVirtualViewsOrder().get(this.virtualViewsOrderIterator)).tellToWait();
-        //getVirtualViews().get(getVirtualViewsOrder().get(getVirtualViewsOrderIterator())).getClientHandler().tellToWait();
         int currVV=getVirtualViewsOrder().get(virtualViewsOrderIterator);
         getVirtualViews().get(currVV).getClientHandler().tellToWait();
         int newIt = ((virtualViewsOrderIterator+1)%getVirtualViews().size());
         setVirtualViewsOrderIterator(newIt);
         int newVV = getVirtualViewsOrder().get(virtualViewsOrderIterator);
-        //this.virtualViewsOrderIterator = (this.getVirtualViews().size()+this.virtualViewsOrderIterator+1)%(this.getVirtualViews().size());
         System.out.println("ITERATOR VALUE updated : " + newVV);
-        //getVirtualViews().get(getVirtualViewsOrderIterator()).getClientHandler().tellToPlay();
-        //setVirtualViewsOrderIterator(newIt);
         getVirtualViews().get(newVV).getClientHandler().tellToPlay();
-//        this.clientHandlerArrayList.get(this.getVirtualViewsOrder().get(this.virtualViewsOrderIterator)).tellToPlay();
-
-
     }
 }

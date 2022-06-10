@@ -77,7 +77,7 @@ public class Player {
     public void collectCoin(PawnColor color){
         //if(schoolBoard.checkForCoin(color))
           //  this.wallet = wallet +1;
-    }//Increases wallet if needed
+    }//Increases wallet if needed TODO ho gestito le monete fra game e controller - questo metodo che è stato testatp è inutile
     public void setLastAssistantCard(AssistantCard lastAssistantCard) {
         this.lastAssistantCard = lastAssistantCard;
     }
@@ -97,16 +97,7 @@ public class Player {
     public void useAssistantCard(AssistantCard card)
     {
         int pos = card.getValue()-1;
-        /*for(AssistantCard chosenCard : this.deck.getCards())
-        {
-            if(chosenCard.equals(card) && !chosenCard.isConsumed())
-            {
-                chosenCard.setConsumed(true);
-                this.lastAssistantCard = chosenCard;
-                updateMaxShift();
-                //this.deck.getCards().remove(chosenCard);
-            }
-        }*/
+
         this.deck.getCards().get(pos).setConsumed(true);
         this.setLastAssistantCard(card);
         updateMaxShift();
@@ -124,21 +115,17 @@ public class Player {
 
 //move a specific student from the entrance to the hall
     public void moveFromEntranceToHall(PawnColor color){
-        if(schoolBoard.getStudentEntrance().get(color)<=0)
+        if(schoolBoard.getStudentEntrance().get(color)<=0 && schoolBoard.getStudentHall().get(color)<10) //TODO inserire il check corrispondente alla seconda condizione lato clietn
             System.out.println(color + " not present in Entrance");
         else {
             schoolBoard.removeStudentEntrance(color);
             schoolBoard.addStudentHall(color);
-            //if(schoolBoard.checkForCoin(color))
-            //    this.wallet++;
-            //Il check sul wallet l'ho lasciato fare al gameModel
         }
     }
 
 
  //remove all the student from a specific cloud and put them in the entrance
     public void moveFromCloudToEntrance(CloudTile cloud) {
-
         for (PawnColor color : PawnColor.values()) {
             schoolBoard.addStudentEntrance(color, cloud.getStudents().get(color));
             cloud.reset(color);

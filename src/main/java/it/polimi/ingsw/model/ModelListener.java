@@ -4,13 +4,11 @@ import java.util.ArrayList;
 
 public interface ModelListener {
 
-    void updateModel(Game game);
     void updateLastAssistantCard(Player player);
     void updateIsland (Island island);
     void updateSetupPlayers(ArrayList<Player> players);
     void updateIslandList(ArrayList<Island> islandList);
     void updateCTs (ArrayList<CloudTile> cts);
-    void updateCharacterCardUsed (CharacterCard charCard);
     void updateCardStudents (CharacterCard charCard);
     void updateBonus2InfluencePoints (Player player);
     void updateMaxShift(Player player);
@@ -34,4 +32,6 @@ public interface ModelListener {
     void initializedCharacterCards(ArrayList<CharacterCard> chosenCharacterCards);
 
     void updatePrice(CharacterCard currEffect);
+
+    void updateTowersDoCount(boolean towersDoCount);
 }

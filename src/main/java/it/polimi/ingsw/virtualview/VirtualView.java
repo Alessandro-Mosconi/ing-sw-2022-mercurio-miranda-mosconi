@@ -38,7 +38,7 @@ public class VirtualView{
     private ArrayList<SchoolBoard> schoolBoards;
     private ArrayList<CloudTile> clouds;
     private IslandManager islandManager;
-    private ArrayList<CharacterCard> characterCards; //sono solo le 3 scelte immagino
+    private ArrayList<CharacterCard> characterCards; //TODO questi 4 attributi a cosa servono?
     private boolean online = true;
     private boolean isMyTurn = false;
     private ArrayList<String> players;
@@ -152,42 +152,6 @@ public class VirtualView{
         this.error_Type_type = error_Type_type;
     }
 
-    public String sendAnswer() {
-        Message msg = new Message(username, out_type);
-
-        switch (out_type) {
-            case ERROR:
-                msg.fill(error_Type_type);
-                break;
-
-            case CloudChanged:
-                msg.fill(clouds);
-                break;
-
-            case HallChanged:
-                msg.fill(player.getSchoolBoard().getStudentHall());
-                break;
-
-            case EntranceChanged:
-                msg.fill(player.getSchoolBoard().getStudentEntrance());
-                break;
-
-            case ProfTableChanged:
-                msg.fill(player.getSchoolBoard().getProfessorTable());
-                break;
-
-            case GAME_STARTED:
-                break;
-
-            case WalletChanged:
-
-            default:
-                break;
-        }
-
-        return msg.toSend();
-    } //da finire
-
     public String read(String input) {
 
         //System.out.println("receiving..." + input);
@@ -213,12 +177,7 @@ public class VirtualView{
                 gController.setPlayersToGo(playersNumber);
                 this.player.setPlayerNumber(0);
                 gController.addVirtualView(this);
-                //gController.getVirtualViews().add(this);
-                //gController.getClientHandlerArrayList().add(this.clientHandler);
-                //gController.getVirtualViewsOrder().add(0);
-                //gController.getVirtualViews().add(this);
                 gameController.performAction(); //CREATEGAMESTATE
-                //virtualview manda il messaggio di uscita.
                 msg_out = new Message();
                 msg_out.setUser(username);
                 msg_out.setType(MessageType.LOBBY_WAITING);
@@ -230,13 +189,9 @@ public class VirtualView{
                 networkMap.put(idGame, UsersList);
                 gameMap.put(idGame,gController);
                 System.out.println(networkMap);
-                //Game game = new Game(virtualView.getPlayerNumber(), virtualView.getIdGame(), virtualView.getGamemode());
-                //gameMap.put(virtualView.getIdGame(), game);
                 return msg_out.toSend();
-                //out.println(msg_out);
             }
             case JOIN_MATCH -> {
-                //username = payloads.get(0);
                 if(!networkMap.containsKey(payloads.get(1))){
                     msg_out = new Message();
                     msg_out.setUser(payloads.get(0));
@@ -246,8 +201,6 @@ public class VirtualView{
                     return msg_out.toSend();
                 }
                 else if(networkMap.get(payloads.get(1)).contains(msg_in.getUser())) {
-                    //setUsername(payloads.get(0));
-                    //setIdGame(payloads.get(1));
                     msg_out = new Message();
                     msg_out.setUser(payloads.get(0));
                     msg_out.setType(MessageType.ERROR);
@@ -260,7 +213,6 @@ public class VirtualView{
                     idGame = payloads.get(1);
                     playersNumber = (gameMap.get(getIdGame()).getGame().getNumberOfPlayers());
                     gamemode = (gameMap.get(getIdGame()).getGame().getGameMode());
-
                     GameController gController = gameMap.get(idGame);
                     gameController = (VirtualViewListener) gController;
                     ArrayList<String> UsersList = new ArrayList<>();
@@ -275,11 +227,6 @@ public class VirtualView{
                     ArrayList<String> toPush = new ArrayList<>();
                     toPush.add(String.valueOf(gamemode));
                     msg_out.fill(toPush);
-                    //msg_out.fill(String.valueOf(gamemode));
-                    //gController.getClientHandlerArrayList().add(this.clientHandler);
-                    //gController.getVirtualViews().add(this);
-                    //gameController.addVirtualView(this);
-                    //gController.addVirtualView(this);
                     gameController.performAction();
                     msg_out.setType(MessageType.LOBBY_WAITING);
                     return msg_out.toSend();
@@ -296,13 +243,11 @@ public class VirtualView{
                 gameController.performAction();
                 return msg_out.toSend();
             }
-            case AssistantCard -> {
+            case ASSISTANT_CARD -> {
                 chosenAssistantID = Integer.parseInt(payloads.get(0));
                 msg_out = new Message();
                 msg_out.setType(MessageType.WAIT);
                 msg_out.setUser(username);
-                //player.getDeck().getCards().get(chosenAssistantID-1).setConsumed(true);
-                //player.setLastAssistantCard(player.getDeck().getCards().get(chosenAssistantID-1));
                 gameController.performAction();
                 return msg_out.toSend();
             }
@@ -335,21 +280,17 @@ public class VirtualView{
                 String playerID = payloads.get(0);
                 Integer characterCardID = Integer.parseInt(payloads.get(1));
                 int payloadsIterator = 2;
-                //Parameter parameter = new Parameter(player);
                 PawnColor color = null;
                 Integer islandID = null;
                 Map<PawnColor,Integer> map1 = null;
                 Map<PawnColor,Integer> map2 = null;
                 switch (characterCardID){
                     case 1 ->{
-                        //parameter.setChosenColor(PawnColor.valueOf(payloads.get(payloadsIterator)));
                         color = PawnColor.valueOf(payloads.get(payloadsIterator));
                         payloadsIterator++;
-                        //parameter.setIsland(islandManager.getIslandList().get(Integer.parseInt(payloads.get(payloadsIterator))));
                         islandID = Integer.parseInt(payloads.get(payloadsIterator));
                     }
                     case 3, 5 ->{
-                       //parameter.setIsland(islandManager.getIslandList().get(Integer.parseInt(payloads.get(payloadsIterator))));
                         islandID = Integer.parseInt(payloads.get(payloadsIterator));
                     }
                     case 7, 10 ->{
@@ -369,11 +310,8 @@ public class VirtualView{
                             payloadsIterator++;
                             map2.put(currColor,num);
                         }
-                        //parameter.setColorMap1(map1);
-                        //parameter.setColorMap2(map2);
                     }
                     case 9,11,12 ->{
-                        //parameter.setChosenColor(PawnColor.valueOf(payloads.get(payloadsIterator)));
                         color = PawnColor.valueOf(payloads.get(payloadsIterator));
                     }
                 }
@@ -385,51 +323,6 @@ public class VirtualView{
         }
         return null;
     }
-
-
-
-    //private ArrayList<Player> players;
-    //private GameMode chosenGameMode;
-
-    /*public ArrayList<Player> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
-    }
-*/
-    /*
-    public Player askForPlayerData() {
-        Player player = new Player();
-        return player;
-    }
-
-    public AssistantCard askForAssistantCard() {
-        AssistantCard chosenAssistantCard = new AssistantCard();
-        if (msg_in.getType().equals(MessageType.AssistantCard)) {
-            ArrayList<String> payloads = new ArrayList<>();
-            Gson gson = new Gson();
-            payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-            chosenAssistantCard = player.getDeck().getCards().get(Integer.parseInt(payloads.get(0)));
-            return chosenAssistantCard;
-        } else {
-            setError_type(ErrorType.INVALID_CARD);
-            return null;
-        }
-    }
-
-    public void askForMovement() {
-    }
-    public int askForMNMovement() {
-        return 1;
-    }
-
-    public int askForCloudTile() {
-        return 1;
-    }
-*/
-
     public WizardType getWizard() {
         return wizard;
     }
@@ -459,11 +352,11 @@ public class VirtualView{
     }
 
     public Parameter getParameter() {
-        return null; //TODO
+        return null; //TODO?
     }
 
     public int getChosenCharacterCardID() {
-        return 1; //TODO
+        return 1; //TODO?
     }
 
 }

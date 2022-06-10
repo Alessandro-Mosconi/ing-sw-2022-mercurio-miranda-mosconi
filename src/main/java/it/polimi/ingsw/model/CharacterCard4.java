@@ -9,7 +9,6 @@ public class CharacterCard4 implements CardBehavior{
 
     public void startEffect(Parameter parameter){
         parameter.getPlayer().setBonus2Shifts(true);
-        //TODO mandare update MAXSHIFT!!
     }
 
 

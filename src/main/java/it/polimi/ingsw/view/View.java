@@ -33,6 +33,16 @@ public abstract class View {
     protected Integer MN_shift;
     protected Integer chosenCloudPos;
     protected Integer chosenIslandPos;
+    protected String activeEffect;
+
+
+    public String getActiveEffect() {
+        return activeEffect;
+    }
+
+    public void setActiveEffect(String activeEffect) {
+        this.activeEffect = activeEffect;
+    }
 
     public Parameter getParameter() {
         return parameter;
@@ -239,16 +249,6 @@ public abstract class View {
         this.player = player;
     }
 
-    /*
-    public ArrayList<SchoolBoard> getSchoolBoards() {
-        return schoolBoards;
-    }
-
-    public void setSchoolBoards(ArrayList<SchoolBoard> schoolBoards) {
-        this.schoolBoards = schoolBoards;
-    }
-
-     */
 
     public ArrayList<CloudTile> getClouds() {
         return clouds;
@@ -274,13 +274,6 @@ public abstract class View {
 
     public abstract void choosePawnMove();
 
-    /*public Message waiting(){
-        return null;
-    }*/
-
-    //public void mainboard();
-
-    //public abstract Message chooseWizard();
     public abstract void showTable();
     public abstract void chooseMNmovement();
 

@@ -23,18 +23,12 @@ public class CharacterCard7 implements CardBehavior {
 
     //inizializzare con 6 studenti dalla bag nel setupGame se viene scelta questa carta
     public void startEffect(Parameter parameter) {
-        /*PawnColor studentToTake = chooseColor();
-        PawnColor studentToGive = chooseColor();
-        parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(studentToGive, parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(studentToGive) - 1);
-        this.students.replace(studentToGive, this.students.get(studentToGive) + 1);
-        parameter.getPlayer().getSchoolBoard().getStudentEntrance().replace(studentToTake, parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(studentToTake) + 1);
-        this.students.replace(studentToGive, this.students.get(studentToGive) - 1);*/
         for(PawnColor col : PawnColor.values()){
             int studToTake = parameter.getColorMap1().get(col);
             int studToGive = parameter.getColorMap2().get(col);
-            if(studToTake>this.students.get(col) || studToGive<parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(col)){
-                //todo manda errore e chiede di reinserire
-            }
+            /*if(studToTake>this.students.get(col) || studToGive<parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(col)){
+                //todo manda errore e chiede di reinserire - lato client?
+            }*/
         }
         for(PawnColor col : PawnColor.values()){
             int studToTake = parameter.getColorMap1().get(col);

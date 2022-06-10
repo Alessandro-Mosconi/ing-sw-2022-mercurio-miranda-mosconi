@@ -36,7 +36,7 @@ public class SchoolBoard {
     private Map<PawnColor, Integer> studentEntrance;
     private Map<PawnColor, Boolean> professorTable;
     private GameMode gameMode;
-    private boolean bonus2influencepoints=false; //todo mettere a schoolboards questo attributo e settarlo dal game
+    private boolean bonus2influencepoints=false;
 
 
     public SchoolBoard() {
@@ -94,15 +94,6 @@ public class SchoolBoard {
         this.bonus2influencepoints = bonus2influencepoints;
     }
 
-    /*
-    public void setStudentHall(Map<PawnColor, Integer> studentHall) {
-        this.studentHall = studentHall;
-    }
-
-    public void setStudentEntrance(Map<PawnColor, Integer> studentEntrance) {
-        this.studentEntrance = studentEntrance;
-    }
-*/
 
     public void addStudentEntrance(PawnColor color) {
         this.studentEntrance.replace(color, this.studentEntrance.get(color)+1);
@@ -127,11 +118,7 @@ public class SchoolBoard {
     public void setTowersNumber(int towersNumber) {
         this.towersNumber = towersNumber;
     }
-/**
-    public void setProfessorTable(Map<PawnColor, Boolean> professorTable) {
-        this.professorTable = professorTable;
-    }
-**/
+
     public void addProfessor(PawnColor color){this.professorTable.replace(color, true); }
 
     public void removeProfessor(PawnColor color){this.professorTable.replace(color, false); }

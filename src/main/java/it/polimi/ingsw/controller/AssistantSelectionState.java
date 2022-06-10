@@ -13,9 +13,7 @@ public class AssistantSelectionState implements GameControllerState{
          VirtualView currVV = gameController.getVirtualViews().get(currOrder);
          Player currentPlayer = gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator()));
          AssistantCard chosenCard = currentPlayer.getDeck().getCards().get(currVV.getChosenAssistantID()-1);//currVV.getPlayer().getDeck().getCards().get(currVV.getChosenAssistantID()-1);
-       // AssistantCard chosenCard = gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrderIterator()).getDeck().getCards().get(gameController.getVirtualViews().get(gameController.getVirtualViewsOrderIterator()).getChosenAssistantID());
         if (chosenCard != null) {
-            //Player currPlayer = gameController.getGame().getPlayers().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator()));
             gameController.getGame().useAssistantCard(currentPlayer, chosenCard);
             gameController.decreasePlayersToGo();
         }
@@ -28,12 +26,9 @@ public class AssistantSelectionState implements GameControllerState{
         }
         else if(gameController.getPlayersToGo()!=0){
             gameController.setNextState(new AssistantSelectionState());
-            //gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).setMyTurn(false);
             gameController.nextVirtualView();
-            //gameController.getVirtualViews().get(gameController.getCurrentVirtualView()).setMyTurn(true);
         }
         else if (gameController.getPlayersToGo()==0){
-            //gameController.getGame().updatePlayerOrder();
             gameController.setVirtualViewsOrder(gameController.getGame().calculatePlayerOrder());
             gameController.getGame().fillCloudTiles();
             if(gameController.getGame().isBagEmpty()){
@@ -47,8 +42,11 @@ public class AssistantSelectionState implements GameControllerState{
             gameController.resetMovesToGo();
             gameController.resetPlayersToGo();
             gameController.setNextState(new MovePawnsState());
-            gameController.setVirtualViewsOrderIterator(0);
-            gameController.getClientHandlerArrayList().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).tellToPlay();
+            gameController.nextVirtualView();
+            //TODO questi due commentati servono?
+            //gameController.setVirtualViewsOrderIterator(0);
+
+            //gameController.getClientHandlerArrayList().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).tellToPlay();
         }
     }
     @Override

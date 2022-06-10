@@ -8,13 +8,7 @@ public class CharacterCard2 /*extends CharacterCard*/ implements CardBehavior{
  */
     //essendo l'effetto limitato alla durata di un turno, bisogna salvare su una variabile temporanea lo stato corrente e ripristinarlo alla fine del turno
     private ArrayList<SchoolBoard> tmpSchoolBoards;
-    private ArrayList<SchoolBoard> currentSchoolBoards;
-
-    /*public CharacterCard2(int id, int price) {
-        super(id, price);
-    }*/
-
-    //private ArrayList<SchoolBoard> currentSchoolBoards;
+    private ArrayList<SchoolBoard> currentSchoolBoards = new ArrayList<>();
 
     public void startEffect(Parameter parameter){
         currentSchoolBoards.addAll(parameter.getGame().getSchoolBoards()); //salva per il ripristino le schoolboards
@@ -33,7 +27,7 @@ public class CharacterCard2 /*extends CharacterCard*/ implements CardBehavior{
         for(PawnColor color : PawnColor.values()){
             parameter.getGame().updateProfessor(color);
         }
-        //TODO dopo aver resettato -> ricalcolo tutti i prof per controllare che non debba cambiare in seguito al turno appena eseguito
+        // dopo aver resettato -> ricalcolo tutti i prof per controllare che non debba cambiare in seguito al turno appena eseguito
     }
 
     public void tmpUpdateProfessors(){

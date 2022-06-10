@@ -9,9 +9,6 @@ import java.util.ArrayList;
 public class GeneratePlayerState implements GameControllerState{
     @Override
     public void startState(GameController gameController) {
-       //gameController.getVirtualViews().get(gameController.getVirtualViewsOrderIterator()).setGameController(gameController);
-        //gameController.getGame().addListener((ModelListener) gameController.getVirtualViews().get(gameController.getVirtualViewsOrderIterator()).getClientHandler());
-        //aggiungo  i listener nel lobbyState
         Player playerToAdd = new Player();
         playerToAdd.setDeck(new Deck());
         playerToAdd.setNickName(gameController.getVirtualViews().get(gameController.getVirtualViewsOrderIterator()).getUsername());
@@ -20,18 +17,14 @@ public class GeneratePlayerState implements GameControllerState{
         playerToAdd.getSchoolBoard().setTowersColor(gameController.getVirtualViews().get(gameController.getVirtualViewsOrderIterator()).getTowerColor());
         gameController.getGame().removeTowerColor(playerToAdd.getSchoolBoard().getTowersColor());
         playerToAdd.setPlayerNumber(gameController.getGame().getNumberOfPlayers() - gameController.getPlayersToGo());
-        //gameController.getGame().setPlayers(new ArrayList<>());
         gameController.getGame().addPlayer(playerToAdd);
         gameController.decreasePlayersToGo();
-        //gameController.getVirtualViewsOrder().add(playerToAdd.getPlayerNumber());
-        //gameController.getGame().addListener(gameController.getClientHandlerArrayList().get(gameController.getVirtualViewsOrderIterator()));
     }
 
     @Override
     public void updateNextState(GameController gameController) {
         if(gameController.getPlayersToGo()==0){
             gameController.getGame().setupGame();
-            //gameController.setVirtualViewsOrder(gameController.getGame().getPlayerOrder());
             System.out.println("inizia planning con players-to-go:" + gameController.getPlayersToGo());
             gameController.resetPlayersToGo();
             gameController.setNextState(new AssistantSelectionState());
@@ -42,7 +35,6 @@ public class GeneratePlayerState implements GameControllerState{
             gameController.getVirtualViews().get(rdNumber).getClientHandler().tellToPlay();
         }
         else{
-            //gameController.decreasePlayersToGo();
             gameController.setNextState(new GeneratePlayerState());
             gameController.nextVirtualView();
         }

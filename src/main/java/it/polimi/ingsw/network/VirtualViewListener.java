@@ -11,6 +11,5 @@ import java.util.Map;
 public interface VirtualViewListener {
     void performAction();
     void activateCardEffect(Integer characterCardID, String playerUsername, PawnColor color, Integer islandID, Map<PawnColor,Integer> map1, Map<PawnColor,Integer> map2);
-    //void endCardEffect();
     void addVirtualView(VirtualView virtualView);
 }

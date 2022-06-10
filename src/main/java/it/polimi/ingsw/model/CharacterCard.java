@@ -54,16 +54,6 @@ public class CharacterCard{
         this.setPrice(this.getPrice()+1);
     }//After using the card, increases the price and decreases game.bank
 
-    //public CardBehavior getCardBehavior() {return cardBehavior;}
-/*
-    public void Effect(Parameter parameter) {
 
-    };
-    public void initializeCard(Parameter parameter){
-
-    };
-    public void endEffect(Parameter parameter){
-
-    };*/
 
 }

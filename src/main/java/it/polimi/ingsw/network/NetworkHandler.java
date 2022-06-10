@@ -32,14 +32,11 @@ public class NetworkHandler {
 
         Gson gson = new Gson();
         ArrayList<String> payloads = new ArrayList<>();
-        previousPhase = phase;
         switch (phase) {
             case LOGIN -> {
                 view.login();
                 msg_out.setUser(view.getUsername());
-                //
                 view.getPlayer().setNickName(view.getUsername());
-                //
                 payloads.add(view.getUsername());
                 if (view.getMessageType().equals(MessageType.CREATE_MATCH)) {
                     payloads.add(view.getIdGame());
@@ -50,27 +47,20 @@ public class NetworkHandler {
                 }
                 msg_out.setType(view.getMessageType());
                 nextPhase = Phase.SETTINGS;
-                phase = Phase.WAITING;
             }
             case SETTINGS -> {
                 view.settings();
                 msg_out.setType(MessageType.SETTINGS);
-
                 payloads.add(view.getPlayer().getDeck().getWizard().toString());
-
                 payloads.add(view.getTowerColor().toString());
-
                 nextPhase = Phase.PLANNING;
-                phase = Phase.WAITING;
             }
             case PLANNING -> {
                 view.chooseAssistantCard();
-                msg_out.setType(MessageType.AssistantCard);
-
+                msg_out.setType(MessageType.ASSISTANT_CARD);
                 payloads.add(view.getChosenAssistantCard().getValue().toString());
                 view.setCardUsed(false);
                 nextPhase = Phase.CHOOSING_FIRST_MOVE;
-                phase = Phase.WAITING;
             }
             case CHOOSING_FIRST_MOVE -> {
                 view.choosePawnMove();
@@ -79,17 +69,8 @@ public class NetworkHandler {
                     payloads.add(view.getColorToMove().toString());
                     payloads.add(view.getDestination().toString());
                     nextPhase = Phase.CHOOSING_SECOND_MOVE;
-                    //phase = Phase.WAITING;
                 } else if (view.getMessageType().equals(MessageType.CHOSEN_CHARACTER_CARD)){
                     return characterCardToSend();
-                    //phase = Phase.WAITING;
-                    /*nextPhase = Phase.CHOOSING_CHARACTER_CARD;
-                    payloads.add(view.getChosenCharacterCard().getID().toString());
-
-                    if (view.getColorToMove() != null)
-                        payloads.add(view.getColorToMove().toString());
-                    else if (view.getChosenIslandPos() != null)
-                        payloads.add(view.getColorToMove().toString());*/
                 }
 
             }
@@ -100,20 +81,9 @@ public class NetworkHandler {
                     payloads.add(view.getColorToMove().toString());
                     payloads.add(view.getDestination().toString());
                     nextPhase = Phase.CHOOSING_THIRD_MOVE;
-                    //phase = Phase.WAITING;
                 } else if (view.getMessageType().equals(MessageType.CHOSEN_CHARACTER_CARD)){
                     return characterCardToSend();
-                    //phase = Phase.WAITING;
-                    /*nextPhase = Phase.CHOOSING_CHARACTER_CARD;
-                    payloads.add(view.getChosenCharacterCard().getID().toString());
-
-                    if (view.getColorToMove() != null)
-                        payloads.add(view.getColorToMove().toString());
-                    else if (view.getChosenIslandPos() != null)
-                        payloads.add(view.getColorToMove().toString());*/
                 }
-                //nextPhase = Phase.CHOOSING_THIRD_MOVE;
-                //phase = Phase.WAITING;
             }
             case CHOOSING_THIRD_MOVE -> {
                 view.choosePawnMove();
@@ -122,19 +92,10 @@ public class NetworkHandler {
                     payloads.add(view.getColorToMove().toString());
                     payloads.add(view.getDestination().toString());
                     nextPhase = Phase.CHOOSING_MN_SHIFT;
-                    //phase = Phase.WAITING;
                 }else if (view.getMessageType().equals(MessageType.CHOSEN_CHARACTER_CARD)){
                     return characterCardToSend();
-                    //phase = Phase.WAITING;
-                    /*nextPhase = Phase.CHOOSING_CHARACTER_CARD;
-                    payloads.add(view.getChosenCharacterCard().getID().toString());
-                    if (view.getColorToMove() != null)
-                        payloads.add(view.getColorToMove().toString());
-                    else if (view.getChosenIslandPos() != null)
-                        payloads.add(view.getColorToMove().toString());*/
                 }
-                //nextPhase = Phase.CHOOSING_MN_SHIFT;
-                //phase = Phase.WAITING;
+
             }
             case CHOOSING_MN_SHIFT -> {
                 view.chooseMNmovement();
@@ -143,14 +104,8 @@ public class NetworkHandler {
                     payloads.add(view.getMN_shift().toString());
                     nextPhase = Phase.CHOOSING_CT;
                 } else if (view.getMessageType().equals(MessageType.CHOSEN_CHARACTER_CARD)){
-                    return characterCardToSend();
-                    /*nextPhase = Phase.CHOOSING_CHARACTER_CARD;
-                    if (view.getColorToMove() != null)
-                        payloads.add(view.getColorToMove().toString());
-                    else if (view.getChosenIslandPos() != null)
-                        payloads.add(view.getColorToMove().toString());
-                    */
-                }
+                        return characterCardToSend();
+                    }
             }
             case CHOOSING_CT -> {
                 view.chooseCT();
@@ -160,12 +115,6 @@ public class NetworkHandler {
                     nextPhase = Phase.PLANNING;
                 } else if (view.getMessageType().equals(MessageType.CHOSEN_CHARACTER_CARD)){
                     return characterCardToSend();
-                    /*nextPhase = Phase.CHOOSING_CHARACTER_CARD;
-                    if (view.getColorToMove() != null)
-                        payloads.add(view.getColorToMove().toString());
-                    else if (view.getChosenIslandPos() != null)
-                        payloads.add(view.getColorToMove().toString());
-                */
                 }
                 for(Player p : view.getPlayers()){
                     p.setLastAssistantCard(null);
@@ -176,8 +125,6 @@ public class NetworkHandler {
                 msg_out.fill("WAITING");
             }
         }
-
-        //previousPhase = phase;
         phase = Phase.WAITING;
         msg_out.fill(payloads);
         System.out.println("sending... " + msg_out.toSend());
@@ -185,7 +132,6 @@ public class NetworkHandler {
     }
 
     private String characterCardToSend() {
-        previousPhase = phase;
         Message cardMsg = new Message();
         ArrayList<String> payloads = new ArrayList<>();
         cardMsg.setType(MessageType.CHOSEN_CHARACTER_CARD);
@@ -218,64 +164,9 @@ public class NetworkHandler {
         }
         cardMsg.fill(payloads);
         nextPhase = phase;
+        phase = Phase.WAITING;
         return cardMsg.toSend();
     }
-        /*
-        if (phase==Phase.LOGIN) {
-            view.login();
-            msg_out = new Message(view.getUsername(), view.getMessageType(), view.getUsername());
-        }
-        if (phase==Phase.SETTINGS) {
-            view.settings();
-            ArrayList<String> payloads = new ArrayList<>();
-            payloads.add(view.getIdGame());
-            if(view.getPlayerNumber() != null)
-                payloads.add(view.getPlayerNumber().toString());
-            if(view.getGamemode() != null)
-                payloads.add(view.getGamemode().toString());
-
-            msg_out = new Message(view.getUsername(), view.getMessageType());
-            msg_out.fill(payloads);
-        }
-        if(phase==Phase.JOINING) {
-            msg_out = new Message(view.getUsername(), MessageType.JOIN_MATCH, view.getIdGame());
-        }
-        if(phase==Phase.LOBBY)
-        {
-            view.lobby();
-            msg_out = new Message(view.getUsername(), view.getMessageType());
-            msg_out.fill(view.getPlayers());
-        }
-
-        if(phase==Phase.CHOSING_SCHOOLBOARD)
-        {
-            //System.out.println("IL GIOCO PUO' INIZIARE");
-
-            view.chooseWizard();
-
-
-
-        }
-        if(phase == Phase.CHOSING_ASSISTANT_CARD){
-            System.out.println("scegli assistant card:");
-            view.chooseAssistantCard();
-        }
-        if(phase == Phase.CHOOSING_PAWS_TO_MOVE){
-
-        }
-        if(phase == Phase.CHOOSING_MN_MOVE){
-
-        }
-        if(phase == Phase.CHOOSING_CLOUDTILE){
-
-        }
-        if(phase == Phase.WAITING){
-            msg_out = new Message(MessageType.WAITING);
-        }
-            System.out.println("sending... " + msg_out.toSend());
-            return msg_out.toSend();
- }
-*/
 
     public synchronized void process(String input) {
         System.out.println("receiving... " + input);
@@ -300,229 +191,15 @@ public class NetworkHandler {
                 System.out.println("Lobby updated ok");
             }
             case ASK_FOR_SETTINGS -> {
-                //payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                //ArrayList<WizardType> wizards = gson.fromJson(payloads.get(0), ArrayList.class);
-                //ArrayList<TowerColor> towers = gson.fromJson(payloads.get(1), ArrayList.class);
-                //view.setWizards(wizards);
-                //view.setTowerColors(towers);
                 phase = Phase.SETTINGS;
             }
-            /*
-            case LOGIN_SUCCESSFUL:
-                System.out.println(input);
-                this.phase=Phase.SETTINGS;
-                break;
-
-            case LOBBY_CREATED:
-                System.out.println(input);
-                payloads = new ArrayList<>();
-                payloads.add(view.getUsername());
-                view.setPlayers(payloads);
-                this.phase=Phase.LOBBY;
-                break;
-
-            case LOBBY_JOINED:
-                System.out.println(input);
-                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                ArrayList<String> userList = gson.fromJson(payloads.get(0), ArrayList.class);
-                view.setPlayers(userList);
-                view.setPlayerNumber(gson.fromJson(payloads.get(1), Integer.class));
-                view.setGamemode(gson.fromJson(payloads.get(2), GameMode.class));
-                this.phase=Phase.LOBBY;
-                break;
-
-            case OTHER_USER_JOINED:
-                System.out.println(input);
-                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                view.setPlayers(payloads);
-                this.phase=Phase.LOBBY;
-                break;
-
-            case GAME_STARTED:
-                System.out.println(input);
-                this.phase=Phase.WAITING;
-                break;
-
-            case ModelUpdate:
-                //aggiorni view
-                break;
-
-            case IS_YOUR_TURN:
-                System.out.println(input);
-                this.phase=nextPhase;
-                break;
-
-            case OK_ASSISTANT_CARD:
-                System.out.println(input);
-                this.nextPhase=Phase.CHOOSING_PAWS_TO_MOVE;
-                this.phase=Phase.WAITING;
-                break;
-
-            case OK_PAWNS_MOVED:
-                System.out.println(input);
-                //this.nextPhase=Phase.CHOOSING_MN_MOVE;
-                //this.phase=Phase.WAITING;
-                this.phase=Phase.CHOOSING_MN_MOVE;
-                break;
-            case OK_MN_MOVED:
-                System.out.println(input);
-                //this.nextPhase=Phase.CHOOSING_CLOUDTILE;
-                //this.phase=Phase.WAITING;
-                this.phase=Phase.CHOOSING_CLOUDTILE;
-                break;
-            case OK_CLOUTILE_COLLECTED:
-                System.out.println(input);
-                this.nextPhase = Phase.CHOSING_ASSISTANT_CARD;
-                this.phase = Phase.WAITING;
-                break;
-            case OK_EFFECT_CARD:
-                System.out.println(input);
-                this.phase = Phase.CHOOSING_PARAMETER;
-
-*/
-            /*
-            case CloudChanged:
-                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                position = gson.fromJson(payloads.get(0), Integer.class);
-                CloudTile cloud = gson.fromJson(payloads.get(1), CloudTile.class);
-                //view.update(position, cloud)
-                break;
-
-            case HallChanged:
-                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                userChange = gson.fromJson(payloads.get(0), String.class);
-                HashMap<PawnColor, Integer> hall = gson.fromJson(payloads.get(1), HashMap.class);
-                //view.update(userChange, hall)
-                break;
-
-            case EntranceChanged:
-                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                userChange = gson.fromJson(payloads.get(0), String.class);
-                HashMap<PawnColor, Integer> entrance = gson.fromJson(payloads.get(1), HashMap.class);
-                //view.update(userChanged, entrance)
-                break;
-
-            case ProfTableChanged:
-                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                userChange = gson.fromJson(payloads.get(0), String.class);
-                HashMap<PawnColor, Boolean> profTable = gson.fromJson(payloads.get(1), HashMap.class);
-                //view.update(userChanged, hall)
-                break;
-
-            case IslandChanged:
-                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                position = gson.fromJson(payloads.get(0), Integer.class);
-                Island island = gson.fromJson(payloads.get(1), Island.class);
-                //view.update(position, island)
-                break;
-
-            case CharacterCardChanged:
-                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                Integer newPrice = gson.fromJson(payloads.get(0), Integer.class);
-                String idCard = gson.fromJson(payloads.get(1), String.class);
-                //view.updateCloud(position, island)
-                break;
-
-            case WalletChanged:
-                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                userChange = gson.fromJson(payloads.get(0), String.class);
-                Integer wallet = gson.fromJson(payloads.get(1), Integer.class);
-                //view.updateProf(userChanged, hall)
-                break;
-
-            case DeckChanged:
-                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                userChange = gson.fromJson(payloads.get(0), String.class);
-                Deck deck = gson.fromJson(payloads.get(1), Deck.class);
-                //view.updateProf(userChanged, hall)
-                break;
-
-                /*
-            case MoveToIsland:
-                ArrayList<String> payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                PawnColor colorToIsland = gson.fromJson(payloads.get(0), PawnColor.class);
-                Integer position = gson.fromJson(payloads.get(1), Integer.class);
-                break;
-
-            case MoveToHall:
-                PawnColor colorToHall = gson.fromJson(msg_in.getPayload(), PawnColor.class);
-                break;
-
-            case MoveMN:
-                Integer shift = gson.fromJson(msg_in.getPayload(), Integer.class);
-                break;
-                */
             case WAIT -> {
-                //previousPhase = phase;
                 phase = Phase.WAITING;
-                //nextPhase = nextPhase;
                 System.out.println("ok aspetto\n");
             }
-            case IS_YOUR_TURN, ACK -> {
+            case IS_YOUR_TURN, ACK, CARD_ACTIVATED -> {
                 phase = nextPhase;
             }
-            /*case GAME_MODEL_UPDATE -> {
-                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                int numPlayers = Integer.parseInt(payloads.get(0));
-                GameMode gameMode = GameMode.valueOf(payloads.get(1));
-                ArrayList<Player> players = new ArrayList<>();
-                ArrayList<CloudTile> clouds = new ArrayList<>();
-                ArrayList<Island> islands = new ArrayList<>();
-                int payloadsIterator = 2;
-                for (int i = 0; i < numPlayers; i++) {
-                    Map<PawnColor, Integer> entrance = new HashMap<>();
-                    String nickname = payloads.get(i + payloadsIterator);
-                    payloadsIterator++;
-                    TowerColor towerColor = TowerColor.valueOf(payloads.get(i + payloadsIterator));
-                    payloadsIterator++;
-                    Integer towersNumber = Integer.parseInt(payloads.get(i + payloadsIterator));
-                    payloadsIterator++;
-                    for (int j = 0; j < PawnColor.values().length; j++) {
-                        PawnColor c = PawnColor.valueOf(payloads.get(i + payloadsIterator));
-                        payloadsIterator++;
-                        Integer number = Integer.parseInt(payloads.get(i + payloadsIterator));
-                        payloadsIterator++;
-                        entrance.put(c, number);
-                    }
-                    SchoolBoard sb = new SchoolBoard(towersNumber, towerColor, entrance, gameMode);
-                    players.add(new Player(i, nickname, sb));
-                }
-                view.setPlayers(players);
-                for (int i = 0; i < numPlayers; i++) {
-                    Map<PawnColor, Integer> cloudStudents = new HashMap<>();
-                    Integer cloudID = Integer.parseInt(payloads.get(i + payloadsIterator));
-                    payloadsIterator++;
-                    for (int j = 0; j < PawnColor.values().length; j++) {
-                        PawnColor c = PawnColor.valueOf(payloads.get(i + payloadsIterator));
-                        payloadsIterator++;
-                        Integer number = Integer.parseInt(payloads.get(i + payloadsIterator));
-                        payloadsIterator++;
-                        cloudStudents.put(c, number);
-                    }
-                    clouds.add(new CloudTile(i, cloudStudents));
-                }
-                view.setClouds(clouds);
-                for (int i = 0; i < 12; i++) {
-                    Map<PawnColor, Integer> islandStudents = new HashMap<>();
-                    Integer islandID = Integer.parseInt(payloads.get(payloadsIterator));
-                    for (int j = 0; j < PawnColor.values().length; j++) {
-                        PawnColor c = PawnColor.valueOf(payloads.get(i + payloadsIterator));
-                        payloadsIterator++;
-                        Integer number = Integer.parseInt(payloads.get(i + payloadsIterator));
-                        payloadsIterator++;
-                        islandStudents.put(c, number);
-                    }
-                    if (i == 0) {
-                        islands.add(new Island(islandStudents, null, 0, false, true));
-                    } else {
-                        islands.add(new Island(islandStudents, null, 0, false, false));
-                    }
-                }
-                IslandManager islandManager = new IslandManager(islands);
-                islandManager.setCurrMNPosition(0);
-                view.setIslandManager(islandManager);
-                //TODO MANCA GESTIONE CASO EXPERT MODE
-            }*/
             case AVAILABLE_WIZARDS -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 ArrayList<WizardType> availableWizards = new ArrayList<>();
@@ -599,12 +276,6 @@ public class NetworkHandler {
                         }
                     }
                 }
-                /*for (Player p : view.getPlayers()) {
-                    if (p.getNickName().equals(playerID)) {
-                        p.getSchoolBoard().setStudentEntrance(entrance);
-                        view.getPlayers().get(p.getPlayerNumber()).getSchoolBoard().setStudentEntrance(entrance);
-                    }
-                }*/
             }
             case UPDATE_SCHOOL_BOARD_HALL -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -681,7 +352,6 @@ public class NetworkHandler {
             case UPDATE_CLOUDTILES -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 ArrayList<CloudTile> clouds = new ArrayList<>();
-                //Map<PawnColor, Integer> map = new HashMap<>();
                 int payloadsIterator = 0;
                 while (payloadsIterator < payloads.size()) {
                     Map<PawnColor, Integer> map = new HashMap<>(){{
@@ -753,10 +423,6 @@ public class NetworkHandler {
                 if(payloads.get(0).equals(view.getPlayer().getNickName())){
                     view.getPlayer().setMaxShift(view.getPlayer().getMaxShift()+2);
                 }
-            }
-            case CARD_ACTIVATED -> {
-                phase = nextPhase;
-                //phase = previousPhase;
             }
             case PRICE_INCREASE -> {
                 payloads = gson.fromJson(msg_in.getPayload(),ArrayList.class);
@@ -865,6 +531,43 @@ public class NetworkHandler {
                         }
                     }//TODO SETTARE LE CAPTIONS DELLE CARTE NELLO SWITCH CASE
                 }
+            }
+            case UPDATE_CARD_STUDENTS -> {
+                payloads = gson.fromJson(msg_in.getPayload(),ArrayList.class);
+                int payloadsIterator = 0;
+                Integer idCard = Integer.parseInt(payloads.get(payloadsIterator));
+                payloadsIterator++;
+                Map<PawnColor,Integer> map = new HashMap<>();
+                for(int j=0; j<PawnColor.values().length; j++){
+                    PawnColor c = PawnColor.valueOf(payloads.get(payloadsIterator));
+                    payloadsIterator++;
+                    Integer num = Integer.parseInt(payloads.get(payloadsIterator));
+                    payloadsIterator++;
+                    map.put(c,num);
+                }
+                for(CharacterCard cc : view.getCharacterCards()){
+                    if(cc.getID().equals(idCard)){
+                        if (cc.getCardBehavior() instanceof CharacterCard1){
+                            ((CharacterCard1) cc.getCardBehavior()).setStudents(map);
+                        }
+                        else if(cc.getCardBehavior() instanceof CharacterCard7){
+                            ((CharacterCard7) cc.getCardBehavior()).setStudents(map);
+                        }
+                        else if(cc.getCardBehavior() instanceof CharacterCard11){
+                            ((CharacterCard11) cc.getCardBehavior()).setStudents(map);
+                        }
+                    }
+                }
+            }
+            case SOMEONE_ACTIVATED_AN_EFFECT -> {
+                payloads = gson.fromJson(msg_in.getPayload(),ArrayList.class);
+                String currUser = payloads.get(0);
+                Integer cardID = Integer.parseInt(payloads.get(1));
+                view.setCardUsed(true);
+                view.setActiveEffect(currUser + " used the character card n." + cardID);
+            }
+            case EFFECT_ENDED -> {
+                view.setCardUsed(false);
             }
         }
     }
