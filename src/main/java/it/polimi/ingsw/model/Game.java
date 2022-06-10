@@ -393,17 +393,17 @@ public class Game {
     }
     private void initAllCharacterCards(){
         this.allCharacterCards.add(new CharacterCard (1,1,new CharacterCard1()));
-        this.allCharacterCards.add(new CharacterCard (2,1,new CharacterCard2()));
-        this.allCharacterCards.add(new CharacterCard (3,1,new CharacterCard3()));
+        this.allCharacterCards.add(new CharacterCard (2,2,new CharacterCard2()));
+        this.allCharacterCards.add(new CharacterCard (3,3,new CharacterCard3()));
         this.allCharacterCards.add(new CharacterCard (4,1,new CharacterCard4()));
-        this.allCharacterCards.add(new CharacterCard (5,1,new CharacterCard5()));
-        this.allCharacterCards.add(new CharacterCard (6,1,new CharacterCard6()));
+        this.allCharacterCards.add(new CharacterCard (5,2,new CharacterCard5()));
+        this.allCharacterCards.add(new CharacterCard (6,3,new CharacterCard6()));
         this.allCharacterCards.add(new CharacterCard (7,1,new CharacterCard7()));
-        this.allCharacterCards.add(new CharacterCard (8,1,new CharacterCard8()));
-        this.allCharacterCards.add(new CharacterCard (9,1,new CharacterCard9()));
+        this.allCharacterCards.add(new CharacterCard (8,2,new CharacterCard8()));
+        this.allCharacterCards.add(new CharacterCard (9,3,new CharacterCard9()));
         this.allCharacterCards.add(new CharacterCard (10,1,new CharacterCard10()));
-        this.allCharacterCards.add(new CharacterCard (11,1,new CharacterCard11()));
-        this.allCharacterCards.add(new CharacterCard (12,1,new CharacterCard12()));
+        this.allCharacterCards.add(new CharacterCard (11,2,new CharacterCard11()));
+        this.allCharacterCards.add(new CharacterCard (12,3,new CharacterCard12()));
     }
     public void addPlayer(Player playerToAdd) {
         players.add(playerToAdd);
