@@ -21,7 +21,6 @@ public class GameController implements VirtualViewListener {
     private GameControllerState previousState;
     private boolean cardUsed = false;
     private boolean lastRound = false;
-    //private ArrayList<ClientHandler> clientHandlerArrayList = new ArrayList<>();
     private ArrayList<VirtualView> virtualViews = new ArrayList<>(); //da unire ai clientHandler in un'unica classe sooner or later
     private ArrayList<Integer> virtualViewsOrder = new ArrayList<>();
     private int virtualViewsOrderIterator;
@@ -87,12 +86,6 @@ public class GameController implements VirtualViewListener {
     public void setVirtualViewsOrderIterator(int virtualViewsOrderIterator) {
         this.virtualViewsOrderIterator = virtualViewsOrderIterator;
     }
-    /*public ArrayList<ClientHandler> getClientHandlerArrayList() {
-        return clientHandlerArrayList;
-    }
-    public void setClientHandlerArrayList(ArrayList<ClientHandler> clientHandlerArrayList) {
-        this.clientHandlerArrayList = clientHandlerArrayList;
-    }*/ //TODO SI PUO CANCELLARE?
     public void setCurrentState(GameControllerState currentState) {
         this.currentState = currentState;
     }

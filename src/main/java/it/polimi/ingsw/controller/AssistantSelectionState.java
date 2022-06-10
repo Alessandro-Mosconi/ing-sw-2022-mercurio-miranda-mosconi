@@ -43,10 +43,6 @@ public class AssistantSelectionState implements GameControllerState{
             gameController.resetPlayersToGo();
             gameController.setNextState(new MovePawnsState());
             gameController.nextVirtualView();
-            //TODO questi due commentati servono?
-            //gameController.setVirtualViewsOrderIterator(0);
-
-            //gameController.getClientHandlerArrayList().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).tellToPlay();
         }
     }
     @Override
