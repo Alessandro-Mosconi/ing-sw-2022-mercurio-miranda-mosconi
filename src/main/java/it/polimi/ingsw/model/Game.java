@@ -601,4 +601,12 @@ public class Game {
         this.currEffect=null;
         this.currParameter=null;
     }
+
+    public boolean checkForEndGameConditions() {
+        for(SchoolBoard s : schoolBoards){
+            if(s.getTowersNumber()==0) return true;
+        }
+        if(islandManager.getIslandList().size()<=3) return true;
+        return false;
+    }
 }

@@ -32,7 +32,7 @@ public class AssistantSelectionState implements GameControllerState{
             gameController.setVirtualViewsOrder(gameController.getGame().calculatePlayerOrder());
             gameController.getGame().fillCloudTiles();
             if(gameController.getGame().isBagEmpty()){
-                gameController.setLastRound(true);
+                gameController.setLastRound(true); //todo inserire dei check sulla bag anche dopo che vengono attivate carte che ne pescano studenti
             }
             for (int i = 0; i < gameController.getGame().getNumberOfPlayers(); i++) {
                 if (gameController.getGame().getPlayers().get(i).getDeck().getCards().size() == 0) {

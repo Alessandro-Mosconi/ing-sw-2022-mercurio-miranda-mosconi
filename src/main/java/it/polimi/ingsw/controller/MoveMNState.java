@@ -8,6 +8,10 @@ public class MoveMNState implements GameControllerState{
     public void startState(GameController gameController) {
         int movement = gameController.getVirtualViews().get(gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator())).getMNShift();
         gameController.getGame().moveMN(movement);
+        if(gameController.getGame().checkForEndGameConditions()){
+            EndGameState endGameState = new EndGameState();
+            endGameState.startState(gameController);
+        }
     }
 
     @Override
