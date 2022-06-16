@@ -11,6 +11,7 @@ public class MoveMNState implements GameControllerState{
         if(gameController.getGame().checkForEndGameConditions()){
             EndGameState endGameState = new EndGameState();
             endGameState.startState(gameController);
+            endGameState.endState(gameController);
         }
     }
 

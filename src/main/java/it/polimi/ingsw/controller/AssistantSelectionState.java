@@ -21,10 +21,10 @@ public class AssistantSelectionState implements GameControllerState{
     }
     @Override
     public void updateNextState(GameController gameController) {
-        if(gameController.isErrorFlag()){
+        /*if(gameController.isErrorFlag()){
             gameController.setNextState(new AssistantSelectionState()); //il client riceve l'error e non updata la sua fase quindi può ripetere la scelta
-        }
-        else if(gameController.getPlayersToGo()!=0){
+        }*/ //TODO i check lato server li toglieremo?
+        if(gameController.getPlayersToGo()!=0){
             gameController.setNextState(new AssistantSelectionState());
             gameController.nextVirtualView();
         }
@@ -42,6 +42,7 @@ public class AssistantSelectionState implements GameControllerState{
             gameController.resetMovesToGo();
             gameController.resetPlayersToGo();
             gameController.setNextState(new MovePawnsState());
+            gameController.setVirtualViewsOrderIterator(gameController.getVirtualViews().size()-1);
             gameController.nextVirtualView();
         }
     }

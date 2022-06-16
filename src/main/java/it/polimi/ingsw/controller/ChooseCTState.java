@@ -26,6 +26,7 @@ public class ChooseCTState implements GameControllerState{
         else if (gameController.isLastRound()){
             EndGameState endGameState = new EndGameState();
             endGameState.startState(gameController);
+            endGameState.endState(gameController);
         }
         else{
             gameController.setNextState(new AssistantSelectionState());

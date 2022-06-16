@@ -184,10 +184,13 @@ public class GameController implements VirtualViewListener {
     public void nextVirtualView() {
         int currVV=getVirtualViewsOrder().get(virtualViewsOrderIterator);
         getVirtualViews().get(currVV).getClientHandler().tellToWait();
-        int newIt = ((virtualViewsOrderIterator+1)%getVirtualViews().size());
+        System.out.println("dico alla vv " + currVV + "di aspettare");
+        int newIt = ((getVirtualViews().size()+virtualViewsOrderIterator+1)%getVirtualViews().size());
         setVirtualViewsOrderIterator(newIt);
         int newVV = getVirtualViewsOrder().get(virtualViewsOrderIterator);
         System.out.println("ITERATOR VALUE updated : " + newVV);
         getVirtualViews().get(newVV).getClientHandler().tellToPlay();
+        System.out.println("dico alla vv " + newVV + "di giocare");
+
     }
 }

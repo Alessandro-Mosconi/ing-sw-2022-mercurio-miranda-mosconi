@@ -403,7 +403,7 @@ public class NetworkHandler {
                 String winnerID = payloads.get(0);
                 phase = Phase.END_GAME;
                 view.showEndGameWindow(winnerID);
-                //TODO mandare al server il messaggio che la partita finisce e chiudere le socket
+                //TODO mandare al server il messaggio che la partita finisce e chiudere le socket?
             }
             case UPDATE_WALLET ->{
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -571,4 +571,5 @@ public class NetworkHandler {
             }
         }
     }
+
 }
