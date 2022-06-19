@@ -259,7 +259,6 @@ public class CLI extends View{
         for(Player p : players){
             if(p.getLastAssistantCard()!=null) {
                 System.out.println(p.getNickName() + " used card " + p.getLastAssistantCard().getValue());
-                //TODO resettare le used cards alla fine del round
             }
         }
     }
@@ -517,13 +516,14 @@ public class CLI extends View{
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            if(input.equals("exit")) return false;
             for(CharacterCard cc : characterCards){
                 if(input.equals(String.valueOf(cc.getID()))&&player.getWallet()>=cc.getPrice()) {
                     chosenCard = cc;
                     invalidInput = false;
                 }
             }
-        }while(invalidInput && !input.equals("exit"));
+        }while(invalidInput);
 
         setChosenCharacterCard(chosenCard);
         switch (input){
@@ -545,13 +545,13 @@ public class CLI extends View{
                     }
                 }};
                 do{
-                    System.out.println("Choose a student from this card: ");
+                    System.out.println("Choose a student from this card or type [stop]: ");
                     try {
                         input = stdIn.readLine();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    //check che sia stato inserito un input = color
+                    //todo check che sia stato inserito un input = color
                     map1.replace(PawnColor.valueOf(input), map1.get(PawnColor.valueOf(input))+1);
                     chosenStudents++;
                     //if non colore allora non incrementare chosenStudents
@@ -568,7 +568,7 @@ public class CLI extends View{
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    //check che sia stato inserito un input = color
+                    //todo check che sia stato inserito un input = color
                     map2.replace(PawnColor.valueOf(input), map2.get(PawnColor.valueOf(input))+1);
                     chosenStudents--;
                     //if non colore allora non incrementare chosenStudents
@@ -590,7 +590,7 @@ public class CLI extends View{
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    //check che sia stato inserito un input = color
+                    //todo check che sia stato inserito un input = color
                     map1.replace(PawnColor.valueOf(input), map1.get(PawnColor.valueOf(input))+1);
                     chosenStudents++;
                     //if non colore allora non incrementare chosenStudents
@@ -607,7 +607,7 @@ public class CLI extends View{
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    //check che sia stato inserito un input = color
+                    //todo check che sia stato inserito un input = color
                     map2.replace(PawnColor.valueOf(input), map2.get(PawnColor.valueOf(input))+1);
                     chosenStudents--;
                     //if non colore allora non incrementare chosenStudents

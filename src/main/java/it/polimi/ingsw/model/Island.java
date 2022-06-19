@@ -150,7 +150,6 @@ public class Island {
                     }
                 }
                 maxInfluence = calculatePlayerInfluence(prevOwner);
-                TowerColor prevInfluence = towerColor; //todo serve?
 
                 for (SchoolBoard schoolBoard : schoolBoardsArray) {
                     int currPlayerInfluence = calculatePlayerInfluence(schoolBoard);

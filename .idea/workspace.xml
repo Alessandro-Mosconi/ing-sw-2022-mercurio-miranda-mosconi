@@ -4,13 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="Code cleaning + character cards debugging">
+    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="Debug of nextVirtualView() method in GameController class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PSP42.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PSP42.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/AssistantSelectionState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/AssistantSelectionState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/ChooseCTState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/ChooseCTState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/MoveMNState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/MoveMNState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CardBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CardBehavior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Island.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Island.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/AssistantSelectionState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/AssistantSelectionState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/ChooseCTState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/ChooseCTState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/MoveMNState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/MoveMNState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Island.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Island.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/CLI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/CLI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +34,7 @@
       <list>
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
+        <option value="JavaFXApplication" />
         <option value="Class" />
       </list>
     </option>
@@ -53,6 +66,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -116,12 +132,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ClientProva" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.ClientProva" />
+    <configuration name="JavaFXMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.view.JavaFXMain" />
       <module name="PSP42" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.network.*" />
+          <option name="PATTERN" value="it.polimi.ingsw.view.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -129,12 +145,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Server" />
+    <configuration name="JavaFXTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.view.JavaFXTest" />
       <module name="PSP42" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="OLDTEST.*" />
+          <option name="PATTERN" value="it.polimi.ingsw.view.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -166,20 +182,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Server" />
-      <item itemvalue="Application.Client" />
-      <item itemvalue="Application.ClientProva" />
       <item itemvalue="Application.Client2" />
       <item itemvalue="Application.Client3" />
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.JavaFXMain" />
+      <item itemvalue="Application.JavaFXTest" />
+      <item itemvalue="Application.Server" />
       <item itemvalue="JUnit.Testing" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Client" />
-        <item itemvalue="Application.Client3" />
-        <item itemvalue="Application.Server" />
         <item itemvalue="Application.Client2" />
-        <item itemvalue="Application.ClientProva" />
+        <item itemvalue="Application.Server" />
+        <item itemvalue="Application.JavaFXMain" />
+        <item itemvalue="Application.JavaFXTest" />
       </list>
     </recent_temporary>
   </component>
@@ -270,14 +287,9 @@
       <workItem from="1655323095742" duration="41000" />
       <workItem from="1655323184870" duration="82000" />
       <workItem from="1655327783930" duration="872000" />
-      <workItem from="1655399095661" duration="6132000" />
-    </task>
-    <task id="LOCAL-00006" summary="insertion of island class and update of IslandManager">
-      <created>1649882521607</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1649882521607</updated>
+      <workItem from="1655399095661" duration="6870000" />
+      <workItem from="1655631042832" duration="3743000" />
+      <workItem from="1655642691709" duration="735000" />
     </task>
     <task id="LOCAL-00007" summary="init CharacterCards 1-4 ; update Game methods">
       <created>1650647367423</created>
@@ -615,7 +627,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654878060994</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Debug of nextVirtualView() method in GameController class">
+      <created>1655406141371</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1655406141371</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,7 +658,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="CharacterCard9, 10, 11, 12" />
     <MESSAGE value="TestCloudTile added in test section" />
     <MESSAGE value="PlayerTest and SchoolBoardTest completed" />
     <MESSAGE value="IslandTest 53% methods, 75% of lines covered (to finish)" />
@@ -664,7 +682,8 @@
     <MESSAGE value="Model updates + CLI fixes" />
     <MESSAGE value="Model updates + CLI fixes + effects managed" />
     <MESSAGE value="Code cleaning + character cards debugging" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code cleaning + character cards debugging" />
+    <MESSAGE value="Debug of nextVirtualView() method in GameController class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Debug of nextVirtualView() method in GameController class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -761,7 +780,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard1.java</url>
-          <line>26</line>
+          <line>22</line>
           <option name="timeStamp" value="190" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -846,7 +865,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/AssistantSelectionState.java</url>
-          <line>31</line>
+          <line>28</line>
           <option name="timeStamp" value="227" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

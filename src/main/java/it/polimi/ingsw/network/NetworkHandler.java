@@ -453,32 +453,32 @@ public class NetworkHandler {
                             }
                             CharacterCard1 cc1 = new CharacterCard1();
                             cc1.setStudents(map);
-                            String caption = "";
+                            String caption = "Take 1 Student from this card and place it on an Island of your choice.\nThen, draw a new Student from the Bag and place it on this card.";
                             view.getCharacterCards().add(new CharacterCard(id,price,cc1,caption));
                         }
                         case 2 ->{
                             CharacterCard2 cc2 = new CharacterCard2();
-                            String caption = "";
+                            String caption = "During this turn, you take control of any number of Professors even if you have the same number of Students as the player who currently controls them.";
                             view.getCharacterCards().add(new CharacterCard(id,price,cc2,caption));
                         }
                         case 3 ->{
                             CharacterCard3 cc3 = new CharacterCard3();
-                            String caption = "";
+                            String caption = "Choose an Island and resolve the Island as if Mother Nature had ended her movement there.\nMother Nature will still move and the Island where she ends her movement will also be resolved.";
                             view.getCharacterCards().add(new CharacterCard(id,price,cc3,caption));
                         }
                         case 4 ->{
                             CharacterCard4 cc4 = new CharacterCard4();
-                            String caption = "";
+                            String caption = "You may move Mother Nature up to 2 additional Islands than is indicated by the Assistant Card you've played.";
                             view.getCharacterCards().add(new CharacterCard(id,price,cc4,caption));
                         }
                         case 5 ->{
                             CharacterCard5 cc5 = new CharacterCard5();
-                            String caption = "";
+                            String caption = "Place a No Entry Tile on an Island of your choice.\nThe first time Mother Nature ends her movement there, put the No Entry Tile back onto this card DO NOT calculate influence on that Island, or place any Towers.";
                             view.getCharacterCards().add(new CharacterCard(id,price,cc5,caption));
                         }
                         case 6 ->{
                             CharacterCard6 cc6 = new CharacterCard6();
-                            String caption = "";
+                            String caption = "When resolving a Conquering on an Island, Towers do not count towards influence.";
                             view.getCharacterCards().add(new CharacterCard(id,price,cc6,caption));
                         }
                         case 7 ->{
@@ -492,22 +492,22 @@ public class NetworkHandler {
                             }
                             CharacterCard7 cc7 = new CharacterCard7();
                             cc7.setStudents(map);
-                            String caption = "";
+                            String caption = "You may take up to 3 Students from this card and replace them with the same number of Students from your Entrance.";
                             view.getCharacterCards().add(new CharacterCard(id,price,cc7,caption));
                         }
                         case 8 ->{
                             CharacterCard8 cc8 = new CharacterCard8();
-                            String caption = "";
+                            String caption = "During the influence calculation this turn, you count as having 2 more influence.";
                             view.getCharacterCards().add(new CharacterCard(id,price,cc8,caption));
                         }
                         case 9 ->{
                             CharacterCard9 cc9 = new CharacterCard9();
-                            String caption = "";
+                            String caption = "Choose a color of Student: during the influence calculation this turn, that color adds no influence.";
                             view.getCharacterCards().add(new CharacterCard(id,price,cc9,caption));
                         }
                         case 10 ->{
                             CharacterCard10 cc10 = new CharacterCard10();
-                            String caption = "";
+                            String caption = "You may exchange up to 2 Students between your Entrance and your Dining Room.";
                             view.getCharacterCards().add(new CharacterCard(id,price,cc10,caption));
                         }
                         case 11 ->{
@@ -521,15 +521,15 @@ public class NetworkHandler {
                             }
                             CharacterCard11 cc11 = new CharacterCard11();
                             cc11.setStudents(map);
-                            String caption = "";
+                            String caption = "Take 1 Student from this card and place it in your Dining Room.\nThen, draw a new Student from the Bag and place it on this card.";
                             view.getCharacterCards().add(new CharacterCard(id,price,cc11,caption));
                         }
                         case 12 ->{
                             CharacterCard12 cc12 = new CharacterCard12();
-                            String caption = "";
+                            String caption = "Choose a type of Student: every player (including yourself) must return 3 Students of that type from their Dining Room to the Bag.\n If any player has fewer than 3 Students of that type, return as many Students as they have.";
                             view.getCharacterCards().add(new CharacterCard(id,price,cc12,caption));
                         }
-                    }//TODO SETTARE LE CAPTIONS DELLE CARTE NELLO SWITCH CASE
+                    }
                 }
             }
             case UPDATE_CARD_STUDENTS -> {

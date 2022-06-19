@@ -20,13 +20,8 @@ public class CharacterCard1 implements CardBehavior{
         Eff: prendi 1 studente e piazzalo su un'isola a scelta; pesca uno studente e mettilo sulla carta
      */
     public void startEffect(Parameter parameter){
-        /*if(this.students.get(parameter.getChosenColor())==0){
-            //TODO manda errore e chiede di reinserire --  direi che i check sulla validità dell'input andrebbero fatti lato client
-        }
-        else */{
             moveToIsland(parameter.getChosenColor(), parameter.getIsland());
             refill(parameter.getGame());
-        }
     }
     public void initializeCard(Parameter parameter) {
         for(int i=0;i<4;i++){
