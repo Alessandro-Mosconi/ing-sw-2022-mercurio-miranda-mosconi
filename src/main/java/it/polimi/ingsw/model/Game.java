@@ -51,6 +51,7 @@ public class Game {
         this.gameID = idGame;
         this.gameMode = gameMode;
         this.started = false;
+        this.schoolBoards=new ArrayList<SchoolBoard>();
     }
 
     //methods @Setter @Getter
@@ -392,6 +393,7 @@ public class Game {
         return shuffleCharacterCards();
     }
     private void initAllCharacterCards(){
+        this.allCharacterCards = new ArrayList<CharacterCard>();
         this.allCharacterCards.add(new CharacterCard (1,1,new CharacterCard1()));
         this.allCharacterCards.add(new CharacterCard (2,2,new CharacterCard2()));
         this.allCharacterCards.add(new CharacterCard (3,3,new CharacterCard3()));

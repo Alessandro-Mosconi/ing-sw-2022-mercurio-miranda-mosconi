@@ -16,6 +16,7 @@ public class JavaFXTest extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("/TestScene.fxml"));

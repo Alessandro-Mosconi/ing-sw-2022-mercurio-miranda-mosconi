@@ -2,6 +2,8 @@ package it.polimi.ingsw.model;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SchoolBoardTest {
@@ -14,12 +16,6 @@ class SchoolBoardTest {
          assertEquals(schoolboard.getTowersColor(), TowerColor.grey);
          assertEquals(schoolboard.getGameMode(), GameMode.easy);
 
-         for (PawnColor color : PawnColor.values()) {
-            assertEquals(schoolboard.getProfessorTable().get(color), false);
-            assertEquals(schoolboard.getStudentEntrance().get(color), Integer.valueOf(0));
-            assertEquals(schoolboard.getStudentHall().get(color), Integer.valueOf(0));
-         }
-
         SchoolBoard schoolboard2 = new SchoolBoard();
 
         assertEquals(schoolboard2.getTowersNumber(), Integer.valueOf(0));
@@ -27,14 +23,27 @@ class SchoolBoardTest {
         assertNull(schoolboard2.getGameMode());
 
         for (PawnColor color : PawnColor.values()) {
-            assertEquals(schoolboard.getProfessorTable().get(color), false);
-            assertEquals(schoolboard.getStudentEntrance().get(color), Integer.valueOf(0));
-            assertEquals(schoolboard.getStudentHall().get(color), Integer.valueOf(0));
+            assertEquals(schoolboard2.getProfessorTable().get(color), false);
+            assertEquals(schoolboard2.getStudentEntrance().get(color), Integer.valueOf(0));
+            assertEquals(schoolboard2.getStudentHall().get(color), Integer.valueOf(0));
         }
+
+    SchoolBoard sc = new SchoolBoard(6, TowerColor.grey, new HashMap<PawnColor, Integer>(),GameMode.expert);
+
+        assertEquals(sc.getTowersNumber(), 6);
+        assertEquals(sc.getTowersColor(), TowerColor.grey);
+        assertEquals(sc.getGameMode(), GameMode.expert);
+
+        for (PawnColor color : PawnColor.values()) {
+            assertEquals(sc.getProfessorTable().get(color), false);
+            assertEquals(sc.getStudentEntrance().get(color), Integer.valueOf(0));
+            assertEquals(sc.getStudentHall().get(color), Integer.valueOf(0));
+        }
+
     }
     @Test
     void addRemoveStudentEntrance() {
-        SchoolBoard schoolboard = new SchoolBoard(6, TowerColor.grey, GameMode.easy);
+        SchoolBoard schoolboard = new SchoolBoard(6, TowerColor.grey, GameMode.expert);
         schoolboard.addStudentEntrance(PawnColor.blue);
         schoolboard.addStudentEntrance(PawnColor.yellow, 3);
 
@@ -87,12 +96,38 @@ class SchoolBoardTest {
 
     @Test
     void checkForCoin() {
-        SchoolBoard schoolboard = new SchoolBoard(6, TowerColor.grey, GameMode.easy);
-        assertFalse(schoolboard.checkForCoin(PawnColor.blue));
 
         SchoolBoard schoolboard2 = new SchoolBoard(6, TowerColor.grey, GameMode.expert);
         schoolboard2.addStudentEntrance(PawnColor.blue, 6);
         assertTrue(schoolboard2.checkForCoin(PawnColor.blue));
 
     }
+
+    @Test
+    void GetSet(){
+        SchoolBoard sc = new SchoolBoard(6, TowerColor.grey, GameMode.expert);
+
+        sc.setTowersColor(TowerColor.white);
+        assertEquals(TowerColor.white, sc.getTowersColor());
+        sc.setTowersNumber(8);
+        assertEquals(8, sc.getTowersNumber());
+        sc.setBonus2influencepoints(true);
+        assertTrue(sc.isBonus2influencepoints());
+
+        HashMap<PawnColor, Integer> map = new HashMap<PawnColor, Integer>();
+        map.put(PawnColor.blue, 2);
+
+        sc.setStudentHall(map);
+        assertEquals(map, sc.getStudentHall());
+
+        sc.setStudentEntrance(map);
+        assertEquals(map, sc.getStudentEntrance());
+
+        HashMap<PawnColor, Boolean> profMap = new HashMap<>();
+        profMap.put(PawnColor.pink, true);
+        sc.setProfessorTable(profMap);
+        assertEquals(profMap, sc.getProfessorTable());
+
+    }
+
 }
