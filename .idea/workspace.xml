@@ -6,83 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="Debug of nextVirtualView() method in GameController class">
       <change afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/CharacterCardTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/DeckTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/GameTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_18.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PSP42.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PSP42.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Island.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Island.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/IslandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/IslandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Parameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Parameter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/SchoolBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/SchoolBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/JavaFXMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/JavaFXMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/JavaFXTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/JavaFXTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/CloudTileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/CloudTileTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/IslandManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/IslandManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/IslandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/IslandTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/ParameterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/ParameterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/GameTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/PlayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/SchoolBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/SchoolBoardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/ChooseCTState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/EndGameState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/GameController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/GameControllerState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/MoveMNState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/MovePawnsState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/AssistantCard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CardBehavior.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard11.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard12.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CloudTile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Deck.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Game$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Game$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Game$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Game$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Game$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/GameMode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Island$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Island$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Island.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/IslandManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Parameter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/PawnColor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/SchoolBoard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/TowerColor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/WizardType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/ClientHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/ErrorType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Message.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/MessageType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Pinger.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Server.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/CLI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/View.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/virtualview/VirtualView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/virtualview/VirtualView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/CloudTileTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/CloudTileTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/IslandManagerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/IslandManagerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/IslandTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/IslandTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/ParameterTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/ParameterTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/PlayerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/PlayerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/SchoolBoardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/SchoolBoardTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/JavaFXMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/JavaFXMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/JavaFXTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/JavaFXTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,13 +70,16 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Desktop2/ing-sw-2022-mercurio-miranda-mosconi - Copia (3)" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\aless\Desktop\ING-SOFT\ing-sw-2022-mercurio-miranda-mosconi\src\resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\aless\Desktop\ing-sw-2022-mercurio-miranda-mosconi\src\main\OLDTEST" />
       <recent name="C:\Users\aless\Desktop\ing-sw-2022-mercurio-miranda-mosconi\src\main" />
@@ -164,10 +98,77 @@
       <recent name="it.polimi.ingsw.model" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="it.polimi.ingsw.view" />
       <recent name="it.polimi.ingsw.network" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CharacterCardTest.CharacterCard6">
+  <component name="RunManager" selected="JUnit.CharacterCardTest and 8 more">
+    <configuration name="CharacterCardTest and 8 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PSP42" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="it.polimi.ingsw.model.CharacterCardTest" />
+        <pattern testClass="it.polimi.ingsw.model.CloudTileTest" />
+        <pattern testClass="it.polimi.ingsw.model.DeckTest" />
+        <pattern testClass="it.polimi.ingsw.model.GameTest" />
+        <pattern testClass="it.polimi.ingsw.model.IslandManagerTest" />
+        <pattern testClass="it.polimi.ingsw.model.IslandTest" />
+        <pattern testClass="it.polimi.ingsw.model.ParameterTest" />
+        <pattern testClass="it.polimi.ingsw.model.PlayerTest" />
+        <pattern testClass="it.polimi.ingsw.model.SchoolBoardTest" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CharacterCardTest.CharacterCard10" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PSP42" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
+      <option name="METHOD_NAME" value="CharacterCard10" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CharacterCardTest.CharacterCard11" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PSP42" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
+      <option name="METHOD_NAME" value="CharacterCard11" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CharacterCardTest.CharacterCard12" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PSP42" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
+      <option name="METHOD_NAME" value="CharacterCard12" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CharacterCardTest.CharacterCard2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PSP42" />
       <extension name="coverage">
@@ -179,70 +180,6 @@
       <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
       <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
       <option name="METHOD_NAME" value="CharacterCard2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CharacterCardTest.CharacterCard3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PSP42" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
-      <option name="METHOD_NAME" value="CharacterCard3" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CharacterCardTest.CharacterCard4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PSP42" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
-      <option name="METHOD_NAME" value="CharacterCard4" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CharacterCardTest.CharacterCard5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PSP42" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
-      <option name="METHOD_NAME" value="CharacterCard5" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CharacterCardTest.CharacterCard6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PSP42" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
-      <option name="METHOD_NAME" value="CharacterCard6" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -260,19 +197,19 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.Testing" />
-      <item itemvalue="JUnit.CharacterCardTest.CharacterCard3" />
-      <item itemvalue="JUnit.CharacterCardTest.CharacterCard4" />
-      <item itemvalue="JUnit.CharacterCardTest.CharacterCard5" />
+      <item itemvalue="JUnit.CharacterCardTest.CharacterCard10" />
+      <item itemvalue="JUnit.CharacterCardTest.CharacterCard11" />
+      <item itemvalue="JUnit.CharacterCardTest.CharacterCard12" />
       <item itemvalue="JUnit.CharacterCardTest.CharacterCard2" />
-      <item itemvalue="JUnit.CharacterCardTest.CharacterCard6" />
+      <item itemvalue="JUnit.CharacterCardTest and 8 more" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CharacterCardTest.CharacterCard6" />
+        <item itemvalue="JUnit.CharacterCardTest and 8 more" />
         <item itemvalue="JUnit.CharacterCardTest.CharacterCard2" />
-        <item itemvalue="JUnit.CharacterCardTest.CharacterCard4" />
-        <item itemvalue="JUnit.CharacterCardTest.CharacterCard5" />
-        <item itemvalue="JUnit.CharacterCardTest.CharacterCard3" />
+        <item itemvalue="JUnit.CharacterCardTest.CharacterCard12" />
+        <item itemvalue="JUnit.CharacterCardTest.CharacterCard11" />
+        <item itemvalue="JUnit.CharacterCardTest.CharacterCard10" />
       </list>
     </recent_temporary>
   </component>
@@ -366,14 +303,8 @@
       <workItem from="1655399095661" duration="6870000" />
       <workItem from="1655631042832" duration="3743000" />
       <workItem from="1655642691709" duration="735000" />
-      <workItem from="1655709709682" duration="20895000" />
-    </task>
-    <task id="LOCAL-00007" summary="init CharacterCards 1-4 ; update Game methods">
-      <created>1650647367423</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1650647367423</updated>
+      <workItem from="1655709709682" duration="24883000" />
+      <workItem from="1655795723742" duration="6129000" />
     </task>
     <task id="LOCAL-00008" summary="fix of some classes">
       <created>1650700990641</created>
@@ -711,7 +642,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655406141371</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Fixed testing classes and general model bugs">
+      <created>1655732602728</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1655732602729</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -747,7 +685,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="TestCloudTile added in test section" />
     <MESSAGE value="PlayerTest and SchoolBoardTest completed" />
     <MESSAGE value="IslandTest 53% methods, 75% of lines covered (to finish)" />
     <MESSAGE value="Communication Protocol, no sequence diagram" />
@@ -772,7 +709,8 @@
     <MESSAGE value="Model updates + CLI fixes + effects managed" />
     <MESSAGE value="Code cleaning + character cards debugging" />
     <MESSAGE value="Debug of nextVirtualView() method in GameController class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Debug of nextVirtualView() method in GameController class" />
+    <MESSAGE value="Fixed testing classes and general model bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed testing classes and general model bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -814,7 +752,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java</url>
-          <line>280</line>
+          <line>281</line>
           <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -909,12 +847,12 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java</url>
-          <line>461</line>
+          <line>462</line>
           <option name="timeStamp" value="209" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java</url>
-          <line>495</line>
+          <line>496</line>
           <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -966,27 +904,28 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Eriantys$ParameterTest.ic" NAME="ParameterTest Coverage Results" MODIFIED="1655721946668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_2_more.ic" NAME="CloudTileTest and 2 more Coverage Results" MODIFIED="1651152494282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Eriantys$SchoolBoardTest.ic" NAME="SchoolBoardTest Coverage Results" MODIFIED="1655711029748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard12.ic" NAME="CharacterCardTest.CharacterCard12 Coverage Results" MODIFIED="1655800082080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_4_more.ic" NAME="CloudTileTest and 4 more Coverage Results" MODIFIED="1651500486486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_5_more__1_.ic" NAME="CloudTileTest and 5 more (1) Coverage Results" MODIFIED="1655282746494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_and_8_more.ic" NAME="CharacterCardTest and 8 more Coverage Results" MODIFIED="1655801809488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_5_more.ic" NAME="CloudTileTest and 5 more Coverage Results" MODIFIED="1655712397039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Eriantys$PlayerTest_useAssistantCard.ic" NAME="PlayerTest.useAssistantCard Coverage Results" MODIFIED="1655711936590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$GameTest.ic" NAME="GameTest Coverage Results" MODIFIED="1655665726313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard10.ic" NAME="CharacterCardTest.CharacterCard10 Coverage Results" MODIFIED="1655799155973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest.ic" NAME="CloudTileTest Coverage Results" MODIFIED="1655721237976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_6_more.ic" NAME="CloudTileTest and 6 more Coverage Results" MODIFIED="1655720941169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest__1_.ic" NAME="PlayerTest (1) Coverage Results" MODIFIED="1655712362286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard7.ic" NAME="CharacterCardTest.CharacterCard7 Coverage Results" MODIFIED="1655797787441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$DeckTest.ic" NAME="DeckTest Coverage Results" MODIFIED="1655721430704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -999,14 +938,35 @@
     <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard3.ic" NAME="CharacterCardTest.CharacterCard3 Coverage Results" MODIFIED="1655729249973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_7_more.ic" NAME="CloudTileTest and 7 more Coverage Results" MODIFIED="1655722100811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest_moveFromEntranceToIsland.ic" NAME="PlayerTest.moveFromEntranceToIsland Coverage Results" MODIFIED="1655711770028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$ParameterTest.ic" NAME="ParameterTest Coverage Results" MODIFIED="1655721946668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$GameTest.ic" NAME="GameTest Coverage Results" MODIFIED="1655665726313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard11.ic" NAME="CharacterCardTest.CharacterCard11 Coverage Results" MODIFIED="1655799697530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard2.ic" NAME="CharacterCardTest.CharacterCard2 Coverage Results" MODIFIED="1655800584138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest__1_.ic" NAME="PlayerTest (1) Coverage Results" MODIFIED="1655712362286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard4.ic" NAME="CharacterCardTest.CharacterCard4 Coverage Results" MODIFIED="1655729543458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_7_more.ic" NAME="CloudTileTest and 7 more Coverage Results" MODIFIED="1655722100811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Eriantys$PlayerTest_costructor.ic" NAME="PlayerTest.costructor Coverage Results" MODIFIED="1655711262620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$IslandManagerTest.ic" NAME="IslandManagerTest Coverage Results" MODIFIED="1655720891644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard9.ic" NAME="CharacterCardTest.CharacterCard9 Coverage Results" MODIFIED="1655798770190" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$it_polimi_ingsw_model_in_PSP42.ic" NAME="it.polimi.ingsw.model in PSP42 Coverage Results" MODIFIED="1651091091398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -1016,9 +976,6 @@
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest.ic" NAME="CharacterCardTest Coverage Results" MODIFIED="1655725686400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest_moveFromEntranceToIsland.ic" NAME="PlayerTest.moveFromEntranceToIsland Coverage Results" MODIFIED="1655711770028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
   </component>

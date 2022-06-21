@@ -62,6 +62,7 @@ class PlayerTest {
     @Test
     void useAssistantCard() {
         AssistantCard card = new AssistantCard(1, 12);
+        assertEquals(card.getId(), "1");
         ArrayList<AssistantCard> cards = new ArrayList<>();
         cards.add(card);
         Deck deck = new Deck(cards);

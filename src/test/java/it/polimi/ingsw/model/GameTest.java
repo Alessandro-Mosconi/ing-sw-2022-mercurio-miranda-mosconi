@@ -11,15 +11,13 @@ class GameTest {
     @Test
         void setupGame() {
             Game game = new Game();
-/*
-            for(PawnColor color : PawnColor.values()){
-                assertEquals(game.getBag().get(color), Integer.valueOf(26));
-            }
- */
+
             assertEquals(game.getBank(), 20);
             assertEquals(game.getNumberOfPlayers(), 0);
             assertEquals(game.getGameID(), "0");
             assertFalse(game.isStarted());
+            game.setNumberOfPlayers(2);
+            assertEquals(2, game.getNumberOfPlayers());
 
 
         game = new Game(3, "g1", GameMode.easy);
@@ -101,7 +99,6 @@ class GameTest {
         assertEquals(counter, Integer.valueOf(14));
         }
 
-
     @Test
     void moveFromBagToCloud() {
         Game game = new Game(3, "g1", GameMode.easy);
@@ -151,6 +148,29 @@ class GameTest {
     }
     @Test
     void calculatePlayerOrder() {
+        Game game = new Game(3, "g1", GameMode.easy);
+
+        Player p1 = new Player("Franco", new Deck(), 1, new SchoolBoard());
+        Player p2 = new Player("gigi", new Deck(), 2, new SchoolBoard());
+        Player p3 = new Player("pol", new Deck(), 3, new SchoolBoard());
+        game.addPlayer(p1);
+        game.addPlayer(p2);
+        game.addPlayer(p3);
+
+        game.setupGame();
+
+        AssistantCard assistantCard1 = new AssistantCard(1, 5);
+        AssistantCard assistantCard2 = new AssistantCard(2, 5);
+        AssistantCard assistantCard3 = new AssistantCard(3, 10);
+        p1.setLastAssistantCard(assistantCard2);
+        p2.setLastAssistantCard(assistantCard3);
+        p3.setLastAssistantCard(assistantCard1);
+
+        ArrayList<Integer> newOrder = new ArrayList<>();
+        newOrder =  game.calculatePlayerOrder();
+        assertEquals(3, newOrder.get(0));
+        assertEquals(1, newOrder.get(1));
+        assertEquals(2, newOrder.get(2));
     }
 
     @Test
@@ -327,6 +347,11 @@ class GameTest {
         }
         assertEquals(game.getAvailableWizards().size(), 3);
         assertFalse(flag);
+
+        ArrayList<WizardType> array = new ArrayList<>();
+        array.add(WizardType.wizard3);
+        game.setAvailableWizards(array);
+        assertEquals(game.getAvailableWizards().get(0), WizardType.wizard3);
     }
 
     @Test
@@ -350,6 +375,12 @@ class GameTest {
         }
         assertEquals(game.getAvailableTowerColors().size(), 2);
         assertFalse(flag);
+
+
+        ArrayList<TowerColor> array = new ArrayList<>();
+        array.add(TowerColor.grey);
+        game.setAvailableTowerColors(array);
+        assertEquals(game.getAvailableTowerColors().get(0), TowerColor.grey);
     }
 
     @Test

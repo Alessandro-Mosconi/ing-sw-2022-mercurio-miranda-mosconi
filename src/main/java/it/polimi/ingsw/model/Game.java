@@ -120,6 +120,7 @@ public class Game {
         return keptOut;
     }
     public void setKeptOut(PawnColor keptOut) {
+        this.keptOut = keptOut;
         for(Island i : this.getIslandManager().getIslandList()){
             i.setKeptOut(keptOut);
         }
