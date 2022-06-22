@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+
+<!--
+<AnchorPane prefHeight="54.0" prefWidth="297.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.LoginControllerroller">
+   <children>
+      <Button fx:id="button" layoutX="190.0" layoutY="14.0" mnemonicParsing="false" onAction="#buttonClicked" text="-&gt;" />
+      <Label fx:id="label" layoutX="232.0" layoutY="19.0" text="Label" />
+      <TextField fx:id="textField" layoutX="14.0" layoutY="14.0" />
+   </children>
+</AnchorPane>
+-->
+
+<GridPane fx:controller="it.polimi.ingsw.view.LoginController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+   <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+   <!--<gridLinesVisible>true</gridLinesVisible>-->
+
+   <!--
+   <Text text="Eriantys"
+         GridPane.columnIndex="0" GridPane.rowIndex="0"
+         GridPane.columnSpan="2"/>
+    -->
+
+   <Label text="Username" id="text"
+          GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+   <TextField fx:id="username"
+              GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+   <!--
+   <Label text="Server Port" id="text"
+          GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+   <TextField
+              GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+   <Label text="Server IP" id="text"
+          GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+   <TextField
+              GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+   -->
+
+   <HBox spacing="10" alignment="BOTTOM_RIGHT"
+         GridPane.columnIndex="2" GridPane.rowIndex="5">
+         <Button text="Sign in"
+                 onAction="#handleSubmitButtonAction"/>
+   </HBox>
+   <Text fx:id="actiontarget"
+         GridPane.columnIndex="2" GridPane.rowIndex="6"/>
+
+   <stylesheets>
+      <URL value="@LoginStyle.css" />
+   </stylesheets>
+
+</GridPane>
