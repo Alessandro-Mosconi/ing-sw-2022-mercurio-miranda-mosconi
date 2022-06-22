@@ -84,8 +84,7 @@ public class Client {
                     viewFailed=false;
                 }
                 else if(viewChoice.equals("G")||viewChoice.equals("g")){
-                    System.out.println("non ancora implementata");
-                    //view = new GUI();
+                    view = new GUI();
                     viewFailed=false;
                 }
                 else viewFailed=true;
