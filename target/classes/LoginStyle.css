@@ -6,15 +6,15 @@
 }
 
 #text {
-    -fx-font-family: "Comic Sans MS";
+    -fx-font-family: "Helvetica";
     -fx-text-fill: white;
-    -fx-font-size: 12pt;
+    -fx-font-size: 15pt;
     -fx-font-weight: bold;
 }
 
 #header {
-    -fx-font-family: "Comic Sans MS";
-    -fx-font-size: 25pt;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 30pt;
     -fx-fill: white;
     -fx-font-weight: bold;
 }

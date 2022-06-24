@@ -5,14 +5,13 @@ import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.view.View;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class NetworkHandler {
-
-
     private PrintWriter out;
     private BufferedReader in;
     private View view;
@@ -27,7 +26,32 @@ public class NetworkHandler {
         this.phase = Phase.LOGIN;
     }
 
-    public synchronized String send_msg() {
+    public void start() throws IOException {
+        while (true) {
+            System.out.println("Ora leggo: ");
+            String input = in.readLine();
+            String output=null;
+
+            if (input != null)
+                if (!input.equals("ping")) {
+                    System.out.println("processing...");
+                    process(input);
+                    if(view.isUpdated()){
+                        view.setUpdated(false);
+                        out.println("MODEL_UPDATED");
+                    }
+                    else {
+                        output = prepare_msg();
+                        System.out.println("Ora invio questo msg: "+ output);
+                        out.println(output);
+                    }
+                }
+        }
+    }
+    public void startGUI(){
+
+    }
+    public synchronized String prepare_msg() {
         Message msg_out = new Message(view.getUsername());
 
         Gson gson = new Gson();
@@ -35,6 +59,10 @@ public class NetworkHandler {
         switch (phase) {
             case LOGIN -> {
                 view.login();
+
+                //debug
+                System.out.println("sono nel network");
+
                 msg_out.setUser(view.getUsername());
                 view.getPlayer().setNickName(view.getUsername());
                 payloads.add(view.getUsername());

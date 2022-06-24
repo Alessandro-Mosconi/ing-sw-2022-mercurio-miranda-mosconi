@@ -17,59 +17,82 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginController {
-    private Stage stage;
+    private Stage primaryStage;
     private Scene scene;
     private Parent root;
-    private Parent popup;
 
+    private GuiStarter currentApplication;
     @FXML
     protected TextField username;
     @FXML
     private Text actiontarget;
     @FXML
-    public void handleSubmitButtonAction(ActionEvent actionEvent) throws Exception {
-        //possiamo fare che quando preme il tasto controlla l'input e poi va alla prossima fase (mandando anche il messaggio)
-
-        actiontarget.setText("Sign in button pressed");
+    protected TextField serverPort;
+    @FXML
+    protected TextField serverIP;
+    @FXML
+    public void createGameButton(ActionEvent actionEvent) throws Exception {
+        //this is to debug
         System.out.println(username.getText());
 
         try {
             root = FXMLLoader.load(getClass().getResource("/GameSettings.fxml"));
-            popup = FXMLLoader.load(getClass().getResource("/CreateDialog.fxml"));
+            //popup = FXMLLoader.load(getClass().getResource("/CreateDialog.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
             return;
         }
-        //root = FXMLLoader.load(getClass().getResource("GameSettings.fxml"));
-        final Stage dialog = new Stage();
 
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        currentApplication = GuiStarter.getCurrentApplication();
+        View view = (GUI) currentApplication.getClient().getView();
+        view.setUsername(username.getText());
+        view.setServerIP(serverIP.getText());
+        view.setServerPort(Integer.parseInt(serverPort.getText()));
+        view.connect();
+
+
+        //final Stage dialog = new Stage();
+        primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        /*
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(stage);
-        VBox dialogVbox = new VBox(20);
 
-        Button createButton = new Button("CREATE");
-        Button joinButton = new Button("JOIN");
+        Scene dialogScene = new Scene(popup, 300, 200);
+        dialog.setScene(dialogScene);*/
 
-        dialogVbox.getChildren().add(new Text("This is a Dialog"));
-        dialogVbox.getChildren().addAll(createButton, joinButton);
+        //this is to check if the username is correct
+        if ((username != null) && (username.getText() != "")) {
+            //todo non capisco perché mi dia null come risultato..
+            scene = new Scene(root, 660, 370);
+            primaryStage.setScene(scene);
+            primaryStage.sizeToScene();
+            primaryStage.show();
+        }
+        else{
+            actiontarget.setText("Invalid username");
+            }
 
-        Scene dialogScene = new Scene(dialogVbox, 300, 200);
-        dialog.setScene(dialogScene);
-        dialog.show();
 
-        scene = new Scene(root,660, 370);
-        stage.setScene(scene);
-        stage.show();
 
     }
 
-    public void submitGame(ActionEvent actionEvent) {
-        //stessa cosa di sopra..
+    public void joinGameButton(ActionEvent actionEvent) {
+        //qui potrei chiamare direttamente il metodo di GUIStarter che poi cambia la scena
+        try {
+            root = FXMLLoader.load(getClass().getResource("/GameSettings.fxml"));
+            //popup = FXMLLoader.load(getClass().getResource("/CreateDialog.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
     }
 
     public TextField getUsername() {
         return username;
+    }
+
+    public void submitGame(ActionEvent actionEvent) {
+        System.out.println("suca");
     }
     /**
      * Method automatically called when the scene is loaded.

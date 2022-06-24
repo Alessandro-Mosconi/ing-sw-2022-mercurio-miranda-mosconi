@@ -113,7 +113,7 @@ public class Client3 {
                             out.println("MODEL_UPDATED");
                         }
                         else {
-                            output = networkHandler.send_msg();
+                            output = networkHandler.prepare_msg();
                             System.out.println("Ora invio: " + output);
 
                             out.println(output);

@@ -1,14 +1,13 @@
 package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.model.*;
-import it.polimi.ingsw.network.Message;
 import it.polimi.ingsw.network.MessageType;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public abstract class View {
     protected String username;
+    private GuiStarter guiStarter;
     protected String idGame;
     protected GameMode gamemode;
     protected Integer playerNumber;
@@ -34,8 +33,23 @@ public abstract class View {
     protected Integer chosenCloudPos;
     protected Integer chosenIslandPos;
     protected String activeEffect;
+    protected String serverIP;
+    protected int serverPort;
 
-
+    public int getServerPort() {
+        return serverPort;
+    }
+    public void setServerPort(int serverPort) {
+        this.serverPort = serverPort;
+    }
+    public String getServerIP() {
+        return serverIP;
+    }
+    public void setServerIP(String serverIP) {
+        this.serverIP = serverIP;
+    }
+    public void connect(){
+    }
     public String getActiveEffect() {
         return activeEffect;
     }
@@ -57,7 +71,6 @@ public abstract class View {
     public void setCardUsed(boolean cardUsed) {
         this.cardUsed = cardUsed;
     }
-
     protected boolean cardUsed = false;
 
 

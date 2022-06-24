@@ -4,26 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="Debug of nextVirtualView() method in GameController class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/LoginScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="Added 2 scenes for the GIU and started connecting the windows">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PSP42.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PSP42.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/JavaFXMain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/JavaFXTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/JavaFXTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/TestScene.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/TestScene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TestScene.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/JavaFXTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/CreateDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/CreateDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/LoginScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/LoginScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/LoginStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/LoginStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CreateDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CreateDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/LoginScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LoginScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/LoginStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LoginStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/JavaFXMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/JavaFXTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/JavaFXTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/GuiTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/GuiTester.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/JavaFXTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/View$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/View$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/View$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/View$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/View.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +70,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="26QWFmGfVhvRzn4Tv8FIQpDAkBL" />
   <component name="ProjectLevelVcsManager">
@@ -106,7 +114,7 @@
       <recent name="it.polimi.ingsw.network" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GuiTester">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Client" />
       <module name="PSP42" />
@@ -133,25 +141,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GuiTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.view.GuiTester" />
+    <configuration name="GuiStarter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.view.GuiStarter" />
       <module name="PSP42" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="it.polimi.ingsw.view.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JavaFXMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.view.JavaFXMain" />
-      <module name="PSP42" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.view.JavaFXTest" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -172,6 +167,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="it.polimi.ingsw.view.GuiTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.view.GuiTester" />
+      <module name="PSP42" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.polimi.ingsw.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Testing" type="JUnit" factoryName="JUnit">
       <module name="PSP42" />
       <option name="PACKAGE_NAME" value="it.polimi.ingsw" />
@@ -183,8 +191,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.JavaFXMain" />
-      <item itemvalue="Application.GuiTester" />
+      <item itemvalue="Application.GuiStarter" />
+      <item itemvalue="Application.it.polimi.ingsw.view.GuiTester" />
       <item itemvalue="Application.Client2" />
       <item itemvalue="Application.Client" />
       <item itemvalue="Application.Server" />
@@ -192,10 +200,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GuiTester" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
         <item itemvalue="Application.Client2" />
+        <item itemvalue="Application.it.polimi.ingsw.view.GuiTester" />
+        <item itemvalue="Application.GuiStarter" />
       </list>
     </recent_temporary>
   </component>
@@ -294,21 +303,9 @@
       <workItem from="1655841465256" duration="4682000" />
       <workItem from="1655927562409" duration="504000" />
       <workItem from="1655928071537" duration="1317000" />
-      <workItem from="1655929395832" duration="5059000" />
-    </task>
-    <task id="LOCAL-00007" summary="init CharacterCards 1-4 ; update Game methods">
-      <created>1650647367423</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1650647367423</updated>
-    </task>
-    <task id="LOCAL-00008" summary="fix of some classes">
-      <created>1650700990641</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1650700990641</updated>
+      <workItem from="1655929395832" duration="6651000" />
+      <workItem from="1655986536468" duration="23836000" />
+      <workItem from="1656075735882" duration="16489000" />
     </task>
     <task id="LOCAL-00009" summary="Communication Protocol v0">
       <created>1650974569656</created>
@@ -639,7 +636,21 @@
       <option name="project" value="LOCAL" />
       <updated>1655406141371</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Added 2 scenes for the GIU and started connecting the windows">
+      <created>1655936184628</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1655936184629</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Added 2 scenes for the GIU and started connecting the windows">
+      <created>1655936215382</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1655936215382</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -656,14 +667,44 @@
                   <entry key="Show.Git.Branches" value="true" />
                 </map>
               </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="GUI" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
             </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/GUI" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="TestCloudTile added in test section" />
     <MESSAGE value="PlayerTest and SchoolBoardTest completed" />
     <MESSAGE value="IslandTest 53% methods, 75% of lines covered (to finish)" />
     <MESSAGE value="Communication Protocol, no sequence diagram" />
@@ -688,7 +729,8 @@
     <MESSAGE value="Model updates + CLI fixes + effects managed" />
     <MESSAGE value="Code cleaning + character cards debugging" />
     <MESSAGE value="Debug of nextVirtualView() method in GameController class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Debug of nextVirtualView() method in GameController class" />
+    <MESSAGE value="Added 2 scenes for the GIU and started connecting the windows" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added 2 scenes for the GIU and started connecting the windows" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -700,7 +742,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java</url>
-          <line>395</line>
+          <line>423</line>
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -710,7 +752,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java</url>
-          <line>392</line>
+          <line>420</line>
           <option name="timeStamp" value="132" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -868,20 +910,26 @@
           <line>185</line>
           <option name="timeStamp" value="224" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/AssistantSelectionState.java</url>
           <line>28</line>
           <option name="timeStamp" value="227" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/GameController.java</url>
           <line>184</line>
           <option name="timeStamp" value="229" />
         </line-breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="230" />
-        </breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="249" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="252" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
