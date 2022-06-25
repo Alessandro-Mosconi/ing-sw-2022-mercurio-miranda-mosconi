@@ -3,6 +3,7 @@ package it.polimi.ingsw.view;
 import it.polimi.ingsw.network.Client;
 import it.polimi.ingsw.network.NetworkHandler;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -39,7 +40,6 @@ public class GuiStarter extends Application{
         primaryStage.setTitle("Eriantys");
         Parent root;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginScene.fxml"));
-
         try {
             root = loader.load();
         } catch (IOException e) {

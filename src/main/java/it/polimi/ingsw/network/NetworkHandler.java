@@ -2,16 +2,19 @@ package it.polimi.ingsw.network;
 
 import com.google.gson.Gson;
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.view.CLI;
 import it.polimi.ingsw.view.View;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NetworkHandler {
+public class NetworkHandler implements Runnable {
     private PrintWriter out;
     private BufferedReader in;
     private View view;
@@ -28,7 +31,6 @@ public class NetworkHandler {
 
     public void start() throws IOException {
         while (true) {
-            System.out.println("Ora leggo: ");
             String input = in.readLine();
             String output=null;
 
@@ -48,9 +50,22 @@ public class NetworkHandler {
                 }
         }
     }
-    public void startGUI(){
 
+    public void startGUI() throws IOException {
+        view.setNetworkHandler(this);
+
+        while (true) {
+            String input = in.readLine();
+            String output = null;
+
+            if (input != null)
+                if (!input.equals("ping")) {
+                    System.out.println("processing...");
+                    process(input);
+                }
+        }
     }
+
     public synchronized String prepare_msg() {
         Message msg_out = new Message(view.getUsername());
 
@@ -600,4 +615,12 @@ public class NetworkHandler {
         }
     }
 
+    @Override
+    public void run() {
+        try {
+            startGUI();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

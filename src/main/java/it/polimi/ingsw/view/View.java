@@ -2,6 +2,7 @@ package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.MessageType;
+import it.polimi.ingsw.network.NetworkHandler;
 
 import java.util.*;
 
@@ -35,6 +36,16 @@ public abstract class View {
     protected String activeEffect;
     protected String serverIP;
     protected int serverPort;
+
+    public NetworkHandler getNetworkHandler() {
+        return networkHandler;
+    }
+
+    public void setNetworkHandler(NetworkHandler networkHandler) {
+        this.networkHandler = networkHandler;
+    }
+
+    private NetworkHandler networkHandler;
 
     public int getServerPort() {
         return serverPort;
@@ -300,5 +311,8 @@ public abstract class View {
     public abstract void showUsedAssistantCards();
 
     public void showEndGameWindow(String winnerID) {
+    }
+
+    public void preparelogin() {
     }
 }

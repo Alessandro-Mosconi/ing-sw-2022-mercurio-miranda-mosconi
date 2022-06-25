@@ -1,5 +1,7 @@
 package it.polimi.ingsw.view;
 
+import it.polimi.ingsw.model.GameMode;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +19,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginController {
+    public TextField gameMode;
+    public TextField numOfPlayers;
+    public TextField gameID;
     private Stage primaryStage;
     private Scene scene;
     private Parent root;
@@ -48,32 +53,24 @@ public class LoginController {
         view.setUsername(username.getText());
         view.setServerIP(serverIP.getText());
         view.setServerPort(Integer.parseInt(serverPort.getText()));
-        view.connect();
-
 
         //final Stage dialog = new Stage();
         primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        /*
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.initOwner(stage);
-
-        Scene dialogScene = new Scene(popup, 300, 200);
-        dialog.setScene(dialogScene);*/
 
         //this is to check if the username is correct
-        if ((username != null) && (username.getText() != "")) {
-            //todo non capisco perché mi dia null come risultato..
-            scene = new Scene(root, 660, 370);
-            primaryStage.setScene(scene);
-            primaryStage.sizeToScene();
-            primaryStage.show();
-        }
-        else{
-            actiontarget.setText("Invalid username");
+        Platform.runLater(()->{
+            if ((username != null) && (username.getText() != "")) {
+                scene = new Scene(root, 660, 370);
+                primaryStage.setScene(scene);
+                primaryStage.sizeToScene();
+                primaryStage.show();
             }
+            else{
+                actiontarget.setText("Invalid username");
+            }
+        });
 
-
-
+        currentApplication.getClient().connectGUI();
     }
 
     public void joinGameButton(ActionEvent actionEvent) {
@@ -93,6 +90,13 @@ public class LoginController {
 
     public void submitGame(ActionEvent actionEvent) {
         System.out.println("suca");
+        currentApplication = GuiStarter.getCurrentApplication();
+        View view = currentApplication.getClient().getView();
+        view.setGamemode(GameMode.valueOf(gameMode.getText()));
+        view.setIdGame(gameID.getText());
+        view.setPlayerNumber(Integer.valueOf(numOfPlayers.getText()));
+
+        view.preparelogin();
     }
     /**
      * Method automatically called when the scene is loaded.

@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 
 public class Client {
     private View view;
-
     public void setView(View view) {
         this.view = view;
     }
@@ -100,15 +99,16 @@ public class Client {
 
         Pinger pinger = null;
 
-        try (
-                PrintWriter out = new PrintWriter(server.getOutputStream(), true);
-                BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
-                BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in))
-        ) {
+        try {
             //launch pinger thread
+            PrintWriter out = new PrintWriter(server.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
+            BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+
             pinger = new Pinger(out, server, "franco");
             Thread thread = new Thread(pinger, "clientPing" + server.getInetAddress());
             thread.start();
+
             NetworkHandler networkHandler = new NetworkHandler(out, in, view);
             networkHandler.start();
 
@@ -124,7 +124,6 @@ public class Client {
             System.err.println("Couldn't get I/O for the connection to " + ip);
             System.exit(1);
         }
-
         try{
             pinger.stop();
             server.close();
@@ -133,5 +132,48 @@ public class Client {
             throw new RuntimeException(e);
         }
     }
-}
 
+    public void connectGUI(){
+        Socket server;
+        String serverIP = view.getServerIP();
+        int serverPort = view.getServerPort();
+
+        try {
+            server = new Socket(serverIP, serverPort);
+            server.setSoTimeout(10000);
+            System.out.println("socket initialized");
+        } catch (IOException e) {
+            System.out.println("server unreachable");
+            return;
+        }
+        System.out.println("Connected GUI");
+
+        Pinger pinger = null;
+        try {
+
+            PrintWriter out = new PrintWriter(server.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
+            BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+
+            //launch pinger thread
+            pinger = new Pinger(out, server, "franco");
+            Thread thread = new Thread(pinger, "clientPing" + server.getInetAddress());
+            thread.start();
+
+            NetworkHandler networkHandler = new NetworkHandler(out, in, view);
+            Thread nwThread = new Thread(networkHandler, "network");
+            nwThread.start();
+        }
+        catch (SocketTimeoutException e) {
+            System.err.println("Server no more reachable " + serverIP);
+        }
+        catch (UnknownHostException e) {
+            System.err.println("Don't know about host " + serverIP);
+            System.exit(1);
+        }
+        catch (IOException e) {
+            System.err.println("Couldn't get I/O for the connection to " + serverIP);
+            System.exit(1);
+        }
+    }
+}
