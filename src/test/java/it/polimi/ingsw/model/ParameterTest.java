@@ -5,19 +5,20 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class ParameterTest {
 
     @Test
-    void setting() {/*
+    void setting() {
 
         Map<PawnColor, Integer> map = new HashMap<>();
 
         for(PawnColor color : PawnColor.values())
             map.put(color, 0);
 
-        Island island = new Island(map, TowerColor.white, 1, false, false);
+        Island island = new Island(0, map, TowerColor.white, 1, false, false);
         Game game = new Game();
         Player  player = new Player();
 
@@ -46,5 +47,19 @@ class ParameterTest {
         assertEquals(island, par4.getIsland());
         assertEquals(game, par4.getGame());
 
-*/    }
+
+        Map<PawnColor, Integer> map1 = new HashMap<>();
+        Map<PawnColor, Integer> map2 = new HashMap<>();
+        par = new Parameter();
+        par.setColorMap1(map1);
+        par.setColorMap2(map2);
+        par.setChosenColor(PawnColor.blue);
+        assertEquals(map1, par.getColorMap1());
+        assertEquals(map2, par.getColorMap2());
+        assertEquals(PawnColor.blue, par.getChosenColor());
+        assertNull(par.getPlayer());
+        assertNull(par.getIsland());
+        assertNull(par.getGame());
+
+    }
 }

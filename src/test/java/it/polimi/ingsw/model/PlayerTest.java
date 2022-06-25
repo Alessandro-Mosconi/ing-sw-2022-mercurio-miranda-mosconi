@@ -2,7 +2,9 @@ package it.polimi.ingsw.model;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,8 +18,6 @@ class PlayerTest {
         assertEquals(player.getWallet(), Integer.valueOf(0));
         assertEquals(player.getPlayerNumber(), Integer.valueOf(0));
         assertNull(player.getLastAssistantCard());
-        assertNull(player.getSchoolBoard());
-        assertNull(player.getDeck());
 
         Deck deck = new Deck();
         SchoolBoard schoolboard = new SchoolBoard();
@@ -29,6 +29,14 @@ class PlayerTest {
         assertNull(player2.getLastAssistantCard());
         assertEquals(player2.getSchoolBoard(), schoolboard);
         assertEquals(player2.getDeck(), deck);
+
+        Player player3 = new Player(2, "bob", schoolboard);
+        player3.setNickName("franco");
+        assertEquals(2, player3.getPlayerNumber());
+        assertEquals("franco", player3.getNickName());
+        assertEquals(player3.getSchoolBoard(), schoolboard);
+
+
     }
 
 
@@ -40,7 +48,7 @@ class PlayerTest {
 
         assertEquals(player.getWallet(), Integer.valueOf(3));
     }
-
+/*
     @Test
     void collectCoin() {
         Deck deck = new Deck();
@@ -51,18 +59,52 @@ class PlayerTest {
         assertEquals(player.getWallet(), Integer.valueOf(1));
     }
 
+ */
+
     @Test
     void useAssistantCard() {
-        AssistantCard card = new AssistantCard(0, 0);
+        AssistantCard card = new AssistantCard(1, 12);
+        assertEquals(card.getId(), "1");
         ArrayList<AssistantCard> cards = new ArrayList<>();
         cards.add(card);
         Deck deck = new Deck(cards);
         SchoolBoard schoolboard = new SchoolBoard(6, TowerColor.grey, GameMode.expert);
         Player player = new Player("bob", deck, 3, schoolboard);
 
-        player.useAssistantCard(deck.getCards().iterator().next());
+        player.useAssistantCard(card);
         assertEquals(player.getLastAssistantCard(), card);
-        assertTrue(player.getDeck().getCards().iterator().next().isConsumed());
+        assertTrue(player.getDeck().getCards().get(0).isConsumed());
+        assertEquals(player.getMaxShift(), 12);
+
+        player.setBonus2Shifts(true);
+        player.useAssistantCard(card);
+        assertEquals(player.getMaxShift(), 12+2);
+
+    }
+
+    @Test
+    void GetSet(){
+
+        ArrayList<AssistantCard> assistantCards = new ArrayList<>();
+        assistantCards.add(new AssistantCard());
+        Deck deck = new Deck(assistantCards);
+        Player player = new Player();
+        player.setDeck(deck);
+        assertEquals(player.getDeck().getCards().size(), 1);
+
+        player.setMaxShift(2);
+        assertEquals(player.getMaxShift(), 2);
+
+        player.setLastAssistantCard(player.getDeck().getCards().get(0));
+        assertEquals(player.getDeck().getCards().get(0), player.getLastAssistantCard());
+
+        SchoolBoard sc = new SchoolBoard();
+        player.setSchoolBoard(sc);
+        assertEquals(sc, player.getSchoolBoard());
+
+        player.setPlayerNumber(3);
+        assertEquals(3, player.getPlayerNumber());
+
 
     }
 
@@ -111,8 +153,8 @@ class PlayerTest {
 
         for(PawnColor color : PawnColor.values())
             map.put(color, 0);
-/*
-        Island island = new Island(map, TowerColor.grey, 3, false, false);
+
+        Island island = new Island(0, map, TowerColor.grey, 3, false, false);
 
         player.moveFromEntranceToIsland(island, PawnColor.yellow);
         player.moveFromEntranceToIsland(island, PawnColor.pink);
@@ -121,6 +163,6 @@ class PlayerTest {
         assertEquals(player.getSchoolBoard().getStudentEntrance().get(PawnColor.pink), Integer.valueOf(1));
         assertEquals(island.getIslandStudents().get(PawnColor.pink), Integer.valueOf(1));
         assertEquals(island.getIslandStudents().get(PawnColor.yellow), Integer.valueOf(0));
-*/
+
     }
 }
