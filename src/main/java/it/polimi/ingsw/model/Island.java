@@ -5,13 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Island {
-    public Island() {
-
-    }
-
-    public int getIslandID() {
-        return islandID;
-    }
+    public int getIslandID() { return islandID;}
 
     public void setIslandID(int islandID) {
         this.islandID = islandID;
@@ -115,9 +109,9 @@ public class Island {
                if (schoolboard.getProfessorTable().get(color))
                    influencePoints += getStudentNumber(color);
             }
-            if(schoolboard.isBonus2influencepoints()){
-                influencePoints=influencePoints+2;
-            }
+        }
+        if(schoolboard.isBonus2influencepoints()){
+            influencePoints=influencePoints+2;
         }
         if (schoolboard.getTowersColor().equals(this.towerColor)&&towersDoCount)
             influencePoints += getTowersNumber();
@@ -147,6 +141,7 @@ public class Island {
                 for (SchoolBoard s : schoolBoardsArray) {
                     if (towerColor.equals(s.getTowersColor())) {
                         prevOwner = s;
+                        currOwner = s;
                     }
                 }
                 maxInfluence = calculatePlayerInfluence(prevOwner);
@@ -163,5 +158,4 @@ public class Island {
                 this.towerColor = currOwner.getTowersColor();
             }
     }
-
 }

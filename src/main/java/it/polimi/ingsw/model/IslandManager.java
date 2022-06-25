@@ -24,11 +24,13 @@ public class IslandManager {
 
         //this if branch checks the current island with its next
         int islandPos = currMNPosition;
+
         if(islandList.get(currMNPosition).getTowerColor()==null) return;
         if (checkIslands(this.islandList.get(islandPos), this.islandList.get((islandPos+1)%(this.islandList.size())))){
             mergeIslands(this.islandList.get(islandPos), this.islandList.get((islandPos+1)%(this.islandList.size())));
             resetIslandsID();
         }
+        islandPos = currMNPosition;
         //this branch checks the current island with its previous
         if (checkIslands(this.islandList.get((this.islandList.size()+islandPos-1)%(this.islandList.size())), this.islandList.get(islandPos))){
             mergeIslands(this.islandList.get((this.islandList.size()+islandPos-1)%(this.islandList.size())), this.islandList.get(islandPos));
@@ -39,11 +41,16 @@ public class IslandManager {
 
         //this if branch checks the current island with its next
         int islandPos = islandID;
+
         if(islandList.get(currMNPosition).getTowerColor()==null) return;
         if (checkIslands(this.islandList.get(islandPos), this.islandList.get((islandPos+1)%(this.islandList.size())))){
             mergeIslands(this.islandList.get(islandPos), this.islandList.get((islandPos+1)%(this.islandList.size())));
             resetIslandsID();
         }
+
+        if(islandPos>=islandList.size())
+            islandPos--;
+
         //this branch checks the current island with its previous
         if (checkIslands(this.islandList.get((this.islandList.size()+islandPos-1)%(this.islandList.size())), this.islandList.get(islandPos))){
             mergeIslands(this.islandList.get((this.islandList.size()+islandPos-1)%(this.islandList.size())), this.islandList.get(islandPos));

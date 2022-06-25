@@ -1,7 +1,5 @@
 package it.polimi.ingsw.model;
 
-import java.util.*;
-
 public class Player {
 
 
@@ -74,10 +72,10 @@ public class Player {
     public void setWallet(int wallet) {
         this.wallet = wallet;
     }
-    public void collectCoin(PawnColor color){
+    //public void collectCoin(PawnColor color){
         //if(schoolBoard.checkForCoin(color))
           //  this.wallet = wallet +1;
-    }//Increases wallet if needed TODO ho gestito le monete fra game e controller - questo metodo che è stato testatp è inutile
+    //}//Increases wallet if needed TODO ho gestito le monete fra game e controller - questo metodo che è stato testatp è inutile
     public void setLastAssistantCard(AssistantCard lastAssistantCard) {
         this.lastAssistantCard = lastAssistantCard;
     }

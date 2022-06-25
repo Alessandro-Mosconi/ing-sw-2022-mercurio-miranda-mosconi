@@ -14,16 +14,25 @@ public class Parameter {
     private Map<PawnColor,Integer> colorMap1;
     private Map<PawnColor,Integer> colorMap2;
 
+    public Parameter() {
+        this.game = null;
+        this.island = null;
+        this.player = null;
+        this.chosenColor = null;
+        this.colorMap1 = null;
+        this.colorMap2 = null;
+    }
+
     public Parameter(Game game, Island island) {
         this.game = game;
         this.island = island;
-        this.player=null;
+        this.player = null;
     }
 
     public Parameter(Game game) {
         this.game = game;
-        this.island=null;
-        this.player=null;
+        this.island = null;
+        this.player = null;
     }
 
     public Parameter(Island island){
@@ -42,10 +51,6 @@ public class Parameter {
         this.game=game;
         this.player=player;
         this.island=null;
-    }
-
-    public Parameter() {
-
     }
 
     public Game getGame() {
