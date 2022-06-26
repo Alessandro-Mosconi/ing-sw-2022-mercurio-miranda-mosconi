@@ -71,6 +71,8 @@ public class NetworkHandler implements Runnable {
     public void startGUI() throws IOException {
         view.setNetworkHandler(this);
 
+        //todo we should make a different method for this or call it differently. This is for listening
+        //not starting a GUI
         while (true) {
             String input = in.readLine();
             String output = null;
@@ -83,6 +85,11 @@ public class NetworkHandler implements Runnable {
         }
     }
 
+    public void sendMessage(){
+        String output = prepare_msg();
+        out.println(output);
+    }
+
     public synchronized String prepare_msg() {
         Message msg_out = new Message(view.getUsername());
 
@@ -90,8 +97,7 @@ public class NetworkHandler implements Runnable {
         ArrayList<String> payloads = new ArrayList<>();
         switch (phase) {
             case LOGIN -> {
-                if(!isGui)
-                    view.login();
+                view.login();
 
                 //debug
                 System.out.println("sono nel network");

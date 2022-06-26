@@ -1,20 +1,13 @@
 package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.model.GameMode;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class LoginController {
     public TextField gameMode;
@@ -58,21 +51,6 @@ public class LoginController {
     public void joinGameButton(ActionEvent actionEvent) {
         checkAndConnect();
         currentApplication.switchToJoinSettings();
-    }
-
-    public TextField getUsername() {
-        return username;
-    }
-
-    public void submitGame(ActionEvent actionEvent) {
-        System.out.println("suca");
-        currentApplication = GuiStarter.getCurrentApplication();
-        View view = currentApplication.getClient().getView();
-        view.setGamemode(GameMode.valueOf(gameMode.getText()));
-        view.setIdGame(gameID.getText());
-        view.setPlayerNumber(Integer.valueOf(numOfPlayers.getText()));
-
-        view.preparelogin();
     }
     /**
      * Method automatically called when the scene is loaded.

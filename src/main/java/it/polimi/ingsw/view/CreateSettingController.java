@@ -42,12 +42,9 @@ public class CreateSettingController {
         view.setIdGame(gameID.getText());
         view.setPlayerNumber(Integer.parseInt(numOfPlayers.getText()));
         view.setGamemode(GameMode.valueOf(gameMode.getText()));
-        view.setPlayer(new Player());
-        view.setMessageType(MessageType.CREATE_MATCH);
+
         primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        currentApplication.getClient().getNet().prepare_msg();
-
+        view.prepareLogin();
     }
 
 }
