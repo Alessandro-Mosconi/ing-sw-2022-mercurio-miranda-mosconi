@@ -198,8 +198,6 @@ public class NetworkHandler implements Runnable {
         phase = Phase.WAITING;
         msg_out.fill(payloads);
         System.out.println("sending... " + msg_out.toSend());
-        if(isGui)
-            out.println(msg_out.toSend());
         return msg_out.toSend();
     }
 

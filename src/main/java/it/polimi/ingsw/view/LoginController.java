@@ -35,6 +35,7 @@ public class LoginController {
             return;
         }
 
+        //todo add check for serverIP and serverPort
         currentApplication = GuiStarter.getCurrentApplication();
         View view = (GUI) currentApplication.getClient().getView();
         view.setUsername(username.getText());
