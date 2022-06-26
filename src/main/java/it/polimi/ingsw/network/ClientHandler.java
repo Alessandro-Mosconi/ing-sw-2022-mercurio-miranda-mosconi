@@ -131,7 +131,6 @@ public class ClientHandler implements Runnable, ModelListener
     public void tellAPlayerJoined(Integer playersToGo) {
         Message msg_out = new Message();
         msg_out.setType(MessageType.LOBBY_UPDATED);
-        msg_out.fill(String.valueOf(playersToGo));
         System.out.println("sending... " + msg_out.toSend() + "to" + this.virtualView.getUsername());
 
         out.println(msg_out.toSend());

@@ -135,6 +135,7 @@ public class Client {
             System.exit(1);
         }
         try{
+
             pinger.stop();
             server.close();
         } catch (IOException e) {

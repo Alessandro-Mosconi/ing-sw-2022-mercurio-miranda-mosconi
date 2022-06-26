@@ -53,6 +53,7 @@ public class LoginController {
     public void createGameButton(ActionEvent actionEvent) throws Exception {
         checkAndConnect();
         currentApplication.switchToCreateSettings();
+        //currentApplication.switchToMainBoard();
     }
 
     public void joinGameButton(ActionEvent actionEvent) {

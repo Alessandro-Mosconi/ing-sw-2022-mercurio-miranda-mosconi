@@ -3,12 +3,14 @@ package it.polimi.ingsw.view;
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.MessageType;
 import it.polimi.ingsw.network.NetworkHandler;
+import it.polimi.ingsw.network.Phase;
 
 import java.util.*;
 
 public abstract class View {
     protected String username;
     private GuiStarter guiStarter;
+    private Phase phase;
     protected String idGame;
     protected GameMode gamemode;
     protected Integer playerNumber;
@@ -36,6 +38,14 @@ public abstract class View {
     protected String activeEffect;
     protected String serverIP;
     protected int serverPort;
+
+    public Phase getPhase() {
+        return phase;
+    }
+
+    public void setPhase(Phase phase) {
+        this.phase = phase;
+    }
 
     public NetworkHandler getNetworkHandler() {
         return networkHandler;

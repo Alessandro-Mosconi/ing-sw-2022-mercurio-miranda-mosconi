@@ -6,26 +6,95 @@
   <component name="ChangeListManager">
     <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="GUI to lobby">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/WizardType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/WizardType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/PawnColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/PawnColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/TowerColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/TowerColor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/WizardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/WizardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/virtualview/VirtualView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/virtualview/VirtualView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/GameSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/CreateSettings.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/LoginScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/LoginScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GameSettings.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LoginScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LoginScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/WizardType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/WizardType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/ClientHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/GuiStarter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/GuiStarter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/virtualview/VirtualView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/virtualview/VirtualView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/virtualview/VirtualView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/virtualview/VirtualView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente (1).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente(1).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente (10).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente(10).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente (2).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente(2).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente (3).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente(3).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente (4).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente(4).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente (5).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente(5).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente (6).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente(6).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente (7).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente(7).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente (8).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente(8).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente (9).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Assistenti/2x/Assistente(9).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front10.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front11.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front12.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front8.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Personaggi/CarteTOT_front9.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CreateDialog.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/LoginScene.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/LoginStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eriantys.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eriantys2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/ChooseCTState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/EndGameState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/GameController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/GameControllerState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/MoveMNState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/MovePawnsState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/AssistantCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CardBehavior.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard12.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CloudTile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Deck.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Game$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/GameMode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Island.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/IslandManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Parameter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/PawnColor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/SchoolBoard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/TowerColor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/WizardType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/ClientHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/ErrorType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/MessageType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Pinger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Server.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/CLI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/GUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/GuiStarter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/GuiTester.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/virtualview/VirtualView$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/virtualview/VirtualView.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +106,8 @@
       <list>
         <option value="Enum" />
         <option value="JavaFXApplication" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -92,10 +161,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\aless\Desktop\ING-SOFT\PROGETTO_FINALE\ing-sw-2022-mercurio-miranda-mosconi\src\resources" />
+      <recent name="C:\Users\aless\Desktop\ING-SOFT\PROGETTO_FINALE\ing-sw-2022-mercurio-miranda-mosconi\src\resources\assets" />
       <recent name="C:\Users\aless\Desktop\ING-SOFT\PROGETTO_FINALE\ing-sw-2022-mercurio-miranda-mosconi\src\main\java\it\polimi\ingsw\model" />
       <recent name="C:\Users\aless\Desktop\ING-SOFT\PROGETTO_FINALE\ing-sw-2022-mercurio-miranda-mosconi\src\test\java\it\polimi\ingsw\model" />
       <recent name="C:\Users\aless\Desktop\ING-SOFT\PROGETTO_FINALE\ing-sw-2022-mercurio-miranda-mosconi\src\test\java\it\polimi\ingsw\model2" />
-      <recent name="C:\Users\aless\Desktop\ING-SOFT\ing-sw-2022-mercurio-miranda-mosconi\src\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\aless\Desktop\ing-sw-2022-mercurio-miranda-mosconi\src\main\OLDTEST" />
@@ -121,7 +190,7 @@
       <recent name="it.polimi.ingsw.network" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client2">
+  <component name="RunManager" selected="Application.GuiTester">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Client" />
       <module name="PSP42" />
@@ -137,6 +206,19 @@
     </configuration>
     <configuration name="Client2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Client2" />
+      <module name="PSP42" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.polimi.ingsw.network.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Client3" />
       <module name="PSP42" />
       <extension name="coverage">
         <pattern>
@@ -184,35 +266,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="it.polimi.ingsw.model in PSP42" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PSP42" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="JUnit.Testing" />
-      <item itemvalue="JUnit.it.polimi.ingsw.model in PSP42" />
+      <item itemvalue="Application.GuiTester" />
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Client" />
-      <item itemvalue="Application.GuiTester" />
       <item itemvalue="Application.Client2" />
+      <item itemvalue="Application.Client3" />
+      <item itemvalue="JUnit.Testing" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GuiTester" />
+        <item itemvalue="Application.Client3" />
         <item itemvalue="Application.Client2" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
-        <item itemvalue="Application.GuiTester" />
-        <item itemvalue="JUnit.it.polimi.ingsw.model in PSP42" />
       </list>
     </recent_temporary>
   </component>
@@ -309,13 +377,9 @@
       <workItem from="1655709709682" duration="24883000" />
       <workItem from="1655795723742" duration="6532000" />
       <workItem from="1655902005274" duration="4886000" />
-    </task>
-    <task id="LOCAL-00011" summary="Communication Protocol v0">
-      <created>1650975098985</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1650975098985</updated>
+      <workItem from="1656260330453" duration="2948000" />
+      <workItem from="1656263319382" duration="2625000" />
+      <workItem from="1656265992828" duration="8112000" />
     </task>
     <task id="LOCAL-00012" summary="CharacterCard9, 10, 11, 12">
       <created>1651044842286</created>
@@ -653,7 +717,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656173132108</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="GUI to lobby">
+      <created>1656241165272</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1656241165272</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -689,7 +760,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="IslandManagerTest completed" />
     <MESSAGE value="Communication Protocol fixed (added wizard decision, deck and wallet update)" />
     <MESSAGE value="Communication Protocol fixed" />
     <MESSAGE value="Communication Protocol no sequence diagram" />
@@ -714,7 +784,8 @@
     <MESSAGE value="CharacterCard tested. &#10;100% of model classes tested, 88% of model lines covered" />
     <MESSAGE value="Tests added" />
     <MESSAGE value="Some model fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some model fix" />
+    <MESSAGE value="GUI to lobby" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI to lobby" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -726,17 +797,17 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java</url>
-          <line>482</line>
+          <line>484</line>
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java</url>
-          <line>336</line>
+          <line>337</line>
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java</url>
-          <line>479</line>
+          <line>481</line>
           <option name="timeStamp" value="132" />
         </line-breakpoint>
         <line-breakpoint type="java-line">

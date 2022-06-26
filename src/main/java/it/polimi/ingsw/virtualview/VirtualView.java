@@ -53,6 +53,12 @@ public class VirtualView{
     private static Map<String, GameController> gameMap = new HashMap<>(); //mappa di gameid e game
 
 
+    /*
+    public void updateNetworkMap(String gameID){
+
+    }
+
+     */
 
     public void setGameController(VirtualViewListener gameController) {
         this.gameController = gameController;
@@ -238,6 +244,8 @@ public class VirtualView{
                     msg_out.fill(toPush);
                     gameController.performAction();
                     msg_out.setType(MessageType.LOBBY_WAITING);
+                    msg_out.fill(toPush);
+                    System.out.println(toPush);
                     return msg_out.toSend();
                 }
             }

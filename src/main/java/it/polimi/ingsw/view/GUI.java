@@ -16,6 +16,15 @@ public class GUI extends View{
     private Object usernameMonitor = new Object();
     private Client client;
     private boolean ready2go = false;
+    private Player playerSchoolboard;
+
+    public Player getPlayerSchoolboard() {
+        return playerSchoolboard;
+    }
+
+    public void setPlayerSchoolboard(Player playerSchoolboard) {
+        this.playerSchoolboard = playerSchoolboard;
+    }
 
     public NetworkHandler getNetworkHandler() {
         return networkHandler;

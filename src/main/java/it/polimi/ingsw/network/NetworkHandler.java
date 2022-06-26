@@ -242,6 +242,7 @@ public class NetworkHandler implements Runnable {
         Message msg_out = new Message(msg_in.getUser());
         ArrayList<String> payloads;
 
+        view.setPhase(phase);
 
         switch (msg_in.getType()) {
             case ERROR -> {
@@ -275,7 +276,8 @@ public class NetworkHandler implements Runnable {
                 if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene();
             }
             case ASK_FOR_SETTINGS -> {
-                if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene();
+                System.out.println("settings");
+                if(isGui) GuiStarter.getCurrentApplication().switchToWizardsScene();
                 phase = Phase.SETTINGS;
             }
             case WAIT -> {
