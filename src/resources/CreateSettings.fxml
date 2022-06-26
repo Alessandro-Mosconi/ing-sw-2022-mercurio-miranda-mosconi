@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<GridPane alignment="center" hgap="10" prefHeight="400.0" prefWidth="720.0" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="it.polimi.ingsw.view.CreateSettingController">
+    <Text id="header" text="Game Settings" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
+
+    <Label id="text" text="Game ID" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <TextField fx:id="gameID" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+    <Label id="text" text="Game Mode" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <TextField fx:id="gameMode" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+    <Label id="text" text="Number Of Players" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <TextField fx:id="numOfPlayers" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+
+    <HBox alignment="BOTTOM_CENTER" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="5">
+        <Button onAction="#createGame" text="CREATE GAME" />
+    </HBox>
+
+    <stylesheets>
+        <URL value="@LoginStyle.css" />
+    </stylesheets>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+
+</GridPane>

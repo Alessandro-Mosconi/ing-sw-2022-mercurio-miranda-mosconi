@@ -53,6 +53,7 @@ public class VirtualView{
     private static Map<String, GameController> gameMap = new HashMap<>(); //mappa di gameid e game
 
 
+
     public void setGameController(VirtualViewListener gameController) {
         this.gameController = gameController;
     }
@@ -167,28 +168,34 @@ public class VirtualView{
 
         switch (msg_in.getType()) {
             case CREATE_MATCH -> {
+                msg_out = new Message();
                 username = payloads.get(0);
                 idGame = payloads.get(1);
                 playersNumber = Integer.parseInt(payloads.get(2));
                 gamemode = GameMode.valueOf(payloads.get(3));
-
-                GameController gController = new GameController();
-                gameController = (VirtualViewListener) gController;
-                gController.setPlayersToGo(playersNumber);
-                this.player.setPlayerNumber(0);
-                gController.addVirtualView(this);
-                gameController.performAction(); //CREATEGAMESTATE
-                msg_out = new Message();
-                msg_out.setUser(username);
-                msg_out.setType(MessageType.LOBBY_WAITING);
-                ArrayList<String> toPush = new ArrayList<>();
-                toPush.add(String.valueOf(gamemode));
-                msg_out.fill(toPush);
-                ArrayList<String> UsersList = new ArrayList<>();
-                UsersList.add(username);
-                networkMap.put(idGame, UsersList);
-                gameMap.put(idGame,gController);
-                System.out.println(networkMap);
+                if(!networkMap.containsKey(idGame)) {
+                    GameController gController = new GameController();
+                    gameController = (VirtualViewListener) gController;
+                    gController.setPlayersToGo(playersNumber);
+                    this.player.setPlayerNumber(0);
+                    gController.addVirtualView(this);
+                    gameController.performAction(); //CREATEGAMESTATE
+                    msg_out.setUser(username);
+                    msg_out.setType(MessageType.LOBBY_WAITING);
+                    ArrayList<String> toPush = new ArrayList<>();
+                    toPush.add(String.valueOf(gamemode));
+                    msg_out.fill(toPush);
+                    ArrayList<String> UsersList = new ArrayList<>();
+                    UsersList.add(username);
+                    networkMap.put(idGame, UsersList);
+                    gameMap.put(idGame, gController);
+                    System.out.println(networkMap);
+                }
+                else {
+                    msg_out.setUser(username);
+                    msg_out.setType(MessageType.ERROR);
+                    msg_out.fill(ErrorType.GAME_ALREADY_EXISTING);
+                }
                 return msg_out.toSend();
             }
             case JOIN_MATCH -> {
@@ -226,6 +233,8 @@ public class VirtualView{
                     msg_out.setUser(username);
                     ArrayList<String> toPush = new ArrayList<>();
                     toPush.add(String.valueOf(gamemode));
+                    String userList = gson.toJson(networkMap.get(idGame));
+                    toPush.add(userList);
                     msg_out.fill(toPush);
                     gameController.performAction();
                     msg_out.setType(MessageType.LOBBY_WAITING);

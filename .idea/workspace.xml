@@ -4,7 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="" />
+    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="GUI to lobby">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/WizardType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/WizardType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/virtualview/VirtualView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/virtualview/VirtualView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/GameSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/CreateSettings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/LoginScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/LoginScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GameSettings.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/LoginScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LoginScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/WizardType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/WizardType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/ClientHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/GuiStarter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/GuiStarter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/virtualview/VirtualView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/virtualview/VirtualView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/virtualview/VirtualView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/virtualview/VirtualView.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,7 +61,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -62,7 +83,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -70,6 +91,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\aless\Desktop\ING-SOFT\PROGETTO_FINALE\ing-sw-2022-mercurio-miranda-mosconi\src\resources" />
+      <recent name="C:\Users\aless\Desktop\ING-SOFT\PROGETTO_FINALE\ing-sw-2022-mercurio-miranda-mosconi\src\main\java\it\polimi\ingsw\model" />
+      <recent name="C:\Users\aless\Desktop\ING-SOFT\PROGETTO_FINALE\ing-sw-2022-mercurio-miranda-mosconi\src\test\java\it\polimi\ingsw\model" />
+      <recent name="C:\Users\aless\Desktop\ING-SOFT\PROGETTO_FINALE\ing-sw-2022-mercurio-miranda-mosconi\src\test\java\it\polimi\ingsw\model2" />
       <recent name="C:\Users\aless\Desktop\ING-SOFT\ing-sw-2022-mercurio-miranda-mosconi\src\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -91,73 +116,60 @@
       <recent name="it.polimi.ingsw.model" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="it.polimi.ingsw.model" />
       <recent name="it.polimi.ingsw.view" />
       <recent name="it.polimi.ingsw.network" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.it.polimi.ingsw.model in PSP42">
-    <configuration name="CharacterCardTest and 8 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Client2">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Client" />
       <module name="PSP42" />
-      <option name="TEST_OBJECT" value="pattern" />
-      <patterns>
-        <pattern testClass="it.polimi.ingsw.model.CharacterCardTest" />
-        <pattern testClass="it.polimi.ingsw.model.CloudTileTest" />
-        <pattern testClass="it.polimi.ingsw.model.DeckTest" />
-        <pattern testClass="it.polimi.ingsw.model.GameTest" />
-        <pattern testClass="it.polimi.ingsw.model.IslandManagerTest" />
-        <pattern testClass="it.polimi.ingsw.model.IslandTest" />
-        <pattern testClass="it.polimi.ingsw.model.ParameterTest" />
-        <pattern testClass="it.polimi.ingsw.model.PlayerTest" />
-        <pattern testClass="it.polimi.ingsw.model.SchoolBoardTest" />
-      </patterns>
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.polimi.ingsw.network.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CharacterCardTest.CharacterCard11" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Client2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Client2" />
       <module name="PSP42" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
+          <option name="PATTERN" value="it.polimi.ingsw.network.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
-      <option name="METHOD_NAME" value="CharacterCard11" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CharacterCardTest.CharacterCard12" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GuiTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.view.GuiTester" />
       <module name="PSP42" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
+          <option name="PATTERN" value="it.polimi.ingsw.view.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
-      <option name="METHOD_NAME" value="CharacterCard12" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CharacterCardTest.CharacterCard2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Server" />
       <module name="PSP42" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
+          <option name="PATTERN" value="it.polimi.ingsw.network.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
-      <option name="METHOD_NAME" value="CharacterCard2" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -188,19 +200,19 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.Testing" />
-      <item itemvalue="JUnit.CharacterCardTest.CharacterCard11" />
-      <item itemvalue="JUnit.CharacterCardTest.CharacterCard12" />
-      <item itemvalue="JUnit.CharacterCardTest.CharacterCard2" />
-      <item itemvalue="JUnit.CharacterCardTest and 8 more" />
       <item itemvalue="JUnit.it.polimi.ingsw.model in PSP42" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.GuiTester" />
+      <item itemvalue="Application.Client2" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Client2" />
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server" />
+        <item itemvalue="Application.GuiTester" />
         <item itemvalue="JUnit.it.polimi.ingsw.model in PSP42" />
-        <item itemvalue="JUnit.CharacterCardTest and 8 more" />
-        <item itemvalue="JUnit.CharacterCardTest.CharacterCard2" />
-        <item itemvalue="JUnit.CharacterCardTest.CharacterCard12" />
-        <item itemvalue="JUnit.CharacterCardTest.CharacterCard11" />
       </list>
     </recent_temporary>
   </component>
@@ -297,13 +309,6 @@
       <workItem from="1655709709682" duration="24883000" />
       <workItem from="1655795723742" duration="6532000" />
       <workItem from="1655902005274" duration="4886000" />
-    </task>
-    <task id="LOCAL-00010" summary="Communication Protocol v0">
-      <created>1650974653398</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1650974653398</updated>
     </task>
     <task id="LOCAL-00011" summary="Communication Protocol v0">
       <created>1650975098985</created>
@@ -641,7 +646,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656172969852</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Some model fix">
+      <created>1656173132108</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1656173132108</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -677,7 +689,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Communication Protocol, no sequence diagram" />
     <MESSAGE value="IslandManagerTest completed" />
     <MESSAGE value="Communication Protocol fixed (added wizard decision, deck and wallet update)" />
     <MESSAGE value="Communication Protocol fixed" />
@@ -702,7 +713,8 @@
     <MESSAGE value="Fixed testing classes and general model bugs" />
     <MESSAGE value="CharacterCard tested. &#10;100% of model classes tested, 88% of model lines covered" />
     <MESSAGE value="Tests added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tests added" />
+    <MESSAGE value="Some model fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some model fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -714,7 +726,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java</url>
-          <line>438</line>
+          <line>482</line>
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -724,7 +736,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java</url>
-          <line>435</line>
+          <line>479</line>
           <option name="timeStamp" value="132" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -741,11 +753,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/AssistantSelectionState.java</url>
           <line>11</line>
           <option name="timeStamp" value="140" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java</url>
-          <line>279</line>
-          <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/ChooseCTState.java</url>
@@ -773,99 +780,9 @@
           <option name="timeStamp" value="160" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard9.java</url>
-          <line>7</line>
-          <option name="timeStamp" value="185" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard10.java</url>
-          <line>7</line>
-          <option name="timeStamp" value="186" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard11.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="187" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard12.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="188" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/ChooseCTState.java</url>
           <line>18</line>
           <option name="timeStamp" value="189" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard1.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="190" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard2.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="191" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard4.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="193" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard5.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="194" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard7.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="195" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard8.java</url>
-          <line>7</line>
-          <option name="timeStamp" value="196" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/IslandManager.java</url>
-          <line>88</line>
-          <option name="timeStamp" value="204" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard2.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="207" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java</url>
-          <line>459</line>
-          <option name="timeStamp" value="209" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java</url>
-          <line>493</line>
-          <option name="timeStamp" value="212" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard3.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="215" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard3.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="217" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/IslandManager.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="219" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/IslandManager.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="220" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/MoveMNState.java</url>
@@ -964,7 +881,7 @@
     <SUITE FILE_PATH="coverage/Eriantys$PlayerTest.ic" NAME="PlayerTest Coverage Results" MODIFIED="1651151874996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$it_polimi_ingsw_model_in_PSP42.ic" NAME="it.polimi.ingsw.model in PSP42 Coverage Results" MODIFIED="1656172449977" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$it_polimi_ingsw_model_in_PSP42.ic" NAME="it.polimi.ingsw.model in PSP42 Coverage Results" MODIFIED="1656173073825" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest.ic" NAME="CharacterCardTest Coverage Results" MODIFIED="1655725686400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

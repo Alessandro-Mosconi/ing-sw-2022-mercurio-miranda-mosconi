@@ -3,7 +3,10 @@ package it.polimi.ingsw.network;
 import com.google.gson.Gson;
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.view.CLI;
+import it.polimi.ingsw.view.GUI;
+import it.polimi.ingsw.view.GuiStarter;
 import it.polimi.ingsw.view.View;
+import javafx.application.Application;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,9 +21,23 @@ public class NetworkHandler implements Runnable {
     private PrintWriter out;
     private BufferedReader in;
     private View view;
-    private Phase previousPhase;
+    private Phase previousPhase = Phase.LOGIN;
     private Phase phase;
     private Phase nextPhase;
+    private boolean isGui = false;
+    private GuiStarter currentapplication;
+
+    public void setCurrentapplication(GuiStarter currentapplication) {
+        this.currentapplication = currentapplication;
+    }
+
+    public boolean isGui() {
+        return isGui;
+    }
+
+    public void setGui(boolean gui) {
+        isGui = gui;
+    }
 
     public NetworkHandler(PrintWriter out, BufferedReader in, View view) {
         this.out = out;
@@ -73,7 +90,8 @@ public class NetworkHandler implements Runnable {
         ArrayList<String> payloads = new ArrayList<>();
         switch (phase) {
             case LOGIN -> {
-                view.login();
+                if(!isGui)
+                    view.login();
 
                 //debug
                 System.out.println("sono nel network");
@@ -92,7 +110,9 @@ public class NetworkHandler implements Runnable {
                 nextPhase = Phase.SETTINGS;
             }
             case SETTINGS -> {
-                view.settings();
+
+                if(!isGui) view.settings();
+
                 msg_out.setType(MessageType.SETTINGS);
                 payloads.add(view.getPlayer().getDeck().getWizard().toString());
                 payloads.add(view.getTowerColor().toString());
@@ -168,9 +188,12 @@ public class NetworkHandler implements Runnable {
                 msg_out.fill("WAITING");
             }
         }
+        previousPhase = phase;
         phase = Phase.WAITING;
         msg_out.fill(payloads);
         System.out.println("sending... " + msg_out.toSend());
+        if(isGui)
+            out.println(msg_out.toSend());
         return msg_out.toSend();
     }
 
@@ -218,28 +241,48 @@ public class NetworkHandler implements Runnable {
         Message msg_in = gson.fromJson(input, Message.class);
         Message msg_out = new Message(msg_in.getUser());
         ArrayList<String> payloads;
+
+
         switch (msg_in.getType()) {
             case ERROR -> {
                 System.out.println("Error:" + msg_in.getPayload());
+                if(isGui) {
+                    if(isGui) GuiStarter.getCurrentApplication().showError(msg_in.getPayload());
+                }
                 phase = previousPhase;
             }
             case LOBBY_WAITING -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 GameMode gm = GameMode.valueOf(String.valueOf(payloads.get(0)));
+                ArrayList<String> userList = new ArrayList<>();
+                if (payloads.size()>1) {
+                    userList = gson.fromJson(payloads.get(1), ArrayList.class);
+                    view.setPlayersUsername(userList);
+                }
+                else userList.add(view.getUsername());
+
+                view.setPlayersUsername(userList);
                 view.setGamemode(gm);
+
+                if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene();
                 phase = Phase.WAITING;
                 nextPhase = Phase.SETTINGS;
             }
             case LOBBY_UPDATED -> {
                 System.out.println("Lobby updated ok");
+                //if(view.getPlayersUsername()!=null)
+                //view.getPlayersUsername().add(msg_in.getPayload());
+                if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene();
             }
             case ASK_FOR_SETTINGS -> {
+                if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene();
                 phase = Phase.SETTINGS;
             }
             case WAIT -> {
                 phase = Phase.WAITING;
                 System.out.println("ok aspetto\n");
             }
+
             case IS_YOUR_TURN, ACK, CARD_ACTIVATED -> {
                 phase = nextPhase;
             }
@@ -250,6 +293,7 @@ public class NetworkHandler implements Runnable {
                     availableWizards.add(WizardType.valueOf(payloads.get(i)));
                 }
                 view.setWizards(availableWizards);
+
             }
             case AVAILABLE_TOWER_COLORS -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);

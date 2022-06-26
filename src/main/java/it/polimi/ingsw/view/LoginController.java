@@ -8,9 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -36,15 +34,11 @@ public class LoginController {
     @FXML
     protected TextField serverIP;
     @FXML
-    public void createGameButton(ActionEvent actionEvent) throws Exception {
-        //this is to debug
-        System.out.println(username.getText());
 
-        try {
-            root = FXMLLoader.load(getClass().getResource("/GameSettings.fxml"));
-            //popup = FXMLLoader.load(getClass().getResource("/CreateDialog.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void checkAndConnect(){
+        if (username.getText().length()==0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Insert parameters!", ButtonType.OK);
+            alert.showAndWait();
             return;
         }
 
@@ -54,34 +48,16 @@ public class LoginController {
         view.setServerIP(serverIP.getText());
         view.setServerPort(Integer.parseInt(serverPort.getText()));
 
-        //final Stage dialog = new Stage();
-        primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        //this is to check if the username is correct
-        Platform.runLater(()->{
-            if ((username != null) && (username.getText() != "")) {
-                scene = new Scene(root, 660, 370);
-                primaryStage.setScene(scene);
-                primaryStage.sizeToScene();
-                primaryStage.show();
-            }
-            else{
-                actiontarget.setText("Invalid username");
-            }
-        });
-
         currentApplication.getClient().connectGUI();
+    }
+    public void createGameButton(ActionEvent actionEvent) throws Exception {
+        checkAndConnect();
+        currentApplication.switchToCreateSettings();
     }
 
     public void joinGameButton(ActionEvent actionEvent) {
-        //qui potrei chiamare direttamente il metodo di GUIStarter che poi cambia la scena
-        try {
-            root = FXMLLoader.load(getClass().getResource("/GameSettings.fxml"));
-            //popup = FXMLLoader.load(getClass().getResource("/CreateDialog.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
+        checkAndConnect();
+        currentApplication.switchToJoinSettings();
     }
 
     public TextField getUsername() {

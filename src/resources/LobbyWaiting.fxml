@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: radial-gradient(focus-distance 0% , center 50% 50% , radius 80% , #003166, #001833);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.LobbyController">
+   <children>
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="720.0">
+         <children>
+            <Text fx:id="titleWaiting" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="WAITING FOR OTHER PLAYER">
+               <font>
+                  <Font name="System Bold" size="33.0" />
+               </font>
+            </Text>
+         </children>
+      </FlowPane>
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="0.0" prefWidth="720.0">
+         <children>
+            <Text fx:id="titleWaiting1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Players in lobby:">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Text>
+         </children></FlowPane>
+      <VBox fx:id="playersContainer" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+   </children>
+</VBox>

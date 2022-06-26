@@ -12,6 +12,16 @@ import java.util.regex.Pattern;
 
 public class Client {
     private View view;
+    private NetworkHandler net;
+
+    public NetworkHandler getNet() {
+        return net;
+    }
+
+    public void setNet(NetworkHandler net) {
+        this.net = net;
+    }
+
     public void setView(View view) {
         this.view = view;
     }
@@ -161,6 +171,8 @@ public class Client {
             thread.start();
 
             NetworkHandler networkHandler = new NetworkHandler(out, in, view);
+            this.net=networkHandler;
+            this.net.setGui(true);
             Thread nwThread = new Thread(networkHandler, "network");
             nwThread.start();
         }

@@ -21,7 +21,7 @@
 </AnchorPane>
 -->
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="it.polimi.ingsw.view.LoginController">
+<GridPane alignment="center" hgap="10" prefHeight="400.0" prefWidth="720.0" vgap="10" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.LoginController">
    <padding><Insets bottom="10" left="25" right="25" top="25" /></padding>
    <!--<gridLinesVisible>true</gridLinesVisible>-->
 
@@ -35,16 +35,12 @@
 
    <TextField fx:id="username" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-   <Label text="Server Port" id="text"
-          GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-   <TextField fx:id="serverPort" text="1234"
-              GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-   <Label text="Server IP" id="text"
-          GridPane.columnIndex="2" GridPane.rowIndex="3"/>
-   <TextField fx:id="serverIP" text="127.0.0.1"
-              GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+   <Label id="text" text="Server Port" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+   <TextField fx:id="serverPort" text="1234" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+   <Label id="text" text="Server IP" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+   <TextField fx:id="serverIP" text="127.0.0.1" GridPane.columnIndex="2" GridPane.rowIndex="4" />
 
-   <HBox alignment="BOTTOM_RIGHT" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="5">
+   <HBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <Button onAction="#createGameButton" text="Create" />
       <Button layoutX="10.0" layoutY="10.0" onAction="#joinGameButton" text="Join" />
    </HBox>
