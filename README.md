@@ -1,3 +1,21 @@
-# Prova Finale di Ingegneria del Software - AA 2021/2022
+# Eriantys - Software Engineering Project - AA 2021/2022
+![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/GUI/src/resources/eriantys_cropped.jpg "Eriantys game image")
 
-Implementazione del gioco da tavolo [Eriantys](https://www.craniocreations.it/prodotto/eriantys/).
+## Project Description
+This project is meant to create a digital version of the board game [Eriantys](https://www.craniocreations.it/prodotto/eriantys/), published by *Cranio Creations*. 
+
+The coding language used is Java and the repository contains: 
+
+- The game itself
+- The resources to run the game
+- Peer review documents, sequence diagramd and UMLs, kept in the *deliverables* folder.
+
+## Team 🧑🏼‍💻
+- [Mercurio Antonio](https://github.com/antonio-mercurio)
+- [Miranda Michele Lorenzo](https://github.com/michelelorenzo)
+- [Mosconi Alessandro](https://github.com/Alessandro-Mosconi)
+
+## Rules
+
+## Implemented Functionalities 
+
