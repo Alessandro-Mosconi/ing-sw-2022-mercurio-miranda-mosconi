@@ -1,8 +1,11 @@
-package it.polimi.ingsw.view;
+package it.polimi.ingsw.view.controller;
 
 import it.polimi.ingsw.model.GameMode;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.MessageType;
+import it.polimi.ingsw.view.GUI;
+import it.polimi.ingsw.view.GuiStarter;
+import it.polimi.ingsw.view.View;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -30,14 +33,8 @@ public class JoinSettingController {
         currentApplication = GuiStarter.getCurrentApplication();
         View view = (GUI) currentApplication.getClient().getView();
         view.setIdGame(gameID.getText());
-        //view.setPlayerNumber(Integer.parseInt(numOfPlayers.getText()));
-        //view.setGamemode(GameMode.valueOf(gameMode.getText()));
-        view.setPlayer(new Player());
         view.setMessageType(MessageType.JOIN_MATCH);
-        //primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        currentApplication.getClient().getNet().prepare_msg();
-
+        view.prepareLogin();
     }
 
 }

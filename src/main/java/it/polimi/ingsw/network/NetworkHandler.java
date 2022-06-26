@@ -279,7 +279,7 @@ public class NetworkHandler implements Runnable {
                 if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene();
             }
             case ASK_FOR_SETTINGS -> {
-                if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene();
+                if(isGui) GuiStarter.getCurrentApplication().switchToWizardsScene();
                 phase = Phase.SETTINGS;
             }
             case WAIT -> {
