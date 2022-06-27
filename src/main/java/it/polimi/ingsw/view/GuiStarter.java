@@ -202,7 +202,7 @@ for(CharacterCard card : game.getChosenCharacterCards())
         Platform.runLater(() ->{
             Parent root;
             try {
-                root = FXMLLoader.load(getClass().getResource("/WizardChoise.fxml"));
+                root = FXMLLoader.load(getClass().getResource("/WizardChoice.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
                 return;
@@ -220,7 +220,7 @@ for(CharacterCard card : game.getChosenCharacterCards())
         Platform.runLater(() ->{
             Parent root;
             try {
-                root = FXMLLoader.load(getClass().getResource("/TowerChoise.fxml"));
+                root = FXMLLoader.load(getClass().getResource("/TowerChoice.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
                 return;
