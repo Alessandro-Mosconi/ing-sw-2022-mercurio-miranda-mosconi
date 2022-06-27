@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/resources/assets/nuvola.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/DeckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/DeckController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/MainBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/MainBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/SchoolBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/SchoolBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/TowerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/TowerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/AssistantDeck.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/AssistantDeck.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/MainBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/MainBoard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/TowerChoise.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/TowerChoise.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +106,7 @@
       <recent name="it.polimi.ingsw.model" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="it.polimi.ingsw.view.controller" />
       <recent name="it.polimi.ingsw.model" />
       <recent name="it.polimi.ingsw.view" />
       <recent name="it.polimi.ingsw.network" />
@@ -294,14 +302,8 @@
       <workItem from="1656260330453" duration="2948000" />
       <workItem from="1656263319382" duration="2625000" />
       <workItem from="1656265992828" duration="8112000" />
-      <workItem from="1656314570104" duration="2889000" />
-    </task>
-    <task id="LOCAL-00013" summary="TestCloudTile added in test section">
-      <created>1651057569379</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1651057569379</updated>
+      <workItem from="1656314570104" duration="10874000" />
+      <workItem from="1656325798492" duration="18974000" />
     </task>
     <task id="LOCAL-00014" summary="PlayerTest and SchoolBoardTest completed">
       <created>1651152385538</created>
@@ -639,7 +641,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656316598652</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="logo cranio creation image + hallButton added">
+      <created>1656317656500</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1656317656500</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -675,7 +684,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Communication Protocol fixed" />
     <MESSAGE value="Communication Protocol no sequence diagram" />
     <MESSAGE value="Communication Protocol + sequence diagram folder" />
     <MESSAGE value="Communication Protocol with sequence diagram" />
@@ -700,7 +708,8 @@
     <MESSAGE value="Some model fix" />
     <MESSAGE value="GUI to lobby" />
     <MESSAGE value="Deck, MainBoard, other Schoolboard, TowerChoise scene added with controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deck, MainBoard, other Schoolboard, TowerChoise scene added with controller" />
+    <MESSAGE value="logo cranio creation image + hallButton added" />
+    <option name="LAST_COMMIT_MESSAGE" value="logo cranio creation image + hallButton added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

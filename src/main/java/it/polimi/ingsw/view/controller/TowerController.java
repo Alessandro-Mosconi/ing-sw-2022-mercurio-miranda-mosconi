@@ -28,6 +28,7 @@ public class TowerController {
     public void initialize() {
         ArrayList<TowerColor> towers = GuiStarter.getCurrentApplication().getClient().getView().getTowerColors();
 
+        System.out.println("test");
         for (TowerColor towerColor : towers) {
             Shape tower = new Rectangle(0.0, 0.0, 100, 100);
             tower.setFill(TowerColor.getColor(towerColor));
@@ -57,7 +58,7 @@ public class TowerController {
                 @Override
                 public void handle(ActionEvent event) {
 
-                    System.out.println(tower + ") tower clicked");
+                    System.out.println(towerColor + ") tower clicked");
                     GuiStarter.getCurrentApplication().getClient().getView().getPlayer().getSchoolBoard().setTowersColor(towerColor);
                     GuiStarter.getCurrentApplication().getClient().getView().setTowerColor(towerColor);
                 }
@@ -70,7 +71,7 @@ public class TowerController {
             towerContainer.getChildren().add(anchorPane);
 
             GuiStarter.getCurrentApplication().getClient().getView().setMessageType(MessageType.SETTINGS);
-            GuiStarter.getCurrentApplication().getClient().getNet().prepare_msg();
+            //<GuiStarter.getCurrentApplication().getClient().getNet().prepare_msg();
         }
     }
 }

@@ -114,7 +114,8 @@ public class SchoolBoardController {
             num=map.get(color);
             while(num!=0) {
                 entranceTable.add(new Button());
-                entranceTable.get((row * 5) + col).setStyle("-fx-border-color: white; -fx-background-color: " + color.toString());
+                entranceTable.get((row * 5) + col).setDisable(true);
+                entranceTable.get((row * 5) + col).setStyle("-fx-border-color: white; -fx-opacity: 1; -fx-background-color: " + color.toString());
                 entranceTable.get((row * 5) + col).setShape(new Circle(25));
                 entranceTable.get((row * 5) + col).setPrefWidth(40);
                 entranceTable.get((row * 5) + col).setPrefHeight(40);

@@ -16,6 +16,15 @@ public class GUI extends View{
     private Client client;
     private boolean ready2go = false;
     private Player playerSchoolboard;
+    private String winnerUsername;
+
+    public String getWinnerUsername() {
+        return winnerUsername;
+    }
+
+    public void setWinnerUsername(String winnerUsername) {
+        this.winnerUsername = winnerUsername;
+    }
 
     public Player getPlayerSchoolboard() {
         return playerSchoolboard;

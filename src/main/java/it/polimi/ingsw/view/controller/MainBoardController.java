@@ -40,7 +40,7 @@ import java.util.Map;
 public class MainBoardController
 {
   @FXML
-  private  FlowPane islandContainer;
+  private  GridPane islandContainer;
   @FXML
   private  VBox vboxContainer;
   @FXML
@@ -125,8 +125,8 @@ public void showCharacterChard(){
         effectActive.setFont(Font.font("System", FontWeight.BOLD, 15));
         effectActive.setFill(Color.WHITE);
         effectActive.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)");
-
         effectActive.setText("Last card used: id " + cardID);
+        GuiStarter.getCurrentApplication().useCharacterCard();
         view.setChosenCharacterCard(card);
       }
     });
@@ -395,8 +395,11 @@ public void showSchoolBoard(){
       entranceTable.get((row * 5) + col).setShape(new Circle(25));
       entranceTable.get((row * 5) + col).setPrefWidth(40);
       entranceTable.get((row * 5) + col).setPrefHeight(40);
-      //if(view.getPhase().equals(Phase.PLANNING))
-       // entranceTable.get((row * 5) + col).setDisable(true);
+      if(!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)||!view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)||!view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE)) {
+        entranceTable.get((row * 5) + col).setDisable(true);
+        entranceTable.get((row * 5) + col).setStyle("-fx-border-color: white; -fx-opacity: 1; -fx-background-color: " + color );
+      }
+      else entranceTable.get((row * 5) + col).setDisable(false);
       entrance.add(entranceTable.get((row * 5) + col), col, row, 1, 1);
       col++;
       if (col == 5) {
@@ -434,10 +437,8 @@ public void showClouds(){
   for(CloudTile cloud : view.getClouds())
   {
 
-    System.out.println("nuvola");
     String path = "assets/Reame/PNG/nuvola.png";
     ImageView im2 = new ImageView(path);
-    System.out.println("nuvola");
     im2.setFitHeight(150);
     im2.setFitWidth(200);
     im2.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 15, 0, 0, 0)");
@@ -449,6 +450,7 @@ public void showClouds(){
     button2.setCursor(Cursor.HAND);
     if(!view.getPhase().equals(Phase.CHOOSING_CT))
       button2.setDisable(true);
+    else button2.setDisable(false);
 
     button2.setOnAction(new EventHandler<ActionEvent>() {
       @Override
@@ -520,6 +522,8 @@ public void showIslands(){
 
   int  j=0;
 
+  int row1=0;
+  int col1=0;
   for(Island island : view.getIslandManager().getIslandList())
   {
 
@@ -566,20 +570,14 @@ public void showIslands(){
     button.setPrefWidth(125);
     button.setStyle("-fx-background-color: transparent");
     button.setCursor(Cursor.HAND);
+    if(view.getPhase().equals(Phase.CHOOSING_CT))
+      button.setDisable(true);
+    else button.setDisable(false);
 
     ImageView im = new ImageView("assets/Reame/PNG/Isola.png");
     im.setFitHeight(110);
     im.setFitWidth(110);
     im.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 15, 0, 0, 0)");
-
-    if (island.getIslandID()==5 || island.getIslandID()==7){
-      for(int i=0; i<2; i++) {
-        AnchorPane tempAnchorPane = new AnchorPane();
-        tempAnchorPane.setPrefWidth(125);
-        tempAnchorPane.setPrefHeight(125);
-        islandContainer.getChildren().add(tempAnchorPane);
-      }
-    }
 
     if(island.isMotherNature())
       im.setStyle("-fx-effect:  dropshadow(gaussian, rgba(255, 255, 255 , 255), 30, 0.7, 0, 0)");
@@ -588,27 +586,62 @@ public void showIslands(){
     button.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+        /*
+
+        da aggiungere character card effect
+
+         */
+
         System.out.println(island.getIslandID() + ") island clicked");
-        int shift =view.getIslandManager().getCurrMNPosition()-island.getIslandID();
-        if(shift>view.getPlayer().getMaxShift())
-        {
-          GuiStarter.getCurrentApplication().showError(ErrorType.INVALID_MN_SHIFT.toString());
-          return;
+        if(view.getPhase().equals(Phase.CHOOSING_MN_SHIFT)) {
+          int shift = view.getIslandManager().getCurrMNPosition() - island.getIslandID();
+          if (shift > view.getPlayer().getMaxShift()) {
+            GuiStarter.getCurrentApplication().showError(ErrorType.INVALID_MN_SHIFT.toString());
+            return;
+          }
+          view.setMessageType(MessageType.MN_SHIFT);
+          view.setMN_shift(shift);
+        } else{
+          view.setDestination(island.getIslandID());
         }
-        view.setMessageType(MessageType.MN_SHIFT);
-        view.setMN_shift(shift);
       }
     });
+
 
     FlowPane flowPane = new FlowPane();
     flowPane.setAlignment(Pos.CENTER);
     flowPane.setPrefSize(110, 110);
     flowPane.getChildren().add(gridPane);
 
+
     anchorPane.getChildren().add(im);
+    Shape noEntryTile = new Circle(0.0, 0.0, 50);
+    noEntryTile.setFill(Color.RED);
+    noEntryTile.setStyle("-fx-opacity: 0.5");
+    noEntryTile.setStroke(Color.RED);
+    noEntryTile.setStrokeWidth(3.0);
+    if(island.isNoEntryTile())
+    {
+      FlowPane flowPane1 = new FlowPane();
+      flowPane1.setPrefSize(110, 110);
+      flowPane1.getChildren().add(noEntryTile);
+      anchorPane.getChildren().add(flowPane1);
+
+    }
+
+
     anchorPane.getChildren().add(flowPane);
     anchorPane.getChildren().add(button);
-    islandContainer.getChildren().add(anchorPane);
+    islandContainer.add(anchorPane, col1, row1);
+    System.out.println("col: " + col1 + "row: " + row1);
+    if((row1==0||row1==1||row1==2)&&col1==3)
+      row1++;
+    else if(row1==3 && (col1==3||col1==2||col1==1))
+        col1--;
+    else if((row1==3 || row1==2||row1==1)&& col1==0)
+      row1--;
+    else col1++;
+
   }
 }
 }
