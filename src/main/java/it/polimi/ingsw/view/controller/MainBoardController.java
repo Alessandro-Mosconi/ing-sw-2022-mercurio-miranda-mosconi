@@ -376,6 +376,7 @@ public class MainBoardController {
                     @Override
                     public void handle(ActionEvent event) {
                         System.out.println(color.toString() + ") entrance pawn clicked");
+                        view.setColorToMove(color);
                     }
                 });
                 entranceTable.get((row * 5) + col).setShape(new Circle(25));
@@ -572,6 +573,7 @@ public class MainBoardController {
                     System.out.println(island.getIslandID() + ") island clicked");
 
                     if (view.getPhase().equals(Phase.CHOOSING_MN_SHIFT)){
+
                         int shift = view.getIslandManager().getCurrMNPosition() - island.getIslandID();
                         if (shift > view.getPlayer().getMaxShift()) {
                             GuiStarter.getCurrentApplication().showError(ErrorType.INVALID_MN_SHIFT.toString());
@@ -581,9 +583,11 @@ public class MainBoardController {
                         view.setMN_shift(shift);
                     }
                     else {
+                        System.out.println("Sono nella fase" + view.getPhase());
                         view.setDestination(island.getIslandID());
+                        //view.setPhase(Phase.CHOOSING_FIRST_MOVE);
                         view.setMessageType(MessageType.PAWN_MOVE);
-                        //todo bisogna vedere di che colore è lo studente
+
                     }
                     view.prepareMessage();
                     /*

@@ -56,7 +56,7 @@ public class GUI extends View{
     }
 
     public void processScene(){
-
+        System.out.println("La gui ha questa fase:" + phase);
         switch (phase){
             case SETTINGS -> {
                 guiStarter.switchToWizardsScene();
@@ -65,6 +65,7 @@ public class GUI extends View{
                 guiStarter.switchToDeckScene();
             }
             case CHOOSING_FIRST_MOVE, CHOOSING_SECOND_MOVE, CHOOSING_THIRD_MOVE -> {
+                System.out.println("Ora faccio partire la scelta");
                 guiStarter.choosePawnMove();
             }
             case CHOOSING_MN_SHIFT -> {

@@ -271,7 +271,6 @@ for(CharacterCard card : game.getChosenCharacterCards())
             Scene sc = new Scene(root);
             primaryStage.setScene(sc);
             primaryStage.sizeToScene();
-
         });
 
     }
@@ -315,10 +314,12 @@ for(CharacterCard card : game.getChosenCharacterCards())
 
 
     public void choosePawnMove() {
+        System.out.println("Sono dentro la GuiStarter");
         Platform.runLater(() ->{
             Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nChoose a destination click on your SchoolBoard Hall or on the Island you choose:", ButtonType.OK);
 
-            ImageView icon = new ImageView("/assets/Reame/PNG/Island.png");
+            System.out.println("Sta per apparire la dialog");
+            ImageView icon = new ImageView("/assets/Reame/PNG/Isola.png");
             icon.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0)");
             icon.setFitHeight(48);
             icon.setFitWidth(60);

@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="addition of mainboard methods">
+    <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="addition of other methods for the mainboard">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/MainBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/MainBoardController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +22,8 @@
         <option value="Enum" />
         <option value="JavaFXApplication" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -196,8 +198,8 @@
         <item itemvalue="Application.Client2" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
-        <item itemvalue="Application.GuiTester" />
         <item itemvalue="Application.Client3" />
+        <item itemvalue="Application.GuiTester" />
       </list>
     </recent_temporary>
   </component>
@@ -298,13 +300,6 @@
       <workItem from="1656263319382" duration="2625000" />
       <workItem from="1656265992828" duration="8112000" />
       <workItem from="1656314570104" duration="2889000" />
-    </task>
-    <task id="LOCAL-00018" summary="Communication Protocol, no sequence diagram">
-      <created>1651483257739</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1651483257739</updated>
     </task>
     <task id="LOCAL-00019" summary="Communication Protocol, no sequence diagram">
       <created>1651483292126</created>
@@ -642,7 +637,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656341432805</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="addition of other methods for the mainboard">
+      <created>1656343542970</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1656343542970</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -677,7 +679,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Server multi-thread for multiple client connection." />
     <MESSAGE value="added the Pinger class for pinging between client and server on another thread" />
     <MESSAGE value="Network handler" />
     <MESSAGE value="Network handler v2" />
@@ -702,7 +703,8 @@
     <MESSAGE value="addition of controllers" />
     <MESSAGE value="Gui work until mainboard" />
     <MESSAGE value="addition of mainboard methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="addition of mainboard methods" />
+    <MESSAGE value="addition of other methods for the mainboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="addition of other methods for the mainboard" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -714,7 +716,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java</url>
-          <line>473</line>
+          <line>475</line>
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -724,7 +726,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java</url>
-          <line>470</line>
+          <line>472</line>
           <option name="timeStamp" value="132" />
         </line-breakpoint>
         <line-breakpoint type="java-line">

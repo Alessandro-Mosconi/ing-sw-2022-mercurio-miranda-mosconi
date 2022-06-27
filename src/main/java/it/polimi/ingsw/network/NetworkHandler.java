@@ -90,6 +90,7 @@ public class NetworkHandler implements Runnable {
         ArrayList<String> payloads = new ArrayList<>();
 
         view.setPhase(phase);
+        System.out.println("Questa è la fase del nw:" + phase);
         switch (phase) {
             case LOGIN -> {
                 view.login();
