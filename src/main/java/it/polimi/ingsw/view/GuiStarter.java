@@ -253,7 +253,6 @@ for(CharacterCard card : game.getChosenCharacterCards())
 
     public void switchToJoinSettings()
     {
-
         Platform.runLater(() ->{
         Parent root;
         try {
@@ -266,16 +265,14 @@ for(CharacterCard card : game.getChosenCharacterCards())
         primaryStage.setScene(sc);
         //primaryStage.setTitle("Login2");
         primaryStage.sizeToScene();
-
         });
     }
 
     public void switchToWizardsScene() {
-
         Platform.runLater(() ->{
             Parent root;
             try {
-                root = FXMLLoader.load(getClass().getResource("/WizardChoise.fxml"));
+                root = FXMLLoader.load(getClass().getResource("/WizardChoice.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
                 return;
@@ -283,7 +280,6 @@ for(CharacterCard card : game.getChosenCharacterCards())
             Scene sc = new Scene(root);
             primaryStage.setScene(sc);
             primaryStage.sizeToScene();
-
         });
 
     }
@@ -393,7 +389,7 @@ for(CharacterCard card : game.getChosenCharacterCards())
         Platform.runLater(() ->{
             Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nClick on the island Mother Nature should go\nMax " + getClient().getView().getMN_shift() + " shift", ButtonType.OK);
 
-            ImageView icon = new ImageView("/assets/Reame/PNG/Island.png");
+            ImageView icon = new ImageView("/assets/Reame/PNG/Isola.png");
             icon.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0)");
             icon.setFitHeight(48);
             icon.setFitWidth(60);
@@ -415,13 +411,11 @@ for(CharacterCard card : game.getChosenCharacterCards())
         });
     }
 
-
-
     public void choosePawnMove() {
         Platform.runLater(() ->{
             Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nChoose a destination click on your SchoolBoard Hall or on the Island you choose:", ButtonType.OK);
 
-            ImageView icon = new ImageView("/assets/Reame/PNG/Island.png");
+            ImageView icon = new ImageView("/assets/Reame/PNG/Isola.png");
             icon.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0)");
             icon.setFitHeight(48);
             icon.setFitWidth(60);
@@ -447,12 +441,11 @@ for(CharacterCard card : game.getChosenCharacterCards())
     }
 
     public void useCharacterCard() {
-
         Platform.runLater(() ->{
             Stage stage = new Stage();
             Parent root;
             try {
-                root = FXMLLoader.load(getClass().getResource("/CharcterCardScene.fxml"));
+                root = FXMLLoader.load(getClass().getResource("/CharacterCardScene.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
                 return;

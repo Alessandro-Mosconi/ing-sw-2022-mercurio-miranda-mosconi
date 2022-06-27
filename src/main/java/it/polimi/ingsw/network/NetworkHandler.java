@@ -342,6 +342,7 @@ public class NetworkHandler implements Runnable {
                         i.setIslandStudents(islandStudents);
                     }
                 }
+
             }
             case UPDATE_SCHOOL_BOARD_ENTRANCE -> {
                 System.out.println("Ho ricevuto "+ input);

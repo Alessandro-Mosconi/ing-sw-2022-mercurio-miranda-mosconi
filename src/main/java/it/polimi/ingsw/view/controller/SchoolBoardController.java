@@ -146,8 +146,6 @@ public class SchoolBoardController {
             if (color == PawnColor.yellow)
                 yellowProf.setVisible(prof.get(color));
         }
-
-
     }
 
 }

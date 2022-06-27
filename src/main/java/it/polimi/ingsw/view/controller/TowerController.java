@@ -5,6 +5,7 @@ import it.polimi.ingsw.model.TowerColor;
 import it.polimi.ingsw.model.WizardType;
 import it.polimi.ingsw.network.MessageType;
 import it.polimi.ingsw.view.GuiStarter;
+import it.polimi.ingsw.view.View;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -59,8 +60,14 @@ public class TowerController {
                 public void handle(ActionEvent event) {
 
                     System.out.println(towerColor + ") tower clicked");
-                    GuiStarter.getCurrentApplication().getClient().getView().getPlayer().getSchoolBoard().setTowersColor(towerColor);
-                    GuiStarter.getCurrentApplication().getClient().getView().setTowerColor(towerColor);
+
+                    View view = GuiStarter.getCurrentApplication().getClient().getView();
+                    view.getPlayer().getSchoolBoard().setTowersColor(towerColor);
+                    view.setTowerColor(towerColor);
+
+                    //todo perché ci serve questo messagetype?
+                    //view.setMessageType(MessageType.SETTINGS);
+                    view.prepareMessage();
                 }
             });
 
