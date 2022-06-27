@@ -60,6 +60,8 @@ public class MainBoardController
   @FXML
   private  GridPane entrance;
   @FXML
+  private Button hallButton;
+  @FXML
   private Polygon blueProf;
   @FXML
   private  Polygon redProf;
@@ -343,6 +345,18 @@ public void showSchoolBoard(){
       row++;
     }
   }
+
+  hallButton.setOnAction(new EventHandler<ActionEvent>() {
+    @Override
+    public void handle(ActionEvent event) {
+      System.out.println("Hall clicked");
+      view.setDestination(-1);
+    }
+  });
+
+  if(!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)||!view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)||!view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE))
+    hallButton.setDisable(true);
+  else hallButton.setDisable(false);
 
   ArrayList<Shape> hallTable = new ArrayList<>();
   Map<PawnColor, Integer> map = view.getPlayer().getSchoolBoard().getStudentHall();

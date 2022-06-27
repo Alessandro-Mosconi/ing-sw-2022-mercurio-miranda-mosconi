@@ -331,4 +331,19 @@ for(CharacterCard card : game.getChosenCharacterCards())
             alert.showAndWait();
         });
     }
+
+
+
+    public void choosePawnMove() {
+        Platform.runLater(() ->{
+            Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nChoose a destination click on your SchoolBoard Hall or on the Island you choose:", ButtonType.OK);
+
+            ImageView icon = new ImageView("/assets/Reame/PNG/Island.png");
+            icon.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0)");
+            icon.setFitHeight(48);
+            icon.setFitWidth(60);
+            alert.getDialogPane().setGraphic(icon);
+            alert.showAndWait();
+        });
+    }
 }

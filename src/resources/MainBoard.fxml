@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -174,6 +175,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
+                        <Button fx:id="hallButton" mnemonicParsing="false" prefHeight="382.0" prefWidth="302.0" style="-fx-background-color: trnasparent;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="100.0" prefWidth="302.0">
