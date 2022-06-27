@@ -1,8 +1,6 @@
 package it.polimi.ingsw.view.controller;
 
-import it.polimi.ingsw.model.Deck;
 import it.polimi.ingsw.model.TowerColor;
-import it.polimi.ingsw.model.WizardType;
 import it.polimi.ingsw.network.MessageType;
 import it.polimi.ingsw.view.GuiStarter;
 import javafx.event.ActionEvent;
@@ -10,7 +8,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -58,7 +55,7 @@ public class TowerController {
                 public void handle(ActionEvent event) {
 
                     System.out.println(tower + ") tower clicked");
-                    GuiStarter.getCurrentApplication().getClient().getView().getPlayer().getSchoolBoard().setTowersColor(towerColor);
+                    //GuiStarter.getCurrentApplication().getClient().getView().getPlayer().getSchoolBoard().setTowersColor(towerColor);
                     GuiStarter.getCurrentApplication().getClient().getView().setTowerColor(towerColor);
                 }
             });
@@ -70,7 +67,7 @@ public class TowerController {
             towerContainer.getChildren().add(anchorPane);
 
             GuiStarter.getCurrentApplication().getClient().getView().setMessageType(MessageType.SETTINGS);
-            GuiStarter.getCurrentApplication().getClient().getNet().prepare_msg();
+            GuiStarter.getCurrentApplication().getClient().getView().prepareMessage();
         }
     }
 }

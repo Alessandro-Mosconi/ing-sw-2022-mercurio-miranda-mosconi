@@ -47,14 +47,23 @@ public class GUI extends View{
     }
 
     @Override
-    public void prepareLogin() {
-        //networkHandler.sendMessage();
+    public void prepareMessage() {
+        networkHandler.sendMessage();
     }
 
     public void setClient(Client client) {
         this.client = client;
     }
 
+    public void processScene(){
+        Phase phase = getPhase();
+        switch (phase){
+            case SETTINGS -> {
+                guiStarter.switchToWizardsScene();
+            }
+
+        }
+    }
     @Override
     public void login() {
         player = new Player();
@@ -63,13 +72,19 @@ public class GUI extends View{
         setIdGame(idGame);
         Message msg_out = new Message();
 
-        msg_out.setType(MessageType.CREATE_MATCH);
-        setMessageType(MessageType.CREATE_MATCH);
+        if (messageType.equals(MessageType.JOIN_MATCH)){
+            msg_out.setType(MessageType.JOIN_MATCH);
+            setMessageType(MessageType.JOIN_MATCH);
+        }
+        else {
+            msg_out.setType(MessageType.CREATE_MATCH);
+            setMessageType(MessageType.CREATE_MATCH);
+        }
     }
 
     @Override
     public void settings() {
-
+        player.getSchoolBoard().setTowersColor(towerColor);
     }
 
     @Override

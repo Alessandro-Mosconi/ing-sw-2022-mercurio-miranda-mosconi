@@ -323,6 +323,9 @@ public abstract class View {
     public void showEndGameWindow(String winnerID) {
     }
 
-    public void prepareLogin() {
+    public void prepareMessage() {
+    }
+
+    public void processScene() {
     }
 }

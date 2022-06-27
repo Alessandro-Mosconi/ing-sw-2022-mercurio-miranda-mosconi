@@ -1,6 +1,7 @@
 package it.polimi.ingsw.view.controller;
 
 import it.polimi.ingsw.model.GameMode;
+import it.polimi.ingsw.network.MessageType;
 import it.polimi.ingsw.view.GUI;
 import it.polimi.ingsw.view.GuiStarter;
 import it.polimi.ingsw.view.View;
@@ -49,12 +50,13 @@ public class LoginController {
     }
     public void createGameButton(ActionEvent actionEvent) throws Exception {
         checkAndConnect();
+        currentApplication.getClient().getView().setMessageType(MessageType.CREATE_MATCH);
         currentApplication.switchToCreateSettings();
-        //currentApplication.switchToMainBoard();
     }
 
     public void joinGameButton(ActionEvent actionEvent) {
         checkAndConnect();
+        currentApplication.getClient().getView().setMessageType(MessageType.JOIN_MATCH);
         currentApplication.switchToJoinSettings();
     }
     /**

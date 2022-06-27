@@ -88,11 +88,12 @@ public class NetworkHandler implements Runnable {
 
         Gson gson = new Gson();
         ArrayList<String> payloads = new ArrayList<>();
+
+        //todo capire a che serve
+        //view.setPhase(phase);
         switch (phase) {
             case LOGIN -> {
-                if(!isGui)
-                    view.login();
-
+                view.login();
                 //debug
                 System.out.println("sono nel network");
 
@@ -110,8 +111,7 @@ public class NetworkHandler implements Runnable {
                 nextPhase = Phase.SETTINGS;
             }
             case SETTINGS -> {
-
-                if(!isGui) view.settings();
+                view.settings();
 
                 msg_out.setType(MessageType.SETTINGS);
                 payloads.add(view.getPlayer().getDeck().getWizard().toString());
@@ -192,8 +192,6 @@ public class NetworkHandler implements Runnable {
         phase = Phase.WAITING;
         msg_out.fill(payloads);
         System.out.println("sending... " + msg_out.toSend());
-        if(isGui)
-            out.println(msg_out.toSend());
         return msg_out.toSend();
     }
 
@@ -287,6 +285,8 @@ public class NetworkHandler implements Runnable {
 
             case IS_YOUR_TURN, ACK, CARD_ACTIVATED -> {
                 phase = nextPhase;
+                view.setPhase(phase);
+                if (isGui)  view.processScene();
             }
             case AVAILABLE_WIZARDS -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -668,5 +668,10 @@ public class NetworkHandler implements Runnable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void sendMessage() {
+        String output = prepare_msg();
+        out.println(output);
     }
 }
