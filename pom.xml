@@ -57,6 +57,11 @@
             <artifactId>inetaddresslocator</artifactId>
             <version>2.18</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>18.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -71,8 +71,6 @@ public class NetworkHandler implements Runnable {
     public void startGUI() throws IOException {
         view.setNetworkHandler(this);
 
-        //todo we should make a different method for this or call it differently. This is for listening
-        //not starting a GUI
         while (true) {
             String input = in.readLine();
             String output = null;
@@ -85,11 +83,6 @@ public class NetworkHandler implements Runnable {
         }
     }
 
-    public void sendMessage(){
-        String output = prepare_msg();
-        out.println(output);
-    }
-
     public synchronized String prepare_msg() {
         Message msg_out = new Message(view.getUsername());
 
@@ -97,7 +90,8 @@ public class NetworkHandler implements Runnable {
         ArrayList<String> payloads = new ArrayList<>();
         switch (phase) {
             case LOGIN -> {
-                view.login();
+                if(!isGui)
+                    view.login();
 
                 //debug
                 System.out.println("sono nel network");
@@ -198,6 +192,8 @@ public class NetworkHandler implements Runnable {
         phase = Phase.WAITING;
         msg_out.fill(payloads);
         System.out.println("sending... " + msg_out.toSend());
+        if(isGui)
+            out.println(msg_out.toSend());
         return msg_out.toSend();
     }
 
@@ -246,6 +242,7 @@ public class NetworkHandler implements Runnable {
         Message msg_out = new Message(msg_in.getUser());
         ArrayList<String> payloads;
 
+        view.setPhase(phase);
 
         switch (msg_in.getType()) {
             case ERROR -> {
@@ -279,6 +276,7 @@ public class NetworkHandler implements Runnable {
                 if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene();
             }
             case ASK_FOR_SETTINGS -> {
+                System.out.println("settings");
                 if(isGui) GuiStarter.getCurrentApplication().switchToWizardsScene();
                 phase = Phase.SETTINGS;
             }

@@ -15,6 +15,15 @@ public class GUI extends View{
     private GuiStarter guiStarter;
     private Client client;
     private boolean ready2go = false;
+    private Player playerSchoolboard;
+
+    public Player getPlayerSchoolboard() {
+        return playerSchoolboard;
+    }
+
+    public void setPlayerSchoolboard(Player playerSchoolboard) {
+        this.playerSchoolboard = playerSchoolboard;
+    }
 
     public NetworkHandler getNetworkHandler() {
         return networkHandler;
@@ -39,7 +48,7 @@ public class GUI extends View{
 
     @Override
     public void prepareLogin() {
-        networkHandler.sendMessage();
+        //networkHandler.sendMessage();
     }
 
     public void setClient(Client client) {
