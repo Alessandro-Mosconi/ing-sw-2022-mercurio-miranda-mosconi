@@ -2,6 +2,7 @@ package it.polimi.ingsw.view.controller;
 
 import it.polimi.ingsw.model.AssistantCard;
 import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.network.MessageType;
 import it.polimi.ingsw.view.GuiStarter;
 import it.polimi.ingsw.view.View;
 import javafx.event.ActionEvent;
@@ -66,7 +67,6 @@ public class DeckController {
                 public void handle(ActionEvent event) {
                     System.out.println(i + ") card clicked");
 
-                    //todo perché è prima i e poi i-1?
                     View view = GuiStarter.getCurrentApplication().getClient().getView();
                     view.setChosenAssistantCard(view.getPlayer().getDeck().getCards().get(i-1));
                     view.prepareMessage();
@@ -80,6 +80,7 @@ public class DeckController {
             anchorPane.getChildren().add(button);
 
             assistantContainer.getChildren().add(anchorPane);
+            GuiStarter.getCurrentApplication().getClient().getView().setMessageType(MessageType.ASSISTANT_CARD);
 
             }
 
@@ -87,7 +88,7 @@ public class DeckController {
         for(Player p : GuiStarter.getCurrentApplication().getClient().getView().getPlayers()){
             if(p.getLastAssistantCard()!=null) {
                 VBox vBox = new VBox();
-                Text nick = new Text(p.getNickName() + " chosed:");
+                Text nick = new Text(p.getNickName() + " chose:");
                 nick.setFont(Font.font("System", FontWeight.BOLD, 20));
                 nick.setFill(Color.WHITE);
                 nick.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)");

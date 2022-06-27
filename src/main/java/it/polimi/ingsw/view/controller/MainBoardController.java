@@ -344,12 +344,14 @@ public class MainBoardController {
             public void handle(ActionEvent event) {
                 System.out.println("Hall clicked");
                 view.setDestination(-1);
+                view.setMessageType(MessageType.PAWN_MOVE);
+                view.prepareMessage();
             }
         });
 
-        if (!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE) || !view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE) || !view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE))
-            hallButton.setDisable(true);
-        else hallButton.setDisable(false);
+        if (view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE) || view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE) || view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE))
+            hallButton.setDisable(false);
+        else hallButton.setDisable(true);
 
         ArrayList<Shape> hallTable = new ArrayList<>();
         Map<PawnColor, Integer> map = view.getPlayer().getSchoolBoard().getStudentHall();
@@ -387,10 +389,10 @@ public class MainBoardController {
                 entranceTable.get((row * 5) + col).setShape(new Circle(25));
                 entranceTable.get((row * 5) + col).setPrefWidth(40);
                 entranceTable.get((row * 5) + col).setPrefHeight(40);
-                if (!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE) || !view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE) || !view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE)) {
-                    entranceTable.get((row * 5) + col).setDisable(true);
+                if (view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE) || view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE) || view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE)) {
+                    entranceTable.get((row * 5) + col).setDisable(false);
                     entranceTable.get((row * 5) + col).setStyle("-fx-border-color: white; -fx-opacity: 1; -fx-background-color: " + color);
-                } else entranceTable.get((row * 5) + col).setDisable(false);
+                } else entranceTable.get((row * 5) + col).setDisable(true);
                 entrance.add(entranceTable.get((row * 5) + col), col, row, 1, 1);
                 col++;
                 if (col == 5) {
@@ -436,9 +438,9 @@ public class MainBoardController {
             button2.setPrefWidth(200);
 
             button2.setCursor(Cursor.HAND);
-            if (!view.getPhase().equals(Phase.CHOOSING_CT))
+           /* if (!view.getPhase().equals(Phase.CHOOSING_CT))
                 button2.setDisable(true);
-            else button2.setDisable(false);
+            else button2.setDisable(false);*/
 
             button2.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -556,7 +558,7 @@ public class MainBoardController {
             button.setPrefWidth(125);
             button.setStyle("-fx-background-color: transparent");
             button.setCursor(Cursor.HAND);
-            if (view.getPhase().equals(Phase.CHOOSING_CT))
+            if (view.getPhase().equals(Phase.CHOOSING_CT))//todo penso anche nelle phases waiting + planning vada bloccato
                 button.setDisable(true);
             else button.setDisable(false);
 
@@ -578,7 +580,8 @@ public class MainBoardController {
                     System.out.println(island.getIslandID() + ") island clicked");
 
                     if (view.getPhase().equals(Phase.CHOOSING_MN_SHIFT)){
-                        int shift = view.getIslandManager().getCurrMNPosition() - island.getIslandID();
+                        int currSize = view.getIslandManager().getIslandList().size();
+                        int shift = ((currSize + island.getIslandID() - view.getIslandManager().getCurrMNPosition())%currSize) ;
                         if (shift > view.getPlayer().getMaxShift()) {
                             GuiStarter.getCurrentApplication().showError(ErrorType.INVALID_MN_SHIFT.toString());
                             return;

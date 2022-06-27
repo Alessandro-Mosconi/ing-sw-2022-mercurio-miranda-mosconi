@@ -76,7 +76,7 @@ public class TowerController {
             anchorPane.getChildren().add(button);
 
             towerContainer.getChildren().add(anchorPane);
-
+            //TODO questo funziona?
             GuiStarter.getCurrentApplication().getClient().getView().setMessageType(MessageType.SETTINGS);
             //<GuiStarter.getCurrentApplication().getClient().getNet().prepare_msg();
         }

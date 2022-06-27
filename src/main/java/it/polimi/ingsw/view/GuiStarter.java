@@ -289,7 +289,7 @@ for(CharacterCard card : game.getChosenCharacterCards())
         Platform.runLater(() ->{
             Parent root;
             try {
-                root = FXMLLoader.load(getClass().getResource("/TowerChoise.fxml"));
+                root = FXMLLoader.load(getClass().getResource("/TowerChoice.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
                 return;
@@ -302,16 +302,13 @@ for(CharacterCard card : game.getChosenCharacterCards())
 
     }
 
-    public void switchToDeckScene()
-    {
+    public void switchToDeckScene() {
 
         Platform.runLater(() ->{
         Stage stage = new Stage();
         Parent root;
         try {
-            System.out.println("ggi");
             root = FXMLLoader.load(getClass().getResource("/AssistantDeck.fxml"));
-            System.out.println("uffi");
         } catch (IOException e) {
             e.printStackTrace();
             return;
@@ -328,8 +325,7 @@ for(CharacterCard card : game.getChosenCharacterCards())
         });
     }
 
-    public void switchToLobbyScene()
-    {
+    public void switchToLobbyScene() {
         Platform.runLater(() ->{
 
         Parent root;
@@ -387,8 +383,8 @@ for(CharacterCard card : game.getChosenCharacterCards())
 
     public void chooseMNmovement() {
         Platform.runLater(() ->{
-            Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nClick on the island Mother Nature should go\nMax " + getClient().getView().getMN_shift() + " shift", ButtonType.OK);
-
+            Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nClick on the island Mother Nature should go\nMax " + getClient().getView().getPlayer().getMaxShift() + " shift", ButtonType.OK);
+//TODO vedere se ci va isola o island
             ImageView icon = new ImageView("/assets/Reame/PNG/Isola.png");
             icon.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0)");
             icon.setFitHeight(48);

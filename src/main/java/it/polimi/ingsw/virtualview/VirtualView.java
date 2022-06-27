@@ -253,7 +253,7 @@ public class VirtualView{
                 wizard = WizardType.valueOf(payloads.get(0));
                 towerColor = TowerColor.valueOf(payloads.get(1));
                 msg_out = new Message();
-                msg_out.setType(MessageType.WAIT);
+                //msg_out.setType(MessageType.WAIT);
                 msg_out.setUser(username);
                 player.getDeck().setWizard(wizard);
                 player.getSchoolBoard().setTowersColor(towerColor);
@@ -263,7 +263,7 @@ public class VirtualView{
             case ASSISTANT_CARD -> {
                 chosenAssistantID = Integer.parseInt(payloads.get(0));
                 msg_out = new Message();
-                msg_out.setType(MessageType.WAIT);
+                //msg_out.setType(MessageType.WAIT);
                 msg_out.setUser(username);
                 gameController.performAction();
                 return msg_out.toSend();
@@ -288,7 +288,7 @@ public class VirtualView{
             case CHOSEN_CT -> {
                 chosenCloudID = Integer.parseInt(payloads.get(0));
                 msg_out = new Message();
-                msg_out.setType(MessageType.WAIT);
+                //msg_out.setType(MessageType.WAIT);
                 msg_out.setUser(username);
                 gameController.performAction();
                 return msg_out.toSend();
