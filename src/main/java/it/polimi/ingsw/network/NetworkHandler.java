@@ -88,13 +88,12 @@ public class NetworkHandler implements Runnable {
 
         Gson gson = new Gson();
         ArrayList<String> payloads = new ArrayList<>();
+
+        view.setPhase(phase);
+        System.out.println("Questa è la fase del nw:" + phase);
         switch (phase) {
             case LOGIN -> {
-                if(!isGui)
-                    view.login();
-
-                //debug
-                System.out.println("sono nel network");
+                view.login();
 
                 msg_out.setUser(view.getUsername());
                 view.getPlayer().setNickName(view.getUsername());
@@ -110,8 +109,7 @@ public class NetworkHandler implements Runnable {
                 nextPhase = Phase.SETTINGS;
             }
             case SETTINGS -> {
-
-                if(!isGui) view.settings();
+                view.settings();
 
                 msg_out.setType(MessageType.SETTINGS);
                 payloads.add(view.getPlayer().getDeck().getWizard().toString());
@@ -120,6 +118,7 @@ public class NetworkHandler implements Runnable {
             }
             case PLANNING -> {
                 view.chooseAssistantCard();
+
                 msg_out.setType(MessageType.ASSISTANT_CARD);
                 payloads.add(view.getChosenAssistantCard().getValue().toString());
                 view.setCardUsed(false);
@@ -127,6 +126,7 @@ public class NetworkHandler implements Runnable {
             }
             case CHOOSING_FIRST_MOVE -> {
                 view.choosePawnMove();
+
                 msg_out.setType(view.getMessageType());
                 if (view.getMessageType().equals(MessageType.PAWN_MOVE)) {
                     payloads.add(view.getColorToMove().toString());
@@ -192,8 +192,6 @@ public class NetworkHandler implements Runnable {
         phase = Phase.WAITING;
         msg_out.fill(payloads);
         System.out.println("sending... " + msg_out.toSend());
-        if(isGui)
-            out.println(msg_out.toSend());
         return msg_out.toSend();
     }
 
@@ -284,9 +282,10 @@ public class NetworkHandler implements Runnable {
                 phase = Phase.WAITING;
                 System.out.println("ok aspetto\n");
             }
-
             case IS_YOUR_TURN, ACK, CARD_ACTIVATED -> {
                 phase = nextPhase;
+                view.setPhase(phase);
+                if (isGui)  view.processScene();
             }
             case AVAILABLE_WIZARDS -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -668,5 +667,12 @@ public class NetworkHandler implements Runnable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void sendMessage() {
+        System.out.println("mando msg: 1");
+        String output = prepare_msg();
+        System.out.println("mando msg: " + output);
+        out.println(output);
     }
 }

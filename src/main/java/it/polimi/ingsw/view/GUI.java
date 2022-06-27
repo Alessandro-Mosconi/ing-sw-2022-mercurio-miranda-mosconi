@@ -56,14 +56,35 @@ public class GUI extends View{
     }
 
     @Override
-    public void prepareLogin() {
-        //networkHandler.sendMessage();
+    public void prepareMessage() {
+        networkHandler.sendMessage();
     }
 
     public void setClient(Client client) {
         this.client = client;
     }
 
+    public void processScene(){
+        System.out.println("La gui ha questa fase:" + phase);
+        switch (phase){
+            case SETTINGS -> {
+                guiStarter.switchToWizardsScene();
+            }
+            case PLANNING -> {
+                guiStarter.switchToDeckScene();
+            }
+            case CHOOSING_FIRST_MOVE, CHOOSING_SECOND_MOVE, CHOOSING_THIRD_MOVE -> {
+                System.out.println("Ora faccio partire la scelta");
+                guiStarter.choosePawnMove();
+            }
+            case CHOOSING_MN_SHIFT -> {
+                guiStarter.chooseMNmovement();
+            }
+            case CHOOSING_CT -> {
+                guiStarter.choseCT();
+            }
+        }
+    }
     @Override
     public void login() {
         player = new Player();
@@ -72,18 +93,26 @@ public class GUI extends View{
         setIdGame(idGame);
         Message msg_out = new Message();
 
-        msg_out.setType(MessageType.CREATE_MATCH);
-        setMessageType(MessageType.CREATE_MATCH);
+        if (messageType.equals(MessageType.JOIN_MATCH)){
+            msg_out.setType(MessageType.JOIN_MATCH);
+            setMessageType(MessageType.JOIN_MATCH);
+        }
+        else {
+            msg_out.setType(MessageType.CREATE_MATCH);
+            setMessageType(MessageType.CREATE_MATCH);
+        }
     }
 
     @Override
     public void settings() {
-
+        player.getSchoolBoard().setTowersColor(towerColor);
     }
 
     @Override
     public void chooseAssistantCard() {
-
+        player.setMaxShift(chosenAssistantCard.getMotherMovement());
+        chosenAssistantCard.setConsumed(true);
+        player.setLastAssistantCard(chosenAssistantCard);
     }
 
     @Override
