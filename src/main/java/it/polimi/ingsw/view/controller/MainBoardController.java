@@ -1,9 +1,11 @@
-package it.polimi.ingsw.view;
+package it.polimi.ingsw.view.controller;
 
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.ErrorType;
 import it.polimi.ingsw.network.MessageType;
 import it.polimi.ingsw.network.Phase;
+import it.polimi.ingsw.view.GUI;
+import it.polimi.ingsw.view.GuiStarter;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

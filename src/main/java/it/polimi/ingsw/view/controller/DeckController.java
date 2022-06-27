@@ -1,6 +1,7 @@
-package it.polimi.ingsw.view;
+package it.polimi.ingsw.view.controller;
 
 import it.polimi.ingsw.model.AssistantCard;
+import it.polimi.ingsw.view.GuiStarter;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

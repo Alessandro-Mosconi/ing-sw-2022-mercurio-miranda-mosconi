@@ -2,16 +2,16 @@ package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.Client;
-import it.polimi.ingsw.network.NetworkHandler;
 import it.polimi.ingsw.network.Phase;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -35,7 +35,7 @@ public class GuiStarter extends Application{
     }*/
 
     //usati per testare la gui, andranno cancellati
-    /*
+
     public void test1(){
         GUI gui = (GUI) currentApplication.getClient().getView();
         gui.setPhase(Phase.CHOOSING_CT);
@@ -115,7 +115,9 @@ for(CharacterCard card : game.getChosenCharacterCards())
         gui.setPlayerNumber(3);
         gui.setUsername(game.getPlayers().get(0).getNickName());
     }
-    */
+
+
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -128,11 +130,13 @@ for(CharacterCard card : game.getChosenCharacterCards())
 
 
         //usati per testare la gui, andranno cancellati
-        // test2();
+        //test2();
 
+        primaryStage.getIcons().add(new Image("/assets/logo-cranio-creation.png"));
         primaryStage.setTitle("Eriantys");
         this.primaryStage = primaryStage;
         switchToLoginScene();
+        //switchToMainBoard();
         primaryStage.show();
     }
 
@@ -149,7 +153,7 @@ for(CharacterCard card : game.getChosenCharacterCards())
         }
         Scene sc = new Scene(root);
         primaryStage.setScene(sc);
-        primaryStage.setTitle("Login2");
+        //primaryStage.setTitle("Login");
         primaryStage.sizeToScene();
 
     });
@@ -237,7 +241,7 @@ for(CharacterCard card : game.getChosenCharacterCards())
         Parent root;
         try {
             System.out.println("ggi");
-            root = FXMLLoader.load(getClass().getResource("/AssistentDeck.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/AssistantDeck.fxml"));
             System.out.println("uffi");
         } catch (IOException e) {
             e.printStackTrace();
@@ -295,6 +299,35 @@ for(CharacterCard card : game.getChosenCharacterCards())
     public void showError(String error){
         Platform.runLater(() ->{
             Alert alert = new Alert(Alert.AlertType.ERROR, "This error occured: " + error, ButtonType.OK);
+            alert.showAndWait();
+        });
+    }
+
+
+    public void choseCT(){
+        Platform.runLater(() ->{
+            Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nChose a cloud and click on it", ButtonType.OK);
+
+            ImageView icon = new ImageView("/assets/Reame/PNG/nuvola.png");
+            icon.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0)");
+            icon.setFitHeight(48);
+            icon.setFitWidth(60);
+            alert.getDialogPane().setGraphic(icon);
+            alert.showAndWait();
+        });
+    }
+
+
+
+    public void chooseMNmovement() {
+        Platform.runLater(() ->{
+            Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nClick on the island Mother Nature should go\nMax " + getClient().getView().getMN_shift() + " shift", ButtonType.OK);
+
+            ImageView icon = new ImageView("/assets/Reame/PNG/Island.png");
+            icon.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0)");
+            icon.setFitHeight(48);
+            icon.setFitWidth(60);
+            alert.getDialogPane().setGraphic(icon);
             alert.showAndWait();
         });
     }

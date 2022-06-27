@@ -48,7 +48,7 @@ public class GUI extends View{
 
     @Override
     public void prepareLogin() {
-        networkHandler.sendMessage();
+        //networkHandler.sendMessage();
     }
 
     public void setClient(Client client) {
