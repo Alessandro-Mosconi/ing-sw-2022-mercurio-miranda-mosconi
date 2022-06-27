@@ -1,8 +1,11 @@
-package it.polimi.ingsw.view;
+package it.polimi.ingsw.view.controller;
 
 import it.polimi.ingsw.model.GameMode;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.MessageType;
+import it.polimi.ingsw.view.GUI;
+import it.polimi.ingsw.view.GuiStarter;
+import it.polimi.ingsw.view.View;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,7 +31,6 @@ public class CreateSettingController {
 
     private GuiStarter currentApplication;
 
-
     public void createGame(ActionEvent actionEvent) throws Exception {
 
             if ((gameID.getText().length()==0) || (gameMode.getText().length()==0) || (numOfPlayers.getText().length()==0)) {
@@ -42,12 +44,9 @@ public class CreateSettingController {
         view.setIdGame(gameID.getText());
         view.setPlayerNumber(Integer.parseInt(numOfPlayers.getText()));
         view.setGamemode(GameMode.valueOf(gameMode.getText()));
-        view.setPlayer(new Player());
-        view.setMessageType(MessageType.CREATE_MATCH);
+
         primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        currentApplication.getClient().getNet().prepare_msg();
-
+        view.prepareLogin();
     }
 
 }

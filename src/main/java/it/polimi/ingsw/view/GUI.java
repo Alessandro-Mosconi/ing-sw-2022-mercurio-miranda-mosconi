@@ -13,7 +13,6 @@ import java.net.UnknownHostException;
 
 public class GUI extends View{
     private GuiStarter guiStarter;
-    private Object usernameMonitor = new Object();
     private Client client;
     private boolean ready2go = false;
     private Player playerSchoolboard;
@@ -48,8 +47,8 @@ public class GUI extends View{
     }
 
     @Override
-    public void preparelogin() {
-        networkHandler.prepare_msg();
+    public void prepareLogin() {
+        networkHandler.sendMessage();
     }
 
     public void setClient(Client client) {
@@ -58,11 +57,11 @@ public class GUI extends View{
 
     @Override
     public void login() {
-        System.out.println("ciao ho stampato");
         player = new Player();
-        Message msg_out = new Message();
         player.setNickName(username);
         setUsername(username);
+        setIdGame(idGame);
+        Message msg_out = new Message();
 
         msg_out.setType(MessageType.CREATE_MATCH);
         setMessageType(MessageType.CREATE_MATCH);
@@ -100,6 +99,6 @@ public class GUI extends View{
 
     @Override
     public void showUsedAssistantCards() {
-
+        //todo qui dobbiamo mostrare le assistant card usate..
     }
 }

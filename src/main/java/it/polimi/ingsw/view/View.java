@@ -323,6 +323,6 @@ public abstract class View {
     public void showEndGameWindow(String winnerID) {
     }
 
-    public void preparelogin() {
+    public void prepareLogin() {
     }
 }

@@ -1,5 +1,6 @@
-package it.polimi.ingsw.view;
+package it.polimi.ingsw.view.controller;
 
+import it.polimi.ingsw.view.GuiStarter;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -18,7 +19,6 @@ public class LobbyController {
     private Text titleWaiting;
 
     public void initialize() {
-
 
         titleWaiting.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
