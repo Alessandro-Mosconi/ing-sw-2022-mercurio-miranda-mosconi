@@ -24,6 +24,7 @@ public class DeckController {
             array.add(card.getValue());
 
         for (int i : array) {
+            //todo non dovrebbe essere i+1?
             String path = "assets/Assistenti/2x/Assistente("+(i)+").png";
             ImageView im2 = new ImageView(path);
             im2.setFitHeight(200);
@@ -54,10 +55,12 @@ public class DeckController {
                 public void handle(ActionEvent event) {
                     System.out.println(i + ") card clicked");
 
-                    GuiStarter.getCurrentApplication().getClient().getView().getPlayer().getDeck().getCards().get(i).setConsumed(true);
-                    GuiStarter.getCurrentApplication().getClient().getView().setChosenAssistantCard(GuiStarter.getCurrentApplication().getClient().getView().getPlayer().getDeck().getCards().get(i-1));
-                    GuiStarter.getCurrentApplication().getClient().getView().getPlayer().setMaxShift(GuiStarter.getCurrentApplication().getClient().getView().getChosenAssistantCard().getMotherMovement());
-                    GuiStarter.getCurrentApplication().getClient().getNet().prepare_msg();
+                    //todo perché è prima i e poi i-1?
+                    View view = GuiStarter.getCurrentApplication().getClient().getView();
+                    view.setChosenAssistantCard(view.getPlayer().getDeck().getCards().get(i-1));
+                    view.prepareMessage();
+
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
                 }
             });
 

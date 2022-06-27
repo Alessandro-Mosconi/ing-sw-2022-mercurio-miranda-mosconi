@@ -24,6 +24,9 @@ public class TowerController {
     @FXML
     private FlowPane towerContainer;
 
+    public void start(){
+
+    }
     public void initialize() {
         ArrayList<TowerColor> towers = GuiStarter.getCurrentApplication().getClient().getView().getTowerColors();
 
@@ -57,8 +60,10 @@ public class TowerController {
                 public void handle(ActionEvent event) {
 
                     System.out.println(tower + ") tower clicked");
-                    GuiStarter.getCurrentApplication().getClient().getView().getPlayer().getSchoolBoard().setTowersColor(towerColor);
-                    GuiStarter.getCurrentApplication().getClient().getView().setTowerColor(towerColor);
+                    View view = GuiStarter.getCurrentApplication().getClient().getView();
+                    //view.getPlayer().getSchoolBoard().setTowersColor(towerColor);
+                    view.setTowerColor(towerColor);
+                    GuiStarter.getCurrentApplication().switchToDeckScene();
                 }
             });
 

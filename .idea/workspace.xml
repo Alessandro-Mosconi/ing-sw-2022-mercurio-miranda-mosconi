@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="connection of other scenes to the game logic">
+    <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="addition of controllers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/DeckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/DeckController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/TowerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/TowerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/TowerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/TowerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/TowerChoise.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/TowerChoice.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/WizardChoise.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/WizardChoice.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/WizardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/WizardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/TowerChoice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/TowerChoice.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +27,7 @@
         <option value="JavaFXApplication" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -299,20 +304,6 @@
       <workItem from="1656263319382" duration="2625000" />
       <workItem from="1656265992828" duration="8112000" />
       <workItem from="1656314570104" duration="2889000" />
-    </task>
-    <task id="LOCAL-00014" summary="PlayerTest and SchoolBoardTest completed">
-      <created>1651152385538</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1651152385538</updated>
-    </task>
-    <task id="LOCAL-00015" summary="IslandTest 53% methods, 75% of lines covered (to finish)">
-      <created>1651419535059</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1651419535059</updated>
     </task>
     <task id="LOCAL-00016" summary="Communication Protocol, no sequence diagram">
       <created>1651478907527</created>
@@ -643,7 +634,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656322938142</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="towerScene GUI">
+      <created>1656331486467</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1656331486467</updated>
+    </task>
+    <task id="LOCAL-00064" summary="addition of controllers">
+      <created>1656331715682</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1656331715682</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -678,8 +683,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Communication Protocol no sequence diagram" />
-    <MESSAGE value="Communication Protocol + sequence diagram folder" />
     <MESSAGE value="Communication Protocol with sequence diagram" />
     <MESSAGE value="ParameterTest + resources folder created" />
     <MESSAGE value="Server multi-thread for multiple client connection." />
@@ -703,7 +706,9 @@
     <MESSAGE value="GUI to lobby" />
     <MESSAGE value="Deck, MainBoard, other Schoolboard, TowerChoise scene added with controller" />
     <MESSAGE value="connection of other scenes to the game logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="connection of other scenes to the game logic" />
+    <MESSAGE value="towerScene GUI" />
+    <MESSAGE value="addition of controllers" />
+    <option name="LAST_COMMIT_MESSAGE" value="addition of controllers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

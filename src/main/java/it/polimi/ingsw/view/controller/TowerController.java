@@ -56,9 +56,11 @@ public class TowerController {
                 public void handle(ActionEvent event) {
 
                     System.out.println(tower + ") tower clicked");
-                    //GuiStarter.getCurrentApplication().getClient().getView().getPlayer().getSchoolBoard().setTowersColor(towerColor);
                     View view = GuiStarter.getCurrentApplication().getClient().getView();
+                    view.getPlayer().getSchoolBoard().setTowersColor(towerColor);
                     view.setTowerColor(towerColor);
+                    //todo perché ci serve questo messagetype?
+                    //view.setMessageType(MessageType.SETTINGS);
                     view.prepareMessage();
                 }
             });
@@ -68,9 +70,6 @@ public class TowerController {
             anchorPane.getChildren().add(button);
 
             towerContainer.getChildren().add(anchorPane);
-
-            GuiStarter.getCurrentApplication().getClient().getView().setMessageType(MessageType.SETTINGS);
-            GuiStarter.getCurrentApplication().getClient().getView().prepareMessage();
         }
     }
 }

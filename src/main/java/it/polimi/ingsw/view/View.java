@@ -10,7 +10,7 @@ import java.util.*;
 public abstract class View {
     protected String username;
     private GuiStarter guiStarter;
-    private Phase phase;
+    protected Phase phase;
     protected String idGame;
     protected GameMode gamemode;
     protected Integer playerNumber;

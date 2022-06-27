@@ -56,10 +56,13 @@ public class GUI extends View{
     }
 
     public void processScene(){
-        Phase phase = getPhase();
+
         switch (phase){
             case SETTINGS -> {
                 guiStarter.switchToWizardsScene();
+            }
+            case PLANNING -> {
+                guiStarter.switchToDeckScene();
             }
 
         }
@@ -89,7 +92,9 @@ public class GUI extends View{
 
     @Override
     public void chooseAssistantCard() {
-
+        player.setMaxShift(chosenAssistantCard.getMotherMovement());
+        chosenAssistantCard.setConsumed(true);
+        player.setLastAssistantCard(chosenAssistantCard);
     }
 
     @Override

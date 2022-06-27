@@ -240,9 +240,7 @@ for(CharacterCard card : game.getChosenCharacterCards())
         Stage stage = new Stage();
         Parent root;
         try {
-            System.out.println("ggi");
             root = FXMLLoader.load(getClass().getResource("/AssistantDeck.fxml"));
-            System.out.println("uffi");
         } catch (IOException e) {
             e.printStackTrace();
             return;

@@ -90,12 +90,11 @@ public class NetworkHandler implements Runnable {
         ArrayList<String> payloads = new ArrayList<>();
 
         //todo capire a che serve
-        //view.setPhase(phase);
+        view.setPhase(phase);
+        //if(isGui) view.setPhase(nextPhase);
         switch (phase) {
             case LOGIN -> {
                 view.login();
-                //debug
-                System.out.println("sono nel network");
 
                 msg_out.setUser(view.getUsername());
                 view.getPlayer().setNickName(view.getUsername());
@@ -120,6 +119,7 @@ public class NetworkHandler implements Runnable {
             }
             case PLANNING -> {
                 view.chooseAssistantCard();
+
                 msg_out.setType(MessageType.ASSISTANT_CARD);
                 payloads.add(view.getChosenAssistantCard().getValue().toString());
                 view.setCardUsed(false);
@@ -671,7 +671,9 @@ public class NetworkHandler implements Runnable {
     }
 
     public void sendMessage() {
+        System.out.println("mando msg: 1");
         String output = prepare_msg();
+        System.out.println("mando msg: " + output);
         out.println(output);
     }
 }
