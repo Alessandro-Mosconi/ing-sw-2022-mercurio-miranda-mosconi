@@ -2,6 +2,7 @@ package it.polimi.ingsw.view.controller;
 
 import it.polimi.ingsw.model.AssistantCard;
 import it.polimi.ingsw.view.GuiStarter;
+import it.polimi.ingsw.view.View;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -55,10 +56,12 @@ public class DeckController {
                 public void handle(ActionEvent event) {
                     System.out.println(i + ") card clicked");
 
-                    GuiStarter.getCurrentApplication().getClient().getView().getPlayer().getDeck().getCards().get(i).setConsumed(true);
-                    GuiStarter.getCurrentApplication().getClient().getView().setChosenAssistantCard(GuiStarter.getCurrentApplication().getClient().getView().getPlayer().getDeck().getCards().get(i-1));
-                    GuiStarter.getCurrentApplication().getClient().getView().getPlayer().setMaxShift(GuiStarter.getCurrentApplication().getClient().getView().getChosenAssistantCard().getMotherMovement());
-                    GuiStarter.getCurrentApplication().getClient().getNet().prepare_msg();
+                    //todo perché è prima i e poi i-1?
+                    View view = GuiStarter.getCurrentApplication().getClient().getView();
+                    view.setChosenAssistantCard(view.getPlayer().getDeck().getCards().get(i-1));
+                    view.prepareMessage();
+
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
                 }
             });
 

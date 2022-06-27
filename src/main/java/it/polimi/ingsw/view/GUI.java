@@ -64,7 +64,15 @@ public class GUI extends View{
             case PLANNING -> {
                 guiStarter.switchToDeckScene();
             }
-
+            case CHOOSING_FIRST_MOVE, CHOOSING_SECOND_MOVE, CHOOSING_THIRD_MOVE -> {
+                guiStarter.choosePawnMove();
+            }
+            case CHOOSING_MN_SHIFT -> {
+                guiStarter.chooseMNmovement();
+            }
+            case CHOOSING_CT -> {
+                guiStarter.choseCT();
+            }
         }
     }
     @Override

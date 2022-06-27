@@ -140,9 +140,7 @@ for(CharacterCard card : game.getChosenCharacterCards())
         primaryStage.show();
     }
 
-    public void switchToLoginScene()
-    {
-
+    public void switchToLoginScene(){
         Platform.runLater(() ->{
         Parent root;
         try {
@@ -159,8 +157,7 @@ for(CharacterCard card : game.getChosenCharacterCards())
     });
     }
 
-    public void switchToCreateSettings()
-    {
+    public void switchToCreateSettings(){
 
         Platform.runLater(() ->{
         Parent root;
@@ -177,9 +174,7 @@ for(CharacterCard card : game.getChosenCharacterCards())
 
         });
     }
-
-    public void switchToJoinSettings()
-    {
+    public void switchToJoinSettings(){
 
         Platform.runLater(() ->{
         Parent root;
@@ -196,7 +191,6 @@ for(CharacterCard card : game.getChosenCharacterCards())
 
         });
     }
-
     public void switchToWizardsScene() {
 
         Platform.runLater(() ->{
@@ -214,7 +208,6 @@ for(CharacterCard card : game.getChosenCharacterCards())
         });
 
     }
-
     public void switchToTowerScene() {
 
         Platform.runLater(() ->{
@@ -232,10 +225,7 @@ for(CharacterCard card : game.getChosenCharacterCards())
         });
 
     }
-
-    public void switchToDeckScene()
-    {
-
+    public void switchToDeckScene(){
         Platform.runLater(() ->{
         Stage stage = new Stage();
         Parent root;
@@ -253,31 +243,23 @@ for(CharacterCard card : game.getChosenCharacterCards())
         stage.initModality(Modality.WINDOW_MODAL);
         //stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
         stage.show();
-
         });
     }
-
-    public void switchToLobbyScene()
-    {
+    public void switchToLobbyScene(){
         Platform.runLater(() ->{
-
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/LobbyWaiting.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-        Scene sc = new Scene(root);
-        primaryStage.setScene(sc);
-        primaryStage.sizeToScene();
-    });
+            Parent root;
+            try {
+                root = FXMLLoader.load(getClass().getResource("/LobbyWaiting.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+            Scene sc = new Scene(root);
+            primaryStage.setScene(sc);
+            primaryStage.sizeToScene();
+        });
     }
-
-
-    public void switchToMainBoard()
-    {
-
+    public void switchToMainBoard() {
         Platform.runLater(() ->{
             Parent root;
             try {
