@@ -122,12 +122,12 @@ public class MainBoardController {
 
                     effectActive.setText("Last card used: id " + cardID);
                     view.setChosenCharacterCard(card);
+                    view.setMessageType(MessageType.CHOSEN_CHARACTER_CARD);
                 }
             });
 
             AnchorPane anchorPane = new AnchorPane();
             anchorPane.getChildren().add(im2);
-
 
             ArrayList<Shape> shapes = new ArrayList<>();
             ArrayList<Text> text = new ArrayList<>();
@@ -439,6 +439,7 @@ public class MainBoardController {
                     System.out.println(cloud.getCloudID() + ") cloud clicked");
                     view.setChosenCloudPos(cloud.getCloudID());
                     view.setMessageType(MessageType.CHOSEN_CT);
+                    view.prepareMessage();
                 }
             });
 
@@ -569,8 +570,9 @@ public class MainBoardController {
                 @Override
                 public void handle(ActionEvent event) {
                     System.out.println(island.getIslandID() + ") island clicked");
-                    int shift = view.getIslandManager().getCurrMNPosition() - island.getIslandID();
+
                     if (view.getPhase().equals(Phase.CHOOSING_MN_SHIFT)){
+                        int shift = view.getIslandManager().getCurrMNPosition() - island.getIslandID();
                         if (shift > view.getPlayer().getMaxShift()) {
                             GuiStarter.getCurrentApplication().showError(ErrorType.INVALID_MN_SHIFT.toString());
                             return;
@@ -578,6 +580,12 @@ public class MainBoardController {
                         view.setMessageType(MessageType.MN_SHIFT);
                         view.setMN_shift(shift);
                     }
+                    else {
+                        view.setDestination(island.getIslandID());
+                        view.setMessageType(MessageType.PAWN_MOVE);
+                        //todo bisogna vedere di che colore è lo studente
+                    }
+                    view.prepareMessage();
                     /*
                     if (shift > view.getPlayer().getMaxShift()) {
                         GuiStarter.getCurrentApplication().showError(ErrorType.INVALID_MN_SHIFT.toString());

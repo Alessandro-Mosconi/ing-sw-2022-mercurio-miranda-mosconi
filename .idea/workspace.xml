@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="Gui work until mainboard">
+    <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="addition of mainboard methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/DeckController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/DeckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/DeckController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/MainBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/MainBoardController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -301,13 +298,6 @@
       <workItem from="1656263319382" duration="2625000" />
       <workItem from="1656265992828" duration="8112000" />
       <workItem from="1656314570104" duration="2889000" />
-    </task>
-    <task id="LOCAL-00017" summary="Communication Protocol, no sequence diagram">
-      <created>1651479452299</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1651479452299</updated>
     </task>
     <task id="LOCAL-00018" summary="Communication Protocol, no sequence diagram">
       <created>1651483257739</created>
@@ -645,7 +635,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656338585910</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="addition of mainboard methods">
+      <created>1656341432805</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1656341432805</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -680,7 +677,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ParameterTest + resources folder created" />
     <MESSAGE value="Server multi-thread for multiple client connection." />
     <MESSAGE value="added the Pinger class for pinging between client and server on another thread" />
     <MESSAGE value="Network handler" />
@@ -705,7 +701,8 @@
     <MESSAGE value="towerScene GUI" />
     <MESSAGE value="addition of controllers" />
     <MESSAGE value="Gui work until mainboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gui work until mainboard" />
+    <MESSAGE value="addition of mainboard methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="addition of mainboard methods" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -717,7 +714,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java</url>
-          <line>475</line>
+          <line>473</line>
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -727,7 +724,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java</url>
-          <line>472</line>
+          <line>470</line>
           <option name="timeStamp" value="132" />
         </line-breakpoint>
         <line-breakpoint type="java-line">

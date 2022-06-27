@@ -89,9 +89,7 @@ public class NetworkHandler implements Runnable {
         Gson gson = new Gson();
         ArrayList<String> payloads = new ArrayList<>();
 
-        //todo capire a che serve
         view.setPhase(phase);
-        //if(isGui) view.setPhase(nextPhase);
         switch (phase) {
             case LOGIN -> {
                 view.login();
@@ -127,6 +125,7 @@ public class NetworkHandler implements Runnable {
             }
             case CHOOSING_FIRST_MOVE -> {
                 view.choosePawnMove();
+
                 msg_out.setType(view.getMessageType());
                 if (view.getMessageType().equals(MessageType.PAWN_MOVE)) {
                     payloads.add(view.getColorToMove().toString());
@@ -282,7 +281,6 @@ public class NetworkHandler implements Runnable {
                 phase = Phase.WAITING;
                 System.out.println("ok aspetto\n");
             }
-
             case IS_YOUR_TURN, ACK, CARD_ACTIVATED -> {
                 phase = nextPhase;
                 view.setPhase(phase);
