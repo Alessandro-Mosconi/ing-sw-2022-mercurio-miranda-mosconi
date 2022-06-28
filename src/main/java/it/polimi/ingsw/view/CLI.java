@@ -195,8 +195,22 @@ public class CLI extends View{
     public void chooseAssistantCard() {
 
         String input = "" ;
-        boolean invalidInput = true;
+        boolean invalidInput = false;
+        ArrayList<Integer> alreadyUsed = new ArrayList<>();
+        for(Player p : players){
+            if(p.getLastAssistantCard()!=null) {
+                alreadyUsed.add(p.getLastAssistantCard().getValue());
+            }
+        }
+        ArrayList<Integer> availableOnes = new ArrayList<>();
+        for(AssistantCard ac : player.getDeck().getCards()){
+            if(!ac.isConsumed()){
+                availableOnes.add(ac.getValue());
+            }
+        }
+
         do {
+            invalidInput = false;
             System.out.print("\033[H\033[2J");
             System.out.flush();
 
@@ -210,40 +224,11 @@ public class CLI extends View{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            int availableCards = 0;
-            boolean lastCard = true;
-            for(int i = 1; i<11; i++){
-                if (input.equals(String.valueOf(i))) {
-                    invalidInput = false;
-                    break;
-                }
+            if((availableOnes.containsAll(alreadyUsed) && alreadyUsed.containsAll(availableOnes)) ||(availableOnes.size()<alreadyUsed.size() && alreadyUsed.containsAll(availableOnes))){
+                invalidInput=false;
             }
-            if(!invalidInput) {
-                for (AssistantCard card : getPlayer().getDeck().getCards()) {
-                    if (lastCard) {
-                        if (!card.isConsumed()) {
-                            availableCards++;
-                        }
-                        if (availableCards > 1) {
-                            lastCard = false;
-                        }
-                    }
-                }
-                for (AssistantCard card : getPlayer().getDeck().getCards()) {
-                    if (input.equals(card.getId()) && !card.isConsumed()) {
-                        invalidInput = false;
-                        for (Player p : players) {
-                            if (p.getLastAssistantCard() != null) {
-                                if (card.getValue().equals(p.getLastAssistantCard().getValue()) && !lastCard) {
-                                    invalidInput = true;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            if (invalidInput) {
-                System.out.println("Error: invalid input");
+            else if (alreadyUsed.contains(Integer.valueOf(input))){
+                invalidInput = true;
             }
         }while(invalidInput);
         player.getDeck().getCards().get(Integer.parseInt(input)-1).setConsumed(true);

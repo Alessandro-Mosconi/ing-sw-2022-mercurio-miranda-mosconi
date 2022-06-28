@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="MainBoardController fix">
+    <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="CLI checks added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -193,9 +192,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Server" />
         <item itemvalue="Application.Client2" />
         <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server" />
         <item itemvalue="Application.Client3" />
         <item itemvalue="Application.GuiTester" />
       </list>
@@ -300,14 +299,7 @@
       <workItem from="1656314570104" duration="10874000" />
       <workItem from="1656325798492" duration="18974000" />
       <workItem from="1656405105348" duration="8462000" />
-      <workItem from="1656442446797" duration="3171000" />
-    </task>
-    <task id="LOCAL-00016" summary="Communication Protocol, no sequence diagram">
-      <created>1651478907527</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1651478907527</updated>
+      <workItem from="1656442446797" duration="4339000" />
     </task>
     <task id="LOCAL-00017" summary="Communication Protocol, no sequence diagram">
       <created>1651479452299</created>
@@ -645,7 +637,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656444379857</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="CLI checks added">
+      <created>1656447256694</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1656447256694</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -680,7 +679,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Communication Protocol with sequence diagram" />
     <MESSAGE value="ParameterTest + resources folder created" />
     <MESSAGE value="Server multi-thread for multiple client connection." />
     <MESSAGE value="added the Pinger class for pinging between client and server on another thread" />
@@ -705,7 +703,8 @@
     <MESSAGE value="logo cranio creation image + hallButton added" />
     <MESSAGE value="input checks on login" />
     <MESSAGE value="MainBoardController fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="MainBoardController fix" />
+    <MESSAGE value="CLI checks added" />
+    <option name="LAST_COMMIT_MESSAGE" value="CLI checks added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
