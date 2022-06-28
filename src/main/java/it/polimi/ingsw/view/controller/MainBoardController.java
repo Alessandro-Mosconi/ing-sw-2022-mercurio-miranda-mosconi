@@ -589,13 +589,14 @@ public void showClouds(){
             public void handle(ActionEvent event) {
               System.out.println(island.getIslandID() + ") island clicked");
 
-              if(view.getChosenCharacterCard()!=null)
-                if(view.getCardUsed()&&(view.getChosenCharacterCard().getID().equals(1)||view.getChosenCharacterCard().getID().equals(3)||view.getChosenCharacterCard().getID().equals(5))) {
-                    view.getParameter().setIsland(island);
-                    view.setMessageType(MessageType.CHOSEN_CHARACTER_CARD);
-                    view.prepareMessage();
-                }
-                else if(view.getPhase().equals(Phase.CHOOSING_MN_SHIFT)) {
+              if(view.getChosenCharacterCard()!=null) {
+                  if (view.getCardUsed() && (view.getChosenCharacterCard().getID().equals(1) || view.getChosenCharacterCard().getID().equals(3) || view.getChosenCharacterCard().getID().equals(5))) {
+                      view.getParameter().setIsland(island);
+                      view.setMessageType(MessageType.CHOSEN_CHARACTER_CARD);
+                      view.prepareMessage();
+                  }
+              }
+              else if(view.getPhase().equals(Phase.CHOOSING_MN_SHIFT)) {
                 int shift = (view.getIslandManager().getIslandList().size() + island.getIslandID() - view.getIslandManager().getCurrMNPosition())%view.getIslandManager().getIslandList().size();
                 if (shift > view.getPlayer().getMaxShift()) {
                   GuiStarter.getCurrentApplication().showError(ErrorType.INVALID_MN_SHIFT.toString());
@@ -611,7 +612,8 @@ public void showClouds(){
                         view.prepareMessage();
                     }
                 }
-              } else if(view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)||view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)||view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE)) {
+              }
+              else if(view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)||view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)||view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE)) {
                   if(view.getColorToMove()!=null) {
                       view.setDestination(island.getIslandID());
                       view.setMessageType(MessageType.PAWN_MOVE);
