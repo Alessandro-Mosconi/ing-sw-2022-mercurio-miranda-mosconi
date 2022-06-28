@@ -11,7 +11,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -36,6 +38,7 @@ public class CharacterCardController {
     public void initialize() {
         View view = GuiStarter.getCurrentApplication().getClient().getView();
         caption.setText(view.getChosenCharacterCard().getCaption());
+        caption.setWrappingWidth(600);
 
         FlowPane flowPane = new FlowPane();
         flowPane.setAlignment(Pos.CENTER);
@@ -43,11 +46,12 @@ public class CharacterCardController {
         VBox vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
 
-        Text cost = new Text("Cost: " + view.getChosenCharacterCard().getPrice());
+        Text cost = new Text("Updated cost: " + view.getChosenCharacterCard().getPrice());
         cost.setFont(Font.font("System", FontPosture.ITALIC, 20));
         cost.setUnderline(true);
         cost.setFill(Color.WHITE);
 
+        vBox.getChildren().add(cost);
         Text question1 = new Text("Chose a color:");
         question1.setFont(Font.font("System", 20));
         question1.setFill(Color.WHITE);
@@ -113,6 +117,12 @@ public class CharacterCardController {
                 view.getParameter().setColorMap1(new HashMap<>());
                 view.getParameter().setColorMap2(new HashMap<>());
 
+                for(PawnColor color: PawnColor.values())
+                {
+                    view.getParameter().getColorMap1().put(color, 0);
+                    view.getParameter().getColorMap2().put(color, 0);
+                }
+
                 Map<PawnColor, Integer> map1=view.getPlayer().getSchoolBoard().getStudentEntrance();
                 Map<PawnColor, Integer> map2;
 
@@ -121,7 +131,8 @@ public class CharacterCardController {
                     map2 = card7.getStudents();
                 } else map2=view.getPlayer().getSchoolBoard().getStudentHall();
 
-                question1.setText("Chose max 2 student to swap between entrance and hall");
+                if(view.getChosenCharacterCard().getID().equals(10))
+                    question1.setText("Chose max 2 student to swap between entrance and hall");
 
                 if(view.getChosenCharacterCard().getID().equals(7))
                     question1.setText("Chose max 3 student to swap between entrance and card map");
@@ -130,7 +141,7 @@ public class CharacterCardController {
 
                 FlowPane flowPane1 = new FlowPane();
                 flowPane1.setAlignment(Pos.CENTER);
-                ArrayList<Button> colorButtons1 = new ArrayList<>();
+                //ArrayList<Button> colorButtons1 = new ArrayList<>();
 
                 VBox vBox1 = new VBox();
                 Text entrance = new Text("Entrance:");
@@ -148,27 +159,23 @@ public class CharacterCardController {
                         button.setCursor(Cursor.HAND);
                         button.setPrefWidth(40);
                         button.setPrefHeight(40);
-                        colorButtons1.add(button);
+                        //colorButtons1.add(button);
                         button.setOnAction(new EventHandler<ActionEvent>() {
                             @Override
                             public void handle(ActionEvent event) {
                                 if(!button.getStyle().equals("-fx-border-color: white; -fx-background-color: " + color + ";  -fx-effect:  dropshadow(gaussian, white, 15, 0.5, 0, 0)")) {
                                     button.setStyle("-fx-border-color: white; -fx-background-color: " + color + ";  -fx-effect:  dropshadow(gaussian, white, 15, 0.5, 0, 0)");
-                                    /*if (view.getParameter().getColorMap1() == null)
-                                        view.getParameter().setColorMap1(new HashMap<PawnColor, Integer>());
-
-                                     */
-                                    if(!view.getParameter().getColorMap1().containsKey(color))
-                                        view.getParameter().getColorMap1().put(color, 1);
-                                    else view.getParameter().getColorMap1().replace(color, view.getParameter().getColorMap1().get(color) + 1);
+                                    if(!view.getParameter().getColorMap2().containsKey(color))
+                                        view.getParameter().getColorMap2().put(color, 1);
+                                    else view.getParameter().getColorMap2().replace(color, view.getParameter().getColorMap2().get(color) + 1);
                                 }
                                 else{
                                     button.setStyle("-fx-border-color: white; -fx-background-color: " + color + ";  -fx-effect:  null");
-                                    view.getParameter().getColorMap1().put(color, view.getParameter().getColorMap1().get(color) - 1);
+                                    view.getParameter().getColorMap2().put(color, view.getParameter().getColorMap2().get(color) - 1);
                                 }
                                 int counter=0;
-                                for(PawnColor color1 : view.getParameter().getColorMap1().keySet())
-                                    counter=counter+view.getParameter().getColorMap1().get(color1);
+                                for(PawnColor color1 : view.getParameter().getColorMap2().keySet())
+                                    counter=counter+view.getParameter().getColorMap2().get(color1);
                                 if (counter>3)
                                     check=false;
                                 else check=true;
@@ -186,7 +193,7 @@ public class CharacterCardController {
 
                 FlowPane flowPane2 = new FlowPane();
                 flowPane2.setAlignment(Pos.CENTER);
-                ArrayList<Button> colorButtons2 = new ArrayList<>();
+                //ArrayList<Button> colorButtons2 = new ArrayList<>();
                 VBox vBox2 = new VBox();
                 Text map2text = new Text("Hall:");
 
@@ -200,31 +207,30 @@ public class CharacterCardController {
                 for(PawnColor color : map2.keySet())
                 {
                     for(int i=0; i< map2.get(color); i++) {
-                        System.out.println(color);
                         Button button = new Button();
                         button.setShape(new Circle(25));
                         button.setStyle("-fx-border-color: white; -fx-background-color: " + color + ";  -fx-effect: null");
                         button.setCursor(Cursor.HAND);
                         button.setPrefWidth(40);
                         button.setPrefHeight(40);
-                        colorButtons2.add(button);
+                        //colorButtons2.add(button);
                         button.setOnAction(new EventHandler<ActionEvent>() {
                             @Override
                             public void handle(ActionEvent event) {
                                 if(!button.getStyle().equals("-fx-border-color: white; -fx-background-color: " + color + ";  -fx-effect:  dropshadow(gaussian, white, 15, 0.5, 0, 0)")) {
                                     button.setStyle("-fx-border-color: white; -fx-background-color: " + color + ";  -fx-effect:  dropshadow(gaussian, white, 15, 0.5, 0, 0)");
 
-                                    if(!view.getParameter().getColorMap2().containsKey(color))
-                                        view.getParameter().getColorMap2().put(color, 1);
-                                    else view.getParameter().getColorMap2().replace(color, view.getParameter().getColorMap2().get(color) + 1);
+                                    if(!view.getParameter().getColorMap1().containsKey(color))
+                                        view.getParameter().getColorMap1().put(color, 1);
+                                    else view.getParameter().getColorMap1().replace(color, view.getParameter().getColorMap1().get(color) + 1);
                                 }
                                 else{
                                     button.setStyle("-fx-border-color: white; -fx-background-color: " + color + ";  -fx-effect:  null");
-                                    view.getParameter().getColorMap2().put(color, view.getParameter().getColorMap2().get(color) - 1);
+                                    view.getParameter().getColorMap1().put(color, view.getParameter().getColorMap1().get(color) - 1);
                                 }
                                 int counter=0;
-                                for(PawnColor color1 : view.getParameter().getColorMap2().keySet())
-                                    counter=counter+view.getParameter().getColorMap2().get(color1);
+                                for(PawnColor color1 : view.getParameter().getColorMap1().keySet())
+                                    counter=counter+view.getParameter().getColorMap1().get(color1);
                                 if (counter>3)
                                     check=false;
                                 else check=true;
@@ -249,6 +255,11 @@ public class CharacterCardController {
         conferma.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                if(view.getChosenCharacterCard().getPrice()>view.getPlayer().getWallet()){
+                    GuiStarter.getCurrentApplication().showError("You don't have enough money");
+                    return;
+                }
+
                 if(view.getChosenCharacterCard().getID().equals(10)){
 
                     int counter1 =0, counter2=0;

@@ -493,21 +493,16 @@ public class NetworkHandler implements Runnable {
                     Player p = new Player();
                     if(payloads.size()==8){
                         p.getSchoolBoard().setTowersNumber(8);
-                        System.out.println("le torri di 2 sono : " + p.getSchoolBoard().getTowersNumber());
                     }else if(payloads.size()==12){
                         p.getSchoolBoard().setTowersNumber(6);
-                        System.out.println("le torri di 3 sono : " + p.getSchoolBoard().getTowersNumber());
                     }
-                    System.out.println("towernumber ok");
                     p.setNickName(nickname);
                     p.setPlayerNumber(playerNumber);
                     p.setDeck(new Deck(wt));
                     p.getSchoolBoard().setTowersColor(tc);
                     players.add(p);
                     if(p.getNickName().equals(view.getUsername())){
-                        view.setPlayer(p);
-                        System.out.println("le torri di eu sono : " + p.getSchoolBoard().getTowersNumber());
-                    }
+                        view.setPlayer(p);}
                 }
                 view.setPlayers(players);
             }
@@ -690,9 +685,13 @@ public class NetworkHandler implements Runnable {
                 Integer cardID = Integer.parseInt(payloads.get(1));
                 view.setCardUsed(true);
                 view.setActiveEffect(currUser + " used the character card n." + cardID);
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
             }
             case EFFECT_ENDED -> {
                 view.setCardUsed(false);
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
             }
         }
     }
