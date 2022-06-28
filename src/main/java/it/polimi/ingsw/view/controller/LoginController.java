@@ -25,27 +25,22 @@ public class LoginController {
     @FXML
     protected TextField username;
     @FXML
-    private Text actiontarget;
-    @FXML
     protected TextField serverPort;
     @FXML
     protected TextField serverIP;
     @FXML
 
     public void checkAndConnect(){
-        if (username.getText().length()==0) {
+        if ((username.getText().length()==0) || (serverIP.getText().length()==0) || (serverPort.getText().length()==0)) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Insert parameters!", ButtonType.OK);
             alert.showAndWait();
             return;
         }
-
-        //todo add check for serverIP and serverPort
         currentApplication = GuiStarter.getCurrentApplication();
         View view = (GUI) currentApplication.getClient().getView();
         view.setUsername(username.getText());
         view.setServerIP(serverIP.getText());
         view.setServerPort(Integer.parseInt(serverPort.getText()));
-
         currentApplication.getClient().connectGUI();
     }
     public void createGameButton(ActionEvent actionEvent) throws Exception {
@@ -59,20 +54,4 @@ public class LoginController {
         currentApplication.getClient().getView().setMessageType(MessageType.JOIN_MATCH);
         currentApplication.switchToJoinSettings();
     }
-    /**
-     * Method automatically called when the scene is loaded.
-     * Initializes the scene.
-     */
-    /*
-    public void initialize()
-    {
-        label.setText("");
-    }
-
-
-    public void buttonClicked(ActionEvent actionEvent)
-    {
-        label.setText(textField.getText());
-    }
-    */
 }

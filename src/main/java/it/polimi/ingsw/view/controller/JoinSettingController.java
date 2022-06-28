@@ -18,11 +18,11 @@ public class JoinSettingController {
 
     public void joinGame(ActionEvent actionEvent) throws Exception {
 
-            if ((gameID.getText().length()==0)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Insert parameters!", ButtonType.OK);
-                alert.showAndWait();
-                return;
-            }
+        if ((gameID.getText().length() == 0)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Insert parameters!", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
 
         currentApplication = GuiStarter.getCurrentApplication();
         View view = (GUI) currentApplication.getClient().getView();

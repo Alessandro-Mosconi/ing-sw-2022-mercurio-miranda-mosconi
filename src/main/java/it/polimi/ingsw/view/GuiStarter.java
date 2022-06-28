@@ -2,6 +2,7 @@ package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.Client;
+import it.polimi.ingsw.network.ErrorType;
 import it.polimi.ingsw.network.Phase;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -145,7 +146,6 @@ public class GuiStarter extends Application{
 
     public void switchToLoginScene()
     {
-
         Platform.runLater(() ->{
         Parent root;
         try {
@@ -307,6 +307,9 @@ public class GuiStarter extends Application{
         Platform.runLater(() ->{
             Alert alert = new Alert(Alert.AlertType.ERROR, "This error occured: " + error, ButtonType.OK);
             alert.showAndWait();
+            if (error.equals("\"USERNAME_ALREADY_IN_LOBBY\"")){
+                switchToLoginScene();
+            }
         });
     }
 

@@ -25,12 +25,12 @@ public class CreateSettingController {
 
     public void createGame(ActionEvent actionEvent) throws Exception {
 
-            if ((gameID.getText().length()==0) || (gameMode.getText().length()==0) || (numOfPlayers.getText().length()==0)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Insert parameters!", ButtonType.OK);
-                alert.showAndWait();
-                return;
-            }
-
+        if ((gameID.getText().length() == 0) || (gameMode.getText().length() == 0) || (numOfPlayers.getText().length() == 0)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Insert parameters!", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+        String game = gameMode.getText();
         currentApplication = GuiStarter.getCurrentApplication();
         View view = (GUI) currentApplication.getClient().getView();
         view.setIdGame(gameID.getText());
