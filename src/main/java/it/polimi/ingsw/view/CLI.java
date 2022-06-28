@@ -86,23 +86,35 @@ public class CLI extends View{
             }
             setIdGame(input);
             //payloads.add(input);
-            System.out.println("Inserire numero di giocatori [2-4]: ");
+            boolean invalidInput = true;
 
-            try {
-                input = stdIn.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            do {
+                System.out.println("Inserire numero di giocatori [2-3]: ");
 
+                try {
+                    input = stdIn.readLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if(Integer.parseInt(input)>1 && Integer.parseInt(input)<4){
+                    invalidInput=false;
+                }
+            }while(invalidInput);
             setPlayerNumber(Integer.parseInt(input));
             //payloads.add(input);
-            System.out.println("Inserire la difficolta'[easy]/[expert]: ");
+            invalidInput = true;
+            do {
+                System.out.println("Inserire la difficolta'[easy]/[expert]: ");
 
-            try {
-                input = stdIn.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                try {
+                    input = stdIn.readLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if(input.equals("easy")||input.equals("expert")){
+                    invalidInput=false;
+                }
+            }while(invalidInput);
             setGamemode(GameMode.valueOf(input));
             //payloads.add(input);
             setMessageType(MessageType.CREATE_MATCH);
@@ -343,6 +355,7 @@ public class CLI extends View{
                 for(PawnColor pc: PawnColor.values()){
                     if(input.equals(String.valueOf(pc))){
                         invalidInput = false;
+                        break;
                     }
                 }
                 if(!invalidInput) {
@@ -373,6 +386,7 @@ public class CLI extends View{
             for(int i=-1;i<islandManager.getIslandList().size();i++){
                 if(input.equals(String.valueOf(i))){
                     invalidInput = false;
+                    break;
                 }
             }
             if(invalidInput){
@@ -438,12 +452,9 @@ public class CLI extends View{
                 for(int i=1; i<= player.getMaxShift();i++){
                     if(input.equals(String.valueOf(i))){
                         invalidInput=false;
+                        break;
                     }
                 }
-                /*if(Integer.parseInt(input)>0 && !(Integer.parseInt(input) > getChosenAssistantCard().getMotherMovement())){
-                //TODO sistemare maxShift nella gestione dei messaggi va inserito il boolean che indica il bonus effetto in caso
-                    invalidInput = false;
-                }*/
             }
             if(invalidInput){
                 System.out.println("Error: invalid input");
@@ -481,6 +492,7 @@ public class CLI extends View{
                 for(int i=0; i<players.size();i++){
                     if(input.equals(String.valueOf(i))){
                         invalidInput=false;
+                        break;
                     }
                 }
                 if(!invalidInput){
@@ -627,25 +639,56 @@ public class CLI extends View{
 
     private void chooseIsland() {
         String input = "";
-        System.out.println("Choose an island: ");
-        showIslands();
-        try {
-            input = stdIn.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        boolean invalidInput = true;
+        do{
+            System.out.println("Choose an island: ");
+            showIslands();
+            try {
+                input = stdIn.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            for(int i=0;i<islandManager.getIslandList().size();i++){
+                if (input.equals(String.valueOf(i))) {
+                    invalidInput = false;
+                    break;
+                }
+            }
+        }while(invalidInput);
         parameter.setIsland(islandManager.getIslandList().get(Integer.parseInt(input)));
     }
 
     private void choosePawnColor() {
         String input = "";
-        System.out.println("Choose a color: ");
-        try {
-            input = stdIn.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        parameter.setChosenColor(PawnColor.valueOf(input));
+        boolean invalidInput = true;
+        do {
+            System.out.println("Choose a color: ");
+            try {
+                input = stdIn.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            for(PawnColor pc: PawnColor.values()){
+                if(input.equals(String.valueOf(pc))){
+                    invalidInput = false;
+                    break;
+                }
+            }
+            if(!invalidInput) {
+                if (chosenCharacterCard.getCardBehavior() instanceof CharacterCard1) {
+                    Map<PawnColor, Integer> cardMap = ((CharacterCard1) chosenCharacterCard.getCardBehavior()).getStudents();
+                    if (cardMap.get(PawnColor.valueOf(input))<1) {
+                        invalidInput = true;
+                    }
+                }
+                if (chosenCharacterCard.getCardBehavior() instanceof CharacterCard11){
+                    Map<PawnColor, Integer> cardMap = ((CharacterCard1) chosenCharacterCard.getCardBehavior()).getStudents();
+                    if (cardMap.get(PawnColor.valueOf(input))<1 || player.getSchoolBoard().getStudentHall().get(PawnColor.valueOf(input))>9){
+                        invalidInput = true;
+                    }
+                }
+            }
+        }while(invalidInput);
     }
 
     private void showCharacterCardsCaptions() {

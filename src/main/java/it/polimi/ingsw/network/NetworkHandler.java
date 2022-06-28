@@ -322,7 +322,10 @@ public class NetworkHandler implements Runnable {
                         }
                     }
                 }
-                view.showUsedAssistantCards();
+                if(isGui)
+                view.showUsedAssistantCards(); //TODO serve?
+                else
+                    view.showTable();
                 /*bisogna che il client non posssa selezionare carte dello stesso valore di quelle usate dai client
                  precedenti + gestire caso in cui l'ultima carta è necessariamente uguale (if deck.size()==1)-> salta check else ->check */
             }
@@ -343,7 +346,7 @@ public class NetworkHandler implements Runnable {
                         i.setIslandStudents(islandStudents);
                     }
                 }
-
+                view.showTable();
             }
             case UPDATE_SCHOOL_BOARD_ENTRANCE -> {
                 System.out.println("Ho ricevuto "+ input);
@@ -370,6 +373,8 @@ public class NetworkHandler implements Runnable {
                 System.out.println("la vera ora è " + view.getPhase());
                 if(isGui)
                     GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
             case UPDATE_SCHOOL_BOARD_HALL -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -394,6 +399,7 @@ public class NetworkHandler implements Runnable {
 
                 if(isGui)
                     GuiStarter.getCurrentApplication().switchToMainBoard();
+                else view.showTable();
             }
             case UPDATE_PROFESSORS -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -418,6 +424,7 @@ public class NetworkHandler implements Runnable {
 
                 if(isGui)
                     GuiStarter.getCurrentApplication().switchToMainBoard();
+                else view.showTable();
             }
             case UPDATE_ISLAND_LIST -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -451,6 +458,8 @@ public class NetworkHandler implements Runnable {
 
                 if(isGui)
                     GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
             case UPDATE_CLOUDTILES -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -478,6 +487,8 @@ public class NetworkHandler implements Runnable {
 
                 if(isGui)
                     GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
             case SETUP_PLAYERS -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -531,6 +542,8 @@ public class NetworkHandler implements Runnable {
 
                 if(isGui)
                     GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
             case UPDATE_MAX_SHIFT ->{
                 payloads = gson.fromJson(msg_in.getPayload(),ArrayList.class);
@@ -678,6 +691,8 @@ public class NetworkHandler implements Runnable {
 
                 if(isGui)
                     GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
             case SOMEONE_ACTIVATED_AN_EFFECT -> {
                 payloads = gson.fromJson(msg_in.getPayload(),ArrayList.class);
@@ -687,11 +702,15 @@ public class NetworkHandler implements Runnable {
                 view.setActiveEffect(currUser + " used the character card n." + cardID);
                 if(isGui)
                     GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
             case EFFECT_ENDED -> {
                 view.setCardUsed(false);
                 if(isGui)
                     GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
         }
     }
