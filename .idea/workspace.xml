@@ -7,8 +7,6 @@
     <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="gui fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/CharacterCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/CharacterCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/DeckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/DeckController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/MainBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/MainBoardController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -301,13 +299,10 @@
       <workItem from="1656314570104" duration="10874000" />
       <workItem from="1656325798492" duration="18974000" />
       <workItem from="1656405105348" duration="8462000" />
-    </task>
-    <task id="LOCAL-00014" summary="PlayerTest and SchoolBoardTest completed">
-      <created>1651152385538</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1651152385538</updated>
+      <workItem from="1656424214615" duration="138000" />
+      <workItem from="1656425804884" duration="303000" />
+      <workItem from="1656428367738" duration="684000" />
+      <workItem from="1656429860691" duration="773000" />
     </task>
     <task id="LOCAL-00015" summary="IslandTest 53% methods, 75% of lines covered (to finish)">
       <created>1651419535059</created>
@@ -645,7 +640,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656317656500</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="gui fixes">
+      <created>1656424341180</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1656424341180</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -680,7 +682,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Communication Protocol no sequence diagram" />
     <MESSAGE value="Communication Protocol + sequence diagram folder" />
     <MESSAGE value="Communication Protocol with sequence diagram" />
     <MESSAGE value="ParameterTest + resources folder created" />
@@ -705,7 +706,8 @@
     <MESSAGE value="GUI to lobby" />
     <MESSAGE value="Deck, MainBoard, other Schoolboard, TowerChoise scene added with controller" />
     <MESSAGE value="logo cranio creation image + hallButton added" />
-    <option name="LAST_COMMIT_MESSAGE" value="logo cranio creation image + hallButton added" />
+    <MESSAGE value="gui fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="gui fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
