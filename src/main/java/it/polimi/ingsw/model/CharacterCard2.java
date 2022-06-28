@@ -2,46 +2,40 @@ package it.polimi.ingsw.model;
 
 import java.util.ArrayList;
 
-public class CharacterCard2 /*extends CharacterCard*/ implements CardBehavior{
+public class CharacterCard2 implements CardBehavior{
 /*
     Eff: durante il turno, prendi il controllo dei prof anche se nella tua sala hai lo stesso numero di studenti del giocatore che controlla i prof in quel momento
  */
-    //essendo l'effetto limitato alla durata di un turno, bisogna salvare su una variabile temporanea lo stato corrente e ripristinarlo alla fine del turno
-    private ArrayList<SchoolBoard> tmpSchoolBoards;
-    private ArrayList<SchoolBoard> currentSchoolBoards = new ArrayList<>();
 
+    /**
+     * Sets as true a boolean attribute on the schoolboard of the player who activates the effect to indicate that,
+     * in case of ties while assigning the professor table, that player gets the professor.
+     * @param parameter contains the Game in which the card is activated and the player who activated it.
+     */
     public void startEffect(Parameter parameter){
-        currentSchoolBoards.addAll(parameter.getGame().getSchoolBoards()); //salva per il ripristino le schoolboards
-        tmpSchoolBoards=currentSchoolBoards;//Clone of the currentSchoolBoards array
-        tmpUpdateProfessors(); //Temporary update of tmpSchoolBoards
-        parameter.getGame().setSchoolBoards(tmpSchoolBoards);
+
+        parameter.getPlayer().getSchoolBoard().setEffectProf(true);
+        for(PawnColor c : PawnColor.values()) {
+            parameter.getGame().updateProfessor(c);
+        }
     }
 
+    /**
+     * Does nothing
+     * @param parameter contains the Game in which the card is activated.
+     */
     public void initializeCard(Parameter parameter) {
         //none
     }
 
 
+    /**
+     * Resets the professor tables as they were before the card was activated.
+     * @param parameter contains the Game in which the card was activated and the player who activated it.
+     */
     public void endEffect(Parameter parameter) {
-        parameter.getGame().setSchoolBoards(currentSchoolBoards); //Reset the original SchoolBoards array
-        for(PawnColor color : PawnColor.values()){
-            parameter.getGame().updateProfessor(color);
-        }
-        // dopo aver resettato -> ricalcolo tutti i prof per controllare che non debba cambiare in seguito al turno appena eseguito
+        parameter.getPlayer().getSchoolBoard().setEffectProf(false);
     }
 
-    public void tmpUpdateProfessors(){
-        for(PawnColor color : PawnColor.values()) {
-            int currentMax = 1;
-            for (SchoolBoard s : tmpSchoolBoards) {
-                if (s.getStudentHall().get(color) >= currentMax) {
-                    currentMax = s.getStudentHall().get(color);
-                    for (SchoolBoard f : tmpSchoolBoards) {
-                        f.getProfessorTable().replace(color, false);
-                    }
-                    s.getProfessorTable().replace(color, true);
-                }
-            }
-        }
-    }
+
 }

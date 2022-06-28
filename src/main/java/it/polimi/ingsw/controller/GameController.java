@@ -131,11 +131,19 @@ public class GameController implements VirtualViewListener {
             System.out.println("Finisce la fase di "+ currentState.toString());
     }
 
+    /**
+     * Manages a state of the controller by starting and ending it and setting the next one.
+     */
     @Override
     public void performAction() {
         manageState();
     }
 
+    /**
+     * Sets to true the boolean attribute of the controller that indicates when a character card has been used,
+     * generates the parameter to pass to the chosen character cardand manages the effect on the model.
+     * It also sends a message to each client telling that a player activated an effect card.
+     */
     @Override
     public void activateCardEffect(Integer ID, String playerUsername, PawnColor color, Integer islandID, Map<PawnColor,Integer> map1, Map<PawnColor,Integer> map2) {
         cardUsed = true;
@@ -166,6 +174,10 @@ public class GameController implements VirtualViewListener {
 
     }
 
+    /**
+     * Ends the effect of the currently active character card on the model, sends a message to inform each client and set
+     * the controller's boolean flag indicating that a card was active to false.
+     */
     public void endCardEffect() {
         game.endEffect();
         for(VirtualView vv : virtualViews){
@@ -181,6 +193,9 @@ public class GameController implements VirtualViewListener {
         this.virtualViewsOrder.add(virtualView.getPlayer().getPlayerNumber());
     }
 
+    /**
+     * Updates the currently playing virtual view.
+     */
     public void nextVirtualView() {
         int currVV=getVirtualViewsOrder().get(virtualViewsOrderIterator);
         getVirtualViews().get(currVV).getClientHandler().tellToWait();

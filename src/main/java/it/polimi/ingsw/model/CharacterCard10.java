@@ -4,14 +4,12 @@ public class CharacterCard10 implements CardBehavior{
 
 
     //Puoi scambiare fra loro fino a 2 Studenti presenti nella tua Sala e nel tuo Ingresso.
+
+    /**
+     * Switches up to 2 students from the hall and the entrance of the player who activates the effect.
+     * @param parameter contains the Game in which the card is activated, the player who activates it, a map indicating the students to be put in the hall and a map indicating the students to be put in the entrance.
+     */
     public void startEffect(Parameter parameter) {
-        for(PawnColor col : PawnColor.values()) {
-            int studToHall = parameter.getColorMap1().get(col);
-            int studToEntrance = parameter.getColorMap2().get(col);
-            if (studToHall < parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(col) || studToEntrance > parameter.getPlayer().getSchoolBoard().getStudentHall().get(col)) {
-                //todo manda errore e chiede di reinserire - fare check lato client
-            }
-        }
         for(PawnColor col : PawnColor.values()){
             int studToHall = parameter.getColorMap1().get(col);
             int studToEntrance = parameter.getColorMap2().get(col);
@@ -20,10 +18,18 @@ public class CharacterCard10 implements CardBehavior{
         }
     }
 
+    /**
+     * Does nothing
+     * @param parameter contains the Game in which the card is activated.
+     */
     public void initializeCard(Parameter parameter) {
         //none
     }
 
+    /**
+     * Does nothing
+     * @param parameter contains the Game in which the card was activated, the player who activated it and all the user choices used to start the effect itself.
+     */
     public void endEffect(Parameter parameter) {
         //do nothing
     }

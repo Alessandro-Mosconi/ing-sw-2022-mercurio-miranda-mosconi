@@ -72,10 +72,6 @@ public class Player {
     public void setWallet(int wallet) {
         this.wallet = wallet;
     }
-    //public void collectCoin(PawnColor color){
-        //if(schoolBoard.checkForCoin(color))
-          //  this.wallet = wallet +1;
-    //}//Increases wallet if needed TODO ho gestito le monete fra game e controller - questo metodo che è stato testatp è inutile
     public void setLastAssistantCard(AssistantCard lastAssistantCard) {
         this.lastAssistantCard = lastAssistantCard;
     }
@@ -92,6 +88,10 @@ public class Player {
         this.bonus2Shifts = bonus2Shifts;
     }
 
+    /**
+     * Sets as consumed the given assistant card, stores it as the player's last used assistant card and updates the maximum Mother Nature shift that the player can use during this turn.
+     * @param card chosen assistant card.
+     */
     public void useAssistantCard(AssistantCard card)
     {
         int pos = card.getValue()-1;
@@ -100,6 +100,10 @@ public class Player {
         this.setLastAssistantCard(card);
         updateMaxShift();
     }
+
+    /**
+     * Sets the maximum Mother Nature shift that this player can perform during this turn.
+     */
     public void updateMaxShift(){
         if(isBonus2Shifts()){
             this.maxShift=getLastAssistantCard().getMotherMovement()+2;
@@ -112,6 +116,11 @@ public class Player {
 
 
 //move a specific student from the entrance to the hall
+
+    /**
+     * Moves a given student from this player's entrance to this player's hall.
+     * @param color is the student to be moved.
+     */
     public void moveFromEntranceToHall(PawnColor color){
         if(schoolBoard.getStudentEntrance().get(color)<=0 && schoolBoard.getStudentHall().get(color)<10) //TODO inserire il check corrispondente alla seconda condizione lato clietn
             System.out.println(color + " not present in Entrance");
@@ -122,7 +131,11 @@ public class Player {
     }
 
 
- //remove all the student from a specific cloud and put them in the entrance
+
+    /**
+     *  Removes all the student from a chosen cloud and puts them in this player's entrance.
+     * @param cloud is the chosen cloud.
+     */
     public void moveFromCloudToEntrance(CloudTile cloud) {
         for (PawnColor color : PawnColor.values()) {
             schoolBoard.addStudentEntrance(color, cloud.getStudents().get(color));
@@ -132,6 +145,11 @@ public class Player {
     }
 
     //move a specific student color from the Entrance to a specific island
+    /**
+     * Moves a given student from this player's entrance to a given island.
+     * @param color is the student to be moved.
+     * @param island is the island on which the student had to be moved.
+     */
     public void moveFromEntranceToIsland(Island island, PawnColor color){
         if(schoolBoard.getStudentEntrance().get(color)<=0)
             System.out.println(color + "not present in Entrance");

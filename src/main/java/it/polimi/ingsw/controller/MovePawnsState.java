@@ -5,6 +5,11 @@ import it.polimi.ingsw.virtualview.VirtualView;
 import java.util.Map;
 
 public class MovePawnsState implements GameControllerState{
+
+    /**
+     * Takes from the current Virtual View a student color and a destination and performs the corresponding action on the model. It also updates the number of moves left.
+     * @param gameController is the given controller.
+     */
     @Override
     public void startState(GameController gameController) {
         int currOrder = gameController.getVirtualViewsOrder().get(gameController.getVirtualViewsOrderIterator());
@@ -23,6 +28,10 @@ public class MovePawnsState implements GameControllerState{
         }
     }
 
+    /**
+     * Checks if there are any move left. In that case, it sets the next state to a new MovePawnsState. Otherwise, it sets the next state to a new MoveMNState.
+     * @param gameController is the given controller.
+     */
     @Override
     public void updateNextState(GameController gameController) {
         if(gameController.getMovesToGo()==0) {
@@ -33,6 +42,11 @@ public class MovePawnsState implements GameControllerState{
             gameController.setNextState(new MovePawnsState());
         }
     }
+
+    /**
+     * Does nothing.
+     * @param gameController is the given controller.
+     */
     @Override
     public void endState(GameController gameController) {
         gameController.setPreviousState(this);

@@ -15,14 +15,21 @@ public class CharacterCard1 implements CardBehavior{
     public void setStudents(Map<PawnColor, Integer> students) {
         this.students = students;
     }
-    /*
-        all'inizio della partita 4 studenti vengono piazzati sopra questa carta
-        Eff: prendi 1 studente e piazzalo su un'isola a scelta; pesca uno studente e mettilo sulla carta
+
+    /**
+     * Moves a student from this card to an island and refills this card with a students taken from the game bag.
+     * @param parameter contains the Game in which the card is activated, the player who activated it,
+     *                  the student color and the destination island chosen by the user
      */
     public void startEffect(Parameter parameter){
-            moveToIsland(parameter.getChosenColor(), parameter.getIsland());
-            refill(parameter.getGame());
+        moveToIsland(parameter.getChosenColor(), parameter.getIsland());
+        refill(parameter.getGame());
     }
+
+    /**
+     * Initializes this card with 4 random students
+     * @param parameter contains the Game in which the card is activated.
+     */
     public void initializeCard(Parameter parameter) {
         for(int i=0;i<4;i++){
             PawnColor rdColor = PawnColor.randomColor();
@@ -30,13 +37,29 @@ public class CharacterCard1 implements CardBehavior{
             this.students.replace(rdColor, this.students.get(rdColor)+1);
         }
     }//Places 4 random students on the card
+
+    /**
+     * In this specific character card, this method does nothing since its effect doesn't persist.
+     * @param parameter contains the Game in which the card is activated.
+     */
     public void endEffect(Parameter parameter) {
         //do nothing
     }
+
+    /**
+     * Moves a student from this card to an island.
+     * @param color represents the student to be moved.
+     * @param destination represents the island on which the student has to be put.
+     */
     public void moveToIsland(PawnColor color, Island destination){
         this.students.replace(color, this.students.get(color)-1);
         destination.addStudent(color);
     }
+
+    /**
+     * Takes another student pawn from the game bag and puts it on this card.
+     * @param game represents the current game, from whose bag the student has to be taken.
+     */
     public void refill(Game game){
         PawnColor rdColor=PawnColor.randomColor();
         Map<PawnColor, Integer> clonedBag = game.getBag();

@@ -48,10 +48,13 @@ public class CharacterCard{
     public void setID(Integer ID) {
         this.ID = ID;
     }
-    public void increasePrice(){
-        this.setPrice(this.getPrice()+1);
-    }//After using the card, increases the price and decreases game.bank
 
+    /**
+     * After using the card, increases its price.
+     */
+    public void increasePrice() {
+        this.setPrice(this.getPrice() + 1);
+    }
 
 
 }

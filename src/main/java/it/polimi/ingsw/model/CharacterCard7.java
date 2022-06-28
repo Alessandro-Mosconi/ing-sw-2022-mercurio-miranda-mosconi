@@ -21,15 +21,11 @@ public class CharacterCard7 implements CardBehavior {
         }
     }};
 
-    //inizializzare con 6 studenti dalla bag nel setupGame se viene scelta questa carta
+    /**
+     * Switches up to 3 students from this card and as many from the entrance of the player who activated it
+     * @param parameter contains the Game in which the card is activated, the player who activates it, a map indicating the students to be taken and a map indicating the students to be given.
+     */
     public void startEffect(Parameter parameter) {
-        for(PawnColor col : PawnColor.values()){
-            int studToTake = parameter.getColorMap1().get(col);
-            int studToGive = parameter.getColorMap2().get(col);
-            /*if(studToTake>this.students.get(col) || studToGive<parameter.getPlayer().getSchoolBoard().getStudentEntrance().get(col)){
-                //todo manda errore e chiede di reinserire - lato client?
-            }*/
-        }
         for(PawnColor col : PawnColor.values()){
             int studToTake = parameter.getColorMap1().get(col);
             int studToGive = parameter.getColorMap2().get(col);
@@ -38,6 +34,10 @@ public class CharacterCard7 implements CardBehavior {
         }
     }
 
+    /**
+     * Initialized this card with 6 students.
+     * @param parameter contains the Game in which the card is activated.
+     */
     public void initializeCard(Parameter parameter) {
         for(int i=0;i<6;i++){
             PawnColor rdColor = PawnColor.randomColor();
@@ -46,6 +46,10 @@ public class CharacterCard7 implements CardBehavior {
         }
     }//Places 6 random students from the bag to the card
 
+    /**
+     * Does nothing
+     * @param parameter contains the Game in which the card was activated.
+     */
     public void endEffect(Parameter parameter) {
         //do nothing
     }

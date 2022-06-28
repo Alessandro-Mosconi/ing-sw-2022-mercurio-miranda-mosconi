@@ -56,6 +56,10 @@ public enum PawnColor {
         return null;
     }
 
+    /**
+     * Chooses a random color among this enum values.
+     * @return randomically chosen color.
+     */
     public static PawnColor randomColor() {
         int pick = new Random().nextInt(PawnColor.values().length);
         return PawnColor.values()[pick];
