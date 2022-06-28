@@ -253,14 +253,16 @@ public class NetworkHandler implements Runnable {
             case LOBBY_WAITING -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 GameMode gm = GameMode.valueOf(String.valueOf(payloads.get(0)));
+                Integer numOfPlayers = Integer.valueOf(payloads.get(1));
                 ArrayList<String> userList = new ArrayList<>();
-                if (payloads.size()>1) {
-                    userList = gson.fromJson(payloads.get(1), ArrayList.class);
+                if (payloads.size()>2) {
+                    userList = gson.fromJson(payloads.get(2), ArrayList.class);
                     view.setPlayersUsername(userList);
                 }
                 else userList.add(view.getUsername());
 
                 view.setPlayersUsername(userList);
+                view.setPlayerNumber(numOfPlayers);
                 view.setGamemode(gm);
 
                 if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene();
@@ -329,6 +331,7 @@ public class NetworkHandler implements Runnable {
                 /*bisogna che il client non posssa selezionare carte dello stesso valore di quelle usate dai client
                  precedenti + gestire caso in cui l'ultima carta è necessariamente uguale (if deck.size()==1)-> salta check else ->check */
             }
+
             case UPDATE_ISLAND -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 Integer idIsland = Integer.parseInt(payloads.get(0));
@@ -347,6 +350,16 @@ public class NetworkHandler implements Runnable {
                     }
                 }
                 view.showTable();
+            }
+            case UPDATE_TOWERS_NUM -> {
+                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
+                String playerID = payloads.get(0);
+                Integer tNum = Integer.parseInt(payloads.get(1));
+                view.getPlayer().getSchoolBoard().setTowersNumber(tNum);
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
             case UPDATE_SCHOOL_BOARD_ENTRANCE -> {
                 System.out.println("Ho ricevuto "+ input);

@@ -14,17 +14,11 @@ public interface ModelListener {
     void updateMaxShift(Player player);
     void updateKeptOut (PawnColor keptOutColor);
     void updateAvailableWizards(ArrayList<WizardType> wizards);
-
     void updateAvailableTowerColors(ArrayList<TowerColor> availableTowerColors);
-
     void updateSchoolBoardEntrance(Player player);
-
     void updateSchoolBoardHall(Player player);
-
     void updateProfessorTables(ArrayList<Player> players);
-
-    void updatePlayers(ArrayList<Player> players);
-
+    void updateNumTowers(Player player);
     void modelCreated();
 
     void updateWallet(Player p);

@@ -280,6 +280,8 @@ public class CLI extends View{
     private void showYourSchoolBoard() {
         System.out.println(this.player.getNickName() + " is your turn, this is your table:");
         System.out.println("Schoolboard: ");
+        System.out.println("Towers: " + this.player.getSchoolBoard().getTowersColor()+ " n. "+this.player.getSchoolBoard().getTowersNumber());
+
         System.out.println("Entrance: " + this.player.getSchoolBoard().getStudentEntrance());
         System.out.println("Hall: " + this.player.getSchoolBoard().getStudentHall());
         System.out.print("Professor owned: " + this.player.getSchoolBoard().getProfessorTable());
@@ -298,6 +300,7 @@ public class CLI extends View{
             {
                 System.out.println(p.getNickName());
                 System.out.println("Schoolboard: ");
+                System.out.println("Towers: " + p.getSchoolBoard().getTowersColor()+ " n. "+p.getSchoolBoard().getTowersNumber());
                 System.out.println("Entrance: " + p.getSchoolBoard().getStudentEntrance());
                 System.out.println("Hall: " + p.getSchoolBoard().getStudentHall());
                 System.out.print("Professor owned: " + p.getSchoolBoard().getProfessorTable());

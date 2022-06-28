@@ -190,6 +190,7 @@ public class VirtualView{
                     msg_out.setType(MessageType.LOBBY_WAITING);
                     ArrayList<String> toPush = new ArrayList<>();
                     toPush.add(String.valueOf(gamemode));
+                    toPush.add(String.valueOf(playersNumber));
                     msg_out.fill(toPush);
                     ArrayList<String> UsersList = new ArrayList<>();
                     UsersList.add(username);
@@ -239,9 +240,10 @@ public class VirtualView{
                     msg_out.setUser(username);
                     ArrayList<String> toPush = new ArrayList<>();
                     toPush.add(String.valueOf(gamemode));
+                    toPush.add(String.valueOf(playersNumber));
                     String userList = gson.toJson(networkMap.get(idGame));
                     toPush.add(userList);
-                    msg_out.fill(toPush);
+                    //msg_out.fill(toPush);
                     gameController.performAction();
                     msg_out.setType(MessageType.LOBBY_WAITING);
                     msg_out.fill(toPush);

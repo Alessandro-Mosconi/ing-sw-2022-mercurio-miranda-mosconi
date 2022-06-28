@@ -227,9 +227,16 @@ public class ClientHandler implements Runnable, ModelListener
     }
 
     @Override
-    public void updatePlayers(ArrayList<Player> players) {
-
+    public void updateNumTowers(Player player) {
+        Message msg_out=new Message();
+        ArrayList<String> payloads = new ArrayList<>();
+        msg_out.setType(MessageType.UPDATE_TOWERS_NUM);
+        payloads.add(player.getNickName());
+        payloads.add(String.valueOf(player.getSchoolBoard().getTowersNumber()));
+        msg_out.fill(payloads);
+        out.println(msg_out.toSend());
     }
+
 
     @Override
     public void modelCreated() {

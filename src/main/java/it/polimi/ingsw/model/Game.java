@@ -243,6 +243,7 @@ public class Game {
         for(ModelListener l : clientHandlersListeners){
             for(Player p : players){
                 l.updateSchoolBoardEntrance(p);
+                l.updateNumTowers(p);
             }
         }
         this.cloudTiles = generateCloudTiles();
@@ -410,9 +411,6 @@ public class Game {
     }
     public void addPlayer(Player playerToAdd) {
         players.add(playerToAdd);
-        for(ModelListener l : clientHandlersListeners){
-            l.updatePlayers(this.players);
-        }
     }
     public boolean isBagEmpty() {
         for(PawnColor c : PawnColor.values()){
@@ -468,6 +466,9 @@ public class Game {
         }
         for(ModelListener l : clientHandlersListeners){
             l.updateIslandList(islandManager.getIslandList());
+            for(Player p : players){
+                l.updateNumTowers(p);
+            }
         }
     }
     public void addListener(ModelListener l){
@@ -503,6 +504,9 @@ public class Game {
         switch(currEffect.getID()){
             case 1->{
                 for(ModelListener l : clientHandlersListeners){
+                    for(Player p : players){
+                        l.updateNumTowers(p);
+                    }
                     l.updateIslandList(islandManager.getIslandList());
                     l.updateCardStudents(currEffect);
                 }
@@ -514,6 +518,9 @@ public class Game {
             }
             case 3, 5 ->{
                 for(ModelListener l : clientHandlersListeners){
+                    for(Player p : players){
+                        l.updateNumTowers(p);
+                    }
                     l.updateIslandList(islandManager.getIslandList());
                 }
             }
