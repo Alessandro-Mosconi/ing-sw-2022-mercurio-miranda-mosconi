@@ -35,6 +35,7 @@ public class LobbyController {
         });
 
         ArrayList<String> array = GuiStarter.getCurrentApplication().getClient().getView().getPlayersUsername();
+
         for (String player : array) {
             Text nickname = new Text();
 

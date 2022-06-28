@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.IndexedCell;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -30,6 +31,13 @@ public class CreateSettingController {
             alert.showAndWait();
             return;
         }
+
+        if (Integer.parseInt(numOfPlayers.getText())>3){
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Max number of players allowed is 3", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+
         String game = gameMode.getText();
         currentApplication = GuiStarter.getCurrentApplication();
         View view = (GUI) currentApplication.getClient().getView();
