@@ -35,6 +35,26 @@ public class DeckController {
 
         for (AssistantCard card : GuiStarter.getCurrentApplication().getClient().getView().getPlayer().getDeck().getCards())
             array.add(card.getValue());
+        for(Player p : GuiStarter.getCurrentApplication().getClient().getView().getPlayers()){
+            if(p.getLastAssistantCard()!=null) {
+                VBox vBox = new VBox();
+                Text nick = new Text(p.getNickName() + " chose:");
+                nick.setFont(Font.font("System", FontWeight.BOLD, 20));
+                nick.setFill(Color.WHITE);
+                nick.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)");
+
+                String path2 = "assets/Assistenti/2x/Assistente(" + p.getLastAssistantCard().getValue() + ").png";
+                ImageView im = new ImageView(path2);
+                im.setFitHeight(120);
+                im.setFitWidth(80);
+                im.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0)");
+                vBox.setAlignment(Pos.CENTER);
+                vBox.getChildren().add(nick);
+                vBox.getChildren().add(im);
+                vBox.setMargin(nick, new Insets(0, 0, 10, 0));
+                otherAssistantContainer.getChildren().add(vBox);
+            }
+        }
 
         for (int i : array) {
             String path = "assets/Assistenti/2x/Assistente("+(i)+").png";
@@ -65,47 +85,59 @@ public class DeckController {
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    System.out.println(i + ") card clicked");
-
                     View view = GuiStarter.getCurrentApplication().getClient().getView();
-                    view.setChosenAssistantCard(view.getPlayer().getDeck().getCards().get(i-1));
-                    view.getPlayer().getDeck().getCards().remove(i-1);
-                    view.prepareMessage();
-                    GuiStarter.getCurrentApplication().closeAssistantStage();
-                    GuiStarter.getCurrentApplication().switchToMainBoard();
+                    boolean invalidInput = false;
+                    ArrayList<Integer> alreadyUsed = new ArrayList<>();
+                    for(Player p : view.getPlayers()){
+                        if(p.getLastAssistantCard()!=null) {
+                            alreadyUsed.add(p.getLastAssistantCard().getValue());
+                        }
+                    }
+                    ArrayList<Integer> availableOnes = new ArrayList<>();
+                    for(AssistantCard ac : view.getPlayer().getDeck().getCards()){
+                        if(!ac.isConsumed()){
+                            availableOnes.add(ac.getValue());
+                        }
+                    }
+                    if((availableOnes.containsAll(alreadyUsed) && alreadyUsed.containsAll(availableOnes))
+                    ||(availableOnes.size()<alreadyUsed.size() && alreadyUsed.containsAll(availableOnes))){
+                        invalidInput=false;
+                        System.out.println("dentro l'if strano + - - ");
+                    }
+                    else if (alreadyUsed.contains(i)){
+                        invalidInput = true;
+                        System.out.println("fuori dall'if strano + - - ");
+
+                    }
+                    System.out.println("fuori da entrambi gli if else strani");
+
+                    if(invalidInput){
+                        GuiStarter.getCurrentApplication().showError("invalid card");
+                    }
+                    else {
+                        System.out.println(i + ") card clicked");
+                        view.setChosenAssistantCard(view.getPlayer().getDeck().getCards().get(i - 1));
+                        view.getPlayer().getDeck().getCards().get(i - 1).setConsumed(true);
+                        //view.getPlayer().getDeck().getCards().remove(i-1);
+                        view.prepareMessage();
+                        GuiStarter.getCurrentApplication().closeAssistantStage();
+                        GuiStarter.getCurrentApplication().switchToMainBoard();
+                    }
                 }
             });
 
             AnchorPane anchorPane = new AnchorPane();
             anchorPane.getChildren().add(im2);
             anchorPane.getChildren().add(button);
+            View view = GuiStarter.getCurrentApplication().getClient().getView();
 
-            assistantContainer.getChildren().add(anchorPane);
+            if(!view.getPlayer().getDeck().getCards().get(i-1).isConsumed()) {
+                assistantContainer.getChildren().add(anchorPane);
+            }
             GuiStarter.getCurrentApplication().getClient().getView().setMessageType(MessageType.ASSISTANT_CARD);
 
             }
 
-
-        for(Player p : GuiStarter.getCurrentApplication().getClient().getView().getPlayers()){
-            if(p.getLastAssistantCard()!=null) {
-                VBox vBox = new VBox();
-                Text nick = new Text(p.getNickName() + " chose:");
-                nick.setFont(Font.font("System", FontWeight.BOLD, 20));
-                nick.setFill(Color.WHITE);
-                nick.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)");
-
-                String path2 = "assets/Assistenti/2x/Assistente(" + p.getLastAssistantCard().getValue() + ").png";
-                ImageView im = new ImageView(path2);
-                im.setFitHeight(120);
-                im.setFitWidth(80);
-                im.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0)");
-                vBox.setAlignment(Pos.CENTER);
-                vBox.getChildren().add(nick);
-                vBox.getChildren().add(im);
-                vBox.setMargin(nick, new Insets(0, 0, 10, 0));
-                otherAssistantContainer.getChildren().add(vBox);
-            }
-            }
     }
 }
 

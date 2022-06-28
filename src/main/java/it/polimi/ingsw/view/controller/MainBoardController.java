@@ -334,12 +334,10 @@ public void showSchoolBoard(){
 
   ArrayList<Shape> towers = new ArrayList<>();
 
-    System.out.println("le torri sono : " + view.getPlayer().getSchoolBoard().getTowersNumber());
 
   int col=0, row=0;
   for (int i =0; i<view.getPlayer().getSchoolBoard().getTowersNumber(); i++)
   {
-      System.out.println("stampo la " + i+1 + " torre");
     towers.add(new Rectangle(0.0, 0.0, 40, 40));
     towers.get(i).setFill(TowerColor.getColor(view.getPlayer().getSchoolBoard().getTowersColor()));
     towers.get(i).setStroke(Color.BLACK);
