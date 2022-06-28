@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
@@ -44,12 +45,18 @@ public class CharacterCardController {
 
         VBox vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
+
+        Text cost = new Text("Cost: " + view.getChosenCharacterCard().getPrice());
+        cost.setFont(Font.font("System", FontPosture.ITALIC, 20));
+        cost.setUnderline(true);
+        cost.setFill(Color.WHITE);
+
         Text question1 = new Text("Chose a color:");
         question1.setFont(Font.font("System", 20));
         question1.setFill(Color.WHITE);
 
-effectContainer.getChildren().removeAll();
-check=false;
+        effectContainer.getChildren().removeAll();
+        check=false;
 
         switch (view.getChosenCharacterCard().getID()){
             case 1, 9, 11, 12:
@@ -263,7 +270,7 @@ check=false;
                     GuiStarter.getCurrentApplication().closeCharacterStage();
                     if(view.getChosenCharacterCard().getID().equals(1)||view.getChosenCharacterCard().getID().equals(3)||view.getChosenCharacterCard().getID().equals(5))
                         GuiStarter.getCurrentApplication().choseIsland();
-                } else GuiStarter.getCurrentApplication().showError("Make your decision before continue");
+                } else GuiStarter.getCurrentApplication().showError("Make your correct decision before continue");
             }
         });
 
@@ -289,103 +296,9 @@ check=false;
         vBox.getChildren().add(tempFlowPane);
         effectContainer.getChildren().add(vBox);
 
-        /*
-        switch (view.getChosenCharacterCard().getID()) {
-            case ("1") -> {
-                choosePawnColor();
-                chooseIsland();
-            }
-            case ("9"), ("11"), ("12") -> {
-
-                choosePawnColor();
-            }
-            case ("3"), ("5") -> {
-                chooseIsland();
-            }
-            case ("7") -> {
-                int chosenStudents = 0;
-                Map<PawnColor, Integer> map1 = new HashMap<>() {{
-                    for (PawnColor color : PawnColor.values()) {
-                        put(color, 0);
-                    }
-                }};
-                do {
-                    System.out.println("Choose a student from this card or type [stop]: ");
-                    try {
-                        input = stdIn.readLine();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    //todo check che sia stato inserito un input = color
-                    map1.replace(PawnColor.valueOf(input), map1.get(PawnColor.valueOf(input)) + 1);
-                    chosenStudents++;
-                    //if non colore allora non incrementare chosenStudents
-                } while (chosenStudents < 3 && !input.equals("stop"));
-                Map<PawnColor, Integer> map2 = new HashMap<>() {{
-                    for (PawnColor color : PawnColor.values()) {
-                        put(color, 0);
-                    }
-                }};
-                do {
-                    System.out.println("Choose a student from your entrance: ");
-                    try {
-                        input = stdIn.readLine();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    //todo check che sia stato inserito un input = color
-                    map2.replace(PawnColor.valueOf(input), map2.get(PawnColor.valueOf(input)) + 1);
-                    chosenStudents--;
-                    //if non colore allora non incrementare chosenStudents
-                } while (chosenStudents > 0);
-                parameter.setColorMap1(map1);
-                parameter.setColorMap2(map2);
-            }
-            case ("10") -> {
-                int chosenStudents = 0;
-                Map<PawnColor, Integer> map1 = new HashMap<>() {{
-                    for (PawnColor color : PawnColor.values()) {
-                        put(color, 0);
-                    }
-                }};
-                do {
-                    System.out.println("Choose a student from your Entrance: ");
-                    try {
-                        input = stdIn.readLine();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    //todo check che sia stato inserito un input = color
-                    map1.replace(PawnColor.valueOf(input), map1.get(PawnColor.valueOf(input)) + 1);
-                    chosenStudents++;
-                    //if non colore allora non incrementare chosenStudents
-                } while (chosenStudents < 2 && !input.equals("stop"));
-                Map<PawnColor, Integer> map2 = new HashMap<>() {{
-                    for (PawnColor color : PawnColor.values()) {
-                        put(color, 0);
-                    }
-                }};
-                do {
-                    System.out.println("Choose a student from your Hall: ");
-                    try {
-                        input = stdIn.readLine();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    //todo check che sia stato inserito un input = color
-                    map2.replace(PawnColor.valueOf(input), map2.get(PawnColor.valueOf(input)) + 1);
-                    chosenStudents--;
-                    //if non colore allora non incrementare chosenStudents
-                } while (chosenStudents > 0);
-                parameter.setColorMap1(map1);
-                parameter.setColorMap2(map2);
-            }
-            case ("exit") -> {
-                return false;
-            }
-
-         */
     }
+
+
 
 }
 

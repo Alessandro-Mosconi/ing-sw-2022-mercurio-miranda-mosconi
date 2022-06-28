@@ -36,6 +36,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Math.abs;
+
 
 public class MainBoardController
 {
@@ -354,7 +356,7 @@ public void showSchoolBoard(){
     }
   });
 
-  if(!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)||!view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)||!view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE))
+  if(!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)&&!view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)&&!view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE))
     hallButton.setDisable(true);
   else hallButton.setDisable(false);
 
@@ -390,16 +392,20 @@ public void showSchoolBoard(){
         @Override
         public void handle(ActionEvent event) {
           System.out.println(color.toString() + ") entrance pawn clicked");
+          if(!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)&&!view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)&&!view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE))
+            view.setColorToMove(color);
         }
       });
       entranceTable.get((row * 5) + col).setShape(new Circle(25));
       entranceTable.get((row * 5) + col).setPrefWidth(40);
       entranceTable.get((row * 5) + col).setPrefHeight(40);
-      if(!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)||!view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)||!view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE)) {
+      if(!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)&&!view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)&&!view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE)) {
         entranceTable.get((row * 5) + col).setDisable(true);
         entranceTable.get((row * 5) + col).setStyle("-fx-border-color: white; -fx-opacity: 1; -fx-background-color: " + color );
+        entranceTable.get((row * 5) + col).setCursor(Cursor.NONE);
       }
       else entranceTable.get((row * 5) + col).setDisable(false);
+
       entrance.add(entranceTable.get((row * 5) + col), col, row, 1, 1);
       col++;
       if (col == 5) {
@@ -582,28 +588,33 @@ public void showIslands(){
     if(island.isMotherNature())
       im.setStyle("-fx-effect:  dropshadow(gaussian, rgba(255, 255, 255 , 255), 30, 0.7, 0, 0)");
 
+    if(view.getPhase().equals(Phase.CHOOSING_MN_SHIFT))
+      button.setTooltip(
+              new Tooltip("Shift: " + (12 + island.getIslandID() - view.getIslandManager().getCurrMNPosition())%12)
+      );
 
-    button.setOnAction(new EventHandler<ActionEvent>() {
+      button.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        /*
-
-        da aggiungere character card effect
-
-         */
-
         System.out.println(island.getIslandID() + ") island clicked");
+        /* solo se chosenCharacterCard viene settato a null quando l'effetto finisce
+        if(view.getChosenCharacterCard()!=null)
+          if(view.getChosenCharacterCard().getID().equals(1)||view.getChosenCharacterCard().getID().equals(3)||view.getChosenCharacterCard().getID().equals(5))
+            view.getParameter().setIsland(island);
+          else
+         */
         if(view.getPhase().equals(Phase.CHOOSING_MN_SHIFT)) {
-          int shift = view.getIslandManager().getCurrMNPosition() - island.getIslandID();
+          int shift = (12 + island.getIslandID() - view.getIslandManager().getCurrMNPosition())%12;
           if (shift > view.getPlayer().getMaxShift()) {
             GuiStarter.getCurrentApplication().showError(ErrorType.INVALID_MN_SHIFT.toString());
             return;
+          }else {
+            view.setMessageType(MessageType.MN_SHIFT);
+            view.setMN_shift(shift);
           }
-          view.setMessageType(MessageType.MN_SHIFT);
-          view.setMN_shift(shift);
-        } else{
+        } else if(view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)||view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)||view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE))
           view.setDestination(island.getIslandID());
-        }
+
       }
     });
 

@@ -66,11 +66,10 @@ public class DeckController {
                 public void handle(ActionEvent event) {
                     System.out.println(i + ") card clicked");
 
-                    //todo perché è prima i e poi i-1?
                     View view = GuiStarter.getCurrentApplication().getClient().getView();
-                    view.setChosenAssistantCard(view.getPlayer().getDeck().getCards().get(i-1));
+                    view.setChosenAssistantCard(view.getPlayer().getDeck().getCards().get(i));
                     view.prepareMessage();
-
+                    GuiStarter.getCurrentApplication().closeAssistantStage();
                     GuiStarter.getCurrentApplication().switchToMainBoard();
                 }
             });
