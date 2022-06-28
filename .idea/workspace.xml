@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="CLI check on assistant card fixed">
+    <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="Number of towers update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/ModelListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/ModelListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/MessageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/virtualview/VirtualView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/virtualview/VirtualView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -305,14 +298,7 @@
       <workItem from="1656314570104" duration="10874000" />
       <workItem from="1656325798492" duration="18974000" />
       <workItem from="1656405105348" duration="8462000" />
-      <workItem from="1656442446797" duration="6450000" />
-    </task>
-    <task id="LOCAL-00018" summary="Communication Protocol, no sequence diagram">
-      <created>1651483257739</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1651483257739</updated>
+      <workItem from="1656442446797" duration="7100000" />
     </task>
     <task id="LOCAL-00019" summary="Communication Protocol, no sequence diagram">
       <created>1651483292126</created>
@@ -650,7 +636,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656448369561</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Number of towers update">
+      <created>1656450801919</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1656450801919</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -685,7 +678,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Server multi-thread for multiple client connection." />
     <MESSAGE value="added the Pinger class for pinging between client and server on another thread" />
     <MESSAGE value="Network handler" />
     <MESSAGE value="Network handler v2" />
@@ -710,7 +702,8 @@
     <MESSAGE value="MainBoardController fix" />
     <MESSAGE value="CLI checks added" />
     <MESSAGE value="CLI check on assistant card fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="CLI check on assistant card fixed" />
+    <MESSAGE value="Number of towers update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Number of towers update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

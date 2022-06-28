@@ -355,7 +355,11 @@ public class NetworkHandler implements Runnable {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 String playerID = payloads.get(0);
                 Integer tNum = Integer.parseInt(payloads.get(1));
-                view.getPlayer().getSchoolBoard().setTowersNumber(tNum);
+                for(Player p : view.getPlayers()){
+                    if (p.getNickName().equals(playerID)){
+                        p.getSchoolBoard().setTowersNumber(tNum);
+                    }
+                }
                 if(isGui)
                     GuiStarter.getCurrentApplication().switchToMainBoard();
                 else
