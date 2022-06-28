@@ -15,38 +15,46 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class CreateSettingController {
-    public TextField gameMode;
-    public TextField numOfPlayers;
     public TextField gameID;
     private Stage primaryStage;
-    private Scene scene;
-    private Parent root;
 
-    private GuiStarter currentApplication;
+    private GuiStarter currentApplication=GuiStarter.getCurrentApplication();
 
     public void createGame(ActionEvent actionEvent) throws Exception {
 
-        if ((gameID.getText().length() == 0) || (gameMode.getText().length() == 0) || (numOfPlayers.getText().length() == 0)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Insert parameters!", ButtonType.OK);
-            alert.showAndWait();
-            return;
-        }
-
-        if (Integer.parseInt(numOfPlayers.getText())>3){
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Max number of players allowed is 3", ButtonType.OK);
-            alert.showAndWait();
-            return;
-        }
-
-        String game = gameMode.getText();
-        currentApplication = GuiStarter.getCurrentApplication();
         View view = (GUI) currentApplication.getClient().getView();
-        view.setIdGame(gameID.getText());
-        view.setPlayerNumber(Integer.parseInt(numOfPlayers.getText()));
-        view.setGamemode(GameMode.valueOf(gameMode.getText()));
+        System.out.println("1" + gameID.getText());
+        System.out.println(" 2 " + view.getGamemode());
+        System.out.println(" 23 " + view.getPlayerNumber());
+        if ((gameID.getText().length() == 0) || view.getGamemode()==null || view.getPlayerNumber()==null || (view.getPlayerNumber()!=3 && view.getPlayerNumber()!=2)) {
+            currentApplication.showError("missing or invalid parameter");
+            return;
+        }
 
-        primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        currentApplication = GuiStarter.getCurrentApplication();
+        view.setIdGame(gameID.getText());
         view.prepareMessage();
     }
+
+    public void easyButton(ActionEvent actionEvent) throws Exception {
+        View view = (GUI) currentApplication.getClient().getView();
+        view.setGamemode(GameMode.easy);
+    }
+
+    public void expertButton(ActionEvent actionEvent) throws Exception {
+        View view = (GUI) currentApplication.getClient().getView();
+        view.setGamemode(GameMode.expert);
+    }
+
+    public void twoPlayer(ActionEvent actionEvent) throws Exception {
+        View view = (GUI) currentApplication.getClient().getView();
+        view.setPlayerNumber(2);
+    }
+
+    public void threePlayer(ActionEvent actionEvent) throws Exception {
+        View view = (GUI) currentApplication.getClient().getView();
+        view.setPlayerNumber(3);
+    }
+
 
 }
