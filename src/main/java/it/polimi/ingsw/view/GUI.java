@@ -71,16 +71,20 @@ public class GUI extends View{
                 guiStarter.switchToWizardsScene();
             }
             case PLANNING -> {
+                guiStarter.switchToMainBoard();
                 guiStarter.switchToDeckScene();
             }
             case CHOOSING_FIRST_MOVE, CHOOSING_SECOND_MOVE, CHOOSING_THIRD_MOVE -> {
                 System.out.println("Ora faccio partire la scelta");
+                guiStarter.switchToMainBoard();
                 guiStarter.choosePawnMove();
             }
             case CHOOSING_MN_SHIFT -> {
+                guiStarter.switchToMainBoard();
                 guiStarter.chooseMNmovement();
             }
             case CHOOSING_CT -> {
+                guiStarter.switchToMainBoard();
                 guiStarter.choseCT();
             }
         }

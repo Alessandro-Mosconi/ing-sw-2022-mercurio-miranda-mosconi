@@ -280,6 +280,7 @@ public class NetworkHandler implements Runnable {
             }*/
             case WAIT -> {
                 phase = Phase.WAITING;
+                if(isGui)GuiStarter.getCurrentApplication().waitForYourTurn();
                 System.out.println("ok aspetto\n");
             }
             case IS_YOUR_TURN, ACK, CARD_ACTIVATED -> {
@@ -365,6 +366,10 @@ public class NetworkHandler implements Runnable {
                         }
                     }
                 }
+
+                System.out.println("la vera ora è " + view.getPhase());
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
             }
             case UPDATE_SCHOOL_BOARD_HALL -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -386,6 +391,9 @@ public class NetworkHandler implements Runnable {
                         }
                     }
                 }
+
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
             }
             case UPDATE_PROFESSORS -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -407,6 +415,9 @@ public class NetworkHandler implements Runnable {
                         }
                     }
                 }
+
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
             }
             case UPDATE_ISLAND_LIST -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -437,6 +448,9 @@ public class NetworkHandler implements Runnable {
                     islandList.add(new Island(Integer.parseInt(islandID), islandMap, tc, tn, isNET, isMN));
                 }
                 view.getIslandManager().setIslandList(islandList);
+
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
             }
             case UPDATE_CLOUDTILES -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -460,6 +474,10 @@ public class NetworkHandler implements Runnable {
                     clouds.add(new CloudTile(ctID,map));
                 }
                 view.setClouds(clouds);
+
+
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
             }
             case SETUP_PLAYERS -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -473,6 +491,14 @@ public class NetworkHandler implements Runnable {
                     i++;
                     TowerColor tc = TowerColor.valueOf(payloads.get(i));
                     Player p = new Player();
+                    if(payloads.size()==8){
+                        p.getSchoolBoard().setTowersNumber(8);
+                        System.out.println("le torri di 2 sono : " + p.getSchoolBoard().getTowersNumber());
+                    }else if(payloads.size()==12){
+                        p.getSchoolBoard().setTowersNumber(6);
+                        System.out.println("le torri di 3 sono : " + p.getSchoolBoard().getTowersNumber());
+                    }
+                    System.out.println("towernumber ok");
                     p.setNickName(nickname);
                     p.setPlayerNumber(playerNumber);
                     p.setDeck(new Deck(wt));
@@ -480,6 +506,7 @@ public class NetworkHandler implements Runnable {
                     players.add(p);
                     if(p.getNickName().equals(view.getUsername())){
                         view.setPlayer(p);
+                        System.out.println("le torri di eu sono : " + p.getSchoolBoard().getTowersNumber());
                     }
                 }
                 view.setPlayers(players);
@@ -506,12 +533,18 @@ public class NetworkHandler implements Runnable {
                         }
                     }
                 }
+
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
             }
             case UPDATE_MAX_SHIFT ->{
                 payloads = gson.fromJson(msg_in.getPayload(),ArrayList.class);
                 if(payloads.get(0).equals(view.getPlayer().getNickName())){
                     view.getPlayer().setMaxShift(view.getPlayer().getMaxShift()+2);
                 }
+
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
             }
             case PRICE_INCREASE -> {
                 payloads = gson.fromJson(msg_in.getPayload(),ArrayList.class);
@@ -647,6 +680,9 @@ public class NetworkHandler implements Runnable {
                         }
                     }
                 }
+
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
             }
             case SOMEONE_ACTIVATED_AN_EFFECT -> {
                 payloads = gson.fromJson(msg_in.getPayload(),ArrayList.class);

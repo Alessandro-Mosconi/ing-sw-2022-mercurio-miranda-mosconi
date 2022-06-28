@@ -69,8 +69,9 @@ public class DeckController {
 
                     View view = GuiStarter.getCurrentApplication().getClient().getView();
                     view.setChosenAssistantCard(view.getPlayer().getDeck().getCards().get(i-1));
+                    view.getPlayer().getDeck().getCards().remove(i-1);
                     view.prepareMessage();
-
+                    GuiStarter.getCurrentApplication().closeAssistantStage();
                     GuiStarter.getCurrentApplication().switchToMainBoard();
                 }
             });

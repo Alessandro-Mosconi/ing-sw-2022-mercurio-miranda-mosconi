@@ -92,6 +92,11 @@ public abstract class View {
 
     protected Parameter parameter = new Parameter();
 
+
+    public boolean getCardUsed() {
+        return cardUsed;
+    }
+
     public void setCardUsed(boolean cardUsed) {
         this.cardUsed = cardUsed;
     }
@@ -285,7 +290,6 @@ public abstract class View {
     public void setPlayer(Player player) {
         this.player = player;
     }
-
 
     public ArrayList<CloudTile> getClouds() {
         return clouds;
