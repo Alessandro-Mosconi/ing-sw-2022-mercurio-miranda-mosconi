@@ -77,14 +77,14 @@ public class ClientHandler implements Runnable, ModelListener
 
         try {
             while (true) {
-                System.out.println("Ora leggo da user: " + virtualView.getUsername());
+                //System.out.println("Ora leggo da user: " + virtualView.getUsername());
                 String input = in.readLine();
-                System.out.println("Appena letto da user: "+ virtualView.getUsername()+"il msg" + input);
+                //System.out.println("Appena letto da user: "+ virtualView.getUsername()+"il msg" + input);
                 if(!input.equals("ping") && !input.equals("MODEL_UPDATED")){
                     String processedInput = virtualView.read(input);
                     if(processedInput!=null){
-                        System.out.println("sending... " + processedInput);
-                        System.out.println("ora scrivo a user:"+virtualView.getUsername()+"il msg"+processedInput);
+                        //System.out.println("sending... " + processedInput);
+                        //System.out.println("ora scrivo a user:"+virtualView.getUsername()+"il msg"+processedInput);
                         out.println(processedInput);
                     }
                 }

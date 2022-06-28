@@ -62,6 +62,11 @@
             <artifactId>javafx-graphics</artifactId>
             <version>18.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>18</version>
+        </dependency>
     </dependencies>
 
     <build>

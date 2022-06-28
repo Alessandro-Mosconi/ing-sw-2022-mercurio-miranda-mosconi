@@ -39,6 +39,9 @@ public abstract class View {
     protected String serverIP;
     protected int serverPort;
 
+    public GuiStarter getGuiStarter() {
+        return guiStarter;
+    }
     public Phase getPhase() {
         return phase;
     }

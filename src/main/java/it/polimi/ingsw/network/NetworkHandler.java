@@ -88,7 +88,7 @@ public class NetworkHandler implements Runnable {
 
         Gson gson = new Gson();
         ArrayList<String> payloads = new ArrayList<>();
-
+        System.out.println("la fase della view è : " + view.getPhase());
         view.setPhase(phase);
         System.out.println("Questa è la fase del nw:" + phase);
         switch (phase) {
@@ -241,7 +241,7 @@ public class NetworkHandler implements Runnable {
         ArrayList<String> payloads;
 
         view.setPhase(phase);
-
+        if(msg_in.getType() != null)
         switch (msg_in.getType()) {
             case ERROR -> {
                 System.out.println("Error:" + msg_in.getPayload());
@@ -271,13 +271,13 @@ public class NetworkHandler implements Runnable {
                 System.out.println("Lobby updated ok");
                 //if(view.getPlayersUsername()!=null)
                 //view.getPlayersUsername().add(msg_in.getPayload());
-                if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene();
+                if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene(); //todo ricarica la pag ma non la aggiorna
             }
-            case ASK_FOR_SETTINGS -> {
+            /*case ASK_FOR_SETTINGS -> {
                 System.out.println("settings");
                 if(isGui) GuiStarter.getCurrentApplication().switchToWizardsScene();
                 phase = Phase.SETTINGS;
-            }
+            }*/
             case WAIT -> {
                 phase = Phase.WAITING;
                 System.out.println("ok aspetto\n");
@@ -342,6 +342,7 @@ public class NetworkHandler implements Runnable {
                         i.setIslandStudents(islandStudents);
                     }
                 }
+
             }
             case UPDATE_SCHOOL_BOARD_ENTRANCE -> {
                 System.out.println("Ho ricevuto "+ input);
@@ -671,6 +672,7 @@ public class NetworkHandler implements Runnable {
 
     public void sendMessage() {
         System.out.println("mando msg: 1");
+        System.out.println("il nw è in phase " + phase);
         String output = prepare_msg();
         System.out.println("mando msg: " + output);
         out.println(output);

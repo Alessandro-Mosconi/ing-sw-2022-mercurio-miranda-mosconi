@@ -12,7 +12,7 @@
          <children>
             <FlowPane alignment="CENTER" columnHalignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="720.0">
                <children>
-                  <Text fx:id="titleWaiting" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="CHOSE AN ASSISTANT CARD">
+                  <Text fx:id="titleWaiting" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="CHOOSE AN ASSISTANT CARD">
                      <font>
                         <Font name="System Bold" size="33.0" />
                      </font>

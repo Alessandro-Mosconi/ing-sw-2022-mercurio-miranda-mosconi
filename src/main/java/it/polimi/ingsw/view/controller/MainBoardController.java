@@ -36,8 +36,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.lang.Math.abs;
-
 
 public class MainBoardController
 {
@@ -341,8 +339,7 @@ public void showSchoolBoard(){
     towerContainer.add(towers.get(i), col, row, 1, 1);
     towerContainer.setAlignment(Pos.CENTER);
     col++;
-    if(col==4)
-    {
+    if(col==4){
       col=0;
       row++;
     }
@@ -353,26 +350,27 @@ public void showSchoolBoard(){
     public void handle(ActionEvent event) {
       System.out.println("Hall clicked");
       view.setDestination(-1);
+      view.setMessageType(MessageType.PAWN_MOVE);
+      view.prepareMessage();
     }
   });
 
-  if(!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)&&!view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)&&!view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE))
+  if(!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)||!view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)||!view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE))
     hallButton.setDisable(true);
   else hallButton.setDisable(false);
 
-  ArrayList<Shape> hallTable = new ArrayList<>();
-  Map<PawnColor, Integer> map = view.getPlayer().getSchoolBoard().getStudentHall();
-  hall.setHgap(5);
-  hall.setVgap(5);
-  for (int c=0; c<5; c++)
-    for(int r=0; r<10; r++)
-    {
-      hallTable.add(new Circle(0.0, 0.0, 15));
-      hallTable.get((c*10)+r).setFill(PawnColor.getColor(c));
-      hallTable.get((c*10)+r).setStroke(Color.WHITE);
-      if(r<map.get(PawnColor.getIndex(c)))
-        hall.add(hallTable.get((c*10)+r), c, r, 1, 1);
-    }
+        ArrayList<Shape> hallTable = new ArrayList<>();
+        Map<PawnColor, Integer> map = view.getPlayer().getSchoolBoard().getStudentHall();
+        hall.setHgap(5);
+        hall.setVgap(5);
+        for (int c = 0; c < 5; c++)
+            for (int r = 0; r < 10; r++) {
+                hallTable.add(new Circle(0.0, 0.0, 15));
+                hallTable.get((c * 10) + r).setFill(PawnColor.getColor(c));
+                hallTable.get((c * 10) + r).setStroke(Color.WHITE);
+                if (r < map.get(PawnColor.getIndex(c)))
+                    hall.add(hallTable.get((c * 10) + r), c, r, 1, 1);
+            }
 
   col=0;
   row=0;
@@ -417,31 +415,28 @@ public void showSchoolBoard(){
   }
 
 
+        Map<PawnColor, Boolean> prof = view.getPlayer().getSchoolBoard().getProfessorTable();
 
-  Map<PawnColor, Boolean> prof = view.getPlayer().getSchoolBoard().getProfessorTable();
-
-  for(PawnColor color : PawnColor.values())
-  {
-    if (color == PawnColor.blue)
-      blueProf.setVisible(prof.get(color));
-    if (color == PawnColor.pink)
-      pinkProf.setVisible(prof.get(color));
-    if (color == PawnColor.red)
-      redProf.setVisible(prof.get(color));
-    if (color == PawnColor.green)
-      greenProf.setVisible(prof.get(color));
-    if (color == PawnColor.yellow)
-      yellowProf.setVisible(prof.get(color));
-  }
+        for (PawnColor color : PawnColor.values()) {
+            if (color == PawnColor.blue)
+                blueProf.setVisible(prof.get(color));
+            if (color == PawnColor.pink)
+                pinkProf.setVisible(prof.get(color));
+            if (color == PawnColor.red)
+                redProf.setVisible(prof.get(color));
+            if (color == PawnColor.green)
+                greenProf.setVisible(prof.get(color));
+            if (color == PawnColor.yellow)
+                yellowProf.setVisible(prof.get(color));
+        }
 
 
-}
+    }
 
 public void showClouds(){
   GUI view = (GUI) GuiStarter.getCurrentApplication().getClient().getView();
 
-  for(CloudTile cloud : view.getClouds())
-  {
+        for (CloudTile cloud : view.getClouds()) {
 
     String path = "assets/Reame/PNG/nuvola.png";
     ImageView im2 = new ImageView(path);
@@ -458,201 +453,198 @@ public void showClouds(){
       button2.setDisable(true);
     else button2.setDisable(false);
 
-    button2.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        System.out.println(cloud.getCloudID() + ") cloud clicked");
-        view.setChosenCloudPos(cloud.getCloudID());
-        view.setMessageType(MessageType.CHOSEN_CT);
-      }
-    });
+            button2.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    System.out.println(cloud.getCloudID() + ") cloud clicked");
+                    view.setChosenCloudPos(cloud.getCloudID());
+                    view.setMessageType(MessageType.CHOSEN_CT);
+                    view.prepareMessage();
+                }
+            });
 
-    AnchorPane anchorPane2 = new AnchorPane();
-    anchorPane2.getChildren().add(im2);
+            AnchorPane anchorPane2 = new AnchorPane();
+            anchorPane2.getChildren().add(im2);
 
-    ArrayList<Shape> shapes = new ArrayList<>();
-    ArrayList<Text> text = new ArrayList<>();
+            ArrayList<Shape> shapes = new ArrayList<>();
+            ArrayList<Text> text = new ArrayList<>();
 
-    int a = 0;
-    int b = 0;
+            int a = 0;
+            int b = 0;
 
-        GridPane gridPane = new GridPane();
+            GridPane gridPane = new GridPane();
 
-        for(PawnColor color : PawnColor.values())
-        {
-          shapes.add(new Circle(0.0, 0.0, 15));
-          text.add(new Text("0"));
+            for (PawnColor color : PawnColor.values()) {
+                shapes.add(new Circle(0.0, 0.0, 15));
+                text.add(new Text("0"));
 
-          int x = PawnColor.getColorIndex(color);
-          shapes.get(x).setFill(PawnColor.getColor(x));
-          text.get(x).setText(String.valueOf(cloud.getStudents().get(color)));
-          StackPane stack = new StackPane();
-          stack.getChildren().addAll(shapes.get(x), text.get(x));
-          gridPane.add(stack, a, b, 1, 1);
-          b++;
-          if (b == 3) {
-            b = 0;
-            a++;
-          }
+                int x = PawnColor.getColorIndex(color);
+                shapes.get(x).setFill(PawnColor.getColor(x));
+                text.get(x).setText(String.valueOf(cloud.getStudents().get(color)));
+                StackPane stack = new StackPane();
+                stack.getChildren().addAll(shapes.get(x), text.get(x));
+                gridPane.add(stack, a, b, 1, 1);
+                b++;
+                if (b == 3) {
+                    b = 0;
+                    a++;
+                }
+
+            }
+
+            FlowPane flowPane = new FlowPane();
+            flowPane.setAlignment(Pos.CENTER);
+            flowPane.setPrefSize(200, 170);
+            flowPane.getChildren().add(gridPane);
+            anchorPane2.getChildren().add(flowPane);
+
+            anchorPane2.getChildren().add(button2);
+
+            cloudContainer.getChildren().add(anchorPane2);
+        }
+    }
+
+    public void showIslands() {
+        GUI view = (GUI) GuiStarter.getCurrentApplication().getClient().getView();
+
+        Map<PawnColor, Integer> map = new HashMap<>();
+
+        int MN = 10;
+        for (PawnColor color : PawnColor.values())
+            map.put(color, 2);
+
+        map.replace(PawnColor.green, 4);
+        map.replace(PawnColor.yellow, 1);
+        map.replace(PawnColor.blue, 0);
+
+        ArrayList<Integer> array = new ArrayList<>();
+        for (int i = 0; i < 12; i++)
+            array.add(i);
+
+        int j = 0;
+
+        int row1 = 0;
+        int col1 = 0;
+        for (Island island : view.getIslandManager().getIslandList()) {
+
+            AnchorPane anchorPane = new AnchorPane();
+            GridPane gridPane = new GridPane();
+
+            ArrayList<Shape> shapes = new ArrayList<>();
+            shapes.add(new Rectangle(0.0, 0.0, 25, 25));
+
+            ArrayList<Text> text = new ArrayList<>();
+            text.add(new Text());
+
+            int a = 0;
+            int b = 1;
+            if (island.getTowerColor() != null)
+                shapes.get(0).setFill(TowerColor.getColor(island.getTowerColor()));
+            else shapes.get(0).setFill(Color.TRANSPARENT);
+
+            StackPane stack2 = new StackPane();
+            stack2.getChildren().addAll(shapes.get(0), text.get(0));
+            gridPane.add(stack2, 0, 0, 1, 1);
+
+            for (PawnColor color : PawnColor.values()) {
+                shapes.add(new Circle(0.0, 0.0, 15));
+                text.add(new Text("0"));
+
+                int x = PawnColor.getColorIndex(color);
+                shapes.get(x + 1).setFill(PawnColor.getColor(x));
+                text.get(x + 1).setText(String.valueOf(island.getIslandStudents().get(color)));
+                StackPane stack = new StackPane();
+                stack.getChildren().addAll(shapes.get(x + 1), text.get(x + 1));
+                gridPane.add(stack, a, b, 1, 1);
+                b++;
+                if (b == 3) {
+                    b = 0;
+                    a++;
+                }
+
+            }
+
+            Button button = new Button();
+            button.setPrefHeight(125);
+            button.setPrefWidth(125);
+            button.setStyle("-fx-background-color: transparent");
+            button.setCursor(Cursor.HAND);
+            if (view.getPhase().equals(Phase.CHOOSING_CT))//todo penso anche nelle phases waiting + planning vada bloccato
+                button.setDisable(true);
+            else button.setDisable(false);
+
+            ImageView im = new ImageView("assets/Reame/PNG/Isola.png");
+            im.setFitHeight(110);
+            im.setFitWidth(110);
+            im.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 15, 0, 0, 0)");
+
+            if (island.isMotherNature())
+                im.setStyle("-fx-effect:  dropshadow(gaussian, rgba(255, 255, 255 , 255), 30, 0.7, 0, 0)");
+
+
+            button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+              System.out.println(island.getIslandID() + ") island clicked");
+              /* solo se chosenCharacterCard viene settato a null quando l'effetto finisce
+              if(view.getChosenCharacterCard()!=null)
+                if(view.getChosenCharacterCard().getID().equals(1)||view.getChosenCharacterCard().getID().equals(3)||view.getChosenCharacterCard().getID().equals(5))
+                  view.getParameter().setIsland(island);
+                else
+               */
+              if(view.getPhase().equals(Phase.CHOOSING_MN_SHIFT)) {
+                int shift = (view.getIslandManager().getIslandList().size() + island.getIslandID() - view.getIslandManager().getCurrMNPosition())%12;
+                if (shift > view.getPlayer().getMaxShift()) {
+                  GuiStarter.getCurrentApplication().showError(ErrorType.INVALID_MN_SHIFT.toString());
+                  return;
+                }else {
+                  view.setMessageType(MessageType.MN_SHIFT);
+                  view.setMN_shift(shift);
+                }
+              } else if(view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)||view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)||view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE)) {
+                view.setDestination(island.getIslandID());
+                view.setMessageType(MessageType.PAWN_MOVE);
+              }
+
+
+              view.prepareMessage();
+                }
+            });
+
+
+            FlowPane flowPane = new FlowPane();
+            flowPane.setAlignment(Pos.CENTER);
+            flowPane.setPrefSize(110, 110);
+            flowPane.getChildren().add(gridPane);
+
+
+            anchorPane.getChildren().add(im);
+            Shape noEntryTile = new Circle(0.0, 0.0, 50);
+            noEntryTile.setFill(Color.RED);
+            noEntryTile.setStyle("-fx-opacity: 0.5");
+            noEntryTile.setStroke(Color.RED);
+            noEntryTile.setStrokeWidth(3.0);
+            if (island.isNoEntryTile()) {
+                FlowPane flowPane1 = new FlowPane();
+                flowPane1.setPrefSize(110, 110);
+                flowPane1.getChildren().add(noEntryTile);
+                anchorPane.getChildren().add(flowPane1);
+
+            }
+
+
+            anchorPane.getChildren().add(flowPane);
+            anchorPane.getChildren().add(button);
+            islandContainer.add(anchorPane, col1, row1);
+            System.out.println("col: " + col1 + "row: " + row1);
+            if ((row1 == 0 || row1 == 1 || row1 == 2) && col1 == 3)
+                row1++;
+            else if (row1 == 3 && (col1 == 3 || col1 == 2 || col1 == 1))
+                col1--;
+            else if ((row1 == 3 || row1 == 2 || row1 == 1) && col1 == 0)
+                row1--;
+            else col1++;
 
         }
-
-    FlowPane flowPane = new FlowPane();
-    flowPane.setAlignment(Pos.CENTER);
-    flowPane.setPrefSize(200, 170);
-    flowPane.getChildren().add(gridPane);
-        anchorPane2.getChildren().add(flowPane);
-
-    anchorPane2.getChildren().add(button2);
-
-    cloudContainer.getChildren().add(anchorPane2);
-  }
-}
-
-public void showIslands(){
-  GUI view = (GUI) GuiStarter.getCurrentApplication().getClient().getView();
-
-  Map<PawnColor, Integer> map = new HashMap<>();
-
-  int MN= 10;
-  for(PawnColor color : PawnColor.values())
-    map.put(color, 2);
-
-  map.replace(PawnColor.green, 4);
-  map.replace(PawnColor.yellow, 1);
-  map.replace(PawnColor.blue, 0);
-
-  ArrayList<Integer> array = new ArrayList<>();
-  for (int i=0; i<12; i++)
-    array.add(i);
-
-  int  j=0;
-
-  int row1=0;
-  int col1=0;
-  for(Island island : view.getIslandManager().getIslandList())
-  {
-
-    AnchorPane anchorPane = new AnchorPane();
-    GridPane gridPane = new GridPane();
-
-    ArrayList<Shape> shapes = new ArrayList<>();
-    shapes.add(new Rectangle(0.0, 0.0, 25, 25));
-
-    ArrayList<Text> text = new ArrayList<>();
-    text.add(new Text());
-
-    int a = 0;
-    int b = 1;
-    if(island.getTowerColor()!=null)
-      shapes.get(0).setFill(TowerColor.getColor(island.getTowerColor()));
-    else shapes.get(0).setFill(Color.TRANSPARENT);
-
-    StackPane stack2 = new StackPane();
-    stack2.getChildren().addAll(shapes.get(0), text.get(0));
-    gridPane.add(stack2, 0, 0, 1, 1);
-
-    for(PawnColor color : PawnColor.values())
-    {
-      shapes.add(new Circle(0.0, 0.0, 15));
-      text.add(new Text("0"));
-
-      int x = PawnColor.getColorIndex(color);
-      shapes.get(x+1).setFill(PawnColor.getColor(x));
-      text.get(x+1).setText(String.valueOf(island.getIslandStudents().get(color)));
-      StackPane stack = new StackPane();
-      stack.getChildren().addAll(shapes.get(x+1), text.get(x+1));
-      gridPane.add(stack, a, b, 1, 1);
-      b++;
-      if (b == 3) {
-        b = 0;
-        a++;
-      }
-
     }
-
-    Button button = new Button();
-    button.setPrefHeight(125);
-    button.setPrefWidth(125);
-    button.setStyle("-fx-background-color: transparent");
-    button.setCursor(Cursor.HAND);
-    if(view.getPhase().equals(Phase.CHOOSING_CT))
-      button.setDisable(true);
-    else button.setDisable(false);
-
-    ImageView im = new ImageView("assets/Reame/PNG/Isola.png");
-    im.setFitHeight(110);
-    im.setFitWidth(110);
-    im.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 15, 0, 0, 0)");
-
-    if(island.isMotherNature())
-      im.setStyle("-fx-effect:  dropshadow(gaussian, rgba(255, 255, 255 , 255), 30, 0.7, 0, 0)");
-
-    if(view.getPhase().equals(Phase.CHOOSING_MN_SHIFT))
-      button.setTooltip(
-              new Tooltip("Shift: " + (12 + island.getIslandID() - view.getIslandManager().getCurrMNPosition())%12)
-      );
-
-      button.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        System.out.println(island.getIslandID() + ") island clicked");
-        /* solo se chosenCharacterCard viene settato a null quando l'effetto finisce
-        if(view.getChosenCharacterCard()!=null)
-          if(view.getChosenCharacterCard().getID().equals(1)||view.getChosenCharacterCard().getID().equals(3)||view.getChosenCharacterCard().getID().equals(5))
-            view.getParameter().setIsland(island);
-          else
-         */
-        if(view.getPhase().equals(Phase.CHOOSING_MN_SHIFT)) {
-          int shift = (12 + island.getIslandID() - view.getIslandManager().getCurrMNPosition())%12;
-          if (shift > view.getPlayer().getMaxShift()) {
-            GuiStarter.getCurrentApplication().showError(ErrorType.INVALID_MN_SHIFT.toString());
-            return;
-          }else {
-            view.setMessageType(MessageType.MN_SHIFT);
-            view.setMN_shift(shift);
-          }
-        } else if(view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)||view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)||view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE))
-          view.setDestination(island.getIslandID());
-
-      }
-    });
-
-
-    FlowPane flowPane = new FlowPane();
-    flowPane.setAlignment(Pos.CENTER);
-    flowPane.setPrefSize(110, 110);
-    flowPane.getChildren().add(gridPane);
-
-
-    anchorPane.getChildren().add(im);
-    Shape noEntryTile = new Circle(0.0, 0.0, 50);
-    noEntryTile.setFill(Color.RED);
-    noEntryTile.setStyle("-fx-opacity: 0.5");
-    noEntryTile.setStroke(Color.RED);
-    noEntryTile.setStrokeWidth(3.0);
-    if(island.isNoEntryTile())
-    {
-      FlowPane flowPane1 = new FlowPane();
-      flowPane1.setPrefSize(110, 110);
-      flowPane1.getChildren().add(noEntryTile);
-      anchorPane.getChildren().add(flowPane1);
-
-    }
-
-
-    anchorPane.getChildren().add(flowPane);
-    anchorPane.getChildren().add(button);
-    islandContainer.add(anchorPane, col1, row1);
-    System.out.println("col: " + col1 + "row: " + row1);
-    if((row1==0||row1==1||row1==2)&&col1==3)
-      row1++;
-    else if(row1==3 && (col1==3||col1==2||col1==1))
-        col1--;
-    else if((row1==3 || row1==2||row1==1)&& col1==0)
-      row1--;
-    else col1++;
-
-  }
-}
 }
