@@ -76,7 +76,7 @@ public class GuiStarter extends Application{
 
         for(CharacterCard card : game.getChosenCharacterCards())
         {
-            card.setCaption("questa sarà la descrizione");
+            card.setCaption("questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione ");
         }
         AssistantCard card = new AssistantCard(3, 5);
         p2.setLastAssistantCard(card);
@@ -140,6 +140,7 @@ public class GuiStarter extends Application{
          });
         this.primaryStage = primaryStage;
         switchToLoginScene();
+        // switchToMainBoard();
         primaryStage.show();
     }
 
