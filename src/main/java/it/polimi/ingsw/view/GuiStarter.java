@@ -127,6 +127,17 @@ public class GuiStarter extends Application{
 
         primaryStage.getIcons().add(new Image("/assets/logo-cranio-creation.png"));
         primaryStage.setTitle("Eriantys");
+        primaryStage.setOnCloseRequest(new EventHandler<>() {
+             public void handle(WindowEvent we) {
+                 /*
+                 try {
+                     getClient().getServerSocket().close();
+                 } catch (IOException e) {
+                     e.printStackTrace();
+                 }
+                 */
+             }
+         });
         this.primaryStage = primaryStage;
         switchToLoginScene();
         primaryStage.show();
@@ -239,7 +250,19 @@ public class GuiStarter extends Application{
         stage.sizeToScene();
         stage.setTitle("Assistant deck");
         stage.initModality(Modality.WINDOW_MODAL);
-        //stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
+        stage.setOnCloseRequest(new EventHandler<>() {
+            public void handle(WindowEvent we) {
+                System.out.println("Stage is closing");
+                if(getClient().getView().getChosenAssistantCard()==null)
+                {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Chose an assistant card first", ButtonType.OK);
+                    alert.showAndWait();
+                    switchToDeckScene();
+                    return;
+                }
+            }
+        });
+        stage.initOwner(primaryStage);
         stage.show();
 
         });
@@ -283,6 +306,14 @@ public class GuiStarter extends Application{
     public void showError(String error){
         Platform.runLater(() ->{
             Alert alert = new Alert(Alert.AlertType.ERROR, "This error occured: " + error, ButtonType.OK);
+            alert.showAndWait();
+        });
+    }
+
+
+    public void waitForYourTurn(){
+        Platform.runLater(() ->{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Now wait for your turn", ButtonType.OK);
             alert.showAndWait();
         });
     }
@@ -373,7 +404,7 @@ public class GuiStarter extends Application{
             stage.sizeToScene();
             stage.setTitle("CharacterCard");
             stage.initModality(Modality.WINDOW_MODAL);
-            //stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
+            stage.initOwner(primaryStage);
             stage.setOnCloseRequest(new EventHandler<>() {
                 public void handle(WindowEvent we) {
                     System.out.println("Stage is closing");

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.view.controller;
 
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.network.MessageType;
 import it.polimi.ingsw.view.GuiStarter;
 import it.polimi.ingsw.view.View;
 import javafx.event.ActionEvent;
@@ -10,11 +11,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -270,6 +267,10 @@ public class CharacterCardController {
                     GuiStarter.getCurrentApplication().closeCharacterStage();
                     if(view.getChosenCharacterCard().getID().equals(1)||view.getChosenCharacterCard().getID().equals(3)||view.getChosenCharacterCard().getID().equals(5))
                         GuiStarter.getCurrentApplication().choseIsland();
+                    else {
+                        view.setMessageType(MessageType.CHOSEN_CHARACTER_CARD);
+                        view.prepareMessage();
+                    }
                 } else GuiStarter.getCurrentApplication().showError("Make your correct decision before continue");
             }
         });

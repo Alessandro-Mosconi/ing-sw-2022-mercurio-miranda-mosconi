@@ -68,7 +68,8 @@ public class DeckController {
                     System.out.println(i + ") card clicked");
 
                     View view = GuiStarter.getCurrentApplication().getClient().getView();
-                    view.setChosenAssistantCard(view.getPlayer().getDeck().getCards().get(i));
+                    view.setChosenAssistantCard(view.getPlayer().getDeck().getCards().get(i-1));
+                    view.getPlayer().getDeck().getCards().remove(i-1);
                     view.prepareMessage();
                     GuiStarter.getCurrentApplication().closeAssistantStage();
                     GuiStarter.getCurrentApplication().switchToMainBoard();
