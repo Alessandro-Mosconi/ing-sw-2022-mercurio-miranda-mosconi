@@ -63,6 +63,12 @@ public class Message {
         this.payload = payload;
     }
 
+
+    /**
+     * Puts the payload in a message.
+     * @param obj payloads.
+     * @return the message filled.
+     */
     public String fill (Object obj){
         Gson gson = new Gson();
         this.payload = gson.toJson(obj);
@@ -81,6 +87,10 @@ public class Message {
 
  */
 
+    /**
+     * Standardize to gson format the message to be sent.
+     * @return the message ready to be sent.
+     */
     public String toSend (){
         Gson gson = new Gson();
         return gson.toJson(this);

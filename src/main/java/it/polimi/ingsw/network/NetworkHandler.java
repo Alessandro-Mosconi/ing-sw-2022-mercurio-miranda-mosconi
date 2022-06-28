@@ -46,6 +46,10 @@ public class NetworkHandler implements Runnable {
         this.phase = Phase.LOGIN;
     }
 
+    /**
+     * Starts an infinite while through which messages from/to the server are received/sent in case the client is using a CLI.
+     * @throws IOException when errors in socket reading/writing occur.
+     */
     public void start() throws IOException {
         while (true) {
             String input = in.readLine();
@@ -68,6 +72,10 @@ public class NetworkHandler implements Runnable {
         }
     }
 
+    /**
+     * Starts an infinite while through which messages from the server are received in case the client is using a GUI.
+     * @throws IOException when errors in socket reading occur.
+     */
     public void startGUI() throws IOException {
         view.setNetworkHandler(this);
 
@@ -83,6 +91,11 @@ public class NetworkHandler implements Runnable {
         }
     }
 
+
+    /**
+     * Creates and standardize in gson format the message to be sent.
+     * @return the message ready to be sent.
+     */
     public synchronized String prepare_msg() {
         Message msg_out = new Message(view.getUsername());
 
@@ -195,6 +208,10 @@ public class NetworkHandler implements Runnable {
         return msg_out.toSend();
     }
 
+    /**
+     * Creates and standardize in gson format a message to indicate that the client chose to use a character card and the parameter that card needs.
+     * @return the mmessage ready to be sent.
+     */
     private String characterCardToSend() {
         Message cardMsg = new Message();
         ArrayList<String> payloads = new ArrayList<>();
@@ -232,6 +249,10 @@ public class NetworkHandler implements Runnable {
         return cardMsg.toSend();
     }
 
+    /**
+     * Reads from a gson input and processes what it has to according to what's read.
+     * @param input the message to be read.
+     */
     public synchronized void process(String input) {
         System.out.println("receiving... " + input);
         if (input.equals("ACK")) return;
@@ -732,6 +753,10 @@ public class NetworkHandler implements Runnable {
         }
     }
 
+
+    /**
+     * Starts a GUI.
+     */
     @Override
     public void run() {
         try {
@@ -741,6 +766,10 @@ public class NetworkHandler implements Runnable {
         }
     }
 
+
+    /**
+     * Writes on the socket to communicate to the server the user's request.
+     */
     public void sendMessage() {
         System.out.println("mando msg: 1");
         System.out.println("il nw è in phase " + phase);

@@ -186,6 +186,10 @@ public class GameController implements VirtualViewListener {
         cardUsed=false;
     }
 
+    /**
+     * Makes the controller listener of a new virtual view.
+     * @param virtualView virtual view to be listened to.
+     */
     @Override
     public void addVirtualView(VirtualView virtualView) {
         this.virtualViews.add(virtualView);

@@ -29,6 +29,10 @@ public class Client {
         return view;
     }
 
+    /**
+     * Starts the client and asks if the user wants to play with a CLI or with a GUI
+     * @param args -
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
@@ -61,6 +65,9 @@ public class Client {
         }
     }
 
+    /**
+     * Performs a connection to the server in the case the client chose to use a CLI
+     */
     public void connect() {
         String ip = "127.0.0.1";
         int socketPort = 1234;
@@ -144,6 +151,9 @@ public class Client {
         }
     }
 
+    /**
+     * Performs a connection to the server in the case the client chose to use a GUI
+     */
     public void connectGUI(){
         Socket server;
         String serverIP = view.getServerIP();
