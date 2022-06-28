@@ -178,36 +178,6 @@ public void showCharacterChard(){
         anchorPane.getChildren().add(gridPane);
         break;
 
-      case 5:/*
-        CharacterCard5 card5 = (CharacterCard5) card.getCardBehavior();
-        GridPane gridPane1 = new GridPane();
-
-        shapes = new ArrayList<>();
-
-        a = 0;
-        b = 0;
-
-        for(int i=0; i<4; i++)
-        {
-          shapes.add(new Rectangle(0.0, 0.0, 40, 40));
-
-          shapes.get(i).setFill(Color.WHITE);
-          shapes.get(i).setStroke(Color.RED);
-
-          StackPane stack = new StackPane();
-          stack.getChildren().addAll(shapes.get(x), text.get(x));
-          gridPane2.add(stack, a, b, 1, 1);
-          b++;
-          if (b == 3) {
-            b = 0;
-            a++;
-          }
-
-        }
-        anchorPane.getChildren().add(gridPane2);
-        */
-
-        break;
       case 7:
         CharacterCard7 card7 = (CharacterCard7) card.getCardBehavior();
         GridPane gridPane2 = new GridPane();
@@ -228,6 +198,9 @@ public void showCharacterChard(){
           text.get(x).setText(String.valueOf(card7.getStudents().get(color)));
           StackPane stack = new StackPane();
           stack.getChildren().addAll(shapes.get(x), text.get(x));
+
+          stack.setVisible(!text.get(x).getText().equals("0"));
+
           gridPane2.add(stack, a, b, 1, 1);
           b++;
           if (b == 3) {
@@ -258,6 +231,9 @@ public void showCharacterChard(){
           text.get(x).setText(String.valueOf(card11.getStudents().get(color)));
           StackPane stack = new StackPane();
           stack.getChildren().addAll(shapes.get(x), text.get(x));
+
+          stack.setVisible(!text.get(x).getText().equals("0"));
+
           gridPane3.add(stack, a, b, 1, 1);
           b++;
           if (b == 3) {
@@ -334,7 +310,6 @@ public void showSchoolBoard(){
 
   ArrayList<Shape> towers = new ArrayList<>();
 
-
   int col=0, row=0;
   for (int i =0; i<view.getPlayer().getSchoolBoard().getTowersNumber(); i++)
   {
@@ -359,6 +334,7 @@ public void showSchoolBoard(){
           view.setDestination(-1);
           view.setMessageType(MessageType.PAWN_MOVE);
           view.prepareMessage();
+          view.setColorToMove(null);
       }
       else {
           Alert alert = new Alert(Alert.AlertType.ERROR, "Chose a pawn to move first", ButtonType.OK);
@@ -428,6 +404,7 @@ public void showSchoolBoard(){
 
 
         Map<PawnColor, Boolean> prof = view.getPlayer().getSchoolBoard().getProfessorTable();
+
 
         for (PawnColor color : PawnColor.values()) {
             if (color == PawnColor.blue)
@@ -529,21 +506,9 @@ public void showClouds(){
     public void showIslands() {
         GUI view = (GUI) GuiStarter.getCurrentApplication().getClient().getView();
 
-        Map<PawnColor, Integer> map = new HashMap<>();
-
-        int MN = 10;
-        for (PawnColor color : PawnColor.values())
-            map.put(color, 2);
-
-        map.replace(PawnColor.green, 4);
-        map.replace(PawnColor.yellow, 1);
-        map.replace(PawnColor.blue, 0);
-
         ArrayList<Integer> array = new ArrayList<>();
         for (int i = 0; i < 12; i++)
             array.add(i);
-
-        int j = 0;
 
         int row1 = 0;
         int col1 = 0;
@@ -597,7 +562,7 @@ public void showClouds(){
             if(view.getPhase().equals(Phase.CHOOSING_MN_SHIFT)) {
                 int shift = (view.getIslandManager().getIslandList().size() + island.getIslandID() - view.getIslandManager().getCurrMNPosition())%view.getIslandManager().getIslandList().size();;
                 String message = "";
-                if (shift > view.getPlayer().getMaxShift()) {
+                if (shift > view.getPlayer().getMaxShift() || shift == 0) {
                     message = "invalid MN shift";
                 }else {
                     message = shift + "island shift";
@@ -624,7 +589,7 @@ public void showClouds(){
             public void handle(ActionEvent event) {
               System.out.println(island.getIslandID() + ") island clicked");
 
-              if(view.getChosenCharacterCard()!=null);
+              if(view.getChosenCharacterCard()!=null)
                 if(view.getCardUsed()&&(view.getChosenCharacterCard().getID().equals(1)||view.getChosenCharacterCard().getID().equals(3)||view.getChosenCharacterCard().getID().equals(5))) {
                     view.getParameter().setIsland(island);
                     view.setMessageType(MessageType.CHOSEN_CHARACTER_CARD);
@@ -636,15 +601,22 @@ public void showClouds(){
                   GuiStarter.getCurrentApplication().showError(ErrorType.INVALID_MN_SHIFT.toString());
                   return;
                 }else {
-                  view.setMessageType(MessageType.MN_SHIFT);
-                  view.setMN_shift(shift);
-                    view.prepareMessage();
+                    if(island.isMotherNature()) {
+                        GuiStarter.getCurrentApplication().showError("Minimum MN shift: 1");
+                        return;
+                    }
+                    else {
+                        view.setMessageType(MessageType.MN_SHIFT);
+                        view.setMN_shift(shift);
+                        view.prepareMessage();
+                    }
                 }
               } else if(view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE)||view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE)||view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE)) {
                   if(view.getColorToMove()!=null) {
                       view.setDestination(island.getIslandID());
                       view.setMessageType(MessageType.PAWN_MOVE);
                       view.prepareMessage();
+                      view.setColorToMove(null);
                   }
                   else {
                       Alert alert = new Alert(Alert.AlertType.ERROR, "Chose a pawn to move first", ButtonType.OK);
