@@ -3,7 +3,6 @@ import javafx.scene.paint.Color;
 import java.util.Random;
 
 public enum PawnColor {
-
     green,
     red,
     yellow,
@@ -11,49 +10,48 @@ public enum PawnColor {
     blue;
 
     public static Color getColor(Integer i){
-        switch (i) {
-            case 0: return Color.GREEN;
-            case 1: return Color.RED;
-            case 2: return Color.YELLOW;
-            case 3: return Color.PINK;
-            case 4: return Color.BLUE;
-        }
+        return switch (i) {
+            case 0 -> Color.GREEN;
+            case 1 -> Color.RED;
+            case 2 -> Color.YELLOW;
+            case 3 -> Color.PINK;
+            case 4 -> Color.BLUE;
+            default -> Color.TRANSPARENT;
+        };
 
-        return null;
     }
     public static Color getColorFromPawnColor(PawnColor i){
-        switch (i) {
-            case green: return Color.GREEN;
-            case red: return Color.RED;
-            case yellow: return Color.YELLOW;
-            case pink: return Color.PINK;
-            case blue: return Color.BLUE;
-        }
+        return switch (i) {
+            case green -> Color.GREEN;
+            case red -> Color.RED;
+            case yellow -> Color.YELLOW;
+            case pink -> Color.PINK;
+            case blue -> Color.BLUE;
+        };
 
-        return null;
     }
     public static PawnColor getIndex(Integer i){
-        switch (i) {
-            case 0: return green;
-            case 1: return red;
-            case 2: return yellow;
-            case 3: return pink;
-            case 4: return blue;
-        }
+        return switch (i) {
+            case 0 -> green;
+            case 1 -> red;
+            case 2 -> yellow;
+            case 3 -> pink;
+            case 4 -> blue;
+            default -> null;
+        };
 
-        return null;
     }
 
     public static Integer getColorIndex(PawnColor color){
-        switch (color) {
-            case green: return 0;
-            case red: return 1;
-            case yellow: return 2;
-            case pink: return 3;
-            case blue: return 4;
-        }
+        return switch (color) {
+            case green -> 0;
+            case red -> 1;
+            case yellow -> 2;
+            case pink -> 3;
+            case blue -> 4;
+            default -> -1;
+        };
 
-        return null;
     }
 
     /**

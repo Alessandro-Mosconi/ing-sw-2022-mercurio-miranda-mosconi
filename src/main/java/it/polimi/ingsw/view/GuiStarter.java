@@ -37,7 +37,6 @@ public class GuiStarter extends Application{
         return client;
     }
 
-
     /**
      * Allocates the client and sets a GUI to it.
      * @param primaryStage -
@@ -51,26 +50,20 @@ public class GuiStarter extends Application{
         gui.setGuiStarter(this);
         currentApplication = this;
 
-
-        //usati per testare la gui, andranno cancellati
-        //test3();
-
         primaryStage.getIcons().add(new Image("/assets/logo-cranio-creation.png"));
         primaryStage.setTitle("Eriantys");
-        primaryStage.setOnCloseRequest(new EventHandler<>() {
-             public void handle(WindowEvent we) {
-                 /*
-                 try {
-                     getClient().getServerSocket().close();
-                 } catch (IOException e) {
-                     e.printStackTrace();
-                 }
-                 */
-             }
-         });
+        primaryStage.setOnCloseRequest(we -> {
+            //todo close the connection when close the main window
+            /*
+            try {
+                getClient().getServerSocket().close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            */
+        });
         this.primaryStage = primaryStage;
         switchToLoginScene();
-        // switchToMainBoard();
         primaryStage.show();
     }
 

@@ -15,17 +15,20 @@ public class WinnerController {
     @FXML
     private FlowPane wizardWinnerContainer;
 
-    public void initialize(){
+    public void initialize() {
         GUI view = (GUI) GuiStarter.getCurrentApplication().getClient().getView();
 
+        //showing nickname of player winner
         winnerText.setText(view.getWinnerUsername());
         winnerText.setStyle("-fx-effect:  dropshadow(three-pass-box,  yellow, 100, 0.3, 0, 0)");
 
+        //finding of player winner
         Player player = null;
-        for(Player p : view.getPlayers())
-            if(p.getNickName().equals(view.getWinnerUsername()))
-                player=p;
+        for (Player p : view.getPlayers())
+            if (p.getNickName().equals(view.getWinnerUsername()))
+                player = p;
 
+        //image capturing of wizard winner
         String path = "assets/Raw/Carte_retro/MAGO_" + WizardType.getIndex(player.getDeck().getWizard()) + "_1.jpg";
         javafx.scene.image.ImageView im = new ImageView(path);
         im.setFitHeight(200);

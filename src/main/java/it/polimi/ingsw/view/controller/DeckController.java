@@ -5,15 +5,12 @@ import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.MessageType;
 import it.polimi.ingsw.view.GuiStarter;
 import it.polimi.ingsw.view.View;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
@@ -35,8 +32,8 @@ public class DeckController {
 
         for (AssistantCard card : GuiStarter.getCurrentApplication().getClient().getView().getPlayer().getDeck().getCards())
             array.add(card.getValue());
-        for(Player p : GuiStarter.getCurrentApplication().getClient().getView().getPlayers()){
-            if(p.getLastAssistantCard()!=null) {
+        for (Player p : GuiStarter.getCurrentApplication().getClient().getView().getPlayers()) {
+            if (p.getLastAssistantCard() != null) {
                 VBox vBox = new VBox();
                 Text nick = new Text(p.getNickName() + " chose:");
                 nick.setFont(Font.font("System", FontWeight.BOLD, 20));
@@ -57,7 +54,7 @@ public class DeckController {
         }
 
         for (int i : array) {
-            String path = "assets/Assistenti/2x/Assistente("+(i)+").png";
+            String path = "assets/Assistenti/2x/Assistente(" + (i) + ").png";
             ImageView im2 = new ImageView(path);
             im2.setFitHeight(200);
             im2.setFitWidth(150);
@@ -68,61 +65,44 @@ public class DeckController {
             button.setPrefHeight(200);
             button.setPrefWidth(130);
 
-            button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent e) {
-                    im2.setStyle("-fx-effect:  dropshadow(gaussian, rgba(255, 255, 255 , 255), 30, 0.7, 0, 0)");
+            button.setOnMouseEntered(e -> im2.setStyle("-fx-effect:  dropshadow(gaussian, rgba(255, 255, 255 , 255), 30, 0.7, 0, 0)"));
+
+            button.setOnMouseExited(e -> im2.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0)"));
+
+            button.setOnAction(event -> {
+                View view = GuiStarter.getCurrentApplication().getClient().getView();
+                boolean invalidInput = false;
+                ArrayList<Integer> alreadyUsed = new ArrayList<>();
+                for (Player p : view.getPlayers()) {
+                    if (p.getLastAssistantCard() != null) {
+                        alreadyUsed.add(p.getLastAssistantCard().getValue());
+                    }
                 }
-            });
-
-            button.setOnMouseExited(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent e) {
-                    im2.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0)");
+                ArrayList<Integer> availableOnes = new ArrayList<>();
+                for (AssistantCard ac : view.getPlayer().getDeck().getCards()) {
+                    if (!ac.isConsumed()) {
+                        availableOnes.add(ac.getValue());
+                    }
                 }
-            });
+                if ((availableOnes.containsAll(alreadyUsed) && alreadyUsed.containsAll(availableOnes)) || (availableOnes.size() < alreadyUsed.size() && alreadyUsed.containsAll(availableOnes))) {
+                    invalidInput = false;
+                    System.out.println("dentro l'if strano + - - ");
+                } else if (alreadyUsed.contains(i)) {
+                    invalidInput = true;
+                    System.out.println("fuori dall'if strano + - - ");
 
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    View view = GuiStarter.getCurrentApplication().getClient().getView();
-                    boolean invalidInput = false;
-                    ArrayList<Integer> alreadyUsed = new ArrayList<>();
-                    for(Player p : view.getPlayers()){
-                        if(p.getLastAssistantCard()!=null) {
-                            alreadyUsed.add(p.getLastAssistantCard().getValue());
-                        }
-                    }
-                    ArrayList<Integer> availableOnes = new ArrayList<>();
-                    for(AssistantCard ac : view.getPlayer().getDeck().getCards()){
-                        if(!ac.isConsumed()){
-                            availableOnes.add(ac.getValue());
-                        }
-                    }
-                    if((availableOnes.containsAll(alreadyUsed) && alreadyUsed.containsAll(availableOnes))
-                    ||(availableOnes.size()<alreadyUsed.size() && alreadyUsed.containsAll(availableOnes))){
-                        invalidInput=false;
-                        System.out.println("dentro l'if strano + - - ");
-                    }
-                    else if (alreadyUsed.contains(i)){
-                        invalidInput = true;
-                        System.out.println("fuori dall'if strano + - - ");
+                }
+                System.out.println("fuori da entrambi gli if else strani");
 
-                    }
-                    System.out.println("fuori da entrambi gli if else strani");
-
-                    if(invalidInput){
-                        GuiStarter.getCurrentApplication().showError("invalid card");
-                    }
-                    else {
-                        System.out.println(i + ") card clicked");
-                        view.setChosenAssistantCard(view.getPlayer().getDeck().getCards().get(i - 1));
-                        view.getPlayer().getDeck().getCards().get(i - 1).setConsumed(true);
-                        //view.getPlayer().getDeck().getCards().remove(i-1);
-                        view.prepareMessage();
-                        GuiStarter.getCurrentApplication().closeAssistantStage();
-                        GuiStarter.getCurrentApplication().switchToMainBoard();
-                    }
+                if (invalidInput) {
+                    GuiStarter.getCurrentApplication().showError("invalid card");
+                } else {
+                    System.out.println(i + ") card clicked");
+                    view.setChosenAssistantCard(view.getPlayer().getDeck().getCards().get(i - 1));
+                    view.getPlayer().getDeck().getCards().get(i - 1).setConsumed(true);
+                    view.prepareMessage();
+                    GuiStarter.getCurrentApplication().closeAssistantStage();
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
                 }
             });
 
@@ -131,12 +111,12 @@ public class DeckController {
             anchorPane.getChildren().add(button);
             View view = GuiStarter.getCurrentApplication().getClient().getView();
 
-            if(!view.getPlayer().getDeck().getCards().get(i-1).isConsumed()) {
+            if (!view.getPlayer().getDeck().getCards().get(i - 1).isConsumed()) {
                 assistantContainer.getChildren().add(anchorPane);
             }
             GuiStarter.getCurrentApplication().getClient().getView().setMessageType(MessageType.ASSISTANT_CARD);
 
-            }
+        }
 
     }
 }

@@ -1,9 +1,7 @@
 package it.polimi.ingsw.view.controller;
 
 import it.polimi.ingsw.view.GuiStarter;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -20,19 +18,9 @@ public class LobbyController {
 
     public void initialize() {
 
-        titleWaiting.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
-                titleWaiting.setStyle("-fx-effect:  dropshadow(gaussian, rgba(255, 255, 255 , 255), 15, 0.2, 0, 0)");
-            }
-        });
+        titleWaiting.setOnMouseEntered(e -> titleWaiting.setStyle("-fx-effect:  dropshadow(gaussian, rgba(255, 255, 255 , 255), 15, 0.2, 0, 0)"));
 
-        titleWaiting.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
-                titleWaiting.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0)");
-            }
-        });
+        titleWaiting.setOnMouseExited(e -> titleWaiting.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0)"));
 
         ArrayList<String> array = GuiStarter.getCurrentApplication().getClient().getView().getPlayersUsername();
 
@@ -44,9 +32,6 @@ public class LobbyController {
             nickname.setFont(Font.font("System", FontWeight.BOLD, 20));
             playersContainer.getChildren().add(nickname);
         }
-
-
-        //GuiStarter.getCurrentApplication().getClient().getNet().prepare_msg();
     }
 }
 

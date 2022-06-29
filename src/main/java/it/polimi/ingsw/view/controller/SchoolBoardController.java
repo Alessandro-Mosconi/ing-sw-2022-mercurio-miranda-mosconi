@@ -6,13 +6,8 @@ import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.model.TowerColor;
 import it.polimi.ingsw.view.GUI;
 import it.polimi.ingsw.view.GuiStarter;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Cursor;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -22,12 +17,9 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class SchoolBoardController {
@@ -35,84 +27,78 @@ public class SchoolBoardController {
     @FXML
     private GridPane towerContainer;
     @FXML
-    private  GridPane hall;
+    private GridPane hall;
     @FXML
-    private  GridPane entrance;
+    private GridPane entrance;
     @FXML
     private Polygon blueProf;
     @FXML
-    private  Polygon redProf;
+    private Polygon redProf;
     @FXML
-    private  Polygon greenProf;
+    private Polygon greenProf;
     @FXML
-    private  Polygon yellowProf;
+    private Polygon yellowProf;
     @FXML
-    private  Polygon pinkProf;
+    private Polygon pinkProf;
     @FXML
-    private  Text playerNick;
+    private Text playerNick;
     @FXML
     private HBox infoContainer;
 
-    public void initialize(){
+    public void initialize() {
 
         GUI view = (GUI) GuiStarter.getCurrentApplication().getClient().getView();
         Player player = view.getPlayerSchoolboard();
         playerNick.setText(player.getNickName());
-        if(view.getGamemode().equals(GameMode.expert))
-        {
-            Text wallet= new Text("  Wallet: " + player.getWallet());
+        if (view.getGamemode().equals(GameMode.expert)) {
+            Text wallet = new Text("  Wallet: " + player.getWallet());
             wallet.setFont(Font.font("System", 15));
             infoContainer.getChildren().add(wallet);
         }
         showSchoolBoard(player);
     }
 
-    public void showSchoolBoard(Player player){
+    public void showSchoolBoard(Player player) {
 
+        //graphic tower creation
         ArrayList<Shape> towers = new ArrayList<>();
-
-        int col=0, row=0;
-        for (int i =0; i<player.getSchoolBoard().getTowersNumber(); i++)
-        {
+        int col = 0, row = 0;
+        for (int i = 0; i < player.getSchoolBoard().getTowersNumber(); i++) {
             towers.add(new Rectangle(0.0, 0.0, 40, 40));
             towers.get(i).setFill(TowerColor.getColor(player.getSchoolBoard().getTowersColor()));
             towers.get(i).setStroke(Color.BLACK);
             towerContainer.add(towers.get(i), col, row, 1, 1);
             towerContainer.setAlignment(Pos.CENTER);
             col++;
-            if(col==4)
-            {
-                col=0;
+            if (col == 4) {
+                col = 0;
                 row++;
             }
         }
 
+        //graphic hall creation
         ArrayList<Shape> hallTable = new ArrayList<>();
         Map<PawnColor, Integer> map = player.getSchoolBoard().getStudentHall();
-
         hall.setHgap(5);
         hall.setVgap(5);
-        for (int c=0; c<5; c++)
-            for(int r=0; r<10; r++)
-            {
+        for (int c = 0; c < 5; c++)
+            for (int r = 0; r < 10; r++) {
                 hallTable.add(new Circle(0.0, 0.0, 15));
-                hallTable.get((c*10)+r).setFill(PawnColor.getColor(c));
-                hallTable.get((c*10)+r).setStroke(Color.WHITE);
-                if(r<map.get(PawnColor.getIndex(c)))
-                    hall.add(hallTable.get((c*10)+r), c, r, 1, 1);
+                hallTable.get((c * 10) + r).setFill(PawnColor.getColor(c));
+                hallTable.get((c * 10) + r).setStroke(Color.WHITE);
+                if (r < map.get(PawnColor.getIndex(c)))
+                    hall.add(hallTable.get((c * 10) + r), c, r, 1, 1);
             }
 
-        col=0;
-        row=0;
-        int num=0;
-
+        //graphic entrance creation
         ArrayList<Button> entranceTable = new ArrayList<>();
         map = player.getSchoolBoard().getStudentEntrance();
-
-        for(PawnColor color: PawnColor.values())
-        {
-            num=map.get(color);
-            while(num!=0) {
+        col = 0;
+        row = 0;
+        int num;
+        for (PawnColor color : PawnColor.values()) {
+            num = map.get(color);
+            while (num != 0) {
                 entranceTable.add(new Button());
                 entranceTable.get((row * 5) + col).setDisable(true);
                 entranceTable.get((row * 5) + col).setStyle("-fx-border-color: white; -fx-opacity: 1; -fx-background-color: " + color.toString());
@@ -129,12 +115,9 @@ public class SchoolBoardController {
             }
         }
 
-
-
+        //setting professors visibility
         Map<PawnColor, Boolean> prof = player.getSchoolBoard().getProfessorTable();
-
-        for(PawnColor color : PawnColor.values())
-        {
+        for (PawnColor color : PawnColor.values()) {
             if (color == PawnColor.blue)
                 blueProf.setVisible(prof.get(color));
             if (color == PawnColor.pink)
