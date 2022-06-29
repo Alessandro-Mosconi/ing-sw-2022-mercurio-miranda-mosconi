@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: radial-gradient(focus-distance 0% , center 50% 50% , radius 80% , #88c7dc, #99bcff);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.controller.MainBoardController">
+   <children>
+      <AnchorPane>
+         <children>
+            <ImageView fitHeight="720.0" fitWidth="372.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 15, 0, 0, 0);">
+               <image>
+                  <Image url="@assets/Plancia/Plancia_DEF2-vertical.png" />
+               </image>
+            </ImageView>
+            <VBox layoutX="9.0" layoutY="4.0" prefHeight="714.0" prefWidth="302.0">
+               <children>
+                  <AnchorPane prefHeight="160.0" prefWidth="302.0">
+                     <children>
+                        <GridPane fx:id="towerContainer" layoutX="54.0" layoutY="38.0" prefHeight="100.0" prefWidth="191.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="10.0" layoutY="104.0" prefHeight="67.0" prefWidth="302.0">
+                     <children>
+                        <GridPane fx:id="profContainer" layoutX="27.0" layoutY="10.0" prefHeight="46.0" prefWidth="254.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Polygon fx:id="greenProf" points="-113.00000762939453, -79.0, -101.00000762939453, -96.60000610351562, -113.00000762939453, -113.39999389648438, -129.0, -113.39999389648438, -138.60000610351562, -96.60000610351562, -129.0, -79.0" stroke="WHITE" strokeType="INSIDE">
+                                 <fill>
+                                    <RadialGradient centerX="0.5308369960028695" centerY="0.4810606060606061" focusDistance="-0.018348606354599672" radius="1.0">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.1568627506494522" green="0.6196078658103943" blue="0.1725490242242813" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="0.582456111907959" green="0.8736842274665833" blue="0.5921637415885925" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </fill>
+                              </Polygon>
+                              <Polygon fx:id="redProf" points="-113.00000762939453, -79.0, -101.00000762939453, -96.60000610351562, -113.00000762939453, -113.39999389648438, -129.0, -113.39999389648438, -138.60000610351562, -96.60000610351562, -129.0, -79.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="1">
+                                 <fill>
+                                    <RadialGradient centerX="0.5308369960028695" centerY="0.4810606060606061" focusDistance="-0.018348606354599672" radius="1.0">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.8100000023841858" green="0.33371999859809875" blue="0.299699991941452" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="0.9157894849777222" green="0.5612319707870483" blue="0.5359064340591431" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </fill>
+                              </Polygon>
+                              <Polygon fx:id="yellowProf" points="-113.00000762939453, -79.0, -101.00000762939453, -96.60000610351562, -113.00000762939453, -113.39999389648438, -129.0, -113.39999389648438, -138.60000610351562, -96.60000610351562, -129.0, -79.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="2">
+                                 <fill>
+                                    <RadialGradient centerX="0.5308369960028695" centerY="0.4810606060606061" focusDistance="-0.018348606354599672" radius="0.697247688923407">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.9882352948188782" green="0.886274516582489" blue="0.019607843831181526" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="1.0" green="1.0" blue="1.0" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </fill>
+                              </Polygon>
+                              <Polygon fx:id="pinkProf" points="-113.00000762939453, -79.0, -101.00000762939453, -96.60000610351562, -113.00000762939453, -113.39999389648438, -129.0, -113.39999389648438, -138.60000610351562, -96.60000610351562, -129.0, -79.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="3">
+                                 <fill>
+                                    <RadialGradient centerX="0.5308369960028695" centerY="0.4810606060606061" focusDistance="-0.018348606354599672" radius="1.0">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="1.0" green="0.4117647111415863" blue="0.7058823704719543" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="0.9894737005233765" green="0.9015204906463623" blue="0.9469629526138306" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </fill>
+                              </Polygon>
+                              <Polygon fx:id="blueProf" points="-113.00000762939453, -79.0, -101.00000762939453, -96.60000610351562, -113.00000762939453, -113.39999389648438, -129.0, -113.39999389648438, -138.60000610351562, -96.60000610351562, -129.0, -79.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="4">
+                                 <fill>
+                                    <RadialGradient centerX="0.5308369960028695" centerY="0.4810606060606061" focusDistance="-0.018348606354599672" radius="0.697247688923407">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.12941177189350128" green="0.5372549295425415" blue="1.0" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="0.5185185074806213" green="0.7592592835426331" blue="1.0" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </fill>
+                              </Polygon>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="381.0" prefWidth="302.0">
+                     <children>
+                        <GridPane fx:id="hall" layoutX="29.0" layoutY="15.0" prefHeight="343.0" prefWidth="250.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                        <Button fx:id="hallButton" mnemonicParsing="false" prefHeight="382.0" prefWidth="302.0" style="-fx-background-color: transparent;" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="100.0" prefWidth="302.0">
+                     <children>
+                        <GridPane fx:id="entrance" layoutX="27.0" layoutY="11.0" prefHeight="80.0" prefWidth="250.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                           </children>
+
+                              </GridPane>
+
+                           </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <FlowPane alignment="BOTTOM_CENTER" columnHalignment="CENTER">
+         <children>
+            <GridPane fx:id="islandContainer" prefHeight="500.0" prefWidth="590.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <FlowPane fx:id="cloudContainer" alignment="CENTER" columnHalignment="CENTER" prefHeight="193.0" prefWidth="614.0">
+               <children>
+
+               </children>
+            </FlowPane>
+         </children>
+      </FlowPane>
+      <VBox fx:id="vboxContainer" prefHeight="724.0" prefWidth="150.0">
+         <children>
+            <FlowPane alignment="CENTER" prefHeight="129.0" prefWidth="150.0" style="-fx-background-radius: 85px; -fx-background-color: white;">
+               <children>
+                  <Text fx:id="playerNick" strokeType="OUTSIDE" strokeWidth="0.0" text="MainPlayer" wrappingWidth="82.13671875">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </FlowPane.margin>
+                  </Text>
+                  <Text fx:id="wallet" strokeType="OUTSIDE" strokeWidth="0.0" text="Wallet:" wrappingWidth="82.13671875">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </FlowPane.margin>
+                  </Text>
+               </children>
+            </FlowPane>
+            <FlowPane fx:id="infoContainer" alignment="CENTER" columnHalignment="CENTER" hgap="20.0" prefHeight="0.0" prefWidth="150.0" vgap="20.0">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="10.0" />
+               </VBox.margin></FlowPane>
+            <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="0.0" prefWidth="150.0" vgap="20.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="5.0" />
+               </VBox.margin>
+               <children>
+                  <Text fx:id="effectActive" strokeType="OUTSIDE" strokeWidth="0.0" />
+               </children>
+            </FlowPane>
+         </children>
+      </VBox>
+   </children>
+</FlowPane>

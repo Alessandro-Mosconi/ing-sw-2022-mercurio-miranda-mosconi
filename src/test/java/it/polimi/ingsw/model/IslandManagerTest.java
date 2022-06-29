@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static it.polimi.ingsw.model.TowerColor.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static it.polimi.ingsw.model.TowerColor.black;
+import static it.polimi.ingsw.model.TowerColor.white;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class IslandManagerTest {
 

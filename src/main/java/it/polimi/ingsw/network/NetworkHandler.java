@@ -2,23 +2,42 @@ package it.polimi.ingsw.network;
 
 import com.google.gson.Gson;
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.view.CLI;
+import it.polimi.ingsw.view.GUI;
+import it.polimi.ingsw.view.GuiStarter;
 import it.polimi.ingsw.view.View;
+import javafx.application.Application;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NetworkHandler {
-
-
+public class NetworkHandler implements Runnable {
     private PrintWriter out;
     private BufferedReader in;
     private View view;
-    private Phase previousPhase;
+    private Phase previousPhase = Phase.LOGIN;
     private Phase phase;
     private Phase nextPhase;
+    private boolean isGui = false;
+    private GuiStarter currentapplication;
+
+    public void setCurrentapplication(GuiStarter currentapplication) {
+        this.currentapplication = currentapplication;
+    }
+
+    public boolean isGui() {
+        return isGui;
+    }
+
+    public void setGui(boolean gui) {
+        isGui = gui;
+    }
 
     public NetworkHandler(PrintWriter out, BufferedReader in, View view) {
         this.out = out;
@@ -27,14 +46,68 @@ public class NetworkHandler {
         this.phase = Phase.LOGIN;
     }
 
-    public synchronized String send_msg() {
+    /**
+     * Starts an infinite while through which messages from/to the server are received/sent in case the client is using a CLI.
+     * @throws IOException when errors in socket reading/writing occur.
+     */
+    public void start() throws IOException {
+        while (true) {
+            String input = in.readLine();
+            String output=null;
+
+            if (input != null)
+                if (!input.equals("ping")) {
+                    System.out.println("processing...");
+                    process(input);
+                    if(view.isUpdated()){
+                        view.setUpdated(false);
+                        out.println("MODEL_UPDATED");
+                    }
+                    else {
+                        output = prepare_msg();
+                        System.out.println("Ora invio questo msg: "+ output);
+                        out.println(output);
+                    }
+                }
+        }
+    }
+
+    /**
+     * Starts an infinite while through which messages from the server are received in case the client is using a GUI.
+     * @throws IOException when errors in socket reading occur.
+     */
+    public void startGUI() throws IOException {
+        view.setNetworkHandler(this);
+
+        while (true) {
+            String input = in.readLine();
+            String output = null;
+
+            if (input != null)
+                if (!input.equals("ping")) {
+                    System.out.println("processing...");
+                    process(input);
+                }
+        }
+    }
+
+
+    /**
+     * Creates and standardize in gson format the message to be sent.
+     * @return the message ready to be sent.
+     */
+    public synchronized String prepare_msg() {
         Message msg_out = new Message(view.getUsername());
 
         Gson gson = new Gson();
         ArrayList<String> payloads = new ArrayList<>();
+        System.out.println("la fase della view è : " + view.getPhase());
+        view.setPhase(phase);
+        System.out.println("Questa è la fase del nw:" + phase);
         switch (phase) {
             case LOGIN -> {
                 view.login();
+
                 msg_out.setUser(view.getUsername());
                 view.getPlayer().setNickName(view.getUsername());
                 payloads.add(view.getUsername());
@@ -57,6 +130,7 @@ public class NetworkHandler {
             }
             case PLANNING -> {
                 view.chooseAssistantCard();
+
                 msg_out.setType(MessageType.ASSISTANT_CARD);
                 payloads.add(view.getChosenAssistantCard().getValue().toString());
                 view.setCardUsed(false);
@@ -64,6 +138,7 @@ public class NetworkHandler {
             }
             case CHOOSING_FIRST_MOVE -> {
                 view.choosePawnMove();
+
                 msg_out.setType(view.getMessageType());
                 if (view.getMessageType().equals(MessageType.PAWN_MOVE)) {
                     payloads.add(view.getColorToMove().toString());
@@ -125,12 +200,17 @@ public class NetworkHandler {
                 msg_out.fill("WAITING");
             }
         }
+        previousPhase = phase;
         phase = Phase.WAITING;
         msg_out.fill(payloads);
         System.out.println("sending... " + msg_out.toSend());
         return msg_out.toSend();
     }
 
+    /**
+     * Creates and standardize in gson format a message to indicate that the client chose to use a character card and the parameter that card needs.
+     * @return the mmessage ready to be sent.
+     */
     private String characterCardToSend() {
         Message cardMsg = new Message();
         ArrayList<String> payloads = new ArrayList<>();
@@ -168,6 +248,10 @@ public class NetworkHandler {
         return cardMsg.toSend();
     }
 
+    /**
+     * Reads from a gson input and processes what it has to according to what's read.
+     * @param input the message to be read.
+     */
     public synchronized void process(String input) {
         System.out.println("receiving... " + input);
         if (input.equals("ACK")) return;
@@ -175,30 +259,55 @@ public class NetworkHandler {
         Message msg_in = gson.fromJson(input, Message.class);
         Message msg_out = new Message(msg_in.getUser());
         ArrayList<String> payloads;
+
+        view.setPhase(phase);
+        if(msg_in.getType() != null)
         switch (msg_in.getType()) {
             case ERROR -> {
                 System.out.println("Error:" + msg_in.getPayload());
+                if(isGui) {
+                    if(isGui) GuiStarter.getCurrentApplication().showError(msg_in.getPayload());
+                }
                 phase = previousPhase;
             }
             case LOBBY_WAITING -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 GameMode gm = GameMode.valueOf(String.valueOf(payloads.get(0)));
+                Integer numOfPlayers = Integer.valueOf(payloads.get(1));
+                ArrayList<String> userList = new ArrayList<>();
+                if (payloads.size()>2) {
+                    userList = gson.fromJson(payloads.get(2), ArrayList.class);
+                    view.setPlayersUsername(userList);
+                }
+                else userList.add(view.getUsername());
+
+                view.setPlayersUsername(userList);
+                view.setPlayerNumber(numOfPlayers);
                 view.setGamemode(gm);
+
+                if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene();
                 phase = Phase.WAITING;
                 nextPhase = Phase.SETTINGS;
             }
             case LOBBY_UPDATED -> {
                 System.out.println("Lobby updated ok");
+                //if(view.getPlayersUsername()!=null)
+                //view.getPlayersUsername().add(msg_in.getPayload());
+                if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene(); //todo ricarica la pag ma non la aggiorna
             }
-            case ASK_FOR_SETTINGS -> {
+            /*case ASK_FOR_SETTINGS -> {
+                System.out.println("settings");
+                if(isGui) GuiStarter.getCurrentApplication().switchToWizardsScene();
                 phase = Phase.SETTINGS;
-            }
+            }*/
             case WAIT -> {
                 phase = Phase.WAITING;
-                System.out.println("ok aspetto\n");
+                if(isGui)GuiStarter.getCurrentApplication().waitForYourTurn();
             }
             case IS_YOUR_TURN, ACK, CARD_ACTIVATED -> {
                 phase = nextPhase;
+                view.setPhase(phase);
+                if (isGui)  view.processScene();
             }
             case AVAILABLE_WIZARDS -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -207,6 +316,7 @@ public class NetworkHandler {
                     availableWizards.add(WizardType.valueOf(payloads.get(i)));
                 }
                 view.setWizards(availableWizards);
+
             }
             case AVAILABLE_TOWER_COLORS -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -233,10 +343,14 @@ public class NetworkHandler {
                         }
                     }
                 }
-                view.showUsedAssistantCards();
+                if(isGui)
+                view.showUsedAssistantCards(); //TODO serve?
+                else
+                    view.showTable();
                 /*bisogna che il client non posssa selezionare carte dello stesso valore di quelle usate dai client
                  precedenti + gestire caso in cui l'ultima carta è necessariamente uguale (if deck.size()==1)-> salta check else ->check */
             }
+
             case UPDATE_ISLAND -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
                 Integer idIsland = Integer.parseInt(payloads.get(0));
@@ -254,6 +368,21 @@ public class NetworkHandler {
                         i.setIslandStudents(islandStudents);
                     }
                 }
+                view.showTable();
+            }
+            case UPDATE_TOWERS_NUM -> {
+                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
+                String playerID = payloads.get(0);
+                Integer tNum = Integer.parseInt(payloads.get(1));
+                for(Player p : view.getPlayers()){
+                    if (p.getNickName().equals(playerID)){
+                        p.getSchoolBoard().setTowersNumber(tNum);
+                    }
+                }
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
             case UPDATE_SCHOOL_BOARD_ENTRANCE -> {
                 System.out.println("Ho ricevuto "+ input);
@@ -276,6 +405,12 @@ public class NetworkHandler {
                         }
                     }
                 }
+
+                System.out.println("la vera ora è " + view.getPhase());
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
             case UPDATE_SCHOOL_BOARD_HALL -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -297,6 +432,10 @@ public class NetworkHandler {
                         }
                     }
                 }
+
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
+                else view.showTable();
             }
             case UPDATE_PROFESSORS -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -318,6 +457,10 @@ public class NetworkHandler {
                         }
                     }
                 }
+
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
+                else view.showTable();
             }
             case UPDATE_ISLAND_LIST -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -348,6 +491,11 @@ public class NetworkHandler {
                     islandList.add(new Island(Integer.parseInt(islandID), islandMap, tc, tn, isNET, isMN));
                 }
                 view.getIslandManager().setIslandList(islandList);
+
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
             case UPDATE_CLOUDTILES -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -371,6 +519,12 @@ public class NetworkHandler {
                     clouds.add(new CloudTile(ctID,map));
                 }
                 view.setClouds(clouds);
+
+
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
             case SETUP_PLAYERS -> {
                 payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
@@ -384,14 +538,18 @@ public class NetworkHandler {
                     i++;
                     TowerColor tc = TowerColor.valueOf(payloads.get(i));
                     Player p = new Player();
+                    if(payloads.size()==8){
+                        p.getSchoolBoard().setTowersNumber(8);
+                    }else if(payloads.size()==12){
+                        p.getSchoolBoard().setTowersNumber(6);
+                    }
                     p.setNickName(nickname);
                     p.setPlayerNumber(playerNumber);
                     p.setDeck(new Deck(wt));
                     p.getSchoolBoard().setTowersColor(tc);
                     players.add(p);
                     if(p.getNickName().equals(view.getUsername())){
-                        view.setPlayer(p);
-                    }
+                        view.setPlayer(p);}
                 }
                 view.setPlayers(players);
             }
@@ -399,9 +557,9 @@ public class NetworkHandler {
                 view.showTable();
             }
             case GAME_ENDED -> {
-                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                String winnerID = payloads.get(0);
+                String winnerID = gson.fromJson(msg_in.getPayload(), String.class);
                 phase = Phase.END_GAME;
+                nextPhase = Phase.WAITING;
                 view.showEndGameWindow(winnerID);
                 //TODO mandare al server il messaggio che la partita finisce e chiudere le socket?
             }
@@ -417,12 +575,20 @@ public class NetworkHandler {
                         }
                     }
                 }
+
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
             case UPDATE_MAX_SHIFT ->{
                 payloads = gson.fromJson(msg_in.getPayload(),ArrayList.class);
                 if(payloads.get(0).equals(view.getPlayer().getNickName())){
                     view.getPlayer().setMaxShift(view.getPlayer().getMaxShift()+2);
                 }
+
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
             }
             case PRICE_INCREASE -> {
                 payloads = gson.fromJson(msg_in.getPayload(),ArrayList.class);
@@ -558,6 +724,11 @@ public class NetworkHandler {
                         }
                     }
                 }
+
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
             case SOMEONE_ACTIVATED_AN_EFFECT -> {
                 payloads = gson.fromJson(msg_in.getPayload(),ArrayList.class);
@@ -565,11 +736,43 @@ public class NetworkHandler {
                 Integer cardID = Integer.parseInt(payloads.get(1));
                 view.setCardUsed(true);
                 view.setActiveEffect(currUser + " used the character card n." + cardID);
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
             case EFFECT_ENDED -> {
                 view.setCardUsed(false);
+                if(isGui)
+                    GuiStarter.getCurrentApplication().switchToMainBoard();
+                else
+                    view.showTable();
             }
         }
     }
 
+
+    /**
+     * Starts a GUI.
+     */
+    @Override
+    public void run() {
+        try {
+            startGUI();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    /**
+     * Writes on the socket to communicate to the server the user's request.
+     */
+    public void sendMessage() {
+        System.out.println("mando msg: 1");
+        System.out.println("il nw è in phase " + phase);
+        String output = prepare_msg();
+        System.out.println("mando msg: " + output);
+        out.println(output);
+    }
 }

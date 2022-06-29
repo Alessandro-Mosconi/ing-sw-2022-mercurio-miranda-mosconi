@@ -7,10 +7,13 @@ import java.net.SocketTimeoutException;
 import java.util.Scanner;
 
 
-public class Server
-{
-    public static void main(String[] args)
-    {
+public class Server {
+
+    /**
+     * Opens a socket and accepts clients.
+     * @param args -
+     */
+    public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         int socketPort = 1234;

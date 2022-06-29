@@ -1,9 +1,14 @@
 package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.ModelListener;
-import it.polimi.ingsw.virtualview.VirtualView;
+import it.polimi.ingsw.network.VirtualView;
 
 public class LobbyState implements GameControllerState{
+
+    /**
+     * Decreases the number of players that still need to join.
+     * @param gameController is the given controller.
+     */
     @Override
     public void startState(GameController gameController) {
         int totPlayers=gameController.getGame().getNumberOfPlayers();
@@ -15,6 +20,10 @@ public class LobbyState implements GameControllerState{
         }
     }
 
+    /**
+     * Checks whether the lobby is full or not and sets the next state to a new GeneratePlayerState (in the case the lobby is full) or a new LobbyState.
+     * @param gameController is the given controller.
+     */
     @Override
     public void updateNextState(GameController gameController) {
         if(gameController.getPlayersToGo()==0){
@@ -28,6 +37,10 @@ public class LobbyState implements GameControllerState{
         }
     }
 
+    /**
+     * Does nothing.
+     * @param gameController is the given controller.
+     */
     @Override
     public void endState(GameController gameController) {
 

@@ -48,9 +48,19 @@ public class CloudTile {
     public void setStudents(PawnColor color, int n) {
         this.students.replace(color,n);
     }
+
+    /**
+     * Adds to this cloud tile a student of a given color.
+     * @param color is the color of the student that has to be added on this cloud.
+     */
     public void addStudents(PawnColor color) {
         this.students.replace(color, this.students.get(color)+1);
     }
+
+    /**
+     * Sets to 0 the number of pawns of a given color.
+     * @param color PawnColor of which this cloud's students number has to be set to 0.
+     */
     public void reset(PawnColor color) {
         this.students.replace(color, 0);
     }

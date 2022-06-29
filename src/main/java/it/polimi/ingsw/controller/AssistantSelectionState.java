@@ -2,10 +2,14 @@ package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.AssistantCard;
 import it.polimi.ingsw.model.Player;
-import it.polimi.ingsw.virtualview.VirtualView;
+import it.polimi.ingsw.network.VirtualView;
 
 public class AssistantSelectionState implements GameControllerState{
 
+    /**
+     * Takes from the current Virtual View the chosen assistant card and performs the corresponding action on the model.
+     * @param gameController is the given controller.
+     */
     @Override
     public void startState(GameController gameController) {
         gameController.setErrorFlag(false);
@@ -19,6 +23,10 @@ public class AssistantSelectionState implements GameControllerState{
         }
         else gameController.setErrorFlag(true);
     }
+    /**
+     * Checks whether each user chose an assistant card or not. In that case, it fills the cloud tiles on the model and updates the playing order,
+     * @param gameController is the given controller.
+     */
     @Override
     public void updateNextState(GameController gameController) {
         if(gameController.getPlayersToGo()!=0){
@@ -43,6 +51,10 @@ public class AssistantSelectionState implements GameControllerState{
             gameController.nextVirtualView();
         }
     }
+    /**
+     * Does nothing.
+     * @param gameController is the given controller.
+     */
     @Override
     public void endState(GameController gameController) {
         gameController.setPreviousState(this);

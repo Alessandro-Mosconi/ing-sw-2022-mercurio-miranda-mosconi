@@ -1,8 +1,6 @@
 package it.polimi.ingsw.model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Deck {
     private ArrayList<AssistantCard> cards;

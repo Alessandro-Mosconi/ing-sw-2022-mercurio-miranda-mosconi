@@ -1,14 +1,16 @@
 package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.model.*;
-import it.polimi.ingsw.network.Message;
 import it.polimi.ingsw.network.MessageType;
+import it.polimi.ingsw.network.NetworkHandler;
+import it.polimi.ingsw.network.Phase;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public abstract class View {
     protected String username;
+    private GuiStarter guiStarter;
+    protected Phase phase;
     protected String idGame;
     protected GameMode gamemode;
     protected Integer playerNumber;
@@ -34,8 +36,44 @@ public abstract class View {
     protected Integer chosenCloudPos;
     protected Integer chosenIslandPos;
     protected String activeEffect;
+    protected String serverIP;
+    protected int serverPort;
 
+    public GuiStarter getGuiStarter() {
+        return guiStarter;
+    }
+    public Phase getPhase() {
+        return phase;
+    }
 
+    public void setPhase(Phase phase) {
+        this.phase = phase;
+    }
+
+    public NetworkHandler getNetworkHandler() {
+        return networkHandler;
+    }
+
+    public void setNetworkHandler(NetworkHandler networkHandler) {
+        this.networkHandler = networkHandler;
+    }
+
+    private NetworkHandler networkHandler;
+
+    public int getServerPort() {
+        return serverPort;
+    }
+    public void setServerPort(int serverPort) {
+        this.serverPort = serverPort;
+    }
+    public String getServerIP() {
+        return serverIP;
+    }
+    public void setServerIP(String serverIP) {
+        this.serverIP = serverIP;
+    }
+    public void connect(){
+    }
     public String getActiveEffect() {
         return activeEffect;
     }
@@ -54,10 +92,14 @@ public abstract class View {
 
     protected Parameter parameter = new Parameter();
 
+
+    public boolean getCardUsed() {
+        return cardUsed;
+    }
+
     public void setCardUsed(boolean cardUsed) {
         this.cardUsed = cardUsed;
     }
-
     protected boolean cardUsed = false;
 
 
@@ -249,7 +291,6 @@ public abstract class View {
         this.player = player;
     }
 
-
     public ArrayList<CloudTile> getClouds() {
         return clouds;
     }
@@ -287,5 +328,11 @@ public abstract class View {
     public abstract void showUsedAssistantCards();
 
     public void showEndGameWindow(String winnerID) {
+    }
+
+    public void prepareMessage() {
+    }
+
+    public void processScene() {
     }
 }

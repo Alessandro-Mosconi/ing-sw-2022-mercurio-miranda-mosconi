@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<!--
+<AnchorPane prefHeight="54.0" prefWidth="297.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.LoginControllerroller">
+   <children>
+      <Button fx:id="button" layoutX="190.0" layoutY="14.0" mnemonicParsing="false" onAction="#buttonClicked" text="-&gt;" />
+      <Label fx:id="label" layoutX="232.0" layoutY="19.0" text="Label" />
+      <TextField fx:id="textField" layoutX="14.0" layoutY="14.0" />
+   </children>
+</AnchorPane>
+-->
+
+<GridPane alignment="center" hgap="10" prefHeight="400.0" prefWidth="720.0" vgap="10" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.controller.LoginController">
+   <padding><Insets bottom="10" left="25" right="25" top="25" /></padding>
+   <!--<gridLinesVisible>true</gridLinesVisible>-->
+
+   <!--
+   <Text text="Eriantys"
+         GridPane.columnIndex="0" GridPane.rowIndex="0"
+         GridPane.columnSpan="2"/>
+    -->
+
+   <Label id="text" stylesheets="@LoginStyle.css" text="Username" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+   <TextField fx:id="username" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+   <Label id="text" text="Server Port" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+   <TextField fx:id="serverPort" text="1234" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+   <Label id="text" text="Server IP" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+   <TextField fx:id="serverIP" text="127.0.0.1" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+
+   <HBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <Button onAction="#createGameButton" text="Create" />
+      <Button layoutX="10.0" layoutY="10.0" onAction="#joinGameButton" text="Join" />
+   </HBox>
+   <Text fx:id="actiontarget" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+
+   <stylesheets>
+      <URL value="@LoginStyle.css" />
+   </stylesheets>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+
+</GridPane>

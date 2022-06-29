@@ -1,11 +1,6 @@
 package it.polimi.ingsw.model;
 
-import java.util.Map;
-
 public class CharacterCard{
-
-
-    // stackOverflow suggests to use Integer type if we need to assign null value
     private Integer ID;
 
     public String getCaption() {
@@ -50,10 +45,13 @@ public class CharacterCard{
     public void setID(Integer ID) {
         this.ID = ID;
     }
-    public void increasePrice(){
-        this.setPrice(this.getPrice()+1);
-    }//After using the card, increases the price and decreases game.bank
 
+    /**
+     * After using the card, increases its price.
+     */
+    public void increasePrice() {
+        this.setPrice(this.getPrice() + 1);
+    }
 
 
 }

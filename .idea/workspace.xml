@@ -4,42 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="CharacterCard tested. &#10;100% of model classes tested, 88% of model lines covered">
+    <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/AssistantSelectionState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/CreateGameState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/GeneratePlayerState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/controller/LobbyState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard11$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/CharacterCard7$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Deck$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Deck$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Game$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Game$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Game$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/Island$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/model/ModelListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Client2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Client3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/NetworkHandler$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/Phase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/network/VirtualViewListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/CLI$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/CLI$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/CLI$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/CLI$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/JavaFXMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/JavaFXTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/View$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/polimi/ingsw/view/View$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/AppTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/CloudTileTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/IslandManagerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/IslandTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/ParameterTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/PlayerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/it/polimi/ingsw/model/SchoolBoardTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PSP42.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PSP42.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/AssistantSelectionState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/AssistantSelectionState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/CreateGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/CreateGameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/EndGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/EndGameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/LobbyState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/LobbyState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/MovePawnsState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/MovePawnsState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/VirtualViewListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/VirtualViewListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/virtualview/VirtualView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/VirtualView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,9 +29,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
-        <option value="JavaFXApplication" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
       </list>
     </option>
@@ -59,30 +36,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/GameTest.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/PawnColor.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/CreateSettingController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/JoinSettingController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/LobbyController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/LoginController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/MainBoardController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/GameTest.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/PlayerTest.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectId" id="26QWFmGfVhvRzn4Tv8FIQpDAkBL" />
+  <component name="ProjectId" id="2BFdiZqw7eqOy5q4iN9LWfO3sJw" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
@@ -96,59 +68,60 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/resources" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="$USER_HOME$/beckup/3/ing-sw-2022-mercurio-miranda-mosconi" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\aless\Desktop\ING-SOFT\ing-sw-2022-mercurio-miranda-mosconi\src\resources" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\aless\Desktop\ing-sw-2022-mercurio-miranda-mosconi\src\main\OLDTEST" />
-      <recent name="C:\Users\aless\Desktop\ing-sw-2022-mercurio-miranda-mosconi\src\main" />
-      <recent name="C:\Users\aless\Desktop\ing-sw-2022-mercurio-miranda-mosconi\src\main\java\OLDTEST" />
-      <recent name="C:\Users\aless\Desktop\ing-sw-2022-mercurio-miranda-mosconi\deliveries" />
-      <recent name="C:\Users\aless\Desktop\ing-sw-2022-mercurio-miranda-mosconi\src\main\java" />
+      <recent name="C:\Users\aless\Desktop\ING-SOFT\PROGETTO_FINALE\ing-sw-2022-mercurio-miranda-mosconi\.idea" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="it.polimi.ingsw.model" />
-      <recent name="it.polimi.ingsw" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="it.polimi.ingsw.controller" />
       <recent name="it.polimi.ingsw.model" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="it.polimi.ingsw.view" />
-      <recent name="it.polimi.ingsw.network" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CharacterCardTest and 8 more">
-    <configuration name="CharacterCardTest and 8 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.it.polimi.ingsw.model in PSP42">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Client" />
       <module name="PSP42" />
-      <option name="TEST_OBJECT" value="pattern" />
-      <patterns>
-        <pattern testClass="it.polimi.ingsw.model.CharacterCardTest" />
-        <pattern testClass="it.polimi.ingsw.model.CloudTileTest" />
-        <pattern testClass="it.polimi.ingsw.model.DeckTest" />
-        <pattern testClass="it.polimi.ingsw.model.GameTest" />
-        <pattern testClass="it.polimi.ingsw.model.IslandManagerTest" />
-        <pattern testClass="it.polimi.ingsw.model.IslandTest" />
-        <pattern testClass="it.polimi.ingsw.model.ParameterTest" />
-        <pattern testClass="it.polimi.ingsw.model.PlayerTest" />
-        <pattern testClass="it.polimi.ingsw.model.SchoolBoardTest" />
-      </patterns>
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.polimi.ingsw.network.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CharacterCardTest.CharacterCard10" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GuiTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.view.GuiTester" />
+      <module name="PSP42" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.polimi.ingsw.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Server" />
+      <module name="PSP42" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.polimi.ingsw.network.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EnumTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PSP42" />
       <extension name="coverage">
         <pattern>
@@ -157,853 +130,181 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
-      <option name="METHOD_NAME" value="CharacterCard10" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CharacterCardTest.CharacterCard11" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PSP42" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
-      <option name="METHOD_NAME" value="CharacterCard11" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CharacterCardTest.CharacterCard12" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PSP42" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
-      <option name="METHOD_NAME" value="CharacterCard12" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CharacterCardTest.CharacterCard2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PSP42" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
-      <option name="METHOD_NAME" value="CharacterCard2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Testing" type="JUnit" factoryName="JUnit">
-      <module name="PSP42" />
-      <option name="PACKAGE_NAME" value="it.polimi.ingsw" />
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.SchoolBoardTest" />
-      <option name="METHOD_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.EnumTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="it.polimi.ingsw.model in PSP42" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PSP42" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="JUnit.Testing" />
-      <item itemvalue="JUnit.CharacterCardTest.CharacterCard10" />
-      <item itemvalue="JUnit.CharacterCardTest.CharacterCard11" />
-      <item itemvalue="JUnit.CharacterCardTest.CharacterCard12" />
-      <item itemvalue="JUnit.CharacterCardTest.CharacterCard2" />
-      <item itemvalue="JUnit.CharacterCardTest and 8 more" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.GuiTester" />
+      <item itemvalue="JUnit.it.polimi.ingsw.model in PSP42" />
+      <item itemvalue="JUnit.EnumTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CharacterCardTest and 8 more" />
-        <item itemvalue="JUnit.CharacterCardTest.CharacterCard2" />
-        <item itemvalue="JUnit.CharacterCardTest.CharacterCard12" />
-        <item itemvalue="JUnit.CharacterCardTest.CharacterCard11" />
-        <item itemvalue="JUnit.CharacterCardTest.CharacterCard10" />
+        <item itemvalue="JUnit.it.polimi.ingsw.model in PSP42" />
+        <item itemvalue="JUnit.EnumTest" />
+        <item itemvalue="Application.GuiTester" />
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Code cleaning">
+      <created>1656501600845</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1656501600845</updated>
+    </task>
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1e581e8c-8213-478a-88f0-81c93ab32e63" name="Changes" comment="" />
-      <created>1647354772604</created>
+      <changelist id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="" />
+      <created>1656505910020</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1647354772604</updated>
-      <workItem from="1647356190494" duration="2315000" />
-      <workItem from="1649155337159" duration="5149000" />
-      <workItem from="1649231973952" duration="271000" />
-      <workItem from="1649425322602" duration="2847000" />
-      <workItem from="1649456537257" duration="159000" />
-      <workItem from="1649667901377" duration="3535000" />
-      <workItem from="1649683845363" duration="636000" />
-      <workItem from="1649686190697" duration="1869000" />
-      <workItem from="1649707300432" duration="3558000" />
-      <workItem from="1650621205672" duration="4434000" />
-      <workItem from="1650644808035" duration="1792000" />
-      <workItem from="1650974884190" duration="301000" />
-      <workItem from="1651053447947" duration="4477000" />
-      <workItem from="1651076821298" duration="861000" />
-      <workItem from="1651088374698" duration="1712000" />
-      <workItem from="1651090317774" duration="5401000" />
-      <workItem from="1651149588689" duration="2300000" />
-      <workItem from="1651152230634" duration="412000" />
-      <workItem from="1651216976659" duration="408000" />
-      <workItem from="1651471491286" duration="1966000" />
-      <workItem from="1651475186765" duration="8519000" />
-      <workItem from="1651490198169" duration="14841000" />
-      <workItem from="1651520700051" duration="2645000" />
-      <workItem from="1651525854188" duration="2184000" />
-      <workItem from="1651577332511" duration="1258000" />
-      <workItem from="1651578745290" duration="2448000" />
-      <workItem from="1651585508003" duration="1563000" />
-      <workItem from="1651650315147" duration="771000" />
-      <workItem from="1651752523889" duration="9081000" />
-      <workItem from="1651829571092" duration="20384000" />
-      <workItem from="1651912460732" duration="56316000" />
-      <workItem from="1652381368170" duration="8810000" />
-      <workItem from="1652776175872" duration="65000" />
-      <workItem from="1652776397226" duration="1368000" />
-      <workItem from="1652788822065" duration="4894000" />
-      <workItem from="1653121197753" duration="28000" />
-      <workItem from="1653163039693" duration="4797000" />
-      <workItem from="1653234941314" duration="3894000" />
-      <workItem from="1653311316168" duration="10530000" />
-      <workItem from="1653377915473" duration="4415000" />
-      <workItem from="1653384190936" duration="3897000" />
-      <workItem from="1653404214232" duration="5403000" />
-      <workItem from="1653495669297" duration="17000" />
-      <workItem from="1653582906147" duration="3101000" />
-      <workItem from="1653644436308" duration="472000" />
-      <workItem from="1653917739489" duration="2348000" />
-      <workItem from="1653926131448" duration="322000" />
-      <workItem from="1654011010735" duration="1921000" />
-      <workItem from="1654014507547" duration="521000" />
-      <workItem from="1654073898339" duration="599000" />
-      <workItem from="1654075824979" duration="455000" />
-      <workItem from="1654077583575" duration="615000" />
-      <workItem from="1654078664583" duration="245000" />
-      <workItem from="1654089120521" duration="9586000" />
-      <workItem from="1654119768459" duration="7793000" />
-      <workItem from="1654130271532" duration="6076000" />
-      <workItem from="1654166082393" duration="11528000" />
-      <workItem from="1654203262902" duration="18000" />
-      <workItem from="1654237427817" duration="7022000" />
-      <workItem from="1654245684897" duration="4190000" />
-      <workItem from="1654266144855" duration="3042000" />
-      <workItem from="1654331791564" duration="30841000" />
-      <workItem from="1654376549260" duration="3739000" />
-      <workItem from="1654432090140" duration="15136000" />
-      <workItem from="1654463929456" duration="12769000" />
-      <workItem from="1654521208185" duration="13343000" />
-      <workItem from="1654606506307" duration="10818000" />
-      <workItem from="1654665833829" duration="7759000" />
-      <workItem from="1654692599228" duration="11378000" />
-      <workItem from="1654761704880" duration="34376000" />
-      <workItem from="1654871496274" duration="6536000" />
-      <workItem from="1655049232146" duration="314000" />
-      <workItem from="1655211905893" duration="1132000" />
-      <workItem from="1655213336638" duration="3823000" />
-      <workItem from="1655283883832" duration="60000" />
-      <workItem from="1655313565417" duration="637000" />
-      <workItem from="1655323095742" duration="41000" />
-      <workItem from="1655323184870" duration="82000" />
-      <workItem from="1655327783930" duration="872000" />
-      <workItem from="1655399095661" duration="6870000" />
-      <workItem from="1655631042832" duration="3743000" />
-      <workItem from="1655642691709" duration="735000" />
-      <workItem from="1655709709682" duration="24883000" />
-      <workItem from="1655795723742" duration="6532000" />
-      <workItem from="1655902005274" duration="4886000" />
+      <updated>1656505910020</updated>
+      <workItem from="1656505915350" duration="5672000" />
+      <workItem from="1656519859457" duration="1444000" />
     </task>
-    <task id="LOCAL-00009" summary="Communication Protocol v0">
-      <created>1650974569656</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
+    <task id="LOCAL-00002" summary="Message table updated">
+      <created>1656511568053</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1650974569656</updated>
+      <updated>1656511568053</updated>
     </task>
-    <task id="LOCAL-00010" summary="Communication Protocol v0">
-      <created>1650974653398</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
+    <task id="LOCAL-00003" summary="Tests fix">
+      <created>1656521100562</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1650974653398</updated>
+      <updated>1656521100578</updated>
     </task>
-    <task id="LOCAL-00011" summary="Communication Protocol v0">
-      <created>1650975098985</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
+    <task id="LOCAL-00004" summary="Tests fix">
+      <created>1656521131646</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1650975098985</updated>
+      <updated>1656521131646</updated>
     </task>
-    <task id="LOCAL-00012" summary="CharacterCard9, 10, 11, 12">
-      <created>1651044842286</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1651044842286</updated>
-    </task>
-    <task id="LOCAL-00013" summary="TestCloudTile added in test section">
-      <created>1651057569379</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1651057569379</updated>
-    </task>
-    <task id="LOCAL-00014" summary="PlayerTest and SchoolBoardTest completed">
-      <created>1651152385538</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1651152385538</updated>
-    </task>
-    <task id="LOCAL-00015" summary="IslandTest 53% methods, 75% of lines covered (to finish)">
-      <created>1651419535059</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1651419535059</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Communication Protocol, no sequence diagram">
-      <created>1651478907527</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1651478907527</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Communication Protocol, no sequence diagram">
-      <created>1651479452299</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1651479452299</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Communication Protocol, no sequence diagram">
-      <created>1651483257739</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1651483257739</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Communication Protocol, no sequence diagram">
-      <created>1651483292126</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1651483292126</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Communication Protocol, no sequence diagram">
-      <created>1651483432968</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1651483432969</updated>
-    </task>
-    <task id="LOCAL-00021" summary="IslandManagerTest completed">
-      <created>1651500582248</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1651500582248</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Communication Protocol fixed (added wizard decision, deck and wallet update)">
-      <created>1651502087376</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1651502087376</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Communication Protocol fixed">
-      <created>1651505006269</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1651505006270</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Communication Protocol no sequence diagram">
-      <created>1651525738590</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1651525738590</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Communication Protocol + sequence diagram folder">
-      <created>1651525975308</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1651525975308</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Communication Protocol with sequence diagram">
-      <created>1651526565865</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1651526565865</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Communication Protocol with sequence diagram">
-      <created>1651526721680</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1651526721680</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Communication Protocol with sequence diagram">
-      <created>1651526896190</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1651526896190</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Communication Protocol with sequence diagram">
-      <created>1651527512612</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1651527512612</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Communication Protocol with sequence diagram">
-      <created>1651527989260</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1651527989260</updated>
-    </task>
-    <task id="LOCAL-00031" summary="ParameterTest + resources folder created">
-      <created>1651578234201</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1651578234202</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Server multi-thread for multiple client connection.">
-      <created>1651913166376</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1651913166376</updated>
-    </task>
-    <task id="LOCAL-00033" summary="added the Pinger class for pinging between client and server on another thread">
-      <created>1651939482964</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1651939482964</updated>
-    </task>
-    <task id="LOCAL-00034" summary="added the Pinger class for pinging between client and server on another thread">
-      <created>1651939964826</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1651939964826</updated>
-    </task>
-    <task id="LOCAL-00035" summary="added the Pinger class for pinging between client and server on another thread">
-      <created>1651940195083</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1651940195083</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Network handler">
-      <created>1652113466324</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1652113466324</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Network handler">
-      <created>1652114795550</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1652114795550</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Network handler v2">
-      <created>1652187294034</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1652187294034</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Network handler v2">
-      <created>1652187481291</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1652187481291</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Network handler v2">
-      <created>1652187758404</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1652187758404</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Lobby, game creation, game join finished">
-      <created>1652426391418</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1652426391418</updated>
-    </task>
-    <task id="LOCAL-00042" summary="read method added in VirtualView">
-      <created>1652435384189</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1652435384189</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Controller + model updates">
-      <created>1653045482186</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1653045482187</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Controller + model updates">
-      <created>1653045509353</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1653045509353</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Controller + model updates">
-      <created>1653178033346</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1653178033346</updated>
-    </task>
-    <task id="LOCAL-00046" summary="addition of CREATE_MATCH and GeneratePlayerState in the controller">
-      <created>1653754618043</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1653754618043</updated>
-    </task>
-    <task id="LOCAL-00047" summary="controller update">
-      <created>1654012972375</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1654012972375</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Various fixes in network + controller">
-      <created>1654136398179</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1654136398179</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Various fixes in network + controller">
-      <created>1654356531733</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1654356531733</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Model updates + CLI fixes">
-      <created>1654380320673</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1654380320673</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Model updates + CLI fixes">
-      <created>1654665926096</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1654665926097</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Model updates + CLI fixes + effects managed">
-      <created>1654778868514</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1654778868515</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Code cleaning + character cards debugging">
-      <created>1654877899502</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1654877899503</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Code cleaning + character cards debugging">
-      <created>1654878060994</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1654878060994</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Debug of nextVirtualView() method in GameController class">
-      <created>1655406141371</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1655406141371</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Fixed testing classes and general model bugs">
-      <created>1655732602728</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1655732602729</updated>
-    </task>
-    <task id="LOCAL-00057" summary="CharacterCard tested. &#10;100% of model classes tested, 88% of model lines covered">
-      <created>1655801949434</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1655801949434</updated>
-    </task>
-    <option name="localTasksCounter" value="58" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ID_ORDER">
-      <list>
-        <option value="Default.Root" />
-        <option value="Default.Author" />
-        <option value="Default.Date" />
-        <option value="Default.Subject" />
-        <option value="Space.CommitStatus" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="CUSTOM_BOOLEAN_PROPERTIES">
-                <map>
-                  <entry key="Show.Git.Branches" value="true" />
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="IslandTest 53% methods, 75% of lines covered (to finish)" />
-    <MESSAGE value="Communication Protocol, no sequence diagram" />
-    <MESSAGE value="IslandManagerTest completed" />
-    <MESSAGE value="Communication Protocol fixed (added wizard decision, deck and wallet update)" />
-    <MESSAGE value="Communication Protocol fixed" />
-    <MESSAGE value="Communication Protocol no sequence diagram" />
-    <MESSAGE value="Communication Protocol + sequence diagram folder" />
-    <MESSAGE value="Communication Protocol with sequence diagram" />
-    <MESSAGE value="ParameterTest + resources folder created" />
-    <MESSAGE value="Server multi-thread for multiple client connection." />
-    <MESSAGE value="added the Pinger class for pinging between client and server on another thread" />
-    <MESSAGE value="Network handler" />
-    <MESSAGE value="Network handler v2" />
-    <MESSAGE value="Lobby, game creation, game join finished" />
-    <MESSAGE value="read method added in VirtualView" />
-    <MESSAGE value="Controller + model updates" />
-    <MESSAGE value="addition of CREATE_MATCH and GeneratePlayerState in the controller" />
-    <MESSAGE value="controller update" />
-    <MESSAGE value="Various fixes in network + controller" />
-    <MESSAGE value="Model updates + CLI fixes" />
-    <MESSAGE value="Model updates + CLI fixes + effects managed" />
-    <MESSAGE value="Code cleaning + character cards debugging" />
-    <MESSAGE value="Debug of nextVirtualView() method in GameController class" />
-    <MESSAGE value="Fixed testing classes and general model bugs" />
-    <MESSAGE value="CharacterCard tested. &#10;100% of model classes tested, 88% of model lines covered" />
-    <option name="LAST_COMMIT_MESSAGE" value="CharacterCard tested. &#10;100% of model classes tested, 88% of model lines covered" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/CreateGameState.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java</url>
-          <line>395</line>
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/ClientHandler.java</url>
-          <line>336</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java</url>
-          <line>392</line>
-          <option name="timeStamp" value="132" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/GeneratePlayerState.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="137" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/AssistantSelectionState.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="138" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/AssistantSelectionState.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="140" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java</url>
-          <line>281</line>
-          <option name="timeStamp" value="149" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/ChooseCTState.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="152" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/ChooseCTState.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="156" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/ChooseCTState.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="157" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/ChooseCTState.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="158" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/MoveMNState.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="160" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard9.java</url>
-          <line>7</line>
-          <option name="timeStamp" value="185" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard10.java</url>
-          <line>7</line>
-          <option name="timeStamp" value="186" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard11.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="187" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard12.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="188" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/ChooseCTState.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="189" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard1.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="190" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard2.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="191" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard4.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="193" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard5.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="194" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard7.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="195" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard8.java</url>
-          <line>7</line>
-          <option name="timeStamp" value="196" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/IslandManager.java</url>
-          <line>95</line>
-          <option name="timeStamp" value="204" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard2.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="207" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java</url>
-          <line>462</line>
-          <option name="timeStamp" value="209" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java</url>
-          <line>496</line>
-          <option name="timeStamp" value="212" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard3.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="215" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard3.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="217" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/IslandManager.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="219" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/IslandManager.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="220" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/MoveMNState.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="221" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/GameController.java</url>
-          <line>185</line>
-          <option name="timeStamp" value="224" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/AssistantSelectionState.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="227" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/GameController.java</url>
-          <line>184</line>
-          <option name="timeStamp" value="229" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="tmpPlayerArray.get(0)" />
-      </configuration>
-    </watches-manager>
+    <MESSAGE value="Code cleaning" />
+    <MESSAGE value="Message table updated" />
+    <MESSAGE value="Tests fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tests fix" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_2_more.ic" NAME="CloudTileTest and 2 more Coverage Results" MODIFIED="1651152494282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$SchoolBoardTest.ic" NAME="SchoolBoardTest Coverage Results" MODIFIED="1655711029748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard12.ic" NAME="CharacterCardTest.CharacterCard12 Coverage Results" MODIFIED="1655800082080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_4_more.ic" NAME="CloudTileTest and 4 more Coverage Results" MODIFIED="1651500486486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_5_more__1_.ic" NAME="CloudTileTest and 5 more (1) Coverage Results" MODIFIED="1655282746494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_and_8_more.ic" NAME="CharacterCardTest and 8 more Coverage Results" MODIFIED="1655979456403" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_5_more.ic" NAME="CloudTileTest and 5 more Coverage Results" MODIFIED="1655712397039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest_useAssistantCard.ic" NAME="PlayerTest.useAssistantCard Coverage Results" MODIFIED="1655711936590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard10.ic" NAME="CharacterCardTest.CharacterCard10 Coverage Results" MODIFIED="1655799155973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest.ic" NAME="CloudTileTest Coverage Results" MODIFIED="1655721237976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_6_more.ic" NAME="CloudTileTest and 6 more Coverage Results" MODIFIED="1655720941169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard7.ic" NAME="CharacterCardTest.CharacterCard7 Coverage Results" MODIFIED="1655797787441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$DeckTest.ic" NAME="DeckTest Coverage Results" MODIFIED="1655721430704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$SchoolBoardTest_and_1_more.ic" NAME="SchoolBoardTest and 1 more Coverage Results" MODIFIED="1651091137245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$IslandTest.ic" NAME="IslandTest Coverage Results" MODIFIED="1655716367699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard3.ic" NAME="CharacterCardTest.CharacterCard3 Coverage Results" MODIFIED="1655729249973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_7_more.ic" NAME="CloudTileTest and 7 more Coverage Results" MODIFIED="1655722100811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest_moveFromEntranceToIsland.ic" NAME="PlayerTest.moveFromEntranceToIsland Coverage Results" MODIFIED="1655711770028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$ParameterTest.ic" NAME="ParameterTest Coverage Results" MODIFIED="1655721946668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$GameTest.ic" NAME="GameTest Coverage Results" MODIFIED="1655665726313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard11.ic" NAME="CharacterCardTest.CharacterCard11 Coverage Results" MODIFIED="1655799697530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard3.ic" NAME="CharacterCardTest.CharacterCard3 Coverage Results" MODIFIED="1655729249973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard2.ic" NAME="CharacterCardTest.CharacterCard2 Coverage Results" MODIFIED="1655800584138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest_useAssistantCard.ic" NAME="PlayerTest.useAssistantCard Coverage Results" MODIFIED="1655711936590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest__1_.ic" NAME="PlayerTest (1) Coverage Results" MODIFIED="1655712362286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_5_more__1_.ic" NAME="CloudTileTest and 5 more (1) Coverage Results" MODIFIED="1655282746494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard9.ic" NAME="CharacterCardTest.CharacterCard9 Coverage Results" MODIFIED="1655798770190" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard4.ic" NAME="CharacterCardTest.CharacterCard4 Coverage Results" MODIFIED="1655729543458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_2_more.ic" NAME="CloudTileTest and 2 more Coverage Results" MODIFIED="1651152494282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$SchoolBoardTest.ic" NAME="SchoolBoardTest Coverage Results" MODIFIED="1655711029748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$PlayerTest_costructor.ic" NAME="PlayerTest.costructor Coverage Results" MODIFIED="1655711262620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$IslandManagerTest.ic" NAME="IslandManagerTest Coverage Results" MODIFIED="1655720891644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$ParameterTest.ic" NAME="ParameterTest Coverage Results" MODIFIED="1655721946668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard9.ic" NAME="CharacterCardTest.CharacterCard9 Coverage Results" MODIFIED="1655798770190" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard11.ic" NAME="CharacterCardTest.CharacterCard11 Coverage Results" MODIFIED="1655799697530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$it_polimi_ingsw_model_in_PSP42.ic" NAME="it.polimi.ingsw.model in PSP42 Coverage Results" MODIFIED="1651091091398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$DeckTest.ic" NAME="DeckTest Coverage Results" MODIFIED="1655721430704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard4.ic" NAME="CharacterCardTest.CharacterCard4 Coverage Results" MODIFIED="1655729543458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$IslandTest.ic" NAME="IslandTest Coverage Results" MODIFIED="1655716367699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard2.ic" NAME="CharacterCardTest.CharacterCard2 Coverage Results" MODIFIED="1655800584138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest.ic" NAME="CloudTileTest Coverage Results" MODIFIED="1655721237976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest.ic" NAME="CharacterCardTest Coverage Results" MODIFIED="1655725686400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$PlayerTest.ic" NAME="PlayerTest Coverage Results" MODIFIED="1651151874996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest.ic" NAME="CharacterCardTest Coverage Results" MODIFIED="1655725686400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$it_polimi_ingsw_model_in_PSP42.ic" NAME="it.polimi.ingsw.model in PSP42 Coverage Results" MODIFIED="1656521062041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_and_8_more.ic" NAME="CharacterCardTest and 8 more Coverage Results" MODIFIED="1655979456403" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$SchoolBoardTest_and_1_more.ic" NAME="SchoolBoardTest and 1 more Coverage Results" MODIFIED="1651091137245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_6_more.ic" NAME="CloudTileTest and 6 more Coverage Results" MODIFIED="1655720941169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_7_more.ic" NAME="CloudTileTest and 7 more Coverage Results" MODIFIED="1655722100811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$IslandManagerTest.ic" NAME="IslandManagerTest Coverage Results" MODIFIED="1655720891644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest__1_.ic" NAME="PlayerTest (1) Coverage Results" MODIFIED="1655712362286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest_moveFromEntranceToIsland.ic" NAME="PlayerTest.moveFromEntranceToIsland Coverage Results" MODIFIED="1655711770028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$EnumTest.ic" NAME="EnumTest Coverage Results" MODIFIED="1656521030883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_4_more.ic" NAME="CloudTileTest and 4 more Coverage Results" MODIFIED="1651500486486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_5_more.ic" NAME="CloudTileTest and 5 more Coverage Results" MODIFIED="1655712397039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard10.ic" NAME="CharacterCardTest.CharacterCard10 Coverage Results" MODIFIED="1655799155973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
   </component>

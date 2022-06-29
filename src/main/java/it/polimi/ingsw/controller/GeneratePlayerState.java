@@ -7,6 +7,11 @@ import it.polimi.ingsw.model.Player;
 import java.util.ArrayList;
 
 public class GeneratePlayerState implements GameControllerState{
+
+    /**
+     * Adds a player (which is initialized with a deck - and a corresponding wizardType - a nickname, a schoolboard and a towers color chosen by the user) to the game.
+     * @param gameController is the given controller.
+     */
     @Override
     public void startState(GameController gameController) {
         Player playerToAdd = new Player();
@@ -21,6 +26,10 @@ public class GeneratePlayerState implements GameControllerState{
         gameController.decreasePlayersToGo();
     }
 
+    /**
+     * Checks whether each user chose the necessary settings or not. In that case, randomically selects the first player, to which it tells to play. Otherwise, it updates the next VirtualView, corresponding to the next user to select the player settings.
+     * @param gameController is the given controller.
+     */
     @Override
     public void updateNextState(GameController gameController) {
         if(gameController.getPlayersToGo()==0){
@@ -40,6 +49,10 @@ public class GeneratePlayerState implements GameControllerState{
         }
     }
 
+    /**
+     * Does nothing.
+     * @param gameController is the given controller.
+     */
     @Override
     public void endState(GameController gameController) {
 

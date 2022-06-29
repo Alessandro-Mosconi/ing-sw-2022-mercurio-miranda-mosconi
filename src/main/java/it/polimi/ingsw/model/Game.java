@@ -191,6 +191,10 @@ public class Game {
         return chosenCharacterCards;
     }
 //other methods
+    /**
+     * Fills a given cloud with students from this game's bag.
+     * @param cloud is the given cloud.
+     */
     public void moveFromBagToCloud(CloudTile cloud){
         if(!isBagEmpty()){
             PawnColor rdColor=PawnColor.randomColor();
@@ -203,6 +207,11 @@ public class Game {
             cloud.getStudents().replace(rdColor, cloud.getStudents().get(rdColor)+1);
         }
     }
+
+    /**
+     * Checks what schoolboard owns a given professor.
+     * @param color is the given professor's color.
+     */
     public void updateProfessor(PawnColor color){
         int currentMax=0;
 
@@ -212,7 +221,7 @@ public class Game {
             }
         }
         for (SchoolBoard s : schoolBoards){
-            if(s.getStudentHall().get(color)>currentMax){
+            if(s.getStudentHall().get(color)>currentMax || (currentMax > 0 && s.isEffectProf() && s.getStudentHall().get(color)>=currentMax)){
                 currentMax=s.getStudentHall().get(color);
                 for(SchoolBoard f : schoolBoards){
                     f.getProfessorTable().replace(color,false);
@@ -221,10 +230,19 @@ public class Game {
             }
         }
     }
+
+    /**
+     * Shuffles all the character cards.
+     * @return a shuffled array containing all the character cards.
+     */
     public ArrayList<CharacterCard> shuffleCharacterCards() {
         Collections.shuffle(allCharacterCards);
         return allCharacterCards;
     }
+
+    /**
+     * Initializes each component of the game-board.
+     */
     public void setupGame(){
         for(ModelListener l : clientHandlersListeners){
             l.updateSetupPlayers(players);
@@ -243,6 +261,7 @@ public class Game {
         for(ModelListener l : clientHandlersListeners){
             for(Player p : players){
                 l.updateSchoolBoardEntrance(p);
+                l.updateNumTowers(p);
             }
         }
         this.cloudTiles = generateCloudTiles();
@@ -254,7 +273,7 @@ public class Game {
             l.modelCreated();
         }
         if(gameMode.equals(GameMode.expert)){
-            initAllCharacterCards(); //Allocates all of the CharacterCards
+            initAllCharacterCards(); //Allocates all the CharacterCards
             ArrayList<CharacterCard> chosenCharacterCards = initChosenCharacterCards(); //Takes a sublist from the randomized CharacterCards list
             this.setChosenCharacterCards(chosenCharacterCards);
             for(CharacterCard cc: chosenCharacterCards){
@@ -275,6 +294,10 @@ public class Game {
     }
 
 
+    /**
+     * Sorts the players based on their last used assistant card's value.
+     * @return a sorted array containing the ordered player numbers.
+     */
     public ArrayList<Integer> calculatePlayerOrder() {
         ArrayList<Player> tmpPlayerArray = new ArrayList<>() {{
             addAll(players);
@@ -290,7 +313,14 @@ public class Game {
         }
         return tmpOrder;
     }
+
+
     //setupGame extractions
+
+    /**
+     * Allocates and initializes 12 islands.
+     * @return an arrayList of the initialized islands.
+     */
     private ArrayList<Island> generateIslands() {
         ArrayList<Island> islands = new ArrayList<>(12);
         {
@@ -314,12 +344,17 @@ public class Game {
                     }//initializes islands with students
                     else if(i==0){
                         islands.get(i).setMotherNature(true);
-                    }//initializes mothernature
+                    }//initializes mother nature
                 }
             }
         }
         return islands;
     }
+
+    /**
+     * Allocates a schoolboard for each player.
+     * @return an arrayList of the just created schoolboards - not initialized yet.
+     */
     private ArrayList<SchoolBoard> generateSchoolBoards() {
         ArrayList<SchoolBoard> schoolBoards = new ArrayList<>(numberOfPlayers);
         {
@@ -329,6 +364,10 @@ public class Game {
         }
         return schoolBoards;
     }
+
+    /**
+     * Moves to each cloud 3 students (when players are 2) or 4 students (when players are 3).
+     */
     public void fillCloudTiles() {
         for(CloudTile c : this.cloudTiles){
             for(int i=0;i<3;i++){
@@ -342,6 +381,11 @@ public class Game {
             l.updateCTs(cloudTiles);
         }
     }
+
+    /**
+     * Allocates cloud tile for each player.
+     * @return an arrayList of the cloud tiles - not filled yet.
+     */
     private ArrayList<CloudTile> generateCloudTiles() {
         ArrayList<CloudTile> cloudTiles = new ArrayList<>(numberOfPlayers);
         {
@@ -351,12 +395,20 @@ public class Game {
         }
         return cloudTiles;
     }
+
+    /**
+     * Initializes this game bag with 26 students for each color.
+     */
     private void fillBag() {
         for(PawnColor color : PawnColor.values()){
             this.initBag(color,26);
         }//setta la bag ai valori di default
     }
 
+
+    /**
+     * Initializes each schoolboard with the appropriate amount of towers and students.
+     */
     private void initSchoolBoards() {
         int j=0;
          for(SchoolBoard s: schoolBoards){
@@ -382,17 +434,36 @@ public class Game {
             j++;
         }
     }
+
+    /**
+     * Sets to a given number this game bag's amount of students of a given color.
+     * @param color is the given color.
+     * @param n is the given number.
+     */
     private void initBag(PawnColor color,int n){
         this.bag.put(color, n);
     }
 //gestione init character cards
+
+    /**
+     * Takes the first 3 character cards from an array containing all of them in a shuffled order.
+     * @return an array list containing the 3 random character cards.
+     */
     private ArrayList<CharacterCard> initChosenCharacterCards() {
         ArrayList<CharacterCard> chosenCards = new ArrayList<>(getAllCharacterCards().subList(0,3));
         return chosenCards;
     }
+
+    /**
+     * @return an array list containing all the character cards in an already shuffled order.
+     */
     private ArrayList<CharacterCard> getAllCharacterCards() {
         return shuffleCharacterCards();
     }
+
+    /**
+     * Allocates and adds to this game's character cards array a card for each kind.
+     */
     private void initAllCharacterCards(){
         this.allCharacterCards = new ArrayList<CharacterCard>();
         this.allCharacterCards.add(new CharacterCard (1,1,new CharacterCard1()));
@@ -408,12 +479,18 @@ public class Game {
         this.allCharacterCards.add(new CharacterCard (11,2,new CharacterCard11()));
         this.allCharacterCards.add(new CharacterCard (12,3,new CharacterCard12()));
     }
+
+    /**
+     * Adds a player to this game's players array.
+     * @param playerToAdd player to be added.
+     */
     public void addPlayer(Player playerToAdd) {
         players.add(playerToAdd);
-        for(ModelListener l : clientHandlersListeners){
-            l.updatePlayers(this.players);
-        }
     }
+
+    /**
+     * @return true if the bag has no students, false otherwise.
+     */
     public boolean isBagEmpty() {
         for(PawnColor c : PawnColor.values()){
             if(bag.get(c)!=0){
@@ -422,12 +499,25 @@ public class Game {
         }
         return true;
     }
+
+    /**
+     * Calls the corresponding method on the given player and updates each client by sending a message.
+     * @param cPlayer given player.
+     * @param assistantCard assistant card chosen by the user.
+     */
     public void useAssistantCard(Player cPlayer, AssistantCard assistantCard){
         cPlayer.useAssistantCard(assistantCard);
         for(ModelListener l: clientHandlersListeners){
             l.updateLastAssistantCard(cPlayer);
         }
     }
+
+    /**
+     * Calls the corresponding method on the given player and updates each client by sending a message.
+     * @param currPlayer given player.
+     * @param student student chosen by the user.
+     * @param destination island chosen by the user.
+     */
     public void movePawnToIsland(Player currPlayer, PawnColor student, Island destination){
         currPlayer.moveFromEntranceToIsland(destination, student);
         for(ModelListener l : clientHandlersListeners){
@@ -435,6 +525,12 @@ public class Game {
             l.updateSchoolBoardEntrance(currPlayer);
         }
     }
+
+    /**
+     * Calls the corresponding method on the given player and updates each client by sending a message.
+     * @param currPlayer given player.
+     * @param student student chosen by the user.
+     */
     public void movePawnToHall(Player currPlayer, PawnColor student){
         currPlayer.moveFromEntranceToHall(student);
         updateProfessor(student);
@@ -450,6 +546,12 @@ public class Game {
             l.updateProfessorTables(players);
         }
     }
+
+    /**
+     * Calls the corresponding method on the given player.
+     * @param currPlayer given player.
+     * @param ct cloud tile chosen by the user.
+     */
     public void moveFromCloudToEntrance(Player currPlayer, CloudTile ct){
         currPlayer.moveFromCloudToEntrance(ct);
         for(ModelListener l : clientHandlersListeners){
@@ -457,6 +559,11 @@ public class Game {
             l.updateSchoolBoardEntrance(currPlayer);
         }
     }
+
+    /**
+     * Calls the corresponding method on this game's island manager, it also calls assignInfluence and checkForMerge methods on the island manager. Finally, updates each client by sending a message.
+     * @param shift mother nature movement chosen by the user.
+     */
     public void moveMN(int shift){
         islandManager.moveMotherNature(shift);
         if(islandManager.getIslandList().get(islandManager.getCurrMNPosition()).isNoEntryTile()){
@@ -468,6 +575,9 @@ public class Game {
         }
         for(ModelListener l : clientHandlersListeners){
             l.updateIslandList(islandManager.getIslandList());
+            for(Player p : players){
+                l.updateNumTowers(p);
+            }
         }
     }
     public void addListener(ModelListener l){
@@ -486,6 +596,9 @@ public class Game {
         }
     }
 
+    /**
+     * Calls the corresponding method on the currently active character card and updates each client by sending a message.
+     */
     public void increaseCurrEffectPrice() {
         this.currEffect.increasePrice();
         for(ModelListener l : clientHandlersListeners){
@@ -493,6 +606,9 @@ public class Game {
         }
     }
 
+    /**
+     * Activates the effect of a character card using every necessary parameter chosen by the user and updates each client by sending a message.
+     */
     public void startEffect() {
         this.currEffect.getCardBehavior().startEffect(this.currParameter);
         currParameter.getPlayer().setWallet(currParameter.getPlayer().getWallet()-currEffect.getPrice());
@@ -503,6 +619,9 @@ public class Game {
         switch(currEffect.getID()){
             case 1->{
                 for(ModelListener l : clientHandlersListeners){
+                    for(Player p : players){
+                        l.updateNumTowers(p);
+                    }
                     l.updateIslandList(islandManager.getIslandList());
                     l.updateCardStudents(currEffect);
                 }
@@ -514,6 +633,9 @@ public class Game {
             }
             case 3, 5 ->{
                 for(ModelListener l : clientHandlersListeners){
+                    for(Player p : players){
+                        l.updateNumTowers(p);
+                    }
                     l.updateIslandList(islandManager.getIslandList());
                 }
             }
@@ -576,6 +698,9 @@ public class Game {
         }
     }
 
+    /**
+     * Ends the effect of the currently active character card using the currently set parameter, both previously chosen by the user and updates each client by sending a message.
+     */
     public void endEffect() {
         this.currEffect.getCardBehavior().endEffect(this.currParameter);
         switch(currEffect.getID()){
@@ -605,6 +730,9 @@ public class Game {
         this.currParameter=null;
     }
 
+    /**
+     * @return true if there's a schoolboard with no towers left or if the remaining islands are 3 or less; false otherwise.
+     */
     public boolean checkForEndGameConditions() {
         for(SchoolBoard s : schoolBoards){
             if(s.getTowersNumber()==0) return true;

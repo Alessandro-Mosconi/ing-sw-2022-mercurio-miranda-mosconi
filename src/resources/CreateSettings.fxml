@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<FlowPane alignment="CENTER" prefHeight="400.0" prefWidth="720.0" stylesheets="@LoginStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.controller.CreateSettingController">
+   <children>
+      <GridPane alignment="center" hgap="10" prefHeight="286.0" prefWidth="599.0" vgap="10">
+          <Text id="header" text="Game Settings" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
+      
+                <Label id="text" text="Game ID" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+          <TextField fx:id="gameID" prefHeight="26.0" prefWidth="269.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+          <Label id="text" text="Game Mode" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+          <Label id="text" text="Number Of Players" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         <FlowPane alignment="CENTER" hgap="30.0" prefHeight="30.0" prefWidth="221.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <children>
+               <Button mnemonicParsing="false" onAction="#easyButton" prefWidth="70.0" text="Easy" />
+               <Button mnemonicParsing="false" onAction="#expertButton" prefWidth="70.0" text="Expert" />
+            </children>
+         </FlowPane>
+           <Button onAction="#createGame" text="CREATE GAME" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+         <FlowPane alignment="CENTER" hgap="30.0" prefHeight="30.0" prefWidth="221.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <children>
+               <Button mnemonicParsing="false" onAction="#twoPlayer" prefWidth="70.0" text="2" />
+               <Button mnemonicParsing="false" onAction="#threePlayer" prefWidth="70.0" text="3" />
+            </children>
+         </FlowPane>
+      
+                <stylesheets>
+              <URL value="@LoginStyle.css" />
+          </stylesheets>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+      
+            </GridPane>
+   </children>
+</FlowPane>

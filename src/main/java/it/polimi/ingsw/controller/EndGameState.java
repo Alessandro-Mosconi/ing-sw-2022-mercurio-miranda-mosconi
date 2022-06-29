@@ -1,13 +1,15 @@
 package it.polimi.ingsw.controller;
-import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.PawnColor;
 import it.polimi.ingsw.model.Player;
-import it.polimi.ingsw.model.SchoolBoard;
-import it.polimi.ingsw.virtualview.VirtualView;
+import it.polimi.ingsw.network.VirtualView;
 
 public class EndGameState implements GameControllerState{
     Player winner = new Player();
 
+    /**
+     * Checks for the winning conditions and sets the winner.
+     * @param gameController is the given controller.
+     */
     @Override
     public void startState(GameController gameController) {
         int minTowers=8;
@@ -35,12 +37,19 @@ public class EndGameState implements GameControllerState{
             }
         }
     }
-
+    /**
+     * Does nothing.
+     * @param gameController is the given controller.
+     */
     @Override
     public void updateNextState(GameController gameController) {
         //do nothing
     }
 
+    /**
+     * Tells who won the game to each client by sending them a message.
+     * @param gameController is the given controller.
+     */
     @Override
     public void endState(GameController gameController) {
         for(VirtualView vv : gameController.getVirtualViews()){

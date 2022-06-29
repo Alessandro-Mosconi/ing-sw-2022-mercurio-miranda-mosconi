@@ -1,11 +1,21 @@
 package it.polimi.ingsw.model;
-import java.util.*;
-import java.lang.*;
-import static it.polimi.ingsw.model.GameMode.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SchoolBoard {
     private int towersNumber;
+
+    public boolean isEffectProf() {
+        return effectProf;
+    }
+
+    public void setEffectProf(boolean effectProf) {
+        this.effectProf = effectProf;
+    }
+
+    private boolean effectProf = false;
 
     public SchoolBoard(int towersNumber, TowerColor color, GameMode gameMode) {
         this.towersNumber = towersNumber;
@@ -49,32 +59,32 @@ public class SchoolBoard {
 
 
     public SchoolBoard() {
-    this.towersNumber = 0;
-    this.towersColor = null;
-    this.gameMode = null;
-    this.studentHall = new HashMap<PawnColor, Integer>();
-    this.studentEntrance = new HashMap<PawnColor, Integer>();
-    this.professorTable = new HashMap<PawnColor, Boolean>();
+        this.towersNumber = 0;
+        this.towersColor = null;
+        this.gameMode = null;
+        this.studentHall = new HashMap<PawnColor, Integer>();
+        this.studentEntrance = new HashMap<PawnColor, Integer>();
+        this.professorTable = new HashMap<PawnColor, Boolean>();
 
-    for(PawnColor color : PawnColor.values()){
-        this.studentHall.put(color, 0);
-        this.studentEntrance.put(color, 0);
-        this.professorTable.put(color, false);
+        for(PawnColor color : PawnColor.values()){
+            this.studentHall.put(color, 0);
+            this.studentEntrance.put(color, 0);
+            this.professorTable.put(color, false);
+        }
     }
-}
     public SchoolBoard(int numTower, TowerColor colTower, Map<PawnColor,Integer> entrance, GameMode gameMode) {
-    this.towersNumber = numTower;
-    this.towersColor = colTower;
-    this.gameMode = gameMode;
-    this.studentHall = new HashMap<PawnColor, Integer>();
-    this.studentEntrance = entrance;
-    this.professorTable = new HashMap<PawnColor, Boolean>();
+        this.towersNumber = numTower;
+        this.towersColor = colTower;
+        this.gameMode = gameMode;
+        this.studentHall = new HashMap<PawnColor, Integer>();
+        this.studentEntrance = entrance;
+        this.professorTable = new HashMap<PawnColor, Boolean>();
 
-    for(PawnColor color : PawnColor.values()){
-        this.studentHall.put(color, 0);
-        this.studentEntrance.put(color, 0);
-        this.professorTable.put(color, false);
-    }
+        for(PawnColor color : PawnColor.values()){
+            this.studentHall.put(color, 0);
+            this.studentEntrance.put(color, 0);
+            this.professorTable.put(color, false);
+        }
 
     }
 
@@ -112,7 +122,7 @@ public class SchoolBoard {
     }
     public void removeStudentEntrance(PawnColor color) {
         if(this.studentEntrance.get(color)>0)
-        this.studentEntrance.replace(color, this.studentEntrance.get(color)-1);
+            this.studentEntrance.replace(color, this.studentEntrance.get(color)-1);
         else System.out.println("studente non presente");
     }
     public void addStudentHall(PawnColor color) {
@@ -128,10 +138,23 @@ public class SchoolBoard {
         this.towersNumber = towersNumber;
     }
 
+    /**
+     * Sets as true the boolean value indicating that this schoolboard controls a given professor.
+     * @param color is the controlled professor.
+     */
     public void addProfessor(PawnColor color){this.professorTable.replace(color, true); }
 
+    /**
+     * Sets as false the boolean value indicating that this schoolboard does not control a given professor anymore.
+     * @param color is the professor to be set as false.
+     */
     public void removeProfessor(PawnColor color){this.professorTable.replace(color, false); }
 
+    /**
+     * Checks if the owner of this schoolboard has to get a coin.
+     * @param color is the color of the student that has been moved to this schoolboard's hall.
+     * @return true if the owner has to get a coin, false otherwise.
+     */
     public boolean checkForCoin(PawnColor color){
         return ((studentHall.get(color) % 3) == 0);
     }
