@@ -159,6 +159,11 @@ public class VirtualView{
         this.error_Type_type = error_Type_type;
     }
 
+    /**
+     * Processes a message received from the client (through the corresponding client handler) and gets a response to send back.
+     * @param input message received.
+     * @return the response to the client's request.
+     */
     public String read(String input) {
 
         //System.out.println("receiving..." + input);
