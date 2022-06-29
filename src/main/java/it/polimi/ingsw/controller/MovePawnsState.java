@@ -1,8 +1,6 @@
 package it.polimi.ingsw.controller;
 import it.polimi.ingsw.model.*;
-import it.polimi.ingsw.virtualview.VirtualView;
-
-import java.util.Map;
+import it.polimi.ingsw.network.VirtualView;
 
 public class MovePawnsState implements GameControllerState{
 

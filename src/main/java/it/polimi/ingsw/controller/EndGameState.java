@@ -1,9 +1,7 @@
 package it.polimi.ingsw.controller;
-import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.PawnColor;
 import it.polimi.ingsw.model.Player;
-import it.polimi.ingsw.model.SchoolBoard;
-import it.polimi.ingsw.virtualview.VirtualView;
+import it.polimi.ingsw.network.VirtualView;
 
 public class EndGameState implements GameControllerState{
     Player winner = new Player();

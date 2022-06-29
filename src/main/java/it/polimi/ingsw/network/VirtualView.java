@@ -1,4 +1,4 @@
-package it.polimi.ingsw.virtualview;
+package it.polimi.ingsw.network;
 
 import com.google.gson.Gson;
 import it.polimi.ingsw.controller.GameController;

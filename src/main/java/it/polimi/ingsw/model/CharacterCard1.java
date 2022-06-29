@@ -17,7 +17,7 @@ public class CharacterCard1 implements CardBehavior{
     }
 
     /**
-     * Moves a student from this card to an island and refills this card with a students taken from the game bag.
+     * Moves a student from this card to an island and refills this card with a student taken from the game bag.
      * @param parameter contains the Game in which the card is activated, the player who activated it,
      *                  the student color and the destination island chosen by the user
      */
@@ -36,7 +36,7 @@ public class CharacterCard1 implements CardBehavior{
             parameter.getGame().getBag().replace(rdColor, parameter.getGame().getBag().get(rdColor)-1);
             this.students.replace(rdColor, this.students.get(rdColor)+1);
         }
-    }//Places 4 random students on the card
+    }
 
     /**
      * In this specific character card, this method does nothing since its effect doesn't persist.

@@ -1,10 +1,6 @@
 package it.polimi.ingsw.network;
 
-import it.polimi.ingsw.model.CharacterCard;
-import it.polimi.ingsw.model.Parameter;
 import it.polimi.ingsw.model.PawnColor;
-import it.polimi.ingsw.model.Player;
-import it.polimi.ingsw.virtualview.VirtualView;
 
 import java.util.Map;
 

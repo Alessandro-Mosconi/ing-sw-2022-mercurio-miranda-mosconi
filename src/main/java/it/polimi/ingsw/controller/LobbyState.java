@@ -1,7 +1,7 @@
 package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.ModelListener;
-import it.polimi.ingsw.virtualview.VirtualView;
+import it.polimi.ingsw.network.VirtualView;
 
 public class LobbyState implements GameControllerState{
 

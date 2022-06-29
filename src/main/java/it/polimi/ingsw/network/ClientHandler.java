@@ -1,7 +1,6 @@
 package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.model.*;
-import it.polimi.ingsw.virtualview.VirtualView;
 
 import java.io.*;
 import java.net.Socket;

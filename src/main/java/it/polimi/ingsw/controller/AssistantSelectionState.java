@@ -2,7 +2,7 @@ package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.AssistantCard;
 import it.polimi.ingsw.model.Player;
-import it.polimi.ingsw.virtualview.VirtualView;
+import it.polimi.ingsw.network.VirtualView;
 
 public class AssistantSelectionState implements GameControllerState{
 
