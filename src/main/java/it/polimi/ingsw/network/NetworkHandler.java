@@ -559,9 +559,9 @@ public class NetworkHandler implements Runnable {
                 view.showTable();
             }
             case GAME_ENDED -> {
-                payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);
-                String winnerID = payloads.get(0);
+                String winnerID = gson.fromJson(msg_in.getPayload(), String.class);
                 phase = Phase.END_GAME;
+                nextPhase = Phase.WAITING;
                 view.showEndGameWindow(winnerID);
                 //TODO mandare al server il messaggio che la partita finisce e chiudere le socket?
             }

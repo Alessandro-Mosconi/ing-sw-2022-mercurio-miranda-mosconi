@@ -115,9 +115,7 @@ public void showCharacterChard(){
     button.setPrefHeight(130);
     button.setPrefWidth(90);
 
-    if(view.getPhase().equals(Phase.WAITING))
-        button.setDisable(true);
-    else button.setDisable(false);
+    button.setDisable(view.getPhase().equals(Phase.WAITING));
 
     button.setTooltip(
             new Tooltip("Card" + cardID + ": " + card.getCaption())
@@ -521,16 +519,23 @@ public void showClouds(){
             shapes.add(new Rectangle(0.0, 0.0, 25, 25));
 
             ArrayList<Text> text = new ArrayList<>();
-            text.add(new Text());
+            text.add(new Text(String.valueOf(island.getTowersNumber())));
 
             int a = 0;
             int b = 1;
-            if (island.getTowerColor() != null)
-                shapes.get(0).setFill(TowerColor.getColor(island.getTowerColor()));
-            else shapes.get(0).setFill(Color.TRANSPARENT);
 
             StackPane stack2 = new StackPane();
             stack2.getChildren().addAll(shapes.get(0), text.get(0));
+
+            if (island.getTowerColor() != null) {
+                shapes.get(0).setFill(TowerColor.getColor(island.getTowerColor()));
+                stack2.setVisible(true);
+            }
+            else {
+                shapes.get(0).setFill(Color.TRANSPARENT);
+                stack2.setVisible(false);
+            }
+
             gridPane.add(stack2, 0, 0, 1, 1);
 
             for (PawnColor color : PawnColor.values()) {
@@ -571,9 +576,8 @@ public void showClouds(){
                         new Tooltip(message)
                 );
             }
-            if (view.getPhase().equals(Phase.CHOOSING_CT)||view.getPhase().equals(Phase.WAITING))//todo penso anche nelle phases waiting + planning vada bloccato
-                button.setDisable(true);
-            else button.setDisable(false);
+            //todo penso anche nelle phases waiting + planning vada bloccato
+            button.setDisable(view.getPhase().equals(Phase.CHOOSING_CT) || view.getPhase().equals(Phase.WAITING));
 
             ImageView im = new ImageView("assets/Reame/PNG/Isola.png");
             im.setFitHeight(110);
@@ -594,17 +598,18 @@ public void showClouds(){
                       view.getParameter().setIsland(island);
                       view.setMessageType(MessageType.CHOSEN_CHARACTER_CARD);
                       view.prepareMessage();
+                      view.setChosenCharacterCard(null);
+                      return;
                   }
               }
-              else if(view.getPhase().equals(Phase.CHOOSING_MN_SHIFT)) {
+
+              if(view.getPhase().equals(Phase.CHOOSING_MN_SHIFT)) {
                 int shift = (view.getIslandManager().getIslandList().size() + island.getIslandID() - view.getIslandManager().getCurrMNPosition())%view.getIslandManager().getIslandList().size();
                 if (shift > view.getPlayer().getMaxShift()) {
                   GuiStarter.getCurrentApplication().showError(ErrorType.INVALID_MN_SHIFT.toString());
-                  return;
                 }else {
                     if(island.isMotherNature()) {
                         GuiStarter.getCurrentApplication().showError("Minimum MN shift: 1");
-                        return;
                     }
                     else {
                         view.setMessageType(MessageType.MN_SHIFT);
@@ -623,12 +628,11 @@ public void showClouds(){
                   else {
                       Alert alert = new Alert(Alert.AlertType.ERROR, "Chose a pawn to move first", ButtonType.OK);
                       alert.showAndWait();
-                      return;
                   }
               }
 
 
-              view.prepareMessage();
+              //view.prepareMessage();
                 }
             });
 

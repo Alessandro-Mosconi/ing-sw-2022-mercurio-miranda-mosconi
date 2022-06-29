@@ -14,6 +14,9 @@ public class IslandManager {
         return  this.islandList;
     }
     public int getCurrMNPosition() {
+        for(Island island : islandList)
+            if(island.isMotherNature())
+                currMNPosition= island.getIslandID();
         return currMNPosition;
     }
     public void setCurrMNPosition(int currMNPosition) {

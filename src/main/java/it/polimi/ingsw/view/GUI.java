@@ -107,6 +107,16 @@ public class GUI extends View{
         }
     }
 
+
+    /**
+     * Shows the endgame window.
+     * @param winnerID the winner's username.
+     */
+    public void showEndGameWindow(String winnerID){
+        this.setWinnerUsername(winnerID);
+        GuiStarter.getCurrentApplication().showEndGameWindow();
+    }
+
     @Override
     public void settings() {
         player.getSchoolBoard().setTowersColor(towerColor);
@@ -143,4 +153,6 @@ public class GUI extends View{
     public void showUsedAssistantCards() {
         //todo qui dobbiamo mostrare le assistant card usate..
     }
+
+
 }
