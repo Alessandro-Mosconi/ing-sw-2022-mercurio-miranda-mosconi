@@ -5,10 +5,87 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/PawnColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/PawnColor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/TowerColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/TowerColor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/WizardType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/WizardType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (10).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (11).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (12).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (13).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (14).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (15).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (16).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (17).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (18).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (19).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (20).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (21).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (22).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (23).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (24).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (25).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (26).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (27).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (28).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (29).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (3).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (30).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (31).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (32).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (33).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (34).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (35).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (36).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (37).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (38).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (39).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (4).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (40).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (5).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (6).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (7).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (8).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/3x/Assistente (9).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/retro/CarteTOT_back_11@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/retro/CarteTOT_back_1@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/retro/CarteTOT_back_21@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/retro/CarteTOT_back_31@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Assistenti/retro/CarteTOT_back_41@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/LOGO CRANIO CREATIONS_bianco.ai" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Plancia/Plancia_DEF.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Plancia/Plancia_DEF2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Plancia/Plancia_DEF3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Plancia/background_lightblue-gradiet.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Aquila.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Araldo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Cane.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Cavaliere.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Centauro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Contadino.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Elefante.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Fungaro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Gatto.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Ghepardo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Giullare.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Ladro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Lucertola.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Menestrello.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Monaco.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Nonna erbe.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Polipo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Postino magico.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Principessa viziata.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Struzzo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Tartaruga.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Raw/Animali/Volpe.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/cerchi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/dieline fustella.ai" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/source_pdf/Animali.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/source_pdf/Animali__back.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/source_pdf/ReameB_fustelle_isolelontane.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/source_pdf/ReameB_fustelle_isolevicine.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/source_pdf/personaggi_DEF.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/source_pdf/personaggi_back.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/source_pdf/wooden components_DEF.pdf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +246,7 @@
       <option name="presentableId" value="Default" />
       <updated>1656505910020</updated>
       <workItem from="1656505915350" duration="5672000" />
-      <workItem from="1656519859457" duration="1112000" />
+      <workItem from="1656519859457" duration="1444000" />
     </task>
     <task id="LOCAL-00002" summary="Message table updated">
       <created>1656511568053</created>
@@ -178,7 +255,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656511568053</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Tests fix">
+      <created>1656521100562</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1656521100578</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Tests fix">
+      <created>1656521131646</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1656521131646</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +281,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Code cleaning" />
     <MESSAGE value="Message table updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Message table updated" />
+    <MESSAGE value="Tests fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tests fix" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_2_more.ic" NAME="CloudTileTest and 2 more Coverage Results" MODIFIED="1651152494282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
@@ -234,7 +326,7 @@
     <SUITE FILE_PATH="coverage/Eriantys$ParameterTest.ic" NAME="ParameterTest Coverage Results" MODIFIED="1655721946668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$EnumTest.ic" NAME="EnumTest Coverage Results" MODIFIED="1656520535445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$EnumTest.ic" NAME="EnumTest Coverage Results" MODIFIED="1656521030883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$GameTest.ic" NAME="GameTest Coverage Results" MODIFIED="1655665726313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -264,7 +356,7 @@
     <SUITE FILE_PATH="coverage/Eriantys$PlayerTest.ic" NAME="PlayerTest Coverage Results" MODIFIED="1651151874996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$it_polimi_ingsw_model_in_PSP42.ic" NAME="it.polimi.ingsw.model in PSP42 Coverage Results" MODIFIED="1656519923951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$it_polimi_ingsw_model_in_PSP42.ic" NAME="it.polimi.ingsw.model in PSP42 Coverage Results" MODIFIED="1656521062041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest.ic" NAME="CharacterCardTest Coverage Results" MODIFIED="1655725686400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
