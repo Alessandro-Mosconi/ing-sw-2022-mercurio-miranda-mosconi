@@ -10,9 +10,8 @@ All messages share the following structure:
   - Server->Client: User of the destination Client;
 - messageType (enum)
 - payload (String)
-    - if messageType is an _ACTION_ -> then payload is a JSON representation of the objects interested;
-    - if messageType is a _MODEL_UPDATE_ -> then payload is a JSON representation of the objects that contains the changes made to the model;
     - if messageType == ERROR -> then payload is a JSON representation of the error enumeration.
+    - else payload is a JSON representation of the objects to send
 
 
 ## Communication Examples
@@ -108,11 +107,12 @@ Example of a request to use/buy a character card:
 ```json
 {
    "username": "userClient",
-   "messageType": "BUY_CHARACTER_CARD",
+   "messageType": "CHOSEN_CHARACTER_CARD",
    "payload":
    {
-      "idCharacterCard": "1",
-      "price" : "3"
+      "idCharacterCard": "3",
+      "price" : "2",
+      "islandID" : "7"
    }
 }
 ```
@@ -130,41 +130,48 @@ Example of a possible error message during login (when you try to create a new G
 
 | Source     | Message Type  | payload content    |  description
 | :----:     |    :----:   |          :----:  |     :----:  |
-| Server     | LOGIN_SUCCESSFUL       | null    | login procedure has been succesfull completed
-| Server     | RECONNECTED  | player username | client has been successfully reconnected to server
-| Server     | DISCONNECTED   |   player username   | inform clients that a player has disconnected
-| Server     | QUIT |  player username  | sent by the server to notify that a user quitted the game
-| Server     | ERROR  | an error type  | notifies the client that an error occured
-| Server     | SETTINGS       | null     | tell the client that server is in a state where he expects the number of players and the game difficulty
-| Server     | GAME_STARTED | List\<String\> of the players' usernames | indicates to all clients that game has started
-| Server     | LOBBY_CREATED | null | confirms to the client that he joined the lobby succesfully
-| Server     | LOBBY_JOINED |   List\<String\> of the players usernames   | tell the client the other player in the lobby
-| Server     | OTHER_USER_JOINED |   player username   | tells every client that a new player joined
-| Server     | SERVER_DOWN |  null    | notifies the client that the server is crashed
-| Server     | NEXT_STATE | State object | updates the client about the new turn (planning -> action / my action -> next player action)
-| Server     | GAME_ENDED | "user", "motivation"| tells every client who's the winner
-| Server     | PLANNING        | null     | the server notify the beginning of the planning phase
-| Server     | ACTION        | null     | the server notify the beginning of the action phase
-| Server/Client     | PING |  null  | sent to notify that server/clients are still working
-| Client     | SETTINGS |  int for number of player and String for GameMode    | the chosen number of players    
-| Client     | CREATE_MATCH | the match ID     | sent by client to create a new match
-| Client     | READY |   null   | tell the server that hte game can start
-| Client     | JOIN_MATCH |  the match ID    | sent by client to join an existing match
-| Client     | QUIT |  null  | sent by the client to the server to QUIT the game
-| Client     | END_ACTION_TURN      | null     | this message notify the server that a player has ended its action turn
-| Client     | _IN_GAME_ACTION_        | classes needed for the action     | this message contains the different possible decision a Player could do
-| Server     | _MODEL_UPDATE_        | classes updated     | this message contains the classes tha are changed after the actions
+| Server     | LOBBY WAITING | gameMode, numOfPlayer, (userList)    | you are waiting in lobby, if the player is the creator, there isn't userList
+| Server     | WAIT  | null | notify the client to wait untile next message
+| Server     | IS_YOUR_TURN   | null | notify the client that now it's player turn
+| Server     | CARD_ACTIVATED |  null  | notify the client that that the player chosen character card effect is active
+| Server     | LOBBY_UPDATED  | null  | notify another player joined the lobby
+| Server     | AVAILABLE_WIZARDS       | List\<WizardType\> of available wizards  | tell the player they have to chose a wizard from the list 
+| Server     | AVAILABLE_TOWER_COLORS | List\<TowerColor\> of available tower colors | tell the player they have to chose a tower color from the list
+| Server     | UPDATE_ASSISTANT_CARD | nickname,  idAssistantCard| tell the client that the player with that nickname chose tha assistant card with that id
+| Server     | UPDATE_ISLAND |   islandID,  studentMap  | update the student map of the island with that id
+| Server     | UPDATE_TOWERS_NUM |   nickname, towerNumber   | update the tower number of the player with that nickname
+| Server     | UPDATE_SCHOOL_BOARD_ENTRANCE |  nickname, studentMap    | update the entrance schoolboard of the client with that nickname
+| Server     | UPDATE_SCHOOL_BOARD_HALL |  nickname, studentMap    | update the hall schoolboard of the client with that nickname
+| Server     | UPDATE_PROFESSORS |  nickname, professorMap    | update the professorTable of the client with that nickname
+| Server     | UPDATE_ISLAND_LIST| List\<Island\>  islandList   | update the the main board with the given islandList
+| Server     | UPDATE_CLOUDTILES| List\<CloudTile\>  cloudList  | update the the main board with the given cloudList
+| Server     | SETUP_PLAYERS | List\<Player\>  cloudList     | for each player setup the view player settings
+| Server     | MODEL_CREATED   | null     | notify the model is correctly created
+| Server     | GAME_ENDED | nickname     | notify the client tha the player with that nickname won
+| Server     | UPDATE_WALLET  | nickname, currentWallet     | update the player with that nickname with the new amount of the wallet
+| Server     | UPDATE_MAX_SHIFT | nickname| update the maximum shift of mother nature of the player with that nickname (character card effect)
+| Server     | PRICE_INCREASE | cardID, newPrice     | notify the client with the new price of the character card witg cardID
+| Server     | INIT_CHARACTER_CARDS | List\<cardID, price, parameters\>| notify the clients with the three initial character cards attribute to initialize them
+| Server     | UPDATE_CARD_STUDENTS | cardID, studentMap     | notify the clients that the character card with that id changed its map
+| Server     | SOMEONE_ACTIVATED_AN_EFFECT | nickname, cardID | notify the clients that tha aplayer with that nickname activated the cardID effect
+| Server     | EFFECT_ENDED  | null| notify the client that the current character card effect has ended
+| Server/Client     | -- |  "ping"  | sent to notify that server/clients are still working (it is only a string "ping")
+| Client     | SETTINGS |  wizardType, towerColor   | communicate to the server the chosen wizardType and towerColor   
+| Client     | CREATE_MATCH | username, gameID, playerNumber, gameMode     | send the settings to create the match
+| Client     | ASSISTANT_CARD |  chosenAssistantID | tell the ID of the chosen assistant card
+| Client     | JOIN_MATCH |  nickname, gameID    | sent by client to join an existing match
+| Client     | PAWN_MOVE |  colorStudentToMove, destination | message to communicate a single move of pawn
+| Client     | MN_SHIFT      | shift     | message to communicate a shift of Mother Nature
+| Client     | CHOSEN_CT        | chosenCloudID     | message to communicate the ID of the chosen cloud
+| Client     | CHOSEN_CHARACTER_CARD        | characterCardID, parameters     | message to communicate the ID of the chosen character card
 
-### In Game Action Table
-| Action Type | parameters |description |
-| :----: | :----: | :----: |
-| ChoseWizard | `Wizard` | choose on deck from the 4 possible
-| Planning | `AssistantCard` | choose the Assistant Card
-| MoveToIsland |`color`, `IslandManager position`| move a student from the Entrance to an Island
-| MoveToHall | `color`| move a student from the Entrance to a Hall
-| MoveMN |`shift`| player decided how many steps the MN does
-| ChoseCloudTile |`CloudTile Array position`| choose a cloud to take students from
-| BuyCharacterCard |`characterCard`| buy, if enough money, a Character Card and use its effect
+### Character Card Parameters
+| CharacterCardID | parameters |
+| :----: | :----: | 
+| 1 | `PawnColor`, `islandID` | 
+| 3, 5 | `islandID` | 
+| 7, 10 |`map1`, `map2`|
+N.B. map1 e map2 are sent addding to payload `PawnColor`, `numberOfPanws` for each color of each map
 
 ### Model Update
 | Action Type | parameters |description |
@@ -193,7 +200,6 @@ Example of a possible error message during login (when you try to create a new G
 | INVALID_NUM_PLAYER | num_player is empty, null, <2 or >4 
 | INVALID_DIFFICULTY | difficulty is empty, null, != easy or expert
 | FULL_LOBBY| you are trying to join a game with more than 3 player in the lobby
-
 
 #### Controller Errors
 | Error Type | description |

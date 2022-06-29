@@ -35,10 +35,6 @@ public class VirtualView{
     }
 
     private Player player = new Player();
-    private ArrayList<SchoolBoard> schoolBoards;
-    private ArrayList<CloudTile> clouds;
-    private IslandManager islandManager;
-    private ArrayList<CharacterCard> characterCards; //TODO questi 4 attributi a cosa servono?
     private boolean online = true;
     private boolean isMyTurn = false;
     private ArrayList<String> players;
@@ -52,14 +48,6 @@ public class VirtualView{
     private static Map<String, ArrayList<String>> networkMap = new HashMap<>(); //mappa di gameid e lista di player
     private static Map<String, GameController> gameMap = new HashMap<>(); //mappa di gameid e game
 
-
-    /*
-    public void updateNetworkMap(String gameID){
-
-    }
-
-     */
-
     public void setGameController(VirtualViewListener gameController) {
         this.gameController = gameController;
     }
@@ -67,6 +55,7 @@ public class VirtualView{
     public void setClientHandler(ClientHandler clientHandler) {
         this.clientHandler = clientHandler;
     }
+
     public VirtualViewListener getGameController() {
         return gameController;
     }
@@ -166,7 +155,6 @@ public class VirtualView{
      */
     public String read(String input) {
 
-        //System.out.println("receiving..." + input);
         Gson gson = new Gson();
         Message msg = gson.fromJson(input, Message.class);
 

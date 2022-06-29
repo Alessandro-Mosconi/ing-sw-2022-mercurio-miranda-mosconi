@@ -123,7 +123,6 @@ public class NetworkHandler implements Runnable {
             }
             case SETTINGS -> {
                 view.settings();
-
                 msg_out.setType(MessageType.SETTINGS);
                 payloads.add(view.getPlayer().getDeck().getWizard().toString());
                 payloads.add(view.getTowerColor().toString());
@@ -304,7 +303,6 @@ public class NetworkHandler implements Runnable {
             case WAIT -> {
                 phase = Phase.WAITING;
                 if(isGui)GuiStarter.getCurrentApplication().waitForYourTurn();
-                System.out.println("ok aspetto\n");
             }
             case IS_YOUR_TURN, ACK, CARD_ACTIVATED -> {
                 phase = nextPhase;
