@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="JavaDOC documentation of network package">
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" afterDir="false" />
+    <list default="true" id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="JavaDOC documentation of CLI class">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/virtualview/VirtualView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/virtualview/VirtualView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,14 +302,8 @@
       <workItem from="1656325798492" duration="18974000" />
       <workItem from="1656405105348" duration="8462000" />
       <workItem from="1656442446797" duration="7421000" />
-      <workItem from="1656452287941" duration="3897000" />
-    </task>
-    <task id="LOCAL-00022" summary="Communication Protocol fixed (added wizard decision, deck and wallet update)">
-      <created>1651502087376</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1651502087376</updated>
+      <workItem from="1656452287941" duration="4405000" />
+      <workItem from="1656485660200" duration="2090000" />
     </task>
     <task id="LOCAL-00023" summary="Communication Protocol fixed">
       <created>1651505006269</created>
@@ -644,7 +641,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656455726077</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="JavaDOC documentation of CLI class">
+      <created>1656456488537</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1656456488537</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -679,7 +683,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Lobby, game creation, game join finished" />
     <MESSAGE value="read method added in VirtualView" />
     <MESSAGE value="Controller + model updates" />
     <MESSAGE value="addition of CREATE_MATCH and GeneratePlayerState in the controller" />
@@ -704,7 +707,8 @@
     <MESSAGE value="Number of towers update - fix" />
     <MESSAGE value="JavaDOC documentation of model and controller + fix CharacterCard2 effect" />
     <MESSAGE value="JavaDOC documentation of network package" />
-    <option name="LAST_COMMIT_MESSAGE" value="JavaDOC documentation of network package" />
+    <MESSAGE value="JavaDOC documentation of CLI class" />
+    <option name="LAST_COMMIT_MESSAGE" value="JavaDOC documentation of CLI class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

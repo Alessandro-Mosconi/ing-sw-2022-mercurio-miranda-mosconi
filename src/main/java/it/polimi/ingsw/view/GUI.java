@@ -14,10 +14,10 @@ import java.net.UnknownHostException;
 public class GUI extends View{
     private GuiStarter guiStarter;
     private Client client;
-    private boolean ready2go = false;
+    //private boolean ready2go = false;
     private Player playerSchoolboard;
     private String winnerUsername;
-
+    private NetworkHandler networkHandler;
     public String getWinnerUsername() {
         return winnerUsername;
     }
@@ -42,7 +42,6 @@ public class GUI extends View{
         this.networkHandler = networkHandler;
     }
 
-    private NetworkHandler networkHandler;
 
     public GuiStarter getGuiStarter() {
         return guiStarter;
@@ -64,8 +63,10 @@ public class GUI extends View{
         this.client = client;
     }
 
+    /**
+     * Shows the correct GUI scene according to the client's phase.
+     */
     public void processScene(){
-        System.out.println("La gui ha questa fase:" + phase);
         switch (phase){
             case SETTINGS -> {
                 guiStarter.switchToWizardsScene();
@@ -75,7 +76,7 @@ public class GUI extends View{
                 guiStarter.switchToMainBoard();
             }
             case CHOOSING_FIRST_MOVE, CHOOSING_SECOND_MOVE, CHOOSING_THIRD_MOVE -> {
-                System.out.println("Ora faccio partire la scelta");
+                //System.out.println("Ora faccio partire la scelta");
                 guiStarter.switchToMainBoard();
                 guiStarter.choosePawnMove();
             }
@@ -89,6 +90,10 @@ public class GUI extends View{
             }
         }
     }
+
+    /**
+     * Prepares the message type to send to the server while requesting to create or join a match.
+     */
     @Override
     public void login() {
         player = new Player();
@@ -107,11 +112,17 @@ public class GUI extends View{
         }
     }
 
+    /**
+     * Stores in the view's attribute the settings chosen by the user.
+     */
     @Override
     public void settings() {
         player.getSchoolBoard().setTowersColor(towerColor);
     }
 
+    /**
+     * Stores in the view's attributes the last used assistant card and the new maximum mother nature shift.
+     */
     @Override
     public void chooseAssistantCard() {
         player.setMaxShift(chosenAssistantCard.getMotherMovement());

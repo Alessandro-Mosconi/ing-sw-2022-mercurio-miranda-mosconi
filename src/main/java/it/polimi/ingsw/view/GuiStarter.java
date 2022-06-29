@@ -37,82 +37,11 @@ public class GuiStarter extends Application{
         return client;
     }
 
-    /*public static void main(String[] args) {
-        launch(args);
-    }*/
 
-    //usati per testare la gui, andranno cancellati
-
-    public void test3(){
-        GUI gui = (GUI) currentApplication.getClient().getView();
-        gui.setPhase(Phase.CHOOSING_FIRST_MOVE);
-        Game game = new Game();
-
-        game.setNumberOfPlayers(3);
-
-
-        game = new Game(3, "g1", GameMode.expert);
-        ArrayList<Player> players = new ArrayList<>();
-        Player p1 = new Player("Franco", new Deck(), 1, new SchoolBoard());
-        Player p2 = new Player("gigi", new Deck(), 2, new SchoolBoard());
-        Player p3 = new Player("pol", new Deck(), 3, new SchoolBoard());
-        p1.getSchoolBoard().setTowersColor(TowerColor.white);
-        p2.getSchoolBoard().setTowersColor(TowerColor.black);
-        p3.getSchoolBoard().setTowersColor(TowerColor.grey);
-        p1.setDeck(new Deck(WizardType.wizard1));
-        p2.setDeck(new Deck(WizardType.wizard2));
-        p3.setDeck(new Deck(WizardType.wizard3));
-        players.add(p1);
-        players.add(p2);
-        players.add(p3);
-
-        game.setPlayers(players);
-
-        game.setupGame();
-
-
-
-        game.setPlayers(players);
-        gui.setPlayers(game.getPlayers());
-
-        for(CharacterCard card : game.getChosenCharacterCards())
-        {
-            card.setCaption("questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione questa sarà la descrizione ");
-        }
-        AssistantCard card = new AssistantCard(3, 5);
-        p2.setLastAssistantCard(card);
-        AssistantCard card2 = new AssistantCard(5, 4);
-        p3.setLastAssistantCard(card2);
-
-        CharacterCard7 card7 = new CharacterCard7();
-        Map<PawnColor, Integer> map = new HashMap<>();
-        for(PawnColor color: PawnColor.values())
-            map.put(color, 3);
-        p1.getSchoolBoard().setStudentHall(map);
-
-        Map<PawnColor, Integer> map3 = new HashMap<>();
-        for(PawnColor color: PawnColor.values())
-            map3.put(color, 2);
-
-        card7.setStudents(map3);
-
-        //map.replace(PawnColor.green, 2);
-        //map.replace(PawnColor.yellow, 1);
-        //map.replace(PawnColor.red, 1);
-        //card12.setStudents(map);
-        CharacterCard charCard = new CharacterCard (7,1, card7);
-        gui.setChosenCharacterCard(charCard);
-        game.getIslandManager().getIslandList().get(9).setNoEntryTile(true);
-        gui.setWinnerUsername("pol");
-        gui.setCharacterCards(game.getChosenCharacterCards());
-        gui.setPlayer(game.getPlayers().get(0));
-        gui.setGamemode(game.getGameMode());
-        gui.setClouds(game.getCloudTiles());
-        gui.setIslandManager(game.getIslandManager());
-        gui.setPlayerNumber(3);
-        gui.setUsername(game.getPlayers().get(0).getNickName());
-    }
-
+    /**
+     * Allocates the client and sets a GUI to it.
+     * @param primaryStage -
+     */
      @Override
     public void start(Stage primaryStage) {
         this.client = new Client();
@@ -145,8 +74,10 @@ public class GuiStarter extends Application{
         primaryStage.show();
     }
 
-    public void switchToLoginScene()
-    {
+    /**
+     * Loads the login scene on the main stage of the GUI.
+     */
+    public void switchToLoginScene() {
         Platform.runLater(() ->{
         Parent root;
         try {
@@ -163,8 +94,10 @@ public class GuiStarter extends Application{
     });
     }
 
-    public void switchToCreateSettings()
-    {
+    /**
+     * Loads the create-game scene on the main stage of the GUI.
+     */
+    public void switchToCreateSettings() {
 
         Platform.runLater(() ->{
         Parent root;
@@ -182,8 +115,10 @@ public class GuiStarter extends Application{
         });
     }
 
-    public void switchToJoinSettings()
-    {
+    /**
+     * Loads the join-game scene on the main stage of the GUI.
+     */
+    public void switchToJoinSettings() {
         Platform.runLater(() ->{
         Parent root;
         try {
@@ -199,6 +134,9 @@ public class GuiStarter extends Application{
         });
     }
 
+    /**
+     * Loads the wizard choice scene on the main stage of the GUI.
+     */
     public void switchToWizardsScene() {
         Platform.runLater(() ->{
             Parent root;
@@ -215,6 +153,9 @@ public class GuiStarter extends Application{
 
     }
 
+    /**
+     * Loads the towers color choice scene on the main stage of the GUI.
+     */
     public void switchToTowerScene() {
 
         Platform.runLater(() ->{
@@ -233,6 +174,9 @@ public class GuiStarter extends Application{
 
     }
 
+    /**
+     * Shows the scene in which assistant card are shown and chosen on a new modal stage of the GUI.
+     */
     public void switchToDeckScene() {
 
         Platform.runLater(() ->{
@@ -269,6 +213,9 @@ public class GuiStarter extends Application{
         });
     }
 
+    /**
+     * Loads the lobby scene on the main stage of the GUI.
+     */
     public void switchToLobbyScene() {
         Platform.runLater(() ->{
 
@@ -285,8 +232,10 @@ public class GuiStarter extends Application{
     });
     }
 
-    public void switchToMainBoard()
-    {
+    /**
+     * Loads the main board scene on the main stage of the GUI.
+     */
+    public void switchToMainBoard() {
 
         Platform.runLater(() ->{
             Parent root;
@@ -304,6 +253,9 @@ public class GuiStarter extends Application{
 
     }
 
+    /**
+     * Shows an error alert on the GUI.
+     */
     public void showError(String error){
         Platform.runLater(() ->{
             Alert alert = new Alert(Alert.AlertType.ERROR, "This error occured: " + error, ButtonType.OK);
@@ -315,6 +267,9 @@ public class GuiStarter extends Application{
     }
 
 
+    /**
+     * Shows an alert on the GUI to tell the user it's not his turn.
+     */
     public void waitForYourTurn(){
         Platform.runLater(() ->{
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Now wait for your turn", ButtonType.OK);
@@ -323,6 +278,9 @@ public class GuiStarter extends Application{
     }
 
 
+    /**
+     * Shows an alert on the GUI to tell the user it's time to choose a cloud tile.
+     */
     public void choseCT(){
         Platform.runLater(() ->{
             Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nChose a cloud and click on it", ButtonType.OK);
@@ -336,6 +294,9 @@ public class GuiStarter extends Application{
         });
     }
 
+    /**
+     * Shows an alert on the GUI to tell the user it's time to choose mother nature's shift.
+     */
     public void chooseMNmovement() {
         Platform.runLater(() ->{
             Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nClick on the island Mother Nature should go\nMax " + getClient().getView().getPlayer().getMaxShift() + " shift", ButtonType.OK);
@@ -349,6 +310,9 @@ public class GuiStarter extends Application{
         });
     }
 
+    /**
+     * Shows an alert on the GUI to tell the user it's time to choose an island.
+     */
     public void choseIsland() {
         Platform.runLater(() ->{
             Alert alert = new Alert(Alert.AlertType.NONE, "NOW CHOSE AN ISLAND\nClick on the island you want to apply the effect", ButtonType.OK);
@@ -362,9 +326,12 @@ public class GuiStarter extends Application{
         });
     }
 
+    /**
+     * Shows an alert on the GUI to tell the user it's time to choose a pawn move.
+     */
     public void choosePawnMove() {
         Platform.runLater(() ->{
-            Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nChoose a destination click on your SchoolBoard Hall or on the Island you choose:", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nChoose a student from your Entrance.\n Then, choose a destination clicking on your SchoolBoard Hall or on the Island you chose:", ButtonType.OK);
 
             ImageView icon = new ImageView("/assets/Reame/PNG/Isola.png");
             icon.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0)");
@@ -375,6 +342,9 @@ public class GuiStarter extends Application{
         });
     }
 
+    /**
+     * Loads the end game scene on the main stage of the GUI.
+     */
     public void showEndGameWindow(){
         Platform.runLater(() ->{
             Parent root;
@@ -391,6 +361,10 @@ public class GuiStarter extends Application{
         });
     }
 
+    /**
+     * Shows on a new modal stage of the GUI the character card on which the user clicked,
+     * its attributes (if it has any), its description and its price.
+     */
     public void useCharacterCard() {
         Platform.runLater(() ->{
             Stage stage = new Stage();
@@ -420,6 +394,9 @@ public class GuiStarter extends Application{
         });
     }
 
+    /**
+     * Closes the modal stage related to character cards.
+     */
     public void closeCharacterStage() {
 
         Platform.runLater(() ->{
@@ -427,6 +404,9 @@ public class GuiStarter extends Application{
         });
     }
 
+    /**
+     * Closes the modal stage related to assistant cards.
+     */
     public void closeAssistantStage() {
 
         Platform.runLater(() ->{
