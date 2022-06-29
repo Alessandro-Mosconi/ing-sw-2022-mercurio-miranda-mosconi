@@ -8,13 +8,12 @@ public enum TowerColor {
     grey;
 
     public static Color getColor(TowerColor color){
-        switch (color) {
-            case black: return Color.BLACK;
-            case white: return Color.WHITE;
-            case grey: return Color.GREY;
-        }
+        return switch (color) {
+            case black -> Color.BLACK;
+            case white -> Color.WHITE;
+            case grey -> Color.GREY;
+        };
 
-        return null;
     }
 }
 

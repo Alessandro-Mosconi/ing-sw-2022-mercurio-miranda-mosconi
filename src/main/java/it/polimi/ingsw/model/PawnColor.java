@@ -49,7 +49,6 @@ public enum PawnColor {
             case yellow -> 2;
             case pink -> 3;
             case blue -> 4;
-            default -> -1;
         };
 
     }

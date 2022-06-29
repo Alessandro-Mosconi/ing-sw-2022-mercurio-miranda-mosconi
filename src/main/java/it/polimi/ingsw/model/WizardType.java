@@ -7,13 +7,12 @@ public enum WizardType {
     wizard4;
 
     public static Integer getIndex(WizardType wizard){
-        switch (wizard) {
-            case wizard1: return 1;
-            case wizard2: return 2;
-            case wizard3: return 3;
-            case wizard4: return 4;
-        }
+        return switch (wizard) {
+            case wizard1 -> 1;
+            case wizard2 -> 2;
+            case wizard3 -> 3;
+            case wizard4 -> 4;
+        };
 
-        return null;
     }
 }
