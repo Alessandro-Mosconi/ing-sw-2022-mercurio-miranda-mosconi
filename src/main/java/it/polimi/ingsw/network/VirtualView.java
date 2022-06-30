@@ -3,7 +3,6 @@ package it.polimi.ingsw.network;
 import com.google.gson.Gson;
 import it.polimi.ingsw.controller.GameController;
 import it.polimi.ingsw.model.*;
-import it.polimi.ingsw.network.*;
 
 import java.util.*;
 
@@ -90,6 +89,12 @@ public class VirtualView{
 
     public void setOnline(boolean online) {
         this.online = online;
+
+        if(!online) {
+            GameController gController = gameMap.get(idGame);
+            gameController = (VirtualViewListener) gController;
+            gController.aClientDisconnected();
+        }
     }
 
     public MessageType getNext_out_type() {

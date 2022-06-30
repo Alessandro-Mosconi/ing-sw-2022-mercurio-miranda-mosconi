@@ -100,6 +100,7 @@ public class ClientHandler implements Runnable, ModelListener {
             {
                 ex.printStackTrace();
             }
+            virtualView.setOnline(false);
             System.out.println("[" + client.getInetAddress() + "] " + ">> Connessione terminata <<");
         }
     }
@@ -551,6 +552,14 @@ public class ClientHandler implements Runnable, ModelListener {
         System.out.println("sending a msg to tell the effect of the active card has ended.");
         Message msg_out = new Message();
         msg_out.setType(MessageType.EFFECT_ENDED);
+        out.println(msg_out.toSend());
+    }
+
+    public void tellAPlayerDisconnected() {
+        System.out.println("a player disconnected");
+        Message msg_out = new Message();
+        msg_out.setType(MessageType.A_PLAYER_DISCONNECTED);
+        msg_out.fill("A player disconnected.");
         out.println(msg_out.toSend());
     }
 }

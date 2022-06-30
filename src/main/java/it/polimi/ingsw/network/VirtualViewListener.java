@@ -27,4 +27,6 @@ public interface VirtualViewListener {
      * @param virtualView virtual view to be listened to.
      */
     void addVirtualView(VirtualView virtualView);
+
+    void aClientDisconnected();
 }

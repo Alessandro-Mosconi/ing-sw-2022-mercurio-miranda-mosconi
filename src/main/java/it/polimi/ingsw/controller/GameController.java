@@ -203,6 +203,15 @@ public class GameController implements VirtualViewListener {
         this.virtualViewsOrder.add(virtualView.getPlayer().getPlayerNumber());
     }
 
+    @Override
+    public void aClientDisconnected() {
+        for(VirtualView vv : virtualViews){
+            if(vv.isOnline()) {
+                vv.getClientHandler().tellAPlayerDisconnected();
+            }
+        }
+    }
+
     /**
      * Updates the currently playing virtual view.
      */

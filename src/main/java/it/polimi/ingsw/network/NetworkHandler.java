@@ -277,10 +277,21 @@ public class NetworkHandler implements Runnable {
         view.setPhase(phase);
         if(msg_in.getType() != null)
         switch (msg_in.getType()) {
+            case A_PLAYER_DISCONNECTED -> {
+                phase = Phase.LOGIN;
+                view.setPhase(phase);
+                if (isGui) {
+                    GuiStarter.getCurrentApplication().showError(msg_in.getPayload());
+                    GuiStarter.getCurrentApplication().switchToLoginScene();
+                }
+                else {
+                    view.login();
+                }
+            }
             case ERROR -> {
                 System.out.println("Error:" + msg_in.getPayload());
                 if(isGui) {
-                    if(isGui) GuiStarter.getCurrentApplication().showError(msg_in.getPayload());
+                    GuiStarter.getCurrentApplication().showError(msg_in.getPayload());
                 }
                 phase = previousPhase;
             }
