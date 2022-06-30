@@ -9,7 +9,6 @@ import java.util.*;
 
 public abstract class View {
     protected String username;
-    private GuiStarter guiStarter;
     protected Phase phase;
     protected String idGame;
     protected GameMode gamemode;
@@ -22,10 +21,10 @@ public abstract class View {
     protected ArrayList<CharacterCard> characterCards = new ArrayList<>();
     protected MessageType messageType;
     protected TowerColor towerColor;
-    protected ArrayList<WizardType> wizards = new ArrayList<>(4){{
+    protected ArrayList<WizardType> wizards = new ArrayList<>(4) {{
         this.addAll(Arrays.asList(WizardType.values()));
     }};
-    protected ArrayList<TowerColor> towerColors = new ArrayList<>(3){{
+    protected ArrayList<TowerColor> towerColors = new ArrayList<>(3) {{
         this.addAll(Arrays.asList(TowerColor.values()));
     }};
     protected AssistantCard chosenAssistantCard;
@@ -34,14 +33,10 @@ public abstract class View {
     protected Integer destination;
     protected Integer MN_shift;
     protected Integer chosenCloudPos;
-    protected Integer chosenIslandPos;
     protected String activeEffect;
     protected String serverIP;
     protected int serverPort;
 
-    public GuiStarter getGuiStarter() {
-        return guiStarter;
-    }
     public Phase getPhase() {
         return phase;
     }
@@ -63,19 +58,17 @@ public abstract class View {
     public int getServerPort() {
         return serverPort;
     }
+
     public void setServerPort(int serverPort) {
         this.serverPort = serverPort;
     }
+
     public String getServerIP() {
         return serverIP;
     }
+
     public void setServerIP(String serverIP) {
         this.serverIP = serverIP;
-    }
-    public void connect(){
-    }
-    public String getActiveEffect() {
-        return activeEffect;
     }
 
     public void setActiveEffect(String activeEffect) {
@@ -100,9 +93,8 @@ public abstract class View {
     public void setCardUsed(boolean cardUsed) {
         this.cardUsed = cardUsed;
     }
+
     protected boolean cardUsed = false;
-
-
 
     public boolean isUpdated() {
         return updated;
@@ -113,30 +105,6 @@ public abstract class View {
     }
 
     private boolean updated = false;
-/*
-    public View(){
-
-        playerNumber = 0;
-
-        wizards = new ArrayList<WizardType>();
-        for(WizardType w : WizardType.values()){
-            wizards.add(w);
-        }
-        towerColors = new ArrayList<>();
-        for(TowerColor t : TowerColor.values()){
-            towerColors.add(t);
-        }
-    }
-
- */
-
-    public Integer getChosenIslandPos() {
-        return chosenIslandPos;
-    }
-
-    public void setChosenIslandPos(Integer chosenIslandPos) {
-        this.chosenIslandPos = chosenIslandPos;
-    }
 
     public Integer getChosenCloudPos() {
         return chosenCloudPos;
@@ -184,14 +152,6 @@ public abstract class View {
 
     public void setChosenAssistantCard(AssistantCard chosenAssistantCard) {
         this.chosenAssistantCard = chosenAssistantCard;
-    }
-
-    public void removeTowerColor(TowerColor towerColor){
-        this.towerColors.remove(towerColor);
-    }
-
-    public void removeWizard(WizardType wizard){
-        this.wizards.remove(wizard);
     }
 
     public TowerColor getTowerColor() {
@@ -256,7 +216,6 @@ public abstract class View {
 
     public void setUsername(String username) {
         this.username = username;
-        System.out.println(this.username);
     }
 
     public GameMode getGamemode() {
@@ -279,10 +238,6 @@ public abstract class View {
         return characterCards;
     }
 
-    public void setCharacterCards(ArrayList<CharacterCard> characterCards) {
-        this.characterCards = characterCards;
-    }
-
     public Player getPlayer() {
         return player;
     }
@@ -303,10 +258,6 @@ public abstract class View {
         return islandManager;
     }
 
-    public void setIslandManager(IslandManager islandManager) {
-        this.islandManager = islandManager;
-    }
-
     public abstract void login();
 
     public abstract void settings();
@@ -316,14 +267,10 @@ public abstract class View {
     public abstract void choosePawnMove();
 
     public abstract void showTable();
+
     public abstract void chooseMNmovement();
 
     public abstract void chooseCT();
-
-    public void updateView() {
-
-        setUpdated(true);
-    }
 
     public abstract void showUsedAssistantCards();
 
