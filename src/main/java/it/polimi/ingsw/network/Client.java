@@ -114,7 +114,7 @@ public class Client {
             server.setSoTimeout(10000);
             System.out.println("socket initialized");
         } catch (IOException e) {
-            System.out.println("server unreachable");
+            System.out.println("server unreachable\n" + e);
             return;
         }
         System.out.println("Connected");
@@ -147,7 +147,6 @@ public class Client {
             System.exit(1);
         }
         try{
-            System.out.println("chiudo il pinger client");
             pinger.stop();
             net.getIn().close();
             net.getOut().close();
@@ -171,10 +170,10 @@ public class Client {
             server.setSoTimeout(10000);
             System.out.println("socket initialized");
         } catch (IOException e) {
-            System.out.println("server unreachable");
+            System.out.println("server unreachable\n" + e);
             return;
         }
-        System.out.println("Connected GUI");
+        System.out.println("Connected");
 
         Pinger pinger = null;
         try {
