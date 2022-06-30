@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GuiStarter extends Application{
+public class GuiStarter extends Application {
     private static GuiStarter currentApplication;
     private Client client;
     private Stage primaryStage;
@@ -33,15 +33,17 @@ public class GuiStarter extends Application{
     public static GuiStarter getCurrentApplication() {
         return currentApplication;
     }
+
     public Client getClient() {
         return client;
     }
 
     /**
      * Allocates the client and sets a GUI to it.
+     *
      * @param primaryStage -
      */
-     @Override
+    @Override
     public void start(Stage primaryStage) {
         this.client = new Client();
         GUI gui = new GUI();
@@ -52,16 +54,13 @@ public class GuiStarter extends Application{
 
         primaryStage.getIcons().add(new Image("/assets/logo-cranio-creation.png"));
         primaryStage.setTitle("Eriantys");
-        primaryStage.setOnCloseRequest(we -> {
-            //todo close the connection when close the main window
-            /*
+        /*primaryStage.setOnCloseRequest(we -> {
             try {
-                getClient().getServerSocket().close();
-            } catch (IOException e) {
+                stop();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-            */
-        });
+        });*/
         this.primaryStage = primaryStage;
         switchToLoginScene();
         primaryStage.show();
@@ -71,20 +70,20 @@ public class GuiStarter extends Application{
      * Loads the login scene on the main stage of the GUI.
      */
     public void switchToLoginScene() {
-        Platform.runLater(() ->{
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/LoginScene.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-        Scene sc = new Scene(root);
-        primaryStage.setScene(sc);
-        //primaryStage.setTitle("Login");
-        primaryStage.sizeToScene();
+        Platform.runLater(() -> {
+            Parent root;
+            try {
+                root = FXMLLoader.load(getClass().getResource("/LoginScene.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+            Scene sc = new Scene(root);
+            primaryStage.setScene(sc);
+            //primaryStage.setTitle("Login");
+            primaryStage.sizeToScene();
 
-    });
+        });
     }
 
     /**
@@ -92,18 +91,18 @@ public class GuiStarter extends Application{
      */
     public void switchToCreateSettings() {
 
-        Platform.runLater(() ->{
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/CreateSettings.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-        Scene sc = new Scene(root);
-        primaryStage.setScene(sc);
-        //primaryStage.setTitle("Login2");
-        primaryStage.sizeToScene();
+        Platform.runLater(() -> {
+            Parent root;
+            try {
+                root = FXMLLoader.load(getClass().getResource("/CreateSettings.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+            Scene sc = new Scene(root);
+            primaryStage.setScene(sc);
+            //primaryStage.setTitle("Login2");
+            primaryStage.sizeToScene();
 
         });
     }
@@ -112,18 +111,18 @@ public class GuiStarter extends Application{
      * Loads the join-game scene on the main stage of the GUI.
      */
     public void switchToJoinSettings() {
-        Platform.runLater(() ->{
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/JoinSettings.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-        Scene sc = new Scene(root);
-        primaryStage.setScene(sc);
-        //primaryStage.setTitle("Login2");
-        primaryStage.sizeToScene();
+        Platform.runLater(() -> {
+            Parent root;
+            try {
+                root = FXMLLoader.load(getClass().getResource("/JoinSettings.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+            Scene sc = new Scene(root);
+            primaryStage.setScene(sc);
+            //primaryStage.setTitle("Login2");
+            primaryStage.sizeToScene();
         });
     }
 
@@ -131,7 +130,7 @@ public class GuiStarter extends Application{
      * Loads the wizard choice scene on the main stage of the GUI.
      */
     public void switchToWizardsScene() {
-        Platform.runLater(() ->{
+        Platform.runLater(() -> {
             Parent root;
             try {
                 root = FXMLLoader.load(getClass().getResource("/WizardChoice.fxml"));
@@ -151,7 +150,7 @@ public class GuiStarter extends Application{
      */
     public void switchToTowerScene() {
 
-        Platform.runLater(() ->{
+        Platform.runLater(() -> {
             Parent root;
             try {
                 root = FXMLLoader.load(getClass().getResource("/TowerChoice.fxml"));
@@ -172,36 +171,35 @@ public class GuiStarter extends Application{
      */
     public void switchToDeckScene() {
 
-        Platform.runLater(() ->{
-        Stage stage = new Stage();
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/AssistantDeck.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-
-        Scene sc = new Scene(root);
-        stage.setScene(sc);
-        assistantStage=stage;
-        stage.sizeToScene();
-        stage.setTitle("Assistant deck");
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.setOnCloseRequest(new EventHandler<>() {
-            public void handle(WindowEvent we) {
-                System.out.println("Stage is closing");
-                if(getClient().getView().getChosenAssistantCard()==null)
-                {
-                    Alert alert = new Alert(Alert.AlertType.ERROR, "Chose an assistant card first", ButtonType.OK);
-                    alert.showAndWait();
-                    switchToDeckScene();
-                    return;
-                }
+        Platform.runLater(() -> {
+            Stage stage = new Stage();
+            Parent root;
+            try {
+                root = FXMLLoader.load(getClass().getResource("/AssistantDeck.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
             }
-        });
-        stage.initOwner(primaryStage);
-        stage.show();
+
+            Scene sc = new Scene(root);
+            stage.setScene(sc);
+            assistantStage = stage;
+            stage.sizeToScene();
+            stage.setTitle("Assistant deck");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.setOnCloseRequest(new EventHandler<>() {
+                public void handle(WindowEvent we) {
+                    System.out.println("Stage is closing");
+                    if (getClient().getView().getChosenAssistantCard() == null) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "Chose an assistant card first", ButtonType.OK);
+                        alert.showAndWait();
+                        switchToDeckScene();
+                        return;
+                    }
+                }
+            });
+            stage.initOwner(primaryStage);
+            stage.show();
 
         });
     }
@@ -210,19 +208,19 @@ public class GuiStarter extends Application{
      * Loads the lobby scene on the main stage of the GUI.
      */
     public void switchToLobbyScene() {
-        Platform.runLater(() ->{
+        Platform.runLater(() -> {
 
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/LobbyWaiting.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-        Scene sc = new Scene(root);
-        primaryStage.setScene(sc);
-        primaryStage.sizeToScene();
-    });
+            Parent root;
+            try {
+                root = FXMLLoader.load(getClass().getResource("/LobbyWaiting.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+            Scene sc = new Scene(root);
+            primaryStage.setScene(sc);
+            primaryStage.sizeToScene();
+        });
     }
 
     /**
@@ -230,7 +228,7 @@ public class GuiStarter extends Application{
      */
     public void switchToMainBoard() {
 
-        Platform.runLater(() ->{
+        Platform.runLater(() -> {
             Parent root;
             try {
                 root = FXMLLoader.load(getClass().getResource("/MainBoard.fxml"));
@@ -249,11 +247,11 @@ public class GuiStarter extends Application{
     /**
      * Shows an error alert on the GUI.
      */
-    public void showError(String error){
-        Platform.runLater(() ->{
+    public void showError(String error) {
+        Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.ERROR, "This error occured: " + error, ButtonType.OK);
             alert.showAndWait();
-            if (error.equals("\"USERNAME_ALREADY_IN_LOBBY\"")){
+            if (error.equals("\"USERNAME_ALREADY_IN_LOBBY\"")) {
                 switchToLoginScene();
             }
         });
@@ -263,8 +261,8 @@ public class GuiStarter extends Application{
     /**
      * Shows an alert on the GUI to tell the user it's not his turn.
      */
-    public void waitForYourTurn(){
-        Platform.runLater(() ->{
+    public void waitForYourTurn() {
+        Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Now wait for your turn", ButtonType.OK);
             alert.showAndWait();
         });
@@ -274,8 +272,8 @@ public class GuiStarter extends Application{
     /**
      * Shows an alert on the GUI to tell the user it's time to choose a cloud tile.
      */
-    public void choseCT(){
-        Platform.runLater(() ->{
+    public void choseCT() {
+        Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nChose a cloud and click on it", ButtonType.OK);
 
             ImageView icon = new ImageView("/assets/Reame/PNG/nuvola.png");
@@ -291,7 +289,7 @@ public class GuiStarter extends Application{
      * Shows an alert on the GUI to tell the user it's time to choose mother nature's shift.
      */
     public void chooseMNmovement() {
-        Platform.runLater(() ->{
+        Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nClick on the island Mother Nature should go\nMax " + getClient().getView().getPlayer().getMaxShift() + " shift", ButtonType.OK);
 //TODO vedere se ci va isola o island
             ImageView icon = new ImageView("/assets/Reame/PNG/Isola.png");
@@ -307,7 +305,7 @@ public class GuiStarter extends Application{
      * Shows an alert on the GUI to tell the user it's time to choose an island.
      */
     public void choseIsland() {
-        Platform.runLater(() ->{
+        Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.NONE, "NOW CHOSE AN ISLAND\nClick on the island you want to apply the effect", ButtonType.OK);
 
             ImageView icon = new ImageView("/assets/Reame/PNG/Isola.png");
@@ -323,7 +321,7 @@ public class GuiStarter extends Application{
      * Shows an alert on the GUI to tell the user it's time to choose a pawn move.
      */
     public void choosePawnMove() {
-        Platform.runLater(() ->{
+        Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nChoose a student from your Entrance.\n Then, choose a destination clicking on your SchoolBoard Hall or on the Island you chose:", ButtonType.OK);
 
             ImageView icon = new ImageView("/assets/Reame/PNG/Isola.png");
@@ -338,8 +336,8 @@ public class GuiStarter extends Application{
     /**
      * Loads the end game scene on the main stage of the GUI.
      */
-    public void showEndGameWindow(){
-        Platform.runLater(() ->{
+    public void showEndGameWindow() {
+        Platform.runLater(() -> {
             Parent root;
             try {
                 root = FXMLLoader.load(getClass().getResource("/WinnerScene.fxml"));
@@ -359,7 +357,7 @@ public class GuiStarter extends Application{
      * its attributes (if it has any), its description and its price.
      */
     public void useCharacterCard() {
-        Platform.runLater(() ->{
+        Platform.runLater(() -> {
             Stage stage = new Stage();
             Parent root;
             try {
@@ -392,7 +390,7 @@ public class GuiStarter extends Application{
      */
     public void closeCharacterStage() {
 
-        Platform.runLater(() ->{
+        Platform.runLater(() -> {
             characterStage.close();
         });
     }
@@ -402,10 +400,14 @@ public class GuiStarter extends Application{
      */
     public void closeAssistantStage() {
 
-        Platform.runLater(() ->{
+        Platform.runLater(() -> {
             assistantStage.close();
         });
     }
 
+    @Override
+    public void stop(){
+        System.exit(0);
+    }
 
 }

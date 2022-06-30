@@ -100,9 +100,15 @@ public class CLI extends View{
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                if(Integer.parseInt(input)>1 && Integer.parseInt(input)<4){
-                    invalidInput=false;
+                for(int i = 2 ; i<4 ; i++){
+                    if(input.equals(String.valueOf(i))) {
+                        invalidInput = false;
+                        break;
+                    }
                 }
+                /*if(Integer.parseInt(input)>1 && Integer.parseInt(input)<4){
+                    invalidInput=false;
+                }*/
             }while(invalidInput);
             setPlayerNumber(Integer.parseInt(input));
             //payloads.add(input);

@@ -69,10 +69,10 @@ public class ClientHandler implements Runnable, ModelListener {
         virtualView.setClientHandler(this);
         System.out.println("sending ack");
         out.println("ACK");
-
+        String input;
         try {
-            while (true) {
-                String input = in.readLine();
+            while(true) {
+                input = in.readLine();
                 if(!input.equals("ping") && !input.equals("MODEL_UPDATED")){
                     String processedInput = virtualView.read(input);
                     if(processedInput!=null){

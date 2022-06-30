@@ -19,6 +19,15 @@ import java.util.Map;
 
 public class NetworkHandler implements Runnable {
     private PrintWriter out;
+
+    public PrintWriter getOut() {
+        return out;
+    }
+
+    public BufferedReader getIn() {
+        return in;
+    }
+
     private BufferedReader in;
     private View view;
     private Phase previousPhase = Phase.LOGIN;
@@ -55,7 +64,6 @@ public class NetworkHandler implements Runnable {
             String input = in.readLine();
             String output=null;
 
-            if (input != null)
                 if (!input.equals("ping")) {
                     System.out.println("processing...");
                     process(input);
@@ -83,7 +91,6 @@ public class NetworkHandler implements Runnable {
             String input = in.readLine();
             String output = null;
 
-            if (input != null)
                 if (!input.equals("ping")) {
                     System.out.println("processing...");
                     process(input);

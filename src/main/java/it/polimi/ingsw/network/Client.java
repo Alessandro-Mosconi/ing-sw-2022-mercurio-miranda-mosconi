@@ -14,6 +14,11 @@ public class Client {
     private View view;
     private NetworkHandler net;
 
+    public Socket getServer() {
+        return server;
+    }
+
+    private Socket server;
     public NetworkHandler getNet() {
         return net;
     }
@@ -103,7 +108,7 @@ public class Client {
         }
 
         /* Open connection to the server. */
-        Socket server;
+        //Socket server;
         try {
             server = new Socket(ip, socketPort);
             server.setSoTimeout(10000);
@@ -142,8 +147,10 @@ public class Client {
             System.exit(1);
         }
         try{
-
+            System.out.println("chiudo il pinger client");
             pinger.stop();
+            net.getIn().close();
+            net.getOut().close();
             server.close();
         } catch (IOException e) {
             System.out.println("Error with the socket closing");
@@ -155,7 +162,7 @@ public class Client {
      * Performs a connection to the server in the case the client chose to use a GUI
      */
     public void connectGUI(){
-        Socket server;
+        //Socket server;
         String serverIP = view.getServerIP();
         int serverPort = view.getServerPort();
 
@@ -199,4 +206,9 @@ public class Client {
             System.exit(1);
         }
     }
+
+    public void disconnect(){
+        System.exit(0);
+    }
+
 }
