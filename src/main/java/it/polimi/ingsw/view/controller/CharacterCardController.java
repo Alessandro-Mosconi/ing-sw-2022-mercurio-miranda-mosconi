@@ -36,7 +36,7 @@ public class CharacterCardController {
         caption.setWrappingWidth(600);
 
         //updated cost setting
-        Text cost = new Text("Updated cost: " + view.getChosenCharacterCard().getPrice());
+        Text cost = new Text("Price: " + view.getChosenCharacterCard().getPrice());
         cost.setFont(Font.font("System", FontPosture.ITALIC, 20));
         cost.setUnderline(true);
         cost.setFill(Color.WHITE);
@@ -50,7 +50,7 @@ public class CharacterCardController {
         vBox.getChildren().add(cost);
 
         //default question (if question is different, override it)
-        Text question1 = new Text("Chose a color:");
+        Text question1 = new Text("Choose a color:");
         question1.setFont(Font.font("System", 20));
         question1.setFill(Color.WHITE);
 
@@ -61,6 +61,8 @@ public class CharacterCardController {
         //reset of effect container
         effectContainer.getChildren().removeAll();
         check = false;
+
+        view.setParameter(new Parameter());
 
         switch (view.getChosenCharacterCard().getID()) {
             case 1, 9, 11, 12 -> {
@@ -94,7 +96,6 @@ public class CharacterCardController {
                             for (Button b : colorButtons)
                                 b.setStyle(b.getStyle() + ";  -fx-effect: null");
                             button.setStyle("-fx-border-color: white; -fx-background-color: " + color + ";  -fx-effect:  dropshadow(gaussian, white, 15, 0.5, 0, 0)");
-                            view.setParameter(new Parameter());
                             view.getParameter().setChosenColor(color);
                             check = true;
                         });
@@ -110,9 +111,9 @@ public class CharacterCardController {
             case 7, 10 -> {
                 //setting the right question
                 if (view.getChosenCharacterCard().getID().equals(10))
-                    question1.setText("Chose max 2 student to swap between entrance and hall");
+                    question1.setText("Choose max 2 student to swap between entrance and hall");
                 if (view.getChosenCharacterCard().getID().equals(7))
-                    question1.setText("Chose max 3 student to swap between entrance and card map");
+                    question1.setText("Choose max 3 student to swap between entrance and card map");
                 vBox.getChildren().add(question1);
                 //initialize parameter map1 and map2
                 view.getParameter().setColorMap1(new HashMap<>());
@@ -131,7 +132,7 @@ public class CharacterCardController {
                     map2 = card7.getStudents();
                 } else map2 = view.getPlayer().getSchoolBoard().getStudentHall();
 
-                //map1 title + map display
+                //map2 title + map display
                 FlowPane flowPane1 = new FlowPane();
                 flowPane1.setAlignment(Pos.CENTER);
                 VBox vBox1 = new VBox();
@@ -167,6 +168,13 @@ public class CharacterCardController {
                             else if (view.getChosenCharacterCard().getID().equals(10) && counter > 2)
                                 check = false;
                             else check = true;
+
+                            if(view.getChosenCharacterCard().getID().equals(10)) {
+                                Map<PawnColor, Integer> tempMap;
+                                tempMap = view.getParameter().getColorMap2();
+                                view.getParameter().setColorMap2(view.getParameter().getColorMap1());
+                                view.getParameter().setColorMap1(tempMap);
+                            }
 
                         });
                         flowPane1.setHgap(10);
@@ -234,7 +242,7 @@ public class CharacterCardController {
 
         //submit button creation
         Button conferma = new Button();
-        conferma.setText("Conferma");
+        conferma.setText("Confirm");
         conferma.setOnAction(event -> {
             //not enough money case
             if (view.getChosenCharacterCard().getPrice() > view.getPlayer().getWallet()) {
@@ -254,22 +262,26 @@ public class CharacterCardController {
                 check = check && (counter2 == counter1);
             }
 
-            //if al the checks passed
+            //if all the checks passed
             if (check) {
+                view.setCardUsed(true);
                 GuiStarter.getCurrentApplication().switchToMainBoard();
                 GuiStarter.getCurrentApplication().closeCharacterStage();
-                //if card id is 1, 3 or 5 we still need to chose an island, else send now the message
+                //if card id is 1, 3 or 5 we still need to choose an island, else send now the message
                 if (view.getChosenCharacterCard().getID().equals(1) || view.getChosenCharacterCard().getID().equals(3) || view.getChosenCharacterCard().getID().equals(5))
-                    GuiStarter.getCurrentApplication().choseIsland();
+                    GuiStarter.getCurrentApplication().chooseIsland();
                 else {
                     view.setMessageType(MessageType.CHOSEN_CHARACTER_CARD);
                     view.prepareMessage();
                 }
-            } else GuiStarter.getCurrentApplication().showError("Make your correct decision before continue");
+            } else {
+                GuiStarter.getCurrentApplication().showError("Make your correct decision before continue");
+                view.setCardUsed(false);
+            }
         });
 
         Button annulla = new Button();
-        annulla.setText("Annulla");
+        annulla.setText("Cancel");
         annulla.setOnAction(event -> {
             view.setParameter(new Parameter());
             GuiStarter.getCurrentApplication().closeCharacterStage();

@@ -3,14 +3,6 @@ package it.polimi.ingsw.view;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.*;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
-
 public class GUI extends View{
     private GuiStarter guiStarter;
     private Client client;
@@ -86,7 +78,7 @@ public class GUI extends View{
             }
             case CHOOSING_CT -> {
                 guiStarter.switchToMainBoard();
-                guiStarter.choseCT();
+                guiStarter.chooseCT();
             }
         }
     }

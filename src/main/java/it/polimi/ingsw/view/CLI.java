@@ -592,86 +592,140 @@ public class CLI extends View {
             }
             case ("7") -> {
                 int chosenStudents = 0;
-                Map<PawnColor, Integer> map1 = new HashMap<>() {{
-                    for (PawnColor color : PawnColor.values()) {
+                Map<PawnColor,Integer> cardMap = new HashMap<>();
+                cardMap = ((CharacterCard7) chosenCard.getCardBehavior()).getStudents();
+                Map<PawnColor, Integer> map1 = new HashMap<>(){{
+                    for(PawnColor color : PawnColor.values()){
                         put(color, 0);
                     }
                 }};
-                do {
-                    System.out.println("Choose a student from this card or type [stop]: ");
+                do{
+                    invalidInput = true;
+                    if(chosenStudents!=0) {
+                        System.out.println("Choose a student from this card or type [stop]: ");
+                    }else{
+                        System.out.println("Choose a student from this card: ");
+                    }
                     try {
                         input = stdIn.readLine();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    //todo check che sia stato inserito un input = color
-                    map1.replace(PawnColor.valueOf(input), map1.get(PawnColor.valueOf(input)) + 1);
-                    chosenStudents++;
-                    //if non colore allora non incrementare chosenStudents
-                } while (chosenStudents < 3 && !input.equals("stop"));
-                Map<PawnColor, Integer> map2 = new HashMap<>() {{
-                    for (PawnColor color : PawnColor.values()) {
-                        put(color, 0);
+                    PawnColor chosenColor;
+                    for(PawnColor pc: PawnColor.values()) {
+                        if (input.equals(String.valueOf(pc))) {
+                            invalidInput = false;
+                            break;
+                        }
+                    }
+                    if(!invalidInput) {
+                        chosenColor = PawnColor.valueOf(input);
+                        if (cardMap.get(chosenColor) > 0) {
+                            map1.replace(chosenColor, map1.get(chosenColor) + 1);
+                            cardMap.replace(chosenColor, cardMap.get(chosenColor)-1);
+                            chosenStudents++;
+                        }
+                        else invalidInput = true;
+                    }
+                }while(invalidInput || (chosenStudents<3 && !input.equals("stop")));
+                Map<PawnColor,Integer> map2 = new HashMap<>(){{
+                    for(PawnColor color : PawnColor.values()){
+                        put(color,0);
                     }
                 }};
-                do {
+                do{
+                    invalidInput = true;
                     System.out.println("Choose a student from your entrance: ");
                     try {
                         input = stdIn.readLine();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    //todo check che sia stato inserito un input = color
-                    map2.replace(PawnColor.valueOf(input), map2.get(PawnColor.valueOf(input)) + 1);
-                    chosenStudents--;
-                    //if non colore allora non incrementare chosenStudents
-                } while (chosenStudents > 0);
+                    PawnColor chosenColor;
+                    for(PawnColor pc: PawnColor.values()) {
+                        if (input.equals(String.valueOf(pc))) {
+                            invalidInput = false;
+                            break;
+                        }
+                    }
+                    if(!invalidInput) {
+                        chosenColor = PawnColor.valueOf(input);
+                        if (player.getSchoolBoard().getStudentEntrance().get(chosenColor) > 0) {
+                            map2.replace(chosenColor, map1.get(chosenColor) + 1);
+                            player.getSchoolBoard().getStudentEntrance().replace(chosenColor,player.getSchoolBoard().getStudentEntrance().get(chosenColor) -1);
+                            chosenStudents--;
+                        }
+                        else invalidInput = true;
+                    }
+                }while(chosenStudents>0 || invalidInput);
                 parameter.setColorMap1(map1);
                 parameter.setColorMap2(map2);
             }
             case ("10") -> {
                 int chosenStudents = 0;
-                Map<PawnColor, Integer> map1 = new HashMap<>() {{
-                    for (PawnColor color : PawnColor.values()) {
+                Map<PawnColor, Integer> map1 = new HashMap<>(){{
+                    for(PawnColor color : PawnColor.values()){
                         put(color, 0);
                     }
                 }};
-                do {
+                do{
+                    invalidInput = true;
                     System.out.println("Choose a student from your Entrance: ");
                     try {
                         input = stdIn.readLine();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    //todo check che sia stato inserito un input = color
-                    map1.replace(PawnColor.valueOf(input), map1.get(PawnColor.valueOf(input)) + 1);
-                    chosenStudents++;
-                    //if non colore allora non incrementare chosenStudents
-                } while (chosenStudents < 2 && !input.equals("stop"));
-                Map<PawnColor, Integer> map2 = new HashMap<>() {{
-                    for (PawnColor color : PawnColor.values()) {
-                        put(color, 0);
+                    PawnColor chosenColor;
+                    for(PawnColor pc: PawnColor.values()) {
+                        if (input.equals(String.valueOf(pc))) {
+                            invalidInput = false;
+                            break;
+                        }
+                    }
+                    if(!invalidInput) {
+                        chosenColor = PawnColor.valueOf(input);
+                        if (player.getSchoolBoard().getStudentEntrance().get(chosenColor) > 0) {
+                            map1.replace(chosenColor, map1.get(chosenColor)+1);
+                            player.getSchoolBoard().getStudentEntrance().replace(chosenColor, player.getSchoolBoard().getStudentEntrance().get(chosenColor)-1);
+                            chosenStudents++;
+                        }
+                        else invalidInput = true;
+                    }
+                }while((chosenStudents<2 && !input.equals("stop")) || invalidInput);
+                Map<PawnColor,Integer> map2 = new HashMap<>(){{
+                    for(PawnColor color : PawnColor.values()){
+                        put(color,0);
                     }
                 }};
-                do {
+                do{
+                    invalidInput = true;
                     System.out.println("Choose a student from your Hall: ");
                     try {
                         input = stdIn.readLine();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    //todo check che sia stato inserito un input = color
-                    map2.replace(PawnColor.valueOf(input), map2.get(PawnColor.valueOf(input)) + 1);
-                    chosenStudents--;
-                    //if non colore allora non incrementare chosenStudents
-                } while (chosenStudents > 0);
+                    PawnColor chosenColor;
+                    for(PawnColor pc: PawnColor.values()) {
+                        if (input.equals(String.valueOf(pc))) {
+                            invalidInput = false;
+                            break;
+                        }
+                    }
+                    if(!invalidInput) {
+                        chosenColor = PawnColor.valueOf(input);
+                        if (player.getSchoolBoard().getStudentHall().get(chosenColor) > 0) {
+                            map2.replace(chosenColor, map2.get(chosenColor)+1);
+                            player.getSchoolBoard().getStudentHall().replace(chosenColor, player.getSchoolBoard().getStudentHall().get(chosenColor)-1);
+                            chosenStudents--;
+                        }
+                        else invalidInput = true;
+                    }
+                }while(invalidInput || chosenStudents>=0);
                 parameter.setColorMap1(map1);
                 parameter.setColorMap2(map2);
             }
-            case ("exit") -> {
-                return false;
-            }
-            //todo check consistenza input
         }
 
         setMessageType(MessageType.CHOSEN_CHARACTER_CARD);
@@ -729,7 +783,7 @@ public class CLI extends View {
                     }
                 }
                 if (chosenCharacterCard.getCardBehavior() instanceof CharacterCard11) {
-                    Map<PawnColor, Integer> cardMap = ((CharacterCard1) chosenCharacterCard.getCardBehavior()).getStudents();
+                    Map<PawnColor, Integer> cardMap = ((CharacterCard11) chosenCharacterCard.getCardBehavior()).getStudents();
                     if (cardMap.get(PawnColor.valueOf(input)) < 1 || player.getSchoolBoard().getStudentHall().get(PawnColor.valueOf(input)) > 9) {
                         invalidInput = true;
                     }

@@ -10,10 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e56e055-c63d-46dc-b8f8-ce6ddc2b811e" name="Changes" comment="pom fix">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_23_0_0.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PSP42.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PSP42.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliveries/Communication Protocol.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliveries/PeerReview2_Group42.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliveries/Peer_Review_UML.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliveries/Sequence_Diagram_Examples/create_match.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliveries/Sequence_Diagram_Examples/join_match.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliveries/Sequence_Diagram_Examples/ping_message.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliveries/Sequence_Diagram_Examples/planning_phase.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliveries/UML Eriantys.asta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/GuiStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/CharacterCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/CharacterCardController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +95,7 @@
       <recent name="it.polimi.ingsw.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.Client2">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Client" />
       <module name="PSP42" />
@@ -164,9 +175,9 @@
       <list>
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client2" />
         <item itemvalue="JUnit.it.polimi.ingsw.model in PSP42" />
         <item itemvalue="JUnit.CharacterCardTest" />
-        <item itemvalue="Application.Client2" />
       </list>
     </recent_temporary>
   </component>
@@ -194,7 +205,7 @@
       <workItem from="1656602994223" duration="331000" />
       <workItem from="1656603335325" duration="799000" />
       <workItem from="1656604184886" duration="100000" />
-      <workItem from="1656604294304" duration="962000" />
+      <workItem from="1656604294304" duration="10823000" />
     </task>
     <task id="LOCAL-00002" summary="Message table updated">
       <created>1656511568053</created>
@@ -231,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656604753769</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="pom fix">
+      <created>1656605418835</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1656605418836</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

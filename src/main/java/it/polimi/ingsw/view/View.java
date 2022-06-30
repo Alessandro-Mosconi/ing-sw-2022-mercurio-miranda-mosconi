@@ -5,6 +5,7 @@ import it.polimi.ingsw.network.MessageType;
 import it.polimi.ingsw.network.NetworkHandler;
 import it.polimi.ingsw.network.Phase;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public abstract class View {
@@ -17,6 +18,11 @@ public abstract class View {
     protected ArrayList<String> playersUsername;
     protected ArrayList<Player> players;
     protected ArrayList<CloudTile> clouds = new ArrayList<>();
+
+    public void setIslandManager(IslandManager islandManager) {
+        this.islandManager = islandManager;
+    }
+
     protected IslandManager islandManager = new IslandManager(new ArrayList<>());
     protected ArrayList<CharacterCard> characterCards = new ArrayList<>();
     protected MessageType messageType;
@@ -238,6 +244,9 @@ public abstract class View {
         return characterCards;
     }
 
+    public void setCharacterCards(ArrayList<CharacterCard> cc){
+        this.characterCards=cc;
+    }
     public Player getPlayer() {
         return player;
     }

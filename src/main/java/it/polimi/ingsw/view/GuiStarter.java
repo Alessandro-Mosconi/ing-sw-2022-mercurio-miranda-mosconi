@@ -2,8 +2,6 @@ package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.Client;
-import it.polimi.ingsw.network.ErrorType;
-import it.polimi.ingsw.network.Phase;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -19,9 +17,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class GuiStarter extends Application {
     private static GuiStarter currentApplication;
@@ -272,7 +267,7 @@ public class GuiStarter extends Application {
     /**
      * Shows an alert on the GUI to tell the user it's time to choose a cloud tile.
      */
-    public void choseCT() {
+    public void chooseCT() {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nChose a cloud and click on it", ButtonType.OK);
 
@@ -298,13 +293,14 @@ public class GuiStarter extends Application {
             icon.setFitWidth(60);
             alert.getDialogPane().setGraphic(icon);
             alert.showAndWait();
+            GuiStarter.getCurrentApplication().switchToMainBoard();
         });
     }
 
     /**
      * Shows an alert on the GUI to tell the user it's time to choose an island.
      */
-    public void choseIsland() {
+    public void chooseIsland() {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.NONE, "NOW CHOSE AN ISLAND\nClick on the island you want to apply the effect", ButtonType.OK);
 
@@ -314,6 +310,8 @@ public class GuiStarter extends Application {
             icon.setFitWidth(60);
             alert.getDialogPane().setGraphic(icon);
             alert.showAndWait();
+            GuiStarter.getCurrentApplication().switchToMainBoard();
+
         });
     }
 

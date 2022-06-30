@@ -287,6 +287,9 @@ public class NetworkHandler implements Runnable {
                     ArrayList<TowerColor> allTowerColors = new ArrayList<>(){{
                         addAll(List.of(TowerColor.values()));
                     }};
+                    view.setIslandManager(new IslandManager(new ArrayList<>()));
+                    view.setClouds(new ArrayList<>());
+                    view.setCharacterCards(new ArrayList<>());
                     view.setWizards(allWizards);
                     view.setTowerColors(allTowerColors);
                     if (isGui) {
