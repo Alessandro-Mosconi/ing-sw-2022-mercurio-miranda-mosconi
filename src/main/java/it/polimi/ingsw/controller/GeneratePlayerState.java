@@ -36,6 +36,7 @@ public class GeneratePlayerState implements GameControllerState{
             gameController.getGame().setupGame();
             System.out.println("inizia planning con players-to-go:" + gameController.getPlayersToGo());
             gameController.resetPlayersToGo();
+            gameController.getGame().fillCloudTiles();
             gameController.setNextState(new AssistantSelectionState());
             int min = 0;
             int max = gameController.getGame().getNumberOfPlayers()-1;
