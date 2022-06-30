@@ -306,7 +306,7 @@ public class MainBoardController {
                 alert.showAndWait();
             }
         });
-        hallButton.setDisable((!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE) && !view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE) && !view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE)) || view.getPhase().equals(Phase.WAITING));
+        hallButton.setDisable((!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE) && !view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE) && !view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE) &&!view.getPhase().equals(Phase.CHOOSING_FOURTH_MOVE)) || view.getPhase().equals(Phase.WAITING));
 
         //creation of hall graphic view
         ArrayList<Shape> hallTable = new ArrayList<>();
@@ -343,7 +343,7 @@ public class MainBoardController {
                     view.setColorToMove(color);
                 });
                 //setting of disable option and prevention of button color change
-                if ((!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE) && !view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE) && !view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE) || view.getPhase().equals(Phase.WAITING))) {
+                if ((!view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE) && !view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE) && !view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE) && !view.getPhase().equals(Phase.CHOOSING_FOURTH_MOVE) || view.getPhase().equals(Phase.WAITING))) {
                     entranceTable.get((row * 5) + col).setDisable(true);
                     entranceTable.get((row * 5) + col).setStyle("-fx-border-color: white; -fx-opacity: 1; -fx-background-color: " + color);
                     entranceTable.get((row * 5) + col).setCursor(Cursor.NONE);
@@ -543,7 +543,7 @@ public class MainBoardController {
                             view.prepareMessage();
                         }
                     }
-                } else if (view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE) || view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE) || view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE)) {
+                } else if (view.getPhase().equals(Phase.CHOOSING_FIRST_MOVE) || view.getPhase().equals(Phase.CHOOSING_SECOND_MOVE) || view.getPhase().equals(Phase.CHOOSING_THIRD_MOVE) || view.getPhase().equals(Phase.CHOOSING_FOURTH_MOVE)) {
                     if (view.getColorToMove() != null) {
                         view.setDestination(island.getIslandID());
                         view.setMessageType(MessageType.PAWN_MOVE);

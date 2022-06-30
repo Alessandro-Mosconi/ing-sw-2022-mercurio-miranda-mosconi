@@ -11,7 +11,6 @@ public class CharacterCard2 implements CardBehavior{
      * @param parameter contains the Game in which the card is activated and the player who activated it.
      */
     public void startEffect(Parameter parameter){
-
         parameter.getPlayer().getSchoolBoard().setEffectProf(true);
         for(PawnColor c : PawnColor.values()) {
             parameter.getGame().updateProfessor(c);

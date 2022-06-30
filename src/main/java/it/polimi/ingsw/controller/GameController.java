@@ -63,8 +63,15 @@ public class GameController implements VirtualViewListener {
     public void decreaseMovesToGo(){
         this.movesToGo=movesToGo-1;
     }
+
+    /**
+     * Initializes the number of moves to 3 (in case of a 2 players game) or to 4 (in case of a 3 players game).
+     */
     public void resetMovesToGo(){
-        this.movesToGo=3;
+        if(game.getNumberOfPlayers()==2)
+            this.movesToGo=3;
+        else if(game.getNumberOfPlayers()==3)
+            this.movesToGo=4;
     }
 
     public boolean isErrorFlag() {

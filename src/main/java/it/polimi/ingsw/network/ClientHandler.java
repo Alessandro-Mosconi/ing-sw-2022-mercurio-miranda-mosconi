@@ -13,8 +13,7 @@ import java.util.Map;
 /**
  * A class that represents the client inside the server.
  */
-public class ClientHandler implements Runnable, ModelListener
-{
+public class ClientHandler implements Runnable, ModelListener {
     private VirtualView virtualView;
     private Socket client;
     private PrintWriter out;

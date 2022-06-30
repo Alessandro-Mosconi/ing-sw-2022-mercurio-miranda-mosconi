@@ -234,11 +234,21 @@ public class CLI extends View{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if((availableOnes.containsAll(alreadyUsed) && alreadyUsed.containsAll(availableOnes)) ||(availableOnes.size()<alreadyUsed.size() && alreadyUsed.containsAll(availableOnes))){
-                invalidInput=false;
+            if(input!=null && !input.equals("")) {
+                for (int i = 1; i < 11; i++) {
+                    if (input.equals(String.valueOf(i))) {
+                        invalidInput = false;
+                        break;
+                    }
+                }
             }
-            else if (alreadyUsed.contains(Integer.valueOf(input))){
-                invalidInput = true;
+            else invalidInput = true;
+            if(!invalidInput) {
+                if ((availableOnes.containsAll(alreadyUsed) && alreadyUsed.containsAll(availableOnes)) || (availableOnes.size() < alreadyUsed.size() && alreadyUsed.containsAll(availableOnes))) {
+                    invalidInput = false;
+                } else if (alreadyUsed.contains(Integer.valueOf(input))) {
+                    invalidInput = true;
+                }
             }
         }while(invalidInput);
         player.getDeck().getCards().get(Integer.parseInt(input)-1).setConsumed(true);

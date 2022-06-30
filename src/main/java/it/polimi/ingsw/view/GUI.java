@@ -75,7 +75,7 @@ public class GUI extends View{
                 guiStarter.switchToDeckScene();
                 guiStarter.switchToMainBoard();
             }
-            case CHOOSING_FIRST_MOVE, CHOOSING_SECOND_MOVE, CHOOSING_THIRD_MOVE -> {
+            case CHOOSING_FIRST_MOVE, CHOOSING_SECOND_MOVE, CHOOSING_THIRD_MOVE, CHOOSING_FOURTH_MOVE -> {
                 //System.out.println("Ora faccio partire la scelta");
                 guiStarter.switchToMainBoard();
                 guiStarter.choosePawnMove();

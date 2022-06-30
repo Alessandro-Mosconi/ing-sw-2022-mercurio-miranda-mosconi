@@ -166,11 +166,25 @@ public class NetworkHandler implements Runnable {
                 if (view.getMessageType().equals(MessageType.PAWN_MOVE)) {
                     payloads.add(view.getColorToMove().toString());
                     payloads.add(view.getDestination().toString());
-                    nextPhase = Phase.CHOOSING_MN_SHIFT;
+                    if(view.getPlayers().size()==2)
+                        nextPhase = Phase.CHOOSING_MN_SHIFT;
+                    else if (view.getPlayers().size()==3)
+                        nextPhase = Phase.CHOOSING_FOURTH_MOVE;
                 }else if (view.getMessageType().equals(MessageType.CHOSEN_CHARACTER_CARD)){
                     return characterCardToSend();
                 }
 
+            }
+            case CHOOSING_FOURTH_MOVE -> {
+                view.choosePawnMove();
+                msg_out.setType(view.getMessageType());
+                if (view.getMessageType().equals(MessageType.PAWN_MOVE)) {
+                    payloads.add(view.getColorToMove().toString());
+                    payloads.add(view.getDestination().toString());
+                    nextPhase = Phase.CHOOSING_MN_SHIFT;
+                }else if (view.getMessageType().equals(MessageType.CHOSEN_CHARACTER_CARD)){
+                    return characterCardToSend();
+                }
             }
             case CHOOSING_MN_SHIFT -> {
                 view.chooseMNmovement();
