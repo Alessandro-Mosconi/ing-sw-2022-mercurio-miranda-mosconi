@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CloudTileTest {
 
+    //test of cloud tile constructor
     @Test
     public void testConstructor(){
         Map<PawnColor, Integer> map = new HashMap<>();
@@ -36,6 +37,7 @@ public class CloudTileTest {
         assertEquals(cloud3.getCloudID(), 0);
     }
 
+    //test of addStudent method
     @Test
     public void testAddStudent(){
         CloudTile cloud = new CloudTile();
@@ -48,6 +50,7 @@ public class CloudTileTest {
         assertEquals(cloud.getStudents().get(PawnColor.yellow), Integer.valueOf(1));
     }
 
+    //test of set and reset methods
     @Test
     public void testSetReset(){
         CloudTile cloud = new CloudTile();

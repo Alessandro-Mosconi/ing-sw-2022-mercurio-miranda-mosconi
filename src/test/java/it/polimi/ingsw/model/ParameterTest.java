@@ -10,18 +10,20 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 class ParameterTest {
 
+    //test of get set methods of Parameter class
     @Test
     void setting() {
-
+        //settings creation
         Map<PawnColor, Integer> map = new HashMap<>();
-
         for(PawnColor color : PawnColor.values())
             map.put(color, 0);
-
         Island island = new Island(0, map, TowerColor.white, 1, false, false);
         Game game = new Game();
         Player  player = new Player();
+        Map<PawnColor, Integer> map1 = new HashMap<>();
+        Map<PawnColor, Integer> map2 = new HashMap<>();
 
+        //parameter creation and check
         Parameter par = new Parameter(player);
         assertEquals(player, par.getPlayer());
 
@@ -47,9 +49,6 @@ class ParameterTest {
         assertEquals(island, par4.getIsland());
         assertEquals(game, par4.getGame());
 
-
-        Map<PawnColor, Integer> map1 = new HashMap<>();
-        Map<PawnColor, Integer> map2 = new HashMap<>();
         par = new Parameter();
         par.setColorMap1(map1);
         par.setColorMap2(map2);

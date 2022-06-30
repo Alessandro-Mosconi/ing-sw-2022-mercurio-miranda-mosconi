@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DeckTest {
 
+    //test of different deck constructor
     @Test
     void constructor(){
         Deck deck = new Deck(WizardType.wizard1);

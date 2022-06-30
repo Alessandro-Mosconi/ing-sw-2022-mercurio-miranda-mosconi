@@ -10,17 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e56e055-c63d-46dc-b8f8-ce6ddc2b811e" name="Changes" comment="Disconnection case handled in GUI">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javainetlocator_inetaddresslocator_2_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_18.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PSP42.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PSP42.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/CharacterCardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/CharacterCardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/CloudTileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/CloudTileTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/DeckTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/DeckTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/EnumTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/EnumTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/GameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/IslandManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/IslandManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/IslandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/IslandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/ParameterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/ParameterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/SchoolBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/SchoolBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,14 +48,22 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/GameTest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/PawnColor.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/PlayerTest.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/test/java/it/polimi/ingsw/model/GameTest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/Client.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -80,7 +90,7 @@
       <recent name="it.polimi.ingsw.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client2">
+  <component name="RunManager" selected="JUnit.it.polimi.ingsw.model in PSP42">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Client" />
       <module name="PSP42" />
@@ -107,8 +117,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Client3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Client3" />
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Server" />
       <module name="PSP42" />
       <extension name="coverage">
         <pattern>
@@ -120,15 +130,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.network.Server" />
+    <configuration name="CharacterCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PSP42" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.polimi.ingsw.network.*" />
+          <option name="PATTERN" value="it.polimi.ingsw.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="it.polimi.ingsw.model" />
+      <option name="MAIN_CLASS_NAME" value="it.polimi.ingsw.model.CharacterCardTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -151,16 +163,16 @@
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Client" />
       <item itemvalue="Application.Client2" />
-      <item itemvalue="Application.Client3" />
+      <item itemvalue="JUnit.CharacterCardTest" />
       <item itemvalue="JUnit.it.polimi.ingsw.model in PSP42" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.it.polimi.ingsw.model in PSP42" />
+        <item itemvalue="JUnit.CharacterCardTest" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Client2" />
         <item itemvalue="Application.Server" />
-        <item itemvalue="Application.Client3" />
-        <item itemvalue="JUnit.it.polimi.ingsw.model in PSP42" />
       </list>
     </recent_temporary>
   </component>
@@ -174,7 +186,7 @@
       <updated>1656501600845</updated>
     </task>
     <task active="true" id="Default" summary="Default task">
-      <changelist id="22cdb201-4d53-4da3-8366-8d24df77eb0c" name="Changes" comment="" />
+      <changelist id="1e56e055-c63d-46dc-b8f8-ce6ddc2b811e" name="Changes" comment="Disconnection case handled in GUI" />
       <created>1656505910020</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -184,6 +196,7 @@
       <workItem from="1656538629230" duration="966000" />
       <workItem from="1656578679058" duration="4003000" />
       <workItem from="1656586138207" duration="1123000" />
+      <workItem from="1656594325420" duration="5734000" />
     </task>
     <task id="LOCAL-00002" summary="Message table updated">
       <created>1656511568053</created>
@@ -229,6 +242,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Code cleaning" />
@@ -238,82 +252,82 @@
     <option name="LAST_COMMIT_MESSAGE" value="Fix in 3 players game" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Eriantys$ParameterTest.ic" NAME="ParameterTest Coverage Results" MODIFIED="1655721946668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_2_more.ic" NAME="CloudTileTest and 2 more Coverage Results" MODIFIED="1651152494282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard12.ic" NAME="CharacterCardTest.CharacterCard12 Coverage Results" MODIFIED="1655800082080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_5_more.ic" NAME="CloudTileTest and 5 more Coverage Results" MODIFIED="1655712397039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$GameTest.ic" NAME="GameTest Coverage Results" MODIFIED="1655665726313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard3.ic" NAME="CharacterCardTest.CharacterCard3 Coverage Results" MODIFIED="1655729249973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$SchoolBoardTest.ic" NAME="SchoolBoardTest Coverage Results" MODIFIED="1655711029748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_4_more.ic" NAME="CloudTileTest and 4 more Coverage Results" MODIFIED="1651500486486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard7.ic" NAME="CharacterCardTest.CharacterCard7 Coverage Results" MODIFIED="1655797787441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$EnumTest.ic" NAME="EnumTest Coverage Results" MODIFIED="1656521030883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_6_more.ic" NAME="CloudTileTest and 6 more Coverage Results" MODIFIED="1655720941169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest_moveFromEntranceToIsland.ic" NAME="PlayerTest.moveFromEntranceToIsland Coverage Results" MODIFIED="1655711770028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_5_more__1_.ic" NAME="CloudTileTest and 5 more (1) Coverage Results" MODIFIED="1655282746494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_and_8_more.ic" NAME="CharacterCardTest and 8 more Coverage Results" MODIFIED="1655979456403" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_5_more.ic" NAME="CloudTileTest and 5 more Coverage Results" MODIFIED="1655712397039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Eriantys$PlayerTest_useAssistantCard.ic" NAME="PlayerTest.useAssistantCard Coverage Results" MODIFIED="1655711936590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard10.ic" NAME="CharacterCardTest.CharacterCard10 Coverage Results" MODIFIED="1655799155973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard12.ic" NAME="CharacterCardTest.CharacterCard12 Coverage Results" MODIFIED="1655800082080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest.ic" NAME="CloudTileTest Coverage Results" MODIFIED="1655721237976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_2_more.ic" NAME="CloudTileTest and 2 more Coverage Results" MODIFIED="1651152494282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest__1_.ic" NAME="PlayerTest (1) Coverage Results" MODIFIED="1655712362286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_6_more.ic" NAME="CloudTileTest and 6 more Coverage Results" MODIFIED="1655720941169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard7.ic" NAME="CharacterCardTest.CharacterCard7 Coverage Results" MODIFIED="1655797787441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest_costructor.ic" NAME="PlayerTest.costructor Coverage Results" MODIFIED="1655711262620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$DeckTest.ic" NAME="DeckTest Coverage Results" MODIFIED="1655721430704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_5_more__1_.ic" NAME="CloudTileTest and 5 more (1) Coverage Results" MODIFIED="1655282746494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest.ic" NAME="PlayerTest Coverage Results" MODIFIED="1651151874996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard3.ic" NAME="CharacterCardTest.CharacterCard3 Coverage Results" MODIFIED="1655729249973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$IslandTest.ic" NAME="IslandTest Coverage Results" MODIFIED="1655716367699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest.ic" NAME="CloudTileTest Coverage Results" MODIFIED="1655721237976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$SchoolBoardTest_and_1_more.ic" NAME="SchoolBoardTest and 1 more Coverage Results" MODIFIED="1651091137245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_7_more.ic" NAME="CloudTileTest and 7 more Coverage Results" MODIFIED="1655722100811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest_moveFromEntranceToIsland.ic" NAME="PlayerTest.moveFromEntranceToIsland Coverage Results" MODIFIED="1655711770028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard4.ic" NAME="CharacterCardTest.CharacterCard4 Coverage Results" MODIFIED="1655729543458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$ParameterTest.ic" NAME="ParameterTest Coverage Results" MODIFIED="1655721946668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$EnumTest.ic" NAME="EnumTest Coverage Results" MODIFIED="1656521030883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$GameTest.ic" NAME="GameTest Coverage Results" MODIFIED="1655665726313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard2.ic" NAME="CharacterCardTest.CharacterCard2 Coverage Results" MODIFIED="1655800584138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest.ic" NAME="CharacterCardTest Coverage Results" MODIFIED="1655725686400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard11.ic" NAME="CharacterCardTest.CharacterCard11 Coverage Results" MODIFIED="1655799697530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_and_8_more.ic" NAME="CharacterCardTest and 8 more Coverage Results" MODIFIED="1655979456403" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard11.ic" NAME="CharacterCardTest.CharacterCard11 Coverage Results" MODIFIED="1655799697530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest__1_.ic" NAME="PlayerTest (1) Coverage Results" MODIFIED="1655712362286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard4.ic" NAME="CharacterCardTest.CharacterCard4 Coverage Results" MODIFIED="1655729543458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest_costructor.ic" NAME="PlayerTest.costructor Coverage Results" MODIFIED="1655711262620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$IslandManagerTest.ic" NAME="IslandManagerTest Coverage Results" MODIFIED="1655720891644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$SchoolBoardTest.ic" NAME="SchoolBoardTest Coverage Results" MODIFIED="1655711029748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>it.polimi.ingsw.model.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest_CharacterCard9.ic" NAME="CharacterCardTest.CharacterCard9 Coverage Results" MODIFIED="1655798770190" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$it_polimi_ingsw_model_in_PSP42.ic" NAME="it.polimi.ingsw.model in PSP42 Coverage Results" MODIFIED="1656521062041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$PlayerTest.ic" NAME="PlayerTest Coverage Results" MODIFIED="1651151874996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$CloudTileTest_and_7_more.ic" NAME="CloudTileTest and 7 more Coverage Results" MODIFIED="1655722100811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Eriantys$DeckTest.ic" NAME="DeckTest Coverage Results" MODIFIED="1655721430704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Eriantys$it_polimi_ingsw_model_in_PSP42.ic" NAME="it.polimi.ingsw.model in PSP42 Coverage Results" MODIFIED="1656598855961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.polimi.ingsw.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Eriantys$SchoolBoardTest_and_1_more.ic" NAME="SchoolBoardTest and 1 more Coverage Results" MODIFIED="1651091137245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Eriantys$CharacterCardTest.ic" NAME="CharacterCardTest Coverage Results" MODIFIED="1655725686400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.polimi.ingsw.model.*</FILTER>
+    </SUITE>
   </component>
 </project>

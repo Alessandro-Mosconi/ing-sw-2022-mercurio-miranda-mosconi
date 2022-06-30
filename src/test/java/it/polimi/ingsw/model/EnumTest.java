@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EnumTest {
 
+    //test of graphic method for PawnColor enum
     @Test
     public void PawnColor(){
         ArrayList<Color> colors = new ArrayList<>();
@@ -23,6 +24,7 @@ class EnumTest {
         assertEquals(PawnColor.getColor(10), Color.TRANSPARENT);
     }
 
+    //test of graphic method for TowerColor enum
     @Test
     public void TowerColor(){
         assertEquals(Color.GREY, TowerColor.getColor(TowerColor.grey));
@@ -30,6 +32,7 @@ class EnumTest {
         assertEquals(Color.WHITE, TowerColor.getColor(TowerColor.white));
     }
 
+    //test of graphic method for WizardType enum
     @Test
     public void WizardType(){
 
