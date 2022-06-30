@@ -16,28 +16,28 @@ Regarding the activation of a Character Card, the client can send a CHOSEN_CHARA
 
 Here are examples of Sequence Diagrams for each possible scenario.
 
-![LOGIN.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/LOGIN.png)
+![LOGIN.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/LOGIN.png)
 
-![JOINING.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/JOINING.png)
+![JOINING.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/JOINING.png)
 
-![SETTINGS.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/SETTINGS.png)
+![SETTINGS.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/SETTINGS.png)
 
-![SETUP.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/SETUP.png)
+![SETUP.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/SETUP.png)
 
-![PLANNING.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/PLANNING.png)
+![PLANNING.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/PLANNING.png)
 
-![PAWN_MOVE.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/PAWN_MOVE.png)
+![PAWN_MOVE.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/PAWN_MOVE.png)
 
-![MN_SHIFT.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/MN_SHIFT.png)
+![MN_SHIFT.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/MN_SHIFT.png)
 
-![EFFECT.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/EFFECT.png)
+![EFFECT.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/EFFECT.png)
 
-![CLOUDTILE.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/CLOUDTILE.png)
+![CLOUDTILE.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/CLOUDTILE.png)
 
-![endgame.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/endgame.png)
+![endgame.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/endgame.png)
 
-![disconnection.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/disconnection.png)
+![disconnection.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/disconnection.png)
 
-![ping](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliveries/Sequence_Diagram_Examples/ping_message.png)
+![ping](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/ping_message.png)
 
 [Messages Table:](https://www.notion.so/ae1ff471de504fb08c407c8fa6444e33)
