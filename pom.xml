@@ -4,8 +4,6 @@
 
     <!-- The groupId must be the same for everybody -->
     <groupId>it.polimi.ingsw</groupId>
-    <!-- Change the artifactId depending on your group number
-             (example: group 99 will have artifactId PSP99 -->
     <artifactId>PSP42</artifactId>
 
     <version>1.0-SNAPSHOT</version>
