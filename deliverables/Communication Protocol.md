@@ -38,6 +38,5 @@ Here are examples of Sequence Diagrams for each possible scenario.
 
 ![disconnection.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/disconnection.png)
 
-![ping](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/ping_message.png)
+![MessageTable.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/MessageTable.png)
 
-[Messages Table:](https://www.notion.so/ae1ff471de504fb08c407c8fa6444e33)
