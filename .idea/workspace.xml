@@ -11,7 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1e56e055-c63d-46dc-b8f8-ce6ddc2b811e" name="Changes" comment="Communication Protocol.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deliverables/Communication Protocol.md" beforeDir="false" afterPath="$PROJECT_DIR$/deliverables/Communication Protocol.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PSP42.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PSP42.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +60,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2BFdiZqw7eqOy5q4iN9LWfO3sJw" />
   <component name="ProjectLevelVcsManager">
@@ -161,8 +163,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Client" />
-        <item itemvalue="Application.Server" />
         <item itemvalue="Application.Client2" />
+        <item itemvalue="Application.Server" />
         <item itemvalue="JUnit.it.polimi.ingsw.model in PSP42" />
         <item itemvalue="JUnit.CharacterCardTest" />
       </list>
@@ -192,7 +194,7 @@
       <workItem from="1656602994223" duration="331000" />
       <workItem from="1656603335325" duration="799000" />
       <workItem from="1656604184886" duration="100000" />
-      <workItem from="1656604294304" duration="12564000" />
+      <workItem from="1656604294304" duration="16450000" />
     </task>
     <task id="LOCAL-00002" summary="Message table updated">
       <created>1656511568053</created>
@@ -257,7 +259,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656623499396</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Communication Protocol.md">
+      <created>1656624846997</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1656624846997</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Communication Protocol.md">
+      <created>1656624893379</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1656624893380</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

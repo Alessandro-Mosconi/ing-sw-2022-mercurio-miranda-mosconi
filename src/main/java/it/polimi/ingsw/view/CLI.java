@@ -216,7 +216,7 @@ public class CLI extends View {
     public void chooseAssistantCard() {
         showTable();
         String input = "";
-        boolean invalidInput = false;
+        boolean invalidInput = true;
         ArrayList<Integer> alreadyUsed = new ArrayList<>();
         for (Player p : players) {
             if (p.getLastAssistantCard() != null) {
@@ -231,8 +231,6 @@ public class CLI extends View {
         }
 
         do {
-            invalidInput = false;
-
             System.out.print("\nChoose an Assistant card by ID: \n");
             int i=0;
             for (AssistantCard card : getPlayer().getDeck().getCards()) {
@@ -249,10 +247,21 @@ public class CLI extends View {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if ((availableOnes.containsAll(alreadyUsed) && alreadyUsed.containsAll(availableOnes)) || (availableOnes.size() < alreadyUsed.size() && alreadyUsed.containsAll(availableOnes))) {
-                invalidInput = false;
-            } else if (alreadyUsed.contains(Integer.valueOf(input))) {
-                invalidInput = true;
+            for(int j=1; j<11;j++){
+                if(input.equals(String.valueOf(j))&&!player.getDeck().getCards().get(j-1).isConsumed()){
+                    invalidInput = false;
+                    break;
+                }
+            }
+            if(!invalidInput) {
+                if ((availableOnes.containsAll(alreadyUsed) && alreadyUsed.containsAll(availableOnes)) || (availableOnes.size() < alreadyUsed.size() && alreadyUsed.containsAll(availableOnes))) {
+                    invalidInput = false;
+                } else if (alreadyUsed.contains(Integer.valueOf(input))) {
+                    invalidInput = true;
+                }
+            }
+            else {
+                System.out.println("Error: Invalid input");
             }
         } while (invalidInput);
         player.getDeck().getCards().get(Integer.parseInt(input) - 1).setConsumed(true);
@@ -722,7 +731,7 @@ public class CLI extends View {
                         }
                         else invalidInput = true;
                     }
-                }while(invalidInput || chosenStudents>=0);
+                }while(invalidInput || chosenStudents>0);
                 parameter.setColorMap1(map1);
                 parameter.setColorMap2(map2);
             }
