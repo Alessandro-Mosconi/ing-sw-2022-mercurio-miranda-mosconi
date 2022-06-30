@@ -84,9 +84,11 @@ public class MainBoardController {
 
         playerNick.setText(view.getUsername());
         if (view.getGamemode().equals(GameMode.expert)) {
+            wallet.setVisible(true);
             wallet.setText("Wallet: " + view.getPlayer().getWallet());
             showCharacterChard();
         }
+        else wallet.setVisible(false);
 
     }
 
@@ -462,14 +464,18 @@ public class MainBoardController {
             //first element is the tower
             shapes.add(new Rectangle(0.0, 0.0, 25, 25));
             text.add(new Text(String.valueOf(island.getTowersNumber())));
+            text.get(0).setFill(Color.WHITE);
             stack2.getChildren().addAll(shapes.get(0), text.get(0));
             if (island.getTowerColor() != null) {
                 shapes.get(0).setFill(TowerColor.getColor(island.getTowerColor()));
                 stack2.setVisible(true);
+                if(island.getTowerColor().equals(TowerColor.white))
+                    text.get(0).setFill(Color.BLACK);
             } else {
                 shapes.get(0).setFill(Color.TRANSPARENT);
                 stack2.setVisible(false);
             }
+
             gridPane.add(stack2, 0, 0, 1, 1);
 
             //remaining elements are pawn

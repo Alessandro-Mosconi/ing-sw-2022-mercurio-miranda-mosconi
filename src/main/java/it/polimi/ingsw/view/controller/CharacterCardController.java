@@ -94,6 +94,7 @@ public class CharacterCardController {
                             for (Button b : colorButtons)
                                 b.setStyle(b.getStyle() + ";  -fx-effect: null");
                             button.setStyle("-fx-border-color: white; -fx-background-color: " + color + ";  -fx-effect:  dropshadow(gaussian, white, 15, 0.5, 0, 0)");
+                            view.setParameter(new Parameter());
                             view.getParameter().setChosenColor(color);
                             check = true;
                         });
@@ -270,6 +271,7 @@ public class CharacterCardController {
         Button annulla = new Button();
         annulla.setText("Annulla");
         annulla.setOnAction(event -> {
+            view.setParameter(new Parameter());
             GuiStarter.getCurrentApplication().closeCharacterStage();
             view.setChosenCharacterCard(null);
             GuiStarter.getCurrentApplication().switchToMainBoard();
