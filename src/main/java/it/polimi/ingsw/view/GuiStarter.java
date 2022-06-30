@@ -374,11 +374,10 @@ public class GuiStarter extends Application {
             stage.setTitle("CharacterCard");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(primaryStage);
-            stage.setOnCloseRequest(new EventHandler<>() {
-                public void handle(WindowEvent we) {
-                    System.out.println("Stage is closing");
-                    getClient().getView().setChosenCharacterCard(null);
-                }
+            stage.setOnCloseRequest(we -> {
+                System.out.println("Stage is closing");
+                getClient().getView().setParameter(new Parameter());
+                getClient().getView().setChosenCharacterCard(null);
             });
             stage.show();
 

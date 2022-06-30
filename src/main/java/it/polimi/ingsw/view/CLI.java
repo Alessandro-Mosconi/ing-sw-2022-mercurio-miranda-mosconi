@@ -541,7 +541,7 @@ public class CLI extends View {
             System.out.print("(");
             System.out.print("ID: " + island.getIslandID());
             if (island.getTowerColor() != null)
-                System.out.println(" Tower: " + island.getTowersNumber() + " " + island.getTowerColor());
+                System.out.print(" Tower: " + island.getTowersNumber() + " " + island.getTowerColor());
             System.out.print(" Map:" + island.getIslandStudents());
             System.out.print(island.isMotherNature() ? " MotherNature " : "");
             System.out.print(island.isNoEntryTile() ? " NoEntry " : "");
