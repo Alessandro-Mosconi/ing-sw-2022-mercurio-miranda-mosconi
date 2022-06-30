@@ -736,6 +736,7 @@ public class CLI extends View {
                 }
             }
         } while (invalidInput);
+        parameter.setChosenColor(PawnColor.valueOf(input));
     }
 
     /**
