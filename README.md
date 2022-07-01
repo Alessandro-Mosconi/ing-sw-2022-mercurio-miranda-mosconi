@@ -43,7 +43,7 @@ When you run the *client*, at launch you will be asked to choose between the CLI
 🟠 = WIP
 
 ## Documentation
-- [UML](url to add)
+- [UML](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/tree/main/deliverables/UML)
 - [Network Protocol](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Communication%20Protocol.md)
 - [Peer reviews](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/tree/main/deliverables/Documents) 
 
