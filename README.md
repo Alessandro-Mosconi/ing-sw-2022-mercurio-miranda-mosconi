@@ -60,4 +60,12 @@ Scene of the Assistant Card selection\
 \
 Scene of the Wizard choice\
 \
-![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/Wizards_SS.png "Wizard choice")
+![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/WizardSelectionGUI.jpeg "Wizard choice")\
+\
+\
+Scene of the game board (GUI VERSION) 
+![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/Mainboard_SS.png "Game board")\
+\
+\
+Login (CLI VERSION)
+![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/LoginCLI.jpeg "Login CLI")
