@@ -53,6 +53,11 @@ Scene of the login page\
 ![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/Login_SS.png "Login page")\
 \
 \
+Login (CLI VERSION)\
+\
+![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/LoginCLI.jpeg "Login CLI")\
+\
+\
 Scene of the Assistant Card selection\
 \
 ![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/Assistant_SS.png "Assistant Cards")\
@@ -63,9 +68,6 @@ Scene of the Wizard choice\
 ![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/WizardSelectionGUI.jpeg "Wizard choice")\
 \
 \
-Scene of the game board (GUI VERSION) 
-![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/Mainboard_SS.png "Game board")\
+Scene of the game board (GUI VERSION)\
 \
-\
-Login (CLI VERSION)
-![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/LoginCLI.jpeg "Login CLI")
+![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/Mainboard_SS.png "Game board")
