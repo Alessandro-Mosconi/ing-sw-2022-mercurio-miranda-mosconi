@@ -39,7 +39,7 @@ Here are examples of Sequence Diagrams for each possible scenario.
 ![disconnection.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/disconnection.png)
 
 
-#Message Table:
+## Message Table:
 | Source | MessageType | Payloads content | Description |
 | --- | --- | --- | --- |
 | Client.NetworkHandler | ASSISTANT_CARD | value of the chosen assistant card | represents the request to use an assistant card |
