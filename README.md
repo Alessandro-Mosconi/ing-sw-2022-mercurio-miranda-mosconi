@@ -43,9 +43,9 @@ When you run the *client*, at launch you will be asked to choose between the CLI
 🟠 = WIP
 
 ## Documentation
-- UML
-- Network Protocol 
-- Peer reviews 
+- [UML](url to add)
+- [Network Protocol](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Communication%20Protocol.md)
+- [Peer reviews](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/tree/main/deliverables/Documents) 
 
 ## Screenshots
 Scene of the login page\
