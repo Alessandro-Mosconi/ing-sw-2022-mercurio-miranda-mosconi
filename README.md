@@ -43,14 +43,19 @@ When you run the *client*, at launch you will be asked to choose between the CLI
 🟠 = WIP
 
 ## Documentation
-- UML
-- Network Protocol 
-- Peer reviews 
+- [UML](url to add)
+- [Network Protocol](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Communication%20Protocol.md)
+- [Peer reviews](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/tree/main/deliverables/Documents) 
 
 ## Screenshots
 Scene of the login page\
 \
 ![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/Login_SS.png "Login page")\
+\
+\
+Login (CLI VERSION)\
+\
+![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/LoginCLI.jpeg "Login CLI")\
 \
 \
 Scene of the Assistant Card selection\
@@ -60,4 +65,9 @@ Scene of the Assistant Card selection\
 \
 Scene of the Wizard choice\
 \
-![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/Wizards_SS.png "Wizard choice")
+![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/WizardSelectionGUI.jpeg "Wizard choice")\
+\
+\
+Scene of the game board (GUI VERSION)\
+\
+![picture alt](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/src/resources/assets/Screenshot/Mainboard_SS.png "Game board")
