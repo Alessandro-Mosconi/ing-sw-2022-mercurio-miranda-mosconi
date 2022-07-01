@@ -16,14 +16,14 @@ The coding language used is Java and the repository contains:
 - [Mosconi Alessandro](https://github.com/Alessandro-Mosconi)
 
 ## How to play 👾
-(Can we say they can double click on the jar?)\
+In the jar folder (deliverables/jar) you will find two jar files, *client* and *server*. The game can either be played locally on one single machine or online, from different machines connected to the same network.\
 To play locally you have to run one *server* and the *clients*. In order to run the jar file you need to use the Terminal and go to the directory where the jar is located, then type `java -jar <jarname>.jar`.\
-To play online you need to have at least one sever running on a machine. Every client will connect to that server through an IP.\
-NB: all the clients must be connected to the same network and use the IP (??? idk this must be completed) 
+To play online you need to have one machine running a server. Every client will connect to that server through the machine IP.\
+NB: all the clients must be connected to the same network and use the IP of the server. We furthermore suggest to disable the firewall. 
 
 ### Running
-When you run the *server*, at launch you will be asked to choose a preferred server port.\
-When you run the *client*, at launch you will be asked to choose between the CLI and the GUI versions, then insert your username, the server IP (127.0.0.1), server port (chosen by the server, 1234 as default), and decide whether to *create* a new match or *join* an existing one. 
+When you run the *server*, at launch you will be asked to choose a preferred server port. This server port will be used to open the socket and connect with the client.\
+When you run the *client*, at launch you will be asked to choose between the CLI and the GUI versions, then insert your username, the server IP (defaul is 127.0.0.1, if you play local you don't need to change it), server port (chosen by the server, 1234 as default), and decide whether to *create* a new match or *join* an existing one. 
 
 - **Create**: in the *create settings* you will need to insert one *game ID*, the *game mode* (*easy/expert*) and the *number of players* that will join the game (*up to 3*)
 - **Join**: in the *join settings* you will only need to insert the *game ID* of the match you want to join and you will be redirected to the match lobby, waiting for set number of active players to be reached. 
@@ -43,6 +43,9 @@ When you run the *client*, at launch you will be asked to choose between the CLI
 🟠 = WIP
 
 ## Documentation
+- UML
+- Network Protocol 
+- Peer reviews 
 
 ## Screenshots
 Scene of the login page\
