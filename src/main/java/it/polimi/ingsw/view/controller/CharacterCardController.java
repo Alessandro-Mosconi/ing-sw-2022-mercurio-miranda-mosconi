@@ -169,13 +169,6 @@ public class CharacterCardController {
                                 check = false;
                             else check = true;
 
-                            if(view.getChosenCharacterCard().getID().equals(10)) {
-                                Map<PawnColor, Integer> tempMap;
-                                tempMap = view.getParameter().getColorMap2();
-                                view.getParameter().setColorMap2(view.getParameter().getColorMap1());
-                                view.getParameter().setColorMap1(tempMap);
-                            }
-
                         });
                         flowPane1.setHgap(10);
                         flowPane1.setPrefWidth(300);
@@ -249,6 +242,16 @@ public class CharacterCardController {
                 GuiStarter.getCurrentApplication().showError("You don't have enough money");
                 return;
             }
+            if(view.getCardUsed()) {
+                GuiStarter.getCurrentApplication().showError("You can't use another card during this turn");
+                return;
+            }
+            if(view.getChosenCharacterCard().getID().equals(10)) {
+                Map<PawnColor, Integer> tempMap;
+                tempMap = view.getParameter().getColorMap2();
+                view.getParameter().setColorMap2(view.getParameter().getColorMap1());
+                view.getParameter().setColorMap1(tempMap);
+            }
 
             //check update on map swapping case
             if (view.getChosenCharacterCard().getID().equals(10) || view.getChosenCharacterCard().getID().equals(7)) {
@@ -267,10 +270,11 @@ public class CharacterCardController {
                 view.setCardUsed(true);
                 GuiStarter.getCurrentApplication().switchToMainBoard();
                 GuiStarter.getCurrentApplication().closeCharacterStage();
-                //if card id is 1, 3 or 5 we still need to choose an island, else send now the message
+                //if card id is 1, 3 or 5 we still need to chose an island, else send now the message
                 if (view.getChosenCharacterCard().getID().equals(1) || view.getChosenCharacterCard().getID().equals(3) || view.getChosenCharacterCard().getID().equals(5))
                     GuiStarter.getCurrentApplication().chooseIsland();
                 else {
+                    System.out.println("qua");
                     view.setMessageType(MessageType.CHOSEN_CHARACTER_CARD);
                     view.prepareMessage();
                 }
@@ -281,7 +285,7 @@ public class CharacterCardController {
         });
 
         Button annulla = new Button();
-        annulla.setText("Cancel");
+        annulla.setText("Annulla");
         annulla.setOnAction(event -> {
             view.setParameter(new Parameter());
             GuiStarter.getCurrentApplication().closeCharacterStage();

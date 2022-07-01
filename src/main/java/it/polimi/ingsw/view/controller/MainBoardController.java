@@ -435,7 +435,8 @@ public class MainBoardController {
                 view.setMessageType(MessageType.CHOSEN_CT);
                 view.prepareMessage();
             });
-            button2.setDisable(isEmpty); //if cloud empty, button disabled
+            if(isEmpty)
+                button2.setDisable(true); //if cloud empty, button disabled
 
             //overlay of image and button and map
             AnchorPane anchorPane2 = new AnchorPane();

@@ -9,11 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e56e055-c63d-46dc-b8f8-ce6ddc2b811e" name="Changes" comment="cli check on input fix">
+    <list default="true" id="1e56e055-c63d-46dc-b8f8-ce6ddc2b811e" name="Changes" comment="clouds fill fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/AssistantSelectionState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/AssistantSelectionState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/ChooseCTState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/ChooseCTState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/GeneratePlayerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/GeneratePlayerState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/CharacterCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/CharacterCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/MainBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/MainBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/WizardChoice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/WizardChoice.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Plancia/Plancia_DEF2-vertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Plancia/Plancia_DEF2-vertical.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +195,8 @@
       <workItem from="1656602994223" duration="331000" />
       <workItem from="1656603335325" duration="799000" />
       <workItem from="1656604184886" duration="100000" />
-      <workItem from="1656604294304" duration="16752000" />
+      <workItem from="1656604294304" duration="18440000" />
+      <workItem from="1656659547621" duration="2062000" />
     </task>
     <task id="LOCAL-00002" summary="Message table updated">
       <created>1656511568053</created>
@@ -280,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656630598292</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="clouds fill fix">
+      <created>1656630924645</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1656630924645</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,7 +315,8 @@
     <MESSAGE value="documentation + view fixes" />
     <MESSAGE value="Communication Protocol.md" />
     <MESSAGE value="cli check on input fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="cli check on input fix" />
+    <MESSAGE value="clouds fill fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="clouds fill fix" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Eriantys$ParameterTest.ic" NAME="ParameterTest Coverage Results" MODIFIED="1655721946668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
