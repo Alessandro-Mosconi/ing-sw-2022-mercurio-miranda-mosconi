@@ -1,10 +1,18 @@
 # Communication Protocol
+## Premise
 
-The communication protocol is based on JSON.
+The communication protocol used is **JSON** based. 
+## Message Structure
+All messages share the following structure:
 
-Each message has an username used to indicate who’s requesting an action (in case the message starts from a Client) or who’s receiving a response or an update (in case the message starts from the Server).
-
-Each message has also a MessageType (from an Enum) which defines a different way of being processed.
+- id (String) :
+  - Client->Server: User of the Client that is sending the msg;
+  - Server->Client: User of the destination Client;
+- messageType (enum)
+- payload (String)
+    - if messageType is an action related message -> then payload is a JSON representation of the objects interested;
+    - if messageType is a _MODEL_UPDATE_ -> then payload is a JSON representation of the objects that contains the changes made to the model;
+    - if messageType == ERROR -> then payload is a JSON representation of the error enumeration.
 
 On the Client side, the MessageType is defined by a phases based logic: each client has a phase from which it can only send a specific type of message (Character Cards related messages are handled a little differently). This helps avoiding errors in the communication.
 
@@ -14,6 +22,25 @@ The Server also sends “IS_YOUR_TURN” messages to tell a client that now it�
 
 Regarding the activation of a Character Card, the client can send a CHOSEN_CHARACTER_CARD message while in any of the Action phases. Obviously, the payload of that very same MessageType depends on the character card itself, since each of them requires different parameters to be activated.
 
+## Communication Examples
+
+### Checking connection
+When connection is established server and client set a socket timeout. Then client and server keep sending each other periodical messages to keep the timeout from expiring (Ping message sent every _timeout/2 sec_)
+
+![ping](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/ping_message.png)
+
+Example of a possible error message during login (when you try to create a new Game with an id already existing for another match":
+
+```json
+{
+   "username": "userClient",
+   "messageType": "ERROR",
+   "payload": "GAME_ALREADY_EXISTING"
+}
+```
+
+
+## Sequence Diagrams
 Here are examples of Sequence Diagrams for each possible scenario.
 
 ![LOGIN.png](https://github.com/michelelorenzo/ing-sw-2022-mercurio-miranda-mosconi/blob/main/deliverables/Sequence_Diagram_Examples/LOGIN.png)
