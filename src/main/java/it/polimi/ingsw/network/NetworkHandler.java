@@ -328,7 +328,7 @@ public class NetworkHandler implements Runnable {
                     nextPhase = Phase.SETTINGS;
                 }
                 case LOBBY_UPDATED -> {
-                    if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene(); //todo ricarica la pag ma non la aggiorna
+                    if(isGui) GuiStarter.getCurrentApplication().switchToLobbyScene();
                     else System.out.println("Lobby updated");
                 }
                 case WAIT -> {
@@ -375,7 +375,7 @@ public class NetworkHandler implements Runnable {
                         }
                     }
                     if(isGui)
-                        view.showUsedAssistantCards(); //TODO serve?
+                        view.showUsedAssistantCards();
                     else
                         view.showTable();
                 /*bisogna che il client non posssa selezionare carte dello stesso valore di quelle usate dai client
@@ -590,7 +590,7 @@ public class NetworkHandler implements Runnable {
                     phase = Phase.END_GAME;
                     nextPhase = Phase.WAITING;
                     view.showEndGameWindow(winnerID);
-                    //TODO mandare al server il messaggio che la partita finisce e chiudere le socket?
+
                 }
                 case UPDATE_WALLET ->{
                     payloads = gson.fromJson(msg_in.getPayload(), ArrayList.class);

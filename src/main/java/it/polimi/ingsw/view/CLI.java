@@ -23,7 +23,7 @@ public class CLI extends View {
             if (System.getProperty("os.name").contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             } else
-                Runtime.getRuntime().exec("clear");
+                System.out.print("\033\143");
         } catch (IOException | InterruptedException e) {
             System.out.println("Error in clean console method: \n" + e);
         }

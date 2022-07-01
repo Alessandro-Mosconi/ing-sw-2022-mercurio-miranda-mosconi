@@ -122,7 +122,7 @@ public class Player {
      * @param color is the student to be moved.
      */
     public void moveFromEntranceToHall(PawnColor color){
-        if(schoolBoard.getStudentEntrance().get(color)<=0 && schoolBoard.getStudentHall().get(color)<10) //TODO inserire il check corrispondente alla seconda condizione lato clietn
+        if(schoolBoard.getStudentEntrance().get(color)<=0 && schoolBoard.getStudentHall().get(color)<10)
             System.out.println(color + " not present in Entrance");
         else {
             schoolBoard.removeStudentEntrance(color);

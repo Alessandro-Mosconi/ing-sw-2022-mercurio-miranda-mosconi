@@ -43,7 +43,7 @@ public class ChooseCTState implements GameControllerState{
         else{
             gameController.getGame().fillCloudTiles();
             if(gameController.getGame().isBagEmpty()){
-                gameController.setLastRound(true); //todo inserire dei check sulla bag anche dopo che vengono attivate carte che ne pescano studenti
+                gameController.setLastRound(true);
             }
             gameController.setNextState(new AssistantSelectionState());
             gameController.resetPlayersToGo();

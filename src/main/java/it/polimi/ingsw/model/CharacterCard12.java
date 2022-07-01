@@ -5,7 +5,6 @@ public class CharacterCard12 implements CardBehavior{
 
     // Scegli un colore di Studente; ogni giocatore (incluso te) deve rimettere nel sacchetto 3 Studenti
     // di quel colore presenti nella sua Sala. Chi avesse meno di 3 Studenti di quel colore, rimetterà tutti quelli che ha.
-//TODO considerare il caso in cui la bag è vuota ma viene riempita da questo effetti (va ripetuto il check sulla bag)????
 
     /**
      * For each player's schoolboard, removes up to 3 student of a chosen color from the hall and puts them bag in the game bag.

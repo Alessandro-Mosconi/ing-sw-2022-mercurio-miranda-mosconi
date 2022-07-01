@@ -286,7 +286,6 @@ public class GuiStarter extends Application {
     public void chooseMNmovement() {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.NONE, "IT'S YOUR TURN\nClick on the island Mother Nature should go\nMax " + getClient().getView().getPlayer().getMaxShift() + " shift", ButtonType.OK);
-//TODO vedere se ci va isola o island
             ImageView icon = new ImageView("/assets/Reame/PNG/Isola.png");
             icon.setStyle("-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0)");
             icon.setFitHeight(48);

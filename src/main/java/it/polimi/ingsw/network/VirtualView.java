@@ -367,13 +367,4 @@ public class VirtualView{
     public int getChosenCloudID() {
         return chosenCloudID;
     }
-
-    public Parameter getParameter() {
-        return null; //TODO?
-    }
-
-    public int getChosenCharacterCardID() {
-        return 1; //TODO?
-    }
-
 }

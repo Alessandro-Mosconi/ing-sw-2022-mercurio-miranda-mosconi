@@ -53,7 +53,6 @@ public class TowerController {
 
             //adding structure to tower container
             towerContainer.getChildren().add(anchorPane);
-            //TODO questo funziona?
             GuiStarter.getCurrentApplication().getClient().getView().setMessageType(MessageType.SETTINGS);
         }
     }

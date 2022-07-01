@@ -144,6 +144,5 @@ public class GUI extends View{
 
     @Override
     public void showUsedAssistantCards() {
-        //todo qui dobbiamo mostrare le assistant card usate..
     }
 }

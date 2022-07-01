@@ -9,12 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e56e055-c63d-46dc-b8f8-ce6ddc2b811e" name="Changes" comment="clouds fill fix">
+    <list default="true" id="1e56e055-c63d-46dc-b8f8-ce6ddc2b811e" name="Changes" comment="gui fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/CharacterCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/CharacterCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/MainBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/controller/MainBoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/WizardChoice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/WizardChoice.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/assets/Plancia/Plancia_DEF2-vertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Plancia/Plancia_DEF2-vertical.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/ChooseCTState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/controller/ChooseCTState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard12.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/CharacterCard12.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/NetworkHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/VirtualView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/network/VirtualView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/view/CLI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +199,7 @@
       <workItem from="1656603335325" duration="799000" />
       <workItem from="1656604184886" duration="100000" />
       <workItem from="1656604294304" duration="18440000" />
-      <workItem from="1656659547621" duration="2062000" />
+      <workItem from="1656659547621" duration="4182000" />
     </task>
     <task id="LOCAL-00002" summary="Message table updated">
       <created>1656511568053</created>
@@ -289,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656630924645</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="gui fix">
+      <created>1656661765093</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1656661765093</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,7 +326,8 @@
     <MESSAGE value="Communication Protocol.md" />
     <MESSAGE value="cli check on input fix" />
     <MESSAGE value="clouds fill fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="clouds fill fix" />
+    <MESSAGE value="gui fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="gui fix" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Eriantys$ParameterTest.ic" NAME="ParameterTest Coverage Results" MODIFIED="1655721946668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

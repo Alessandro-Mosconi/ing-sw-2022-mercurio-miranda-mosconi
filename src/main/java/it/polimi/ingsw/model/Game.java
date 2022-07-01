@@ -18,7 +18,7 @@ public class Game {
     private int bank;
     private boolean towersDoCount=true;
     private PawnColor keptOut=null;
-    private boolean started; //TODO serve?
+    private boolean started;
     private int entryTiles;
     private CharacterCard currEffect;
     private Parameter currParameter;
@@ -70,7 +70,7 @@ public class Game {
 
     public void setAvailableTowerColors(ArrayList<TowerColor> availableTowerColors) {
         this.availableTowerColors = availableTowerColors;
-    } //TODO non credo servano
+    }
 
     public ArrayList<CharacterCard> getAllCharacterCard(){
         return this.allCharacterCards;
@@ -82,7 +82,7 @@ public class Game {
     }
     public void setStarted(boolean started) {
         this.started = started;
-    } //TODO servono?
+    }
     public CharacterCard getCurrEffect() {
         return currEffect;
     }
